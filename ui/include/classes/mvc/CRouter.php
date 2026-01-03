@@ -41,6 +41,10 @@ class CRouter {
 	private array $routes = [
 		// action									controller															layout					view
 		'acknowledge.edit'							=> [CControllerAcknowledgeEdit::class,								'layout.json',			'acknowledge.edit'],
+        'license.list' => [CControllerLicenseList::class, 'layout.htmlpage', 'license.list'],
+		'license.create' => [CControllerLicenseList::class, 'layout.htmlpage', 'license.add'],
+		'license.edit'   => [CControllerLicenseList::class, 'layout.htmlpage', 'license.edit'],
+		'license.delete'   => [CControllerLicenseList::class, 'layout.htmlpage', 'license.delete'],
 		'action.create'								=> [CControllerActionCreate::class,									'layout.json',			null],
 		'action.delete'								=> [CControllerActionDelete::class,									'layout.json',			null],
 		'action.disable'							=> [CControllerActionDisable::class,								'layout.json',			null],
