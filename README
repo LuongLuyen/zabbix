@@ -1,1 +1,54 @@
-Please refer to README.md
+sudo -u zabbix psql
+\c zabbix
+\dt
+q
+DROP TABLE IF EXISTS tinasoft_ls;
+
+CREATE TABLE tinasoft_ls (
+    lsid SERIAL PRIMARY KEY,
+    ls_text VARCHAR(60),
+    ls_year INTEGER CHECK (ls_year BETWEEN 2026 AND 2045),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO tinasoft_ls (ls_text, ls_year)
+VALUES
+('xB7k9dT2GhQwL8vFjZp1', 2026),
+('Aq1Lk9FmN2PbX7vHsYd3', 2027),
+('Tz4XvQpR8LmJ3kDhYw2C', 2028),
+('Km8HqB2ZxR5JvN9LfYt4', 2029),
+('Pj6WcR1QkX8MdS3VzNb5', 2030),
+('Ld9TqZ7XvJ2YpF4KmHw6', 2031),
+('Vb2NpR8QsJ5XkH7LtWc7', 2032),
+('Gh4LkZ1MpR6VxT9JqFy8', 2033),
+('Qw3XyJ9LpK7MdV2ZnRs9', 2034),
+('Fs6VpR4KmH8XqT1LdJg0', 2035),
+('Nz2KmX5BpV9JqL3TsFd1', 2036),
+('Jh7XqR1KvD6LpT8WsYn2', 2037),
+('Yt3LpV9HkJ2QxR6MnFs3', 2038),
+('Dc8XnJ4VpK7YqT1LsHw4', 2039),
+('Rs5JkL8XvH3TpQ2MzFy5', 2040),
+('Mb1VqR6LkX9JtH4YpWs6', 2041),
+('Kp4XyJ2LqV8MdR7HtNz7', 2042),
+('Fw9LpT3KxR6JvQ1MnYs8', 2043),
+('Zn2JkR7VpX5HtL4MqYd9', 2044),
+('Qt6HkX1LpV9JrM3FsZw0', 2045);
+
+cd ui
+sudo cp -a . /var/www/html/zabbix
+
+# 3. Cấu hình biên dịch (Full Option cho Dev)
+./bootstrap.sh
+./configure --enable-server --enable-agent --with-postgresql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --with-ares --with-openssl --with-libevent --with-libpcre2
+# 4. Compile và Install
+make -j$(nproc)
+sudo make install
+
+\c zabbix
+
+sudo systemctl restart apache2
+sudo tail -n 50 /var/log/apache2/error.log
+
+
+zabbix_server
+zabbix_agentd
