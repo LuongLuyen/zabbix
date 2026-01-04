@@ -37,7 +37,7 @@ class CControllerLicenseList extends CController {
 			case 'create':
 				$this->showAddForm();
 				break;
-			case 'save': // Khi form submit
+			case 'save': 
 				$this->createLicense();
 				break;
 			default:
@@ -75,34 +75,25 @@ class CControllerLicenseList extends CController {
 
 	// --- SHOW ADD FORM ---
 	protected function showAddForm(): void {
-		$page = new CHtmlPage();
-		$page->setTitle(_('Add License'));
 
-		$form = new CForm();
-		$form->setName('license_add');
-		$form->setAttribute('method', 'post');
-
-		$form->addItem(new CTextBox('ls_text', '')); // Text license
-		$form->addItem(new CTextBox('ls_year', '')); // Year license
-
-		$submit = new CSubmit('save', _('Create'));
-		$form->addItem($submit);
-
-		$page->addItem($form);
-		$page->show();
 	}
-
 	// --- CREATE LICENSE ---
-	protected function createLicense(): void {
-		$data = [
-			'ls_text' => $this->getInput('ls_text'),
-			'ls_year' => (int)$this->getInput('ls_year')
-		];
+    protected function createLicense(): void {
+        $data = [
+            'ls_text' => $this->getInput('ls_text'),
+            'ls_year' => (int)$this->getInput('ls_year')
+        ];
 
-		$lsid = API_License::create($data);
+        $lsid = API_License::create($data);
 
-		$this->setResponse(new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'license.list')
-		));
-	}
+        // Redirect về danh sách License
+        $url = (new CUrl('zabbix.php'))
+            ->setArgument('action', 'license.list')   // ✔ đúng route
+            ->setArgument('sort', 'ls_text')
+            ->setArgument('sortorder', ZBX_SORT_DOWN);
+
+        $this->setResponse(new CControllerResponseRedirect($url));
+    }
+
+
 }

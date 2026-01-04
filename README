@@ -47,5 +47,8 @@ sudo make install
 \c zabbix
 
 sudo systemctl restart apache2
+sudo tail -n 50 /var/log/apache2/error.log
+
+
 zabbix_server
 zabbix_agentd

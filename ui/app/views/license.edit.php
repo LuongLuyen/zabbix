@@ -1,21 +1,26 @@
 <?php
-/**
- * @var CHtmlPage $this
- * @var array $license
- */
-
 $page = new CHtmlPage();
 $page->setTitle(_('Edit License'));
 
-$form = (new CForm())->setName('license_edit');
-$formList = new CFormList();
+$form = new CForm();
+$form->setName('license_edit');
+$form->setAttribute('method','post');
 
-$formList->addRow(_('License Text'), (new CTextBox('ls_text'))->setValue($license['ls_text']));
-$formList->addRow(_('Year'), (new CTextBox('ls_year'))->setValue($license['ls_year']));
+// Hidden để biết update
+$form->addItem(new CTextBox('action_type','update',true));
+$form->addItem(new CTextBox('lsid',$license['lsid'],true));
 
-$form->addItem(new CHidden('lsid', $license['lsid']));
-$form->addItem($formList);
-$form->addItem(new CSubmitButton(_('Update')));
+// License Text
+$form->addItem(new CTextBox('ls_text', $license['ls_text']));
+
+// License Year
+$year = new CTextBox('ls_year', $license['ls_year']);
+$year->setAttribute('type','number');
+$year->setAttribute('min',2026);
+$year->setAttribute('max',2045);
+$form->addItem($year);
+
+$form->addItem(new CSubmit('save', _('Update License')));
 
 $page->addItem($form);
 $page->show();
