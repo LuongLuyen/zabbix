@@ -22,16 +22,17 @@ $add_link = (new CLink(_('Add License'), '#'))
     ->addClass(ZBX_STYLE_BTN)
     ->addClass('add');
 
+// **Khởi tạo table trước vòng lặp**
 $table = new CTableInfo();
 $table->setHeader([
     make_sorting_header(_('License text'), 'ls_text', $data['sort'], $data['sortorder'], $view_url),
     make_sorting_header(_('Year'), 'ls_year', $data['sort'], $data['sortorder'], $view_url),
     make_sorting_header(_('Created at'), 'created_at', $data['sort'], $data['sortorder'], $view_url),
+    make_sorting_header(_('Status'), 'status', $data['sort'], $data['sortorder'], $view_url),
     _('Actions')
 ]);
 
 $table->setPageNavigation($data['paging']);
-
 
 foreach ($data['licenses'] as $license) {
     // $edit_url = (new CUrl('zabbix.php'))
@@ -56,21 +57,24 @@ foreach ($data['licenses'] as $license) {
     $delete_link = new CLink(_('Delete'), '#');
     $delete_link->addClass(ZBX_STYLE_BTN_ALT);
 
-
     $actions_col = new CCol([$edit_link, NBSP(), $delete_link]);
     $actions_col->addClass(ZBX_STYLE_NOWRAP);
+
+    // **Status dùng class màu sẵn của Zabbix**
+    $status_col = new CCol($license['status']);
+    $status_col->addClass($license['status'] === 'Activated' ? 'green' : 'red');
 
     $table->addRow([
         $license['ls_text'],
         $license['ls_year'],
         $license['created_at'],
+        $status_col,
         $actions_col
     ]);
 }
 
 $form->addItem($add_link); 
 $form->addItem($table);
-
 
 $page = new CHtmlPage();
 $page->setTitle(_('Licenses'));

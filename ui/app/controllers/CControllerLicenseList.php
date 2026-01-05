@@ -52,7 +52,7 @@ class CControllerLicenseList extends CController {
 		$pageNum   = $this->getInput('page',1);
 
 		$licenses = API_License::get([
-			'output' => ['lsid','ls_text','ls_year','created_at'],
+			'output' => ['lsid','ls_text','ls_year','status','created_at'],
 			'limit'  => 100,
 			'preservekeys' => true
 		]);

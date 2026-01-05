@@ -2,7 +2,7 @@
 class API_License {
     
     public static function get(array $options = []): array {
-        $sql = 'SELECT lsid, ls_text, ls_year, created_at FROM tinasoft_ls';
+        $sql = 'SELECT lsid, ls_text, ls_year,status, created_at FROM tinasoft_ls';
 
         // Giới hạn
         if (isset($options['limit'])) {
