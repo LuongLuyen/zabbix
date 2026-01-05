@@ -26,9 +26,9 @@ $add_link = (new CLink(_('Add License'), '#'))
 $table = new CTableInfo();
 $table->setHeader([
     make_sorting_header(_('License text'), 'ls_text', $data['sort'], $data['sortorder'], $view_url),
-    make_sorting_header(_('Year'), 'ls_year', $data['sort'], $data['sortorder'], $view_url),
+    // make_sorting_header(_('Year'), 'ls_year', $data['sort'], $data['sortorder'], $view_url),
     make_sorting_header(_('Created at'), 'created_at', $data['sort'], $data['sortorder'], $view_url),
-    make_sorting_header(_('Status'), 'status', $data['sort'], $data['sortorder'], $view_url),
+    _('Status'),
     _('Actions')
 ]);
 
@@ -66,7 +66,7 @@ foreach ($data['licenses'] as $license) {
 
     $table->addRow([
         $license['ls_text'],
-        $license['ls_year'],
+        // $license['ls_year'],
         $license['created_at'],
         $status_col,
         $actions_col

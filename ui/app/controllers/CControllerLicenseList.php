@@ -47,8 +47,8 @@ class CControllerLicenseList extends CController {
 
 	// --- LIST LICENSES ---
 	protected function listLicenses(): void {
-		$sortField = $this->getInput('sort','ls_text');
-		$sortOrder = $this->getInput('sortorder', ZBX_SORT_DOWN);
+		$sortField = $this->getInput('sort','created_at');
+		$sortOrder = $this->getInput('sortorder', ZBX_SORT_UP);
 		$pageNum   = $this->getInput('page',1);
 
 		$licenses = API_License::get([

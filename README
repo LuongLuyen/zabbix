@@ -48,12 +48,13 @@ INSERT INTO tinasoft_ls (ls_text, ls_year, status, created_at)
 SELECT
     ls_text,
     ls_year,
-    CASE WHEN random() < 0.8 THEN 'Activated' ELSE 'Failed' END AS status,  -- 80% Activated, 20% Failed
+    'Activated' AS status,  -- tất cả đều Activated
     TIMESTAMP '2025-12-26 08:00:00'
         + ((rn - 1) * INTERVAL '5 minutes')
         + (floor(random() * 60) * INTERVAL '1 second')
         + (floor(random() * 1000000) * INTERVAL '1 microsecond') AS created_at
 FROM ordered;
+
 
 
 cd ui
