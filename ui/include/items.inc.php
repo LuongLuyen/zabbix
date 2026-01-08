@@ -78,13 +78,13 @@ function get_item_logtype_style($logtype) {
  */
 function item_type2str($type = null) {
 	$types = [
-		ITEM_TYPE_ZABBIX => _('Zabbix agent'),
-		ITEM_TYPE_ZABBIX_ACTIVE => _('Zabbix agent (active)'),
+		ITEM_TYPE_ZABBIX => _('SDNet agent'),
+		ITEM_TYPE_ZABBIX_ACTIVE => _('SDNet agent (active)'),
 		ITEM_TYPE_SIMPLE => _('Simple check'),
 		ITEM_TYPE_SNMP => _('SNMP agent'),
 		ITEM_TYPE_SNMPTRAP => _('SNMP trap'),
-		ITEM_TYPE_INTERNAL => _('Zabbix internal'),
-		ITEM_TYPE_TRAPPER => _('Zabbix trapper'),
+		ITEM_TYPE_INTERNAL => _('SDNet internal'),
+		ITEM_TYPE_TRAPPER => _('SDNet trapper'),
 		ITEM_TYPE_EXTERNAL => _('External check'),
 		ITEM_TYPE_DB_MONITOR => _('Database monitor'),
 		ITEM_TYPE_HTTPAGENT => _('HTTP agent'),

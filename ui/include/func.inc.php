@@ -1675,7 +1675,7 @@ function filter_messages(): array {
 		foreach ($messages as $message) {
 			if ($message['type'] === CMessageHelper::MESSAGE_TYPE_ERROR	&& $message['is_technical_error']) {
 				if (!$generic_exists) {
-					CMessageHelper::addError(_('System error occurred. Please contact Zabbix administrator.'));
+					CMessageHelper::addError(_('System error occurred. Please contact SDNet administrator.'));
 					$generic_exists = true;
 				}
 			}

@@ -94,8 +94,8 @@ switch ($data['method']) {
 
 		if ($server_status === false) {
 			$message = (CSessionHelper::get('serverCheckResultErrorCode') === CZabbixServer::ERROR_CODE_TLS)
-				? _('Unable to connect to the Zabbix server due to TLS settings. Some functions are unavailable.')
-				: _('Zabbix server is not running: the information displayed may not be current.');
+				? _('Unable to connect to the SDNet server due to TLS settings. Some functions are unavailable.')
+				: _('SDNet server is not running: the information displayed may not be current.');
 		}
 
 		$result = [

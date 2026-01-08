@@ -1132,7 +1132,7 @@ define('PERM_NONE',			-1);
 define('PARAM_TYPE_TIME',		0);
 define('PARAM_TYPE_COUNTS',		1);
 
-define('ZBX_DEFAULT_AGENT', 'Zabbix');
+define('ZBX_DEFAULT_AGENT', 'SDNet');
 define('ZBX_AGENT_OTHER', -1);
 
 define('ZBX_HTTP_AUTH_NONE',		0);
@@ -2287,9 +2287,9 @@ define('ZBX_STYLE_FIELD_LABEL_ASTERISK', 'form-label-asterisk');
 define('ZBX_STYLE_PROBLEM_ICON_LIST' , 'problem-icon-list');
 define('ZBX_STYLE_PROBLEM_ICON_LINK' , 'problem-icon-link');
 define('ZBX_STYLE_PROBLEM_ICON_LIST_ITEM' , 'problem-icon-list-item');
-define('ZBX_STYLE_ZABBIX_LOGO', 'zabbix-logo');
-define('ZBX_STYLE_ZABBIX_LOGO_SIDEBAR', 'zabbix-logo-sidebar');
-define('ZBX_STYLE_ZABBIX_LOGO_SIDEBAR_COMPACT', 'zabbix-logo-sidebar-compact');
+define('ZBX_STYLE_ZABBIX_LOGO', 'sdnet-logo');
+define('ZBX_STYLE_ZABBIX_LOGO_SIDEBAR', 'sdnet-logo-sidebar');
+define('ZBX_STYLE_ZABBIX_LOGO_SIDEBAR_COMPACT', 'sdnet-logo-sidebar-compact');
 define('ZBX_STYLE_DEFAULT_OPTION', 'default-option');
 define('ZBX_STYLE_OVERLAY_DIALOGUE_HEADER', 'overlay-dialogue-header');
 
