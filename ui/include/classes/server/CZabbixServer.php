@@ -598,7 +598,7 @@ class CZabbixServer {
 		}
 
 		if ($this->host === null || $this->port === null) {
-			$this->error = _('Connection to Zabbix server failed. Incorrect configuration.');
+			$this->error = _('Connection to SDNet server failed. Incorrect configuration.');
 
 			return false;
 		}
@@ -675,7 +675,7 @@ class CZabbixServer {
 			$this->error_code = self::ERROR_CODE_TCP;
 
 			if ($this->connectTCP()) {
-				$this->error = _('Unable to connect to the Zabbix server due to TLS settings. Some functions are unavailable.');
+				$this->error = _('Unable to connect to the SDNet server due to TLS settings. Some functions are unavailable.');
 				$this->error_code = self::ERROR_CODE_TLS;
 			}
 
@@ -683,7 +683,7 @@ class CZabbixServer {
 		}
 
 		if ($capture_peer_cert && !$this->validatePeerCertificate($socket)) {
-			$this->error = _('Unable to connect to the Zabbix server due to TLS settings. Some functions are unavailable.');
+			$this->error = _('Unable to connect to the SDNet server due to TLS settings. Some functions are unavailable.');
 			$this->error_code = self::ERROR_CODE_TLS;
 
 			return null;
@@ -697,19 +697,19 @@ class CZabbixServer {
 
 		switch ($error_msg) {
 			case 'Connection refused':
-				$descriptive_error_msg = _s("Connection to Zabbix server \"%1\$s\" refused. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Security environment (for example, SELinux) is blocking the connection;\n3. Zabbix server daemon not running;\n4. Firewall is blocking TCP connection.\n", $host_port);
+				$descriptive_error_msg = _s("Connection to SDNet server \"%1\$s\" refused. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Security environment (for example, SELinux) is blocking the connection;\n3. SDNet server daemon not running;\n4. Firewall is blocking TCP connection.\n", $host_port);
 				break;
 
 			case 'No route to host':
-				$descriptive_error_msg = _s("Zabbix server \"%1\$s\" cannot be reached. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Incorrect network configuration.\n", $host_port);
+				$descriptive_error_msg = _s("SDNet server \"%1\$s\" cannot be reached. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Incorrect network configuration.\n", $host_port);
 				break;
 
 			case 'Connection timed out':
-				$descriptive_error_msg = _s("Connection to Zabbix server \"%1\$s\" timed out. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Firewall is blocking TCP connection.\n", $host_port);
+				$descriptive_error_msg = _s("Connection to SDNet server \"%1\$s\" timed out. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Firewall is blocking TCP connection.\n", $host_port);
 				break;
 
 			default:
-				$descriptive_error_msg = _s("Connection to Zabbix server \"%1\$s\" failed. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Incorrect DNS server configuration.\n", $host_port);
+				$descriptive_error_msg = _s("Connection to SDNet server \"%1\$s\" failed. Possible reasons:\n1. Incorrect \"NodeAddress\" or \"ListenPort\" in the \"zabbix_server.conf\" or server IP/DNS override in the \"zabbix.conf.php\";\n2. Incorrect DNS server configuration.\n", $host_port);
 		}
 
 		return rtrim($descriptive_error_msg.$error_msg);

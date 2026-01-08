@@ -26,7 +26,7 @@ $info_table = (new CTableInfo())
 	->setHeadingColumn(0)
 	->addClass(ZBX_STYLE_LIST_TABLE_STICKY_HEADER)
 	->addRow([
-		_('Zabbix server is running'),
+		_('SDNet server is running'),
 		(new CSpan($status['is_running'] ? _('Yes') : _('No')))
 			->addClass($status['is_running'] ? ZBX_STYLE_COLOR_POSITIVE : ZBX_STYLE_COLOR_NEGATIVE),
 		$data['system_info']['server_details']
@@ -80,14 +80,14 @@ if ($data['system_info']['is_software_update_check_enabled']) {
 
 if ($data['user_type'] == USER_TYPE_SUPER_ADMIN) {
 	$info_table->addRow([
-		_('Zabbix server version'),
+		_('SDNet server version'),
 		$server_version,
 		$server_version_details
 	]);
 }
 
 $info_table->addRow([
-	_('Zabbix frontend version'),
+	_('SDNet frontend version'),
 	$frontend_version,
 	$frontend_version_details
 ]);
@@ -195,7 +195,7 @@ if ($data['user_type'] == USER_TYPE_SUPER_ADMIN) {
 
 	if (!$data['system_info']['is_global_scripts_enabled']) {
 		$info_table->addRow([
-			_('Global scripts on Zabbix server'),
+			_('Global scripts on SDNet server'),
 			(new CSpan(_('Disabled'))),
 			''
 		]);

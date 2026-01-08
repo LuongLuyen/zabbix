@@ -238,7 +238,7 @@ function setupLocale(string $language, ?string &$error = null): bool {
 
 	if (!$locale_set) {
 		$error = 'Locale for language "'.$language.'" is not found on the web server. Tried to set: '.
-			implode(', ', $locale_variants).'. Unable to translate Zabbix interface.';
+			implode(', ', $locale_variants).'. Unable to translate SDNet interface.';
 	}
 
 	return ($error === null);
