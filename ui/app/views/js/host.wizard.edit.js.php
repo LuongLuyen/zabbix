@@ -41,10 +41,10 @@ window.host_wizard_edit = new class {
 	#view_templates;
 
 	#filter_hints = {
-		'data_collection_1': <?= json_encode(_('Data is collected by Zabbix agent, a lightweight software component installed on your monitoring target.')) ?>,
-		'data_collection_2': <?= json_encode(_('Data is collected by Zabbix server or proxy using standard protocols (e.g., SNMP, ICMP) or remote access methods (e.g., SSH).')) ?>,
-		'agent_mode_1': <?= json_encode(_('Zabbix agent initiates connections to Zabbix server or proxy to send data. Recommended for monitoring targets behind a firewall.')) ?>,
-		'agent_mode_2': <?= json_encode(_('Zabbix server or proxy initiates connections to Zabbix agent to request data. Recommended for networks without a firewall or with open firewall ports.')) ?>
+		'data_collection_1': <?= json_encode(_('Data is collected by SDNet agent, a lightweight software component installed on your monitoring target.')) ?>,
+		'data_collection_2': <?= json_encode(_('Data is collected by SDNet server or proxy using standard protocols (e.g., SNMP, ICMP) or remote access methods (e.g., SSH).')) ?>,
+		'agent_mode_1': <?= json_encode(_('SDNet agent initiates connections to SDNet server or proxy to send data. Recommended for monitoring targets behind a firewall.')) ?>,
+		'agent_mode_2': <?= json_encode(_('SDNet server or proxy initiates connections to SDNet agent to request data. Recommended for networks without a firewall or with open firewall ports.')) ?>
 	}
 
 	#interface_names_long_titles = {
@@ -335,7 +335,7 @@ window.host_wizard_edit = new class {
 					}
 					else {
 						if (this.#data.host_new !== null) {
-							const return_url = new URL('zabbix.php', location.href);
+							const return_url = new URL('sdnet.php', location.href);
 
 							return_url.searchParams.set('action', 'latest.view');
 							return_url.searchParams.set('hostids[]', this.#data.host_new.id);
@@ -357,7 +357,7 @@ window.host_wizard_edit = new class {
 				});
 		});
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 
 		return_url.searchParams.set('action', 'host.list');
 
@@ -827,7 +827,7 @@ window.host_wizard_edit = new class {
 			templateid,
 			...(hostid !== null && {hostid})
 		});
-		const get_url = new URL(`zabbix.php?${url_params}`, location.href);
+		const get_url = new URL(`sdnet.php?${url_params}`, location.href);
 
 		return fetch(get_url.href)
 			.then(response => response.json())
@@ -976,7 +976,7 @@ window.host_wizard_edit = new class {
 	}
 
 	#saveHost() {
-		const submit_url = new URL('zabbix.php', location.href);
+		const submit_url = new URL('sdnet.php', location.href);
 
 		submit_url.searchParams.set('action', this.#data.host_new !== null
 			? 'host.wizard.create'
@@ -1134,7 +1134,7 @@ window.host_wizard_edit = new class {
 				steps: [this.STEP_CREATE_HOST]
 			},
 			{
-				label: <?= json_encode(_('Install Zabbix agent')) ?>,
+				label: <?= json_encode(_('Install SDNet agent')) ?>,
 				visible: template_loaded && this.#data.install_agent_required,
 				steps: [this.STEP_INSTALL_AGENT]
 			},

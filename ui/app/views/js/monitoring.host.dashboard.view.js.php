@@ -201,7 +201,7 @@
 
 		#addHostDashboardTabs() {
 			for (const host_dashboard of this.#host_dashboards) {
-				const url = new Curl('zabbix.php');
+				const url = new Curl('sdnet.php');
 				url.setArgument('action', 'host.dashboard.view');
 				url.setArgument('hostid', this.#hostid);
 				url.setArgument('dashboardid', host_dashboard.dashboardid);
@@ -343,7 +343,7 @@
 		}
 
 		executeNow(target, data) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'item.execute');
 
@@ -386,7 +386,7 @@
 					}
 
 					if (data.submit.success?.action === 'delete') {
-						const url = new URL('zabbix.php', location.href);
+						const url = new URL('sdnet.php', location.href);
 
 						url.searchParams.set('action', 'host.view');
 

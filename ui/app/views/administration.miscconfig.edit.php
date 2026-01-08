@@ -102,14 +102,14 @@ $from_list = (new CFormList())
 		new CLabel([
 			_('Resolve secret vault macros by'),
 			makeHelpIcon([
-				_('Zabbix server: secrets are retrieved from Vault by Zabbix server and forwarded to proxies when needed.'),
+				_('SDNet server: secrets are retrieved from Vault by SDNet server and forwarded to proxies when needed.'),
 				BR(),
-				_('Zabbix server and proxy: secrets are retrieved from Vault by both Zabbix server and proxies, allowing them to resolve macros independently.')
+				_('SDNet server and proxy: secrets are retrieved from Vault by both SDNet server and proxies, allowing them to resolve macros independently.')
 			])
 		]),
 		(new CRadioButtonList('proxy_secrets_provider', (int) $data['proxy_secrets_provider']))
-			->addValue(_('Zabbix server'), ZBX_PROXY_SECRETS_PROVIDER_SERVER)
-			->addValue(_('Zabbix server and proxy'), ZBX_PROXY_SECRETS_PROVIDER_PROXY)
+			->addValue(_('SDNet server'), ZBX_PROXY_SECRETS_PROVIDER_SERVER)
+			->addValue(_('SDNet server and proxy'), ZBX_PROXY_SECRETS_PROVIDER_PROXY)
 			->setModern()
 	)
 	->addRow((new CTag('h4', true, _('Security')))->addClass('input-section-header'))
@@ -182,7 +182,7 @@ $form = (new CForm())
 	->addItem((new CVar(CSRF_TOKEN_NAME, CCsrfTokenHelper::get('miscconfig')))->removeId())
 	->setId('miscconfig-form')
 	->setName('otherForm')
-	->setAction((new CUrl('zabbix.php'))
+	->setAction((new CUrl('sdnet.php'))
 		->setArgument('action', 'miscconfig.update')
 		->getUrl()
 	)

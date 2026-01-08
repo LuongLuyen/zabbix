@@ -143,7 +143,7 @@ abstract class CControllerServiceListGeneral extends CController {
 	protected function getBreadcrumbs(array $path, bool $is_filtered): array {
 		$breadcrumbs = [[
 			'name' => _('All services'),
-			'curl' => (new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			'curl' => (new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		]];
 
 		$db_services = API::Service()->get([
@@ -157,7 +157,7 @@ abstract class CControllerServiceListGeneral extends CController {
 		foreach ($path as $serviceid) {
 			$breadcrumbs[] = [
 				'name' => $db_services[$serviceid]['name'],
-				'curl' => (new CUrl('zabbix.php'))
+				'curl' => (new CUrl('sdnet.php'))
 					->setArgument('action', $this->getAction())
 					->setArgument('path', $parent_serviceids)
 					->setArgument('serviceid', $serviceid)
@@ -169,7 +169,7 @@ abstract class CControllerServiceListGeneral extends CController {
 		if ($this->service !== null) {
 			$breadcrumbs[] = [
 				'name' => $this->service['name'],
-				'curl' => (new CUrl('zabbix.php'))
+				'curl' => (new CUrl('sdnet.php'))
 					->setArgument('action', $this->getAction())
 					->setArgument('path', $parent_serviceids)
 					->setArgument('serviceid', $this->service['serviceid'])

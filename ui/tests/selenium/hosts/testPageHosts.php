@@ -238,7 +238,7 @@ class testPageHosts extends CLegacyWebTest {
 	 * @dataProvider getFilterByStatusData
 	 */
 	public function testPageHosts_FilterByStatus($data) {
-		$this->page->login()->open('zabbix.php?action=host.list');
+		$this->page->login()->open('sdnet.php?action=host.list');
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 
 		// Apply filtering parameters.
@@ -855,7 +855,7 @@ class testPageHosts extends CLegacyWebTest {
 	 * @dataProvider getFilterByTagsData
 	 */
 	public function testPageHosts_FilterByTags($data) {
-		$this->page->login()->open((new CUrl('zabbix.php'))
+		$this->page->login()->open((new CUrl('sdnet.php'))
 			->setArgument('action', 'host.list')
 			->setArgument('filter_groups[]', 4)
 			->setArgument('filter_host', 'host')
@@ -881,7 +881,7 @@ class testPageHosts extends CLegacyWebTest {
 	 * Test the Enable and Disable link in the Host list.
 	 */
 	public function testPageHosts_EnableDisableLink() {
-		$this->page->login()->open('zabbix.php?action=host.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=host.list')->waitUntilReady();
 		$host_row = $this->query('class:list-table')->asTable()->one()->findRow('Name', 'Enabled status');
 
 		foreach (['Disabled' => HOST_STATUS_NOT_MONITORED, 'Enabled' => HOST_STATUS_MONITORED] as $status => $id) {

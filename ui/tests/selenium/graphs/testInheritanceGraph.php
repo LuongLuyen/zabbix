@@ -63,7 +63,7 @@ class testInheritanceGraph extends CLegacyWebTest {
 		$sqlGraphs = 'SELECT * FROM graphs ORDER BY graphid';
 		$oldHashGraphs = CDBHelper::getHash($sqlGraphs);
 
-		$this->zbxTestLogin('zabbix.php?action=popup&popup=graph.edit&graphid='.$data['graphid'].'&context=host');
+		$this->zbxTestLogin('sdnet.php?action=popup&popup=graph.edit&graphid='.$data['graphid'].'&context=host');
 		$this->zbxTestCheckTitle('Graph edit');
 		$this->query('class:overlay-dialogue-footer')->one()
 				->query('button:Update')->waitUntilClickable()->one()->click();
@@ -107,7 +107,7 @@ class testInheritanceGraph extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testInheritanceGraph_SimpleCreate($data) {
-		$this->zbxTestLogin('zabbix.php?action=popup&popup=graph.edit&context=template&hostid='.$this->templateid);
+		$this->zbxTestLogin('sdnet.php?action=popup&popup=graph.edit&context=template&hostid='.$this->templateid);
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 
 		$this->zbxTestInputType('name', $data['name']);

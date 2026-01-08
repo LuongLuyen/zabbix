@@ -34,7 +34,7 @@ window.token_edit_popup = {
 		this.dialogue = this.overlay.$dialogue[0];
 		this.form = this.overlay.$dialogue.$body[0].querySelector('form');
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', admin_mode == 1 ? 'token.list' : 'user.token.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -109,7 +109,7 @@ window.token_edit_popup = {
 	delete(tokenid) {
 		this.removePopupMessages();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'token.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('token')) ?>);
 
@@ -208,7 +208,7 @@ window.token_edit_popup = {
 	},
 
 	loadTokenView(data) {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'popup.token.view');
 
 		fetch(curl.getUrl(), {

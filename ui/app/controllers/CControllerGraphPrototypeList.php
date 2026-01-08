@@ -113,7 +113,7 @@ class CControllerGraphPrototypeList extends CController {
 		$page_num = $this->getInput('page', 1);
 
 		CPagerHelper::savePage('graph.list', $page_num);
-		$paging = CPagerHelper::paginate($page_num, $data['graphs'], $sort_order, (new CUrl('zabbix.php'))
+		$paging = CPagerHelper::paginate($page_num, $data['graphs'], $sort_order, (new CUrl('sdnet.php'))
 			->setArgument('action', 'graph.prototype.list')
 			->setArgument('context', $context)
 			->setArgument('parent_discoveryid', $this->parent_discovery['itemid'])

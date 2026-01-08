@@ -386,7 +386,7 @@ class CControllerTemplateMassupdate extends CControllerPopupMassupdateAbstract {
 					'debug_mode' => $this->getDebugMode()
 				],
 				'ids' => $this->getInput('ids'),
-				'location_url' =>  (new CUrl('zabbix.php'))
+				'location_url' =>  (new CUrl('sdnet.php'))
 					->setArgument('action', 'template.list')
 					->setArgument('page', CPagerHelper::loadPage('template.list'))
 					->setArgument('uncheck', 1)

@@ -138,7 +138,7 @@ if ($data['hostid']) {
 	$popup_parameters['hostid'] = $data['hostid'];
 }
 
-$return_url = (new CUrl('zabbix.php'))
+$return_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'trigger.list')
 	->setArgument('context', $data['context'])
 	->getUrl();

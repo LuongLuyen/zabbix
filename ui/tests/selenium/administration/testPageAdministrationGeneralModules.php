@@ -547,7 +547,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 		}
 
 		// Open modules page and check header.
-		$this->page->login()->open('zabbix.php?action=module.list');
+		$this->page->login()->open('sdnet.php?action=module.list');
 		$this->assertEquals('Modules', $this->query('tag:h1')->one()->getText());
 
 		// Check status of buttons on the modules page.
@@ -709,7 +709,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 	 */
 	public function testPageAdministrationGeneralModules_Details($data) {
 		// Open corresponding module from the modules table.
-		$this->page->login()->open('zabbix.php?action=module.list');
+		$this->page->login()->open('sdnet.php?action=module.list');
 		$this->query('link', $data['Name'])->waitUntilVisible()->one()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$form = $dialog->asForm();
@@ -872,7 +872,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 	 * @depends testPageAdministrationGeneralModules_Layout
 	 */
 	public function testPageAdministrationGeneralModules_EnableDisable($data) {
-		$this->page->login()->open('zabbix.php?action=module.list');
+		$this->page->login()->open('sdnet.php?action=module.list');
 
 		foreach (['list', 'form'] as $view) {
 			// This block is separate because one of the cases requires one module to be enabled before the other to succeed.
@@ -1002,7 +1002,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 	 * @depends testPageAdministrationGeneralModules_Layout
 	 */
 	public function testPageAdministrationGeneralModules_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=module.list');
+		$this->page->login()->open('sdnet.php?action=module.list');
 
 		// Before checking the filter one of the modules needs to be enabled.
 		$table = $this->query('class:list-table')->asTable()->one();
@@ -1034,7 +1034,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 		$initial_hash = CDBHelper::getHash($sql);
 
 		// Open one of the modules and update it without making any changes.
-		$this->page->login()->open('zabbix.php?action=module.list');
+		$this->page->login()->open('sdnet.php?action=module.list');
 		$this->query('link:1st Module name')->waitUntilVisible()->one()->click();
 		$this->page->waitUntilReady();
 		$this->query('button:Update')->one()->click();
@@ -1052,7 +1052,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 		$initial_hash = CDBHelper::getHash($sql);
 
 		// Open the module update of which is going to be cancelled.
-		$this->page->login()->open('zabbix.php?action=module.list');
+		$this->page->login()->open('sdnet.php?action=module.list');
 		$this->query('link:1st Module name')->waitUntilVisible()->one()->click();
 		$this->page->waitUntilReady();
 
@@ -1152,7 +1152,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 	 * @dataProvider getWidgetModuleData
 	 */
 	public function testPageAdministrationGeneralModules_ChangeWidgetModuleStatus($module) {
-		$this->page->login()->open('zabbix.php?action=module.list');
+		$this->page->login()->open('sdnet.php?action=module.list');
 
 		// Determine the original status of the modules to be checked. Scenarios with mixed statuses are not considered.
 		$initial_status = $this->query('class:list-table')->asTable()->one()->findRow('Name', $module['module_name'])
@@ -1220,7 +1220,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 		$this->page->login();
 
 		if (array_key_exists('enable', $data)) {
-			$this->page->open('zabbix.php?action=module.list');
+			$this->page->open('sdnet.php?action=module.list');
 			$this->enableModule($data, 'list');
 		}
 
@@ -1238,8 +1238,8 @@ class testPageAdministrationGeneralModules extends CWebTest {
 	private function checkWidgetDimensions($data) {
 		// Open required dashboard page in edit mode.
 		$url = (array_key_exists('template', $data))
-			? 'zabbix.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid
-			: 'zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid;
+			? 'sdnet.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid
+			: 'sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid;
 		$this->page->open($url)->waitUntilReady();
 
 		$dashboard = CDashboardElement::find()->one()->waitUntilVisible();
@@ -1268,7 +1268,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 	 * @depends testPageAdministrationGeneralModules_ChangeWidgetModuleStatus
 	 */
 	public function testPageAdministrationGeneralModules_DisableAllModules() {
-		$this->page->login()->open('zabbix.php?action=module.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=module.list')->waitUntilReady();
 
 		// Disable all modules.
 		$this->query('id:all_modules')->waitUntilPresent()->asCheckbox()->one()->set(true);
@@ -1279,15 +1279,15 @@ class testPageAdministrationGeneralModules extends CWebTest {
 		$this->assertMessage(TEST_GOOD, 'Modules disabled');
 
 		// Open dashboard and check that all widgets are inaccessible.
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$this->checkAllWidgetsDisabledOnPage();
 
 		// Open template dashboard and check that all widgets are inaccessible.
-		$this->page->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid)->waitUntilReady();
 		$this->checkAllWidgetsDisabledOnPage();
 
 		// Open template dashboard on host and check that all widgets are inaccessible.
-		$this->page->open('zabbix.php?action=host.dashboard.view&hostid='.self::$hostid.'&dashboardid='.self::$template_dashboardid)
+		$this->page->open('sdnet.php?action=host.dashboard.view&hostid='.self::$hostid.'&dashboardid='.self::$template_dashboardid)
 				->waitUntilReady();
 		$this->checkAllWidgetsDisabledOnPage();
 	}
@@ -1311,8 +1311,8 @@ class testPageAdministrationGeneralModules extends CWebTest {
 	private function checkWidgetModuleStatus($module, $status = 'enabled') {
 		// Open dashboard or host dashboard and check widget display in this view.
 		$url = array_key_exists('template', $module)
-			? 'zabbix.php?action=host.dashboard.view&hostid='.self::$hostid.'&dashboardid='.self::$template_dashboardid
-			: 'zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid;
+			? 'sdnet.php?action=host.dashboard.view&hostid='.self::$hostid.'&dashboardid='.self::$template_dashboardid
+			: 'sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid;
 		$this->page->open($url)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->waitUntilVisible();
 		$this->checkWidgetStatusOnDashboard($dashboard, $module, $status);
@@ -1324,7 +1324,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 
 		// Open dashboard in edit mode or open dashboard on template and check widget display again.
 		if (array_key_exists('template', $module)) {
-			$this->page->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid)
+			$this->page->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid)
 					->waitUntilReady();
 		}
 		else {
@@ -1348,7 +1348,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 
 		// Go back to the list of modules after the check is complete.
 		$widget_dialog->close();
-		$this->page->open('zabbix.php?action=module.list');
+		$this->page->open('sdnet.php?action=module.list');
 	}
 
 	/**
@@ -1495,7 +1495,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 			sleep(1);
 			$this->query($xpath.$entry['name'].'"]')->waitUntilClickable()->one()->click();
 			$this->page->waitUntilReady();
-			$this->assertStringContainsString('zabbix.php?action='.$entry['action'], $this->page->getCurrentURL());
+			$this->assertStringContainsString('sdnet.php?action='.$entry['action'], $this->page->getCurrentURL());
 
 			if (CTestArrayHelper::get($entry, 'form')) {
 				$this->query($entry['form'])->asForm()->one()->submit();
@@ -1507,7 +1507,7 @@ class testPageAdministrationGeneralModules extends CWebTest {
 			}
 		}
 		// Get back to modules list to enable or disable the next module.
-		$this->page->open('zabbix.php?action=module.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=module.list')->waitUntilReady();
 	}
 
 	/**
@@ -1541,10 +1541,10 @@ class testPageAdministrationGeneralModules extends CWebTest {
 
 			// In case if module many entry leads to an existing view, don't check that menu entry URL isn't available.
 			if (CTestArrayHelper::get($entry, 'check_disabled', true)) {
-				$this->page->open('zabbix.php?action='.$entry['action'])->waitUntilReady();
+				$this->page->open('sdnet.php?action='.$entry['action'])->waitUntilReady();
 				$message = CMessageElement::find()->one();
 				$this->assertStringContainsString('Page not found', $message->getText());
-				$this->page->open('zabbix.php?action=module.list');
+				$this->page->open('sdnet.php?action=module.list');
 			}
 		}
 	}

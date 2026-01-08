@@ -41,7 +41,7 @@ class testPageReportsTopTriggers extends CWebTest {
 
 	protected static $groupids;
 	protected static $time;
-	const LINK = 'zabbix.php?action=toptriggers.list';
+	const LINK = 'sdnet.php?action=toptriggers.list';
 
 	public function prepareData() {
 		// Create hostgroups for hosts.
@@ -455,7 +455,7 @@ class testPageReportsTopTriggers extends CWebTest {
 		foreach ([false, true] as $state) {
 			$filter->expand($state);
 			// Leave the page and reopen the previous page to make sure the filter state is still saved.
-			$this->page->open('zabbix.php?action=report.status')->waitUntilReady();
+			$this->page->open('sdnet.php?action=report.status')->waitUntilReady();
 			$this->page->open(self::LINK)->waitUntilReady();
 			$this->assertTrue($filter->isExpanded($state));
 		}
@@ -1290,7 +1290,7 @@ class testPageReportsTopTriggers extends CWebTest {
 		$data = [
 			'trigger_menu' => [
 				'VIEW' => [
-					'Problems' => 'zabbix.php?action=problem.view&filter_set=1&triggerids%5B%5D=99252',
+					'Problems' => 'sdnet.php?action=problem.view&filter_set=1&triggerids%5B%5D=99252',
 					'History' => ['Number of processes' => 'history.php?action=showgraph&itemids%5B%5D=42253']
 				],
 				'CONFIGURATION' => [
@@ -1300,18 +1300,18 @@ class testPageReportsTopTriggers extends CWebTest {
 			],
 			'host_menu' => [
 				'VIEW' => [
-					'Dashboards' => 'zabbix.php?action=host.dashboard.view&hostid=10084',
-					'Problems' => 'zabbix.php?action=problem.view&hostids%5B%5D=10084&filter_set=1',
-					'Latest data' => 'zabbix.php?action=latest.view&hostids%5B%5D=10084&filter_set=1',
-					'Graphs' => 'zabbix.php?action=charts.view&filter_hostids%5B%5D=10084&filter_set=1',
+					'Dashboards' => 'sdnet.php?action=host.dashboard.view&hostid=10084',
+					'Problems' => 'sdnet.php?action=problem.view&hostids%5B%5D=10084&filter_set=1',
+					'Latest data' => 'sdnet.php?action=latest.view&hostids%5B%5D=10084&filter_set=1',
+					'Graphs' => 'sdnet.php?action=charts.view&filter_hostids%5B%5D=10084&filter_set=1',
 					'Web' => 'menu-popup-item disabled',
 					'Inventory' => 'hostinventories.php?hostid=10084'
 				],
 				'CONFIGURATION' => [
-					'Host' => 'zabbix.php?action=popup&popup=host.edit&hostid=10084',
-					'Items' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
-					'Triggers' => 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
-					'Graphs' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
+					'Host' => 'sdnet.php?action=popup&popup=host.edit&hostid=10084',
+					'Items' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
+					'Triggers' => 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
+					'Graphs' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
 					'Discovery' => 'host_discovery.php?filter_set=1&filter_hostids%5B%5D=10084&context=host',
 					'Web' => 'httpconf.php?filter_set=1&filter_hostids%5B%5D=10084&context=host'
 				],

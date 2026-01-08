@@ -227,7 +227,7 @@ class testAlarmNotification extends CWebTest {
 		$event_time = date('Y-m-d H:i:s', $time);
 		self::$eventids = CDBHelper::setTriggerProblem('Not_classified_trigger_4', TRIGGER_VALUE_TRUE, ['clock' => $time]);
 
-		$this->page->login()->open('zabbix.php?action=problem.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=problem.view')->waitUntilReady();
 
 		// Find appeared Alarm notification overlay dialog.
 		$alarm_dialog = $this->getAlarmOverlay();
@@ -297,7 +297,7 @@ class testAlarmNotification extends CWebTest {
 
 		// Close problem and open Problem page.
 		CDBHelper::setTriggerProblem('Not_classified_trigger_4', TRIGGER_VALUE_FALSE);
-		$this->page->open('zabbix.php?action=problem.view')->waitUntilReady();
+		$this->page->open('sdnet.php?action=problem.view')->waitUntilReady();
 
 		// Check that problem resolved and problem color is green now.
 		$this->assertEquals('Resolved Host for alarm item', $alarm_dialog->query('xpath:.//h4')->one()->getText());
@@ -328,7 +328,7 @@ class testAlarmNotification extends CWebTest {
 		];
 
 		// Open Trigger displaying options page for color check and change.
-		$this->page->login()->open('zabbix.php?action=trigdisplay.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=trigdisplay.edit')->waitUntilReady();
 		$form = $this->query('id:trigdisplay-form')->asForm()->one();
 
 		// Find actual colors for all severity levels.
@@ -448,7 +448,7 @@ class testAlarmNotification extends CWebTest {
 		self::$eventids = CDBHelper::setTriggerProblem($data['trigger_name']);
 
 		// Open problem page and filter with correct host.
-		$this->page->login()->open('zabbix.php?action=problem.view&acknowledgement_status=1&sort=name&sortorder=ASC&hostids%5B%5D='.
+		$this->page->login()->open('sdnet.php?action=problem.view&acknowledgement_status=1&sort=name&sortorder=ASC&hostids%5B%5D='.
 				self::$hostid[self::HOST_NAME])->waitUntilReady();
 
 		// Check that problems displayed in table.
@@ -610,7 +610,7 @@ class testAlarmNotification extends CWebTest {
 	 */
 	public function testAlarmNotification_NotificationSettings($data) {
 		// Set checked trigger severity in messaging settings.
-		$this->page->login()->open('zabbix.php?action=userprofile.notification.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=userprofile.notification.edit')->waitUntilReady();
 		$form = $this->query('id:userprofile-notification-form')->asForm()->one();
 		$form->selectTab('Frontend notifications');
 		$form->fill($data['profile_setting']);
@@ -631,7 +631,7 @@ class testAlarmNotification extends CWebTest {
 			self::$eventids = CDBHelper::setTriggerProblem(self::ALL_TRIGGERS);
 		}
 
-		$this->page->open('zabbix.php?action=problem.view&acknowledgement_status=1&show_suppressed=1&sort=name&sortorder=ASC&hostids%5B%5D='.
+		$this->page->open('sdnet.php?action=problem.view&acknowledgement_status=1&show_suppressed=1&sort=name&sortorder=ASC&hostids%5B%5D='.
 				self::$hostid[self::HOST_NAME].'&hostids%5B%5D='.self::$hostid['Host for maintenance alarm'])->waitUntilReady();
 
 		// Check that problems displayed in table.
@@ -718,6 +718,6 @@ class testAlarmNotification extends CWebTest {
 	 * Open problem page with filter reset.
 	 */
 	protected function openResetedPage() {
-		$this->page->login()->open('zabbix.php?action=problem.view&filter_reset=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=problem.view&filter_reset=1')->waitUntilReady();
 	}
 }

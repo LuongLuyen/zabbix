@@ -298,7 +298,7 @@ jQuery(function($) {
 				data.data.ids = Object.keys(chkbxRange.getSelectedIds());
 			}
 
-			var url = new Curl('zabbix.php');
+			var url = new Curl('sdnet.php');
 
 			url.setArgument('action', 'menu.popup');
 			url.setArgument('type', data.type);

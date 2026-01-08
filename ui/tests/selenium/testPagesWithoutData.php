@@ -114,26 +114,26 @@ class testPagesWithoutData extends CWebTest {
 			[
 				[
 					'page' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					'filter' => ['Name' => 'zzz']
 				]
 			],
 			// #1 Empty hosts' items table.
 			[
 				[
-					'url' => 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='
 				]
 			],
 			// #2 Empty hosts' triggers table.
 			[
 				[
-					'url' => 'zabbix.php?action=trigger.list&context=host&filter_set=1&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=trigger.list&context=host&filter_set=1&filter_hostids%5B0%5D='
 				]
 			],
 			// #3 Empty hosts' graphs table.
 			[
 				[
-					'url' => 'zabbix.php?action=graph.list&filter_set=1&context=host&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=graph.list&filter_set=1&context=host&filter_hostids%5B0%5D='
 				]
 			],
 			// #4 Empty hosts' LLD table.
@@ -151,19 +151,19 @@ class testPagesWithoutData extends CWebTest {
 			// #6 Item prototypes table.
 			[
 				[
-					'url' => 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='
+					'url' => 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='
 				]
 			],
 			// #7 Trigger prototypes table.
 			[
 				[
-					'url' => 'zabbix.php?action=trigger.prototype.list&context=host&parent_discoveryid='
+					'url' => 'sdnet.php?action=trigger.prototype.list&context=host&parent_discoveryid='
 				]
 			],
 			// #8 Graph prototypes table.
 			[
 				[
-					'url' => 'zabbix.php?action=graph.prototype.list&context=host&parent_discoveryid='
+					'url' => 'sdnet.php?action=graph.prototype.list&context=host&parent_discoveryid='
 				]
 			],
 			// #9 Host prototypes table.
@@ -183,26 +183,26 @@ class testPagesWithoutData extends CWebTest {
 			[
 				[
 					'page' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'filter' => ['Name' => 'zzz']
 				]
 			],
 			// #12 Empty templates' items table.
 			[
 				[
-					'url' => 'zabbix.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D='
 				]
 			],
 			// #13 Empty templates' triggers table.
 			[
 				[
-					'url' => 'zabbix.php?action=trigger.list&filter_set=1&context=template&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=trigger.list&filter_set=1&context=template&filter_hostids%5B0%5D='
 				]
 			],
 			// #14 Empty templates' graphs table.
 			[
 				[
-					'url' => 'zabbix.php?action=graph.list&filter_set=1&context=template&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=graph.list&filter_set=1&context=template&filter_hostids%5B0%5D='
 				]
 			],
 			// #15 Empty templates' LLD table.
@@ -220,25 +220,25 @@ class testPagesWithoutData extends CWebTest {
 			// #17 Empty templates' dashboards table.
 			[
 				[
-					'url' => 'zabbix.php?action=template.dashboard.list&templateid='
+					'url' => 'sdnet.php?action=template.dashboard.list&templateid='
 				]
 			],
 			// #18 Item prototypes table.
 			[
 				[
-					'url' => 'zabbix.php?action=item.prototype.list&context=template&parent_discoveryid='
+					'url' => 'sdnet.php?action=item.prototype.list&context=template&parent_discoveryid='
 				]
 			],
 			// #19 Trigger prototypes table.
 			[
 				[
-					'url' => 'zabbix.php?action=trigger.prototype.list&context=template&parent_discoveryid='
+					'url' => 'sdnet.php?action=trigger.prototype.list&context=template&parent_discoveryid='
 				]
 			],
 			// #20 Graph prototypes table.
 			[
 				[
-					'url' => 'zabbix.php?action=graph.prototype.list&context=template&parent_discoveryid='
+					'url' => 'sdnet.php?action=graph.prototype.list&context=template&parent_discoveryid='
 				]
 			],
 			// #21 Host prototypes table.
@@ -258,35 +258,35 @@ class testPagesWithoutData extends CWebTest {
 			[
 				[
 					'page' => 'Status of discovery',
-					'url' => 'zabbix.php?action=discovery.view'
+					'url' => 'sdnet.php?action=discovery.view'
 				]
 			],
 			// #24 Empty SLA page.
 			[
 				[
 					'page' => 'SLA',
-					'url' => 'zabbix.php?action=sla.list'
+					'url' => 'sdnet.php?action=sla.list'
 				]
 			],
 			// #25 Empty SLA report page.
 			[
 				[
 					'page' => 'SLA report',
-					'url' => 'zabbix.php?action=slareport.list'
+					'url' => 'sdnet.php?action=slareport.list'
 				]
 			],
 			// #26 Empty Top 100 triggers page.
 			[
 				[
 					'page' => 'Top 100 triggers',
-					'url' => 'zabbix.php?action=toptriggers.list'
+					'url' => 'sdnet.php?action=toptriggers.list'
 				]
 			],
 			// #27 Empty Maintenances page.
 			[
 				[
 					'page' => 'Maintenance periods',
-					'url' => 'zabbix.php?action=maintenance.list',
+					'url' => 'sdnet.php?action=maintenance.list',
 					'filter' => ['Name' => 'zzz']
 				]
 			]

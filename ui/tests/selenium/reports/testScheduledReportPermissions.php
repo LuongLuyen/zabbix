@@ -287,7 +287,7 @@ class testScheduledReportPermissions extends CWebTest {
 		$this->page->userLogin($data['alias'], $data['password']);
 
 		// Check report in dashboard.
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
 		$this->query('id:dashboard-actions')->one()->waitUntilClickable()->click();
 		$popup = CPopupMenuElement::find()->waitUntilVisible()->one();
 		$this->assertTrue($popup->hasItems('View related reports'));
@@ -295,7 +295,7 @@ class testScheduledReportPermissions extends CWebTest {
 		$this->assertFalse($popup->query('xpath://a[@aria-label="Create new report"]')->one(false)->isValid());
 
 		// Check report on reports list page.
-		$this->page->open('zabbix.php?action=scheduledreport.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=scheduledreport.list')->waitUntilReady();
 		$this->assertFalse($this->query('button:Create report')->one()->isEnabled());
 		$table = $this->query('class:list-table')->asTable()->one();
 		$row = $table->findRow('Name', $report);
@@ -435,7 +435,7 @@ class testScheduledReportPermissions extends CWebTest {
 		];
 
 		$this->page->userLogin('admin report permissions', 'xibbaz123');
-		$this->page->open('zabbix.php?action=scheduledreport.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=scheduledreport.list')->waitUntilReady();
 		$this->query('link', $report)->waitUntilClickable()->one()->click();
 		$form = $this->query('id:scheduledreport-form')->waitUntilVisible()->asForm()->one();
 		$form->checkValue($before['fields']);
@@ -561,7 +561,7 @@ class testScheduledReportPermissions extends CWebTest {
 	public function testScheduledReportPermissions_ChangeDashboard($data) {
 		$report = 'report to check the dashboard change';
 		$this->page->userLogin($data['alias'], $data['password']);
-		$this->page->open('zabbix.php?action=scheduledreport.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=scheduledreport.list')->waitUntilReady();
 		$this->query('link', $report)->waitUntilClickable()->one()->click();
 		$form = $this->query('id:scheduledreport-form')->waitUntilVisible()->asForm()->one();
 		$form->fill(['Dashboard' => 'Global view']);
@@ -605,14 +605,14 @@ class testScheduledReportPermissions extends CWebTest {
 
 		// Check create form on page.
 		$this->page->userLogin($data['alias'], $data['password']);
-		$this->page->open('zabbix.php?action=scheduledreport.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=scheduledreport.list')->waitUntilReady();
 		$this->page->query('button:Create report')->waitUntilClickable()->one()->click();
 		$form = $this->query('id:scheduledreport-form')->waitUntilVisible()->asForm()->one();
 		$form->checkValue(['Owner' => $data['alias']]);
 		$this->assertTrue($form->getField('Owner')->isEnabled($state));
 
 		// Check create form on dashboard.
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
 		$this->query('id:dashboard-actions')->waitUntilClickable()->one()->click();
 		CPopupMenuElement::find()->waitUntilVisible()->one()->select('Create new report');
 		$overlay = COverlayDialogElement::find()->waitUntilReady()->one();
@@ -667,7 +667,7 @@ class testScheduledReportPermissions extends CWebTest {
 	 */
 	public function testScheduledReportPermissions_Delete($data) {
 		$this->page->userLogin('Admin', 'zabbix');
-		$this->page->open('zabbix.php?action='.$data['url'])->waitUntilReady();
+		$this->page->open('sdnet.php?action='.$data['url'])->waitUntilReady();
 		$this->query('link', $data['name'])->waitUntilClickable()->one()->click();
 		$this->page->waitUntilReady();
 		if ($data['url'] === 'dashboard.list') {

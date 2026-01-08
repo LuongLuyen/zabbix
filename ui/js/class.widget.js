@@ -161,7 +161,7 @@ class CWidget extends CWidgetBase {
 	 * @returns {Promise<any>}
 	 */
 	promiseUpdate() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', `widget.${this._type}.view`);
 

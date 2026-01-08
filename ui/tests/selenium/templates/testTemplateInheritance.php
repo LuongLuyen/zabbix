@@ -111,7 +111,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 	 * @ignoreBrowserErrors
 	 */
 	public function testTemplateInheritance_Create($result, $template, $itemName, $keyName, $errorMsgs) {
-		$this->zbxTestLogin('zabbix.php?action=template.list&filter_name='.$template.'&filter_set=1');
+		$this->zbxTestLogin('sdnet.php?action=template.list&filter_name='.$template.'&filter_set=1');
 		$this->zbxTestCheckHeader('Templates');
 
 		$this->query('class:list-table')->asTable()->one()->getRow(0)->query('link:Items')->waitUntilVisible()->one()->click();
@@ -201,7 +201,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 	 *
 	 */
 	public function testTemplateInheritance_CreateTrigger() {
-		$this->zbxTestLogin('zabbix.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
+		$this->zbxTestLogin('sdnet.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
 
 		// create a trigger
 		$this->query('class:list-table')->asTable()->one()->getRow(0)->query('link:Triggers')->waitUntilVisible()->one()->click();
@@ -211,7 +211,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 		$this->zbxTestInputType('expression', 'last(/Inheritance test template/key-item-inheritance-test,#1)=0');
 		$this->zbxTestCheckboxSelect('type_1');
 		$this->zbxTestInputType('description', 'comments');
-		$this->zbxTestInputType('url', 'zabbix.php');
+		$this->zbxTestInputType('url', 'sdnet.php');
 		$this->zbxTestClickXpath("//label[@for='priority_2']");
 		$this->zbxTestCheckboxSelect('status', false);
 
@@ -230,7 +230,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 		$this->assertTrue($this->zbxTestCheckboxSelected('recovery_mode_0'));
 		$this->zbxTestAssertElementPresentXpath("//input[@id='recovery_mode_0'][@readonly]");
 		$this->zbxTestAssertElementText('//*[@name="description"]', 'comments');
-		$this->zbxTestAssertElementValue('url', 'zabbix.php');
+		$this->zbxTestAssertElementValue('url', 'sdnet.php');
 		$this->assertTrue($this->zbxTestCheckboxSelected('priority_2'));
 		$this->assertFalse($this->zbxTestCheckboxSelected('status'));
 		$this->zbxTestTextPresent('Parent triggers');
@@ -242,7 +242,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 	 *
 	 */
 	public function testTemplateInheritance_CreateGraph() {
-		$this->zbxTestLogin('zabbix.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
+		$this->zbxTestLogin('sdnet.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
 
 		// create a graph
 		$this->query('class:list-table')->asTable()->one()->getRow(0)->query('link:Graphs')->waitUntilVisible()->one()->click();
@@ -299,7 +299,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 	 *
 	 */
 	public function testTemplateInheritance_CreateDiscovery() {
-		$this->zbxTestLogin('zabbix.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
+		$this->zbxTestLogin('sdnet.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
 
 		// create an LLD rule
 		$this->query('class:list-table')->asTable()->one()->getRow(0)->query('link:Discovery')->waitUntilVisible()->one()->click();
@@ -346,7 +346,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 	 * @ignoreBrowserErrors
 	 */
 	public function testTemplateInheritance_CreateItemPrototype() {
-		$this->zbxTestLogin('zabbix.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
+		$this->zbxTestLogin('sdnet.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
 
 		// create an item prototype
 		$this->query('class:list-table')->asTable()->one()->getRow(0)->query('link:Discovery')->waitUntilVisible()->one()->click();
@@ -410,7 +410,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 	 *
 	 */
 	public function testTemplateInheritance_CreateTriggerPrototype() {
-		$this->zbxTestLogin('zabbix.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
+		$this->zbxTestLogin('sdnet.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
 
 		// create an trigger prototype
 		$this->query('class:list-table')->asTable()->one()->getRow(0)->query('link:Discovery')->waitUntilVisible()
@@ -423,7 +423,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 		$this->zbxTestInputType('expression', 'last(/Inheritance test template/item-discovery-prototype[{#KEY}],#1)=0');
 		$this->zbxTestCheckboxSelect('type_1');
 		$this->zbxTestInputType('description', 'comments');
-		$this->zbxTestInputType('url', 'zabbix.php');
+		$this->zbxTestInputType('url', 'sdnet.php');
 		$this->zbxTestClickXpath("//label[@for='priority_2']");
 		$this->zbxTestCheckboxSelect('status', false);
 
@@ -454,7 +454,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 		$this->assertTrue($this->zbxTestCheckboxSelected('recovery_mode_0'));
 		$this->zbxTestAssertElementPresentXpath("//input[@id='recovery_mode_0'][@readonly]");
 		$this->zbxTestAssertElementText('//*[@name="description"]', 'comments');
-		$this->zbxTestAssertElementValue('url', 'zabbix.php');
+		$this->zbxTestAssertElementValue('url', 'sdnet.php');
 		$this->assertTrue($this->zbxTestCheckboxSelected('priority_2'));
 		$this->assertFalse($this->zbxTestCheckboxSelected('status'));
 		$this->zbxTestTextPresent('Parent triggers');
@@ -467,7 +467,7 @@ class testTemplateInheritance extends CLegacyWebTest {
 	 *
 	 */
 	public function testTemplateInheritance_CreateGraphPrototype() {
-		$this->zbxTestLogin('zabbix.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
+		$this->zbxTestLogin('sdnet.php?action=template.list&filter_name='.$this->templateName.'&filter_set=1');
 
 		// create a graph
 		$this->query('class:list-table')->asTable()->one()->getRow(0)->query('link:Discovery')->waitUntilVisible()->one()->click();

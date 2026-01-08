@@ -24,7 +24,7 @@ require_once __DIR__.'/../behaviors/CMessageBehavior.php';
  */
 class testFormAdministrationMediaTypes extends CWebTest {
 
-	const URL = 'zabbix.php?action=mediatype.list';
+	const URL = 'sdnet.php?action=mediatype.list';
 
 	protected static $mediatype_sql = 'SELECT * FROM media_type ORDER BY mediatypeid';
 	protected static $update_mediatypes = [
@@ -55,7 +55,7 @@ class testFormAdministrationMediaTypes extends CWebTest {
 				'smtp_server' => 'test@test.com',
 				'smtp_email' => 'zabbix@example.com',
 				'smtp_authentication' => 2,
-				'redirection_url' => 'https://test/zabbix.php?action=oauth.authorize',
+				'redirection_url' => 'https://test/sdnet.php?action=oauth.authorize',
 				'client_id' => 'test',
 				'client_secret' => 'test',
 				'authorization_url' => 'https://test/oauth2/v2/auth?response_type=code&scope=https%3A%2F%2Fmail.kstest.com%2F&access_type=offline&prompt=consent"',
@@ -1993,7 +1993,7 @@ class testFormAdministrationMediaTypes extends CWebTest {
 		DBexecute('UPDATE media_type_oauth SET access_token_updated='.$data['access_token_updated'].' WHERE mediatypeid='.
 				self::$mediatypeids['Generic SMTP OAuth']
 		);
-		$this->page->login()->open('zabbix.php?action=popup&popup=mediatype.edit&mediatypeid='.
+		$this->page->login()->open('sdnet.php?action=popup&popup=mediatype.edit&mediatypeid='.
 				self::$mediatypeids['Generic SMTP OAuth'])->waitUntilReady();
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilReady();
 

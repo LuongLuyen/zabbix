@@ -30,7 +30,7 @@ class CControllerAuditSettingsUpdate extends CController {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'audit.settings.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'audit.settings.edit')
 					);
 					$response->setFormData($this->getInputAll() + [
 						'auditlog_enabled' => '0',
@@ -70,7 +70,7 @@ class CControllerAuditSettingsUpdate extends CController {
 		$result_settings = API::Settings()->update($settings);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'audit.settings.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'audit.settings.edit')
 		);
 
 		if ($result_housekeeping && $result_settings) {

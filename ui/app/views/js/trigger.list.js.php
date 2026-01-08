@@ -140,7 +140,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'trigger.enable');
 
 			this.#post(target, triggerids, curl);
@@ -157,7 +157,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'trigger.disable');
 
 			this.#post(target, triggerids, curl);
@@ -172,7 +172,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'trigger.delete');
 
 			this.#post(target, triggerids, curl);

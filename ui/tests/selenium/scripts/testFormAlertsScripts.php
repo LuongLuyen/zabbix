@@ -1209,7 +1209,7 @@ class testFormAlertsScripts extends CWebTest {
 						'Name' => 'type URL for manual event action',
 						'Scope' => 'Manual event action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=script.list'
+						'URL' => 'sdnet.php?action=script.list'
 					]
 				]
 			],
@@ -1341,7 +1341,7 @@ class testFormAlertsScripts extends CWebTest {
 						'Name' => 'Open Zabbix page',
 						'Scope' => 'Manual host action',
 						'Type' => 'URL',
-						'URL' => 'http://localhost/ui/zabbix.php?action={MANUALINPUT}',
+						'URL' => 'http://localhost/ui/sdnet.php?action={MANUALINPUT}',
 						'Advanced configuration' => true,
 						'Enable user input' => true,
 						'Enable confirmation' => true,
@@ -1970,7 +1970,7 @@ class testFormAlertsScripts extends CWebTest {
 
 		// Change valid URI schemes on "Other configuration parameters" page.
 		$modal->close();
-		$this->page->open('zabbix.php?action=miscconfig.edit');
+		$this->page->open('sdnet.php?action=miscconfig.edit');
 		$config_form = $this->query('name:otherForm')->asForm()->waitUntilVisible()->one();
 		$config_form->fill(['id:validate_uri_schemes' => true, 'id:uri_valid_schemes' => 'dns,message']);
 		$config_form->submit();
@@ -1982,7 +1982,7 @@ class testFormAlertsScripts extends CWebTest {
 
 		// Disable URI scheme validation.
 		$modal->close();
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$config_form->fill(['id:validate_uri_schemes' => false]);
 		$config_form->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
@@ -2134,7 +2134,7 @@ class testFormAlertsScripts extends CWebTest {
 		$form->submit();
 		$this->assertMessage(TEST_GOOD, 'Script added');
 
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 		$table = $this->query('class:list-table')->asTable()->one();
 
 		$with_script = ($data['fields']['Scope'] === 'Manual host action') ? $data['host'] : $data['trigger'];
@@ -2171,14 +2171,14 @@ class testFormAlertsScripts extends CWebTest {
 	 */
 	protected function openScriptForm($id = null, $login = true) {
 		if ($login) {
-			$this->page->login()->open('zabbix.php?action=script.list');
+			$this->page->login()->open('sdnet.php?action=script.list');
 		}
 		else {
-			$this->page->open('zabbix.php?action=script.list');
+			$this->page->open('sdnet.php?action=script.list');
 		}
 
 		if ($id) {
-			$this->query('xpath://a[@href="zabbix.php?action=popup&popup=script.edit&scriptid='.$id.'"]')
+			$this->query('xpath://a[@href="sdnet.php?action=popup&popup=script.edit&scriptid='.$id.'"]')
 					->waitUntilClickable()->one()->click();
 		}
 		else {

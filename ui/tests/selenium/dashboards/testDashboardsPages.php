@@ -265,7 +265,7 @@ class testDashboardsPages extends CWebTest {
 	 * Check layout of objects related to dashboard page.
 	 */
 	public function testDashboardsPages_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&new=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&new=1')->waitUntilReady();
 		$dialog = COverlayDialogElement::find()->waitUntilVisible()->one();
 		$properties_form = $dialog->query('name:dashboard_properties_form')->asForm()->one();
 		$properties_form->fill(['Name' => 'Dashboard creation']);
@@ -299,7 +299,7 @@ class testDashboardsPages extends CWebTest {
 		$this->page->waitUntilReady();
 
 		// Check Stop/Start slideshow.
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for layout'])->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for layout'])->waitUntilReady();
 		foreach (['Stop', 'Start'] as $status) {
 			$this->assertTrue($this->query('xpath://button/span[contains(@class, "slideshow-state") and text()="'.
 					$status.' slideshow"]')->one()->isDisplayed()
@@ -328,7 +328,7 @@ class testDashboardsPages extends CWebTest {
 				' name!=\'reference\' AND widgetid=';
 
 		foreach ([self::$ids['Dashboard for copy'], self::$ids['Dashboard for paste']] as $dashboardid) {
-			$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for copy'])
+			$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for copy'])
 					->waitUntilReady();
 			$dashboard = CDashboardElement::find()->one();
 
@@ -343,7 +343,7 @@ class testDashboardsPages extends CWebTest {
 
 			// Open another dashboard to paste copied page.
 			if ($dashboardid === self::$ids['Dashboard for paste']) {
-				$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.$dashboardid)->waitUntilReady();
+				$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.$dashboardid)->waitUntilReady();
 				$dashboard->edit();
 				$this->page->waitUntilReady();
 			}
@@ -449,7 +449,7 @@ class testDashboardsPages extends CWebTest {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardsPages_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page creation'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page creation'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
@@ -494,7 +494,7 @@ class testDashboardsPages extends CWebTest {
 	public function testDashboardsPages_MaximumPageError() {
 		$sql = 'SELECT * FROM dashboard_page WHERE dashboardid ='.zbx_dbstr(self::$ids['Dashboard for limit check and navigation']);
 		$hash = CDBHelper::getHash($sql);
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for limit check and navigation'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for limit check and navigation'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit()->addPage();
@@ -508,7 +508,7 @@ class testDashboardsPages extends CWebTest {
 	 * Switch pages using next/previous arrow buttons.
 	 */
 	public function testDashboardsPages_Navigation() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page navigation'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page navigation'])
 				->waitUntilReady();
 		$next_page = $this->query(self::NEXT_BUTTON)->one();
 		$previous_page = $this->query(self::PREVIOUS_BUTTON)->one();
@@ -539,7 +539,7 @@ class testDashboardsPages extends CWebTest {
 	 * Delete pages.
 	 */
 	public function testDashboardsPages_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page delete'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page delete'])
 				->waitUntilReady();
 		$this->assertEquals(['Page 1', 'Page 2', 'Page 3'], $this->getPagesTitles());
 		$dashboard = CDashboardElement::find()->one();
@@ -571,7 +571,7 @@ class testDashboardsPages extends CWebTest {
 	 */
 	public function testDashboardsPages_EmptyPagesName() {
 		// Check that first page does not have any names.
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for pages empty name'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for pages empty name'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
@@ -612,7 +612,7 @@ class testDashboardsPages extends CWebTest {
 	 * @backup profiles
 	 */
 	public function testDashboardsPages_KioskMode() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for kiosk'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for kiosk'])
 				->waitUntilReady();
 		$this->query('xpath://button[@title="Kiosk mode"]')->one()->click();
 		$this->page->waitUntilReady();
@@ -650,7 +650,7 @@ class testDashboardsPages extends CWebTest {
 	 * Check default period change for page.
 	 */
 	public function testDashboardsPages_DefaultPeriod() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page delete'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for page delete'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();

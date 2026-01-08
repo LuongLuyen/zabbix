@@ -34,7 +34,7 @@ if ($data['templates']) {
 if ($data['discovered_trigger'] || $data['is_discovered_prototype']) {
 	$parent_lld = $data['discoveryRule'] ?: $data['discoveryRulePrototype'];
 
-	$discovered_trigger_url = (new CUrl('zabbix.php'))
+	$discovered_trigger_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'trigger.prototype.edit')
 		->setArgument('parent_discoveryid', $data['discoveryData']['lldruleid'])

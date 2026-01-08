@@ -76,7 +76,7 @@ window.mediatype_message_popup = new class {
 	}
 
 	submit() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		const fields = getFormFields(this.form);
 
 		curl.setArgument('action', 'mediatype.message.check');

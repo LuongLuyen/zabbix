@@ -123,7 +123,7 @@ class testPageApiTokensUserSettings extends testPageApiTokens {
 	}
 
 	public function testPageApiTokensUserSettings_ChangeStatus() {
-		$this->checkStatusChange('zabbix.php?action=user.token.list', self::STATUS_CHANGE_TOKEN);
+		$this->checkStatusChange('sdnet.php?action=user.token.list', self::STATUS_CHANGE_TOKEN);
 	}
 
 	public function getFilterData() {
@@ -355,10 +355,10 @@ class testPageApiTokensUserSettings extends testPageApiTokens {
 			}
 		}
 
-		$this->checkSorting($data, 'zabbix.php?action=user.token.list');
+		$this->checkSorting($data, 'sdnet.php?action=user.token.list');
 	}
 
 	public function testPageApiTokensUserSettings_Delete() {
-		$this->checkDelete('zabbix.php?action=user.token.list', self::DELETE_TOKEN);
+		$this->checkDelete('sdnet.php?action=user.token.list', self::DELETE_TOKEN);
 	}
 }

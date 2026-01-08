@@ -80,7 +80,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'sla.enable');
 
 			this.#post(target, slaids, curl);
@@ -97,7 +97,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'sla.disable');
 
 			this.#post(target, slaids, curl);
@@ -112,7 +112,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'sla.delete');
 
 			this.#post(target, slaids, curl);

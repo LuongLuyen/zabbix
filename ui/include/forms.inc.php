@@ -1149,7 +1149,7 @@ function makeParentTemplatesList(array $parent_templates): array {
 
 	foreach ($parent_templates as $templateid => $template) {
 		if ($allowed_ui_conf_templates && $template['permission'] == PERM_READ_WRITE) {
-			$template_url = (new CUrl('zabbix.php'))
+			$template_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'template.edit')
 				->setArgument('templateid', $templateid)

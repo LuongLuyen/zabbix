@@ -286,7 +286,7 @@ class testDashboardGeomapWidgetScreenshots extends CWebTest {
 	 * @dataProvider getZoomWidgetData
 	 */
 	public function testDashboardGeomapWidgetScreenshots_Zoom($data) {
-		$this->page->login()->open('zabbix.php?action=geomaps.edit');
+		$this->page->login()->open('sdnet.php?action=geomaps.edit');
 		$this->page->waitUntilReady();
 
 		$form = $this->query('id:geomaps-form')->asForm()->one();
@@ -294,7 +294,7 @@ class testDashboardGeomapWidgetScreenshots extends CWebTest {
 		$form->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$zoom_dashboardid);
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$zoom_dashboardid);
 		CDashboardElement::find()->waitUntilReady();
 
 		$widgets = [

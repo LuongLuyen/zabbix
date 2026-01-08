@@ -72,7 +72,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 */
 	public function testPageMonitoringWeb_CheckLayout() {
 		// Logins directly into required page.
-		$this->page->login()->open('zabbix.php?action=web.view');
+		$this->page->login()->open('sdnet.php?action=web.view');
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->query('class:list-table')->asTable()->one();
 
@@ -124,7 +124,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 * Function which checks if button "Reset" works properly.
 	 */
 	public function testPageMonitoringWeb_ResetButtonCheck() {
-		$this->page->login()->open('zabbix.php?action=web.view&filter_rst=1');
+		$this->page->login()->open('sdnet.php?action=web.view&filter_rst=1');
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 		$this->page->waitUntilReady();
 		$table = $this->query('class:list-table')->asTable()->one();
@@ -175,7 +175,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 *
 	 */
 	private function checkHostContextMenu($popupitems, $hostname, $disabled) {
-		$this->page->login()->open('zabbix.php?action=web.view&filter_rst=1&sort=hostname&sortorder=DESC');
+		$this->page->login()->open('sdnet.php?action=web.view&filter_rst=1&sort=hostname&sortorder=DESC');
 		$this->query('class:list-table')->asTable()->one()->findRow('Host', $hostname)->query('link', $hostname)->one()->click();
 		$popup = CPopupMenuElement::find()->waitUntilVisible()->one();
 		$this->assertEquals(['VIEW', 'CONFIGURATION', 'SCRIPTS'], $popup->getTitles()->asText());
@@ -609,7 +609,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageMonitoringWeb_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=web.view&filter_rst=1&sort=name&sortorder=ASC');
+		$this->page->login()->open('sdnet.php?action=web.view&filter_rst=1&sort=name&sortorder=ASC');
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 		$table = $this->query('class:list-table')->waitUntilPresent()->one();
 
@@ -637,7 +637,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 * Function which checks number of steps for web services displayed.
 	 */
 	public function testPageMonitoringWeb_CheckWebServiceNumberOfSteps() {
-		$this->page->login()->open('zabbix.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
 		$row = $this->query('class:list-table')->asTable()->one()->findRow('Name', self::SCENARIO);
 		$this->assertEquals('2', $row->getColumn('Number of steps')->getText());
 
@@ -657,7 +657,7 @@ class testPageMonitoringWeb extends CWebTest {
 		$this->assertMessage(TEST_GOOD, 'Web scenario updated');
 
 		// Return to the "Web monitoring" and check if the "Number of steps" is correctly displayed.
-		$this->page->open('zabbix.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
+		$this->page->open('sdnet.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
 		$this->assertEquals('3', $row->getColumn('Number of steps')->getText());
 	}
 
@@ -665,7 +665,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 * Function which checks sorting by Name column.
 	 */
 	public function testPageMonitoringWeb_CheckSorting() {
-		$this->page->login()->open('zabbix.php?action=web.view&filter_rst=1&sort=hostname&sortorder=ASC');
+		$this->page->login()->open('sdnet.php?action=web.view&filter_rst=1&sort=hostname&sortorder=ASC');
 		$table = $this->query('class:list-table')->asTable()->one();
 
 		foreach (['Host', 'Name'] as $column_name) {
@@ -686,7 +686,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 * Function which checks that title field disappears while Kiosk mode is active.
 	 */
 	public function testPageMonitoringWeb_CheckKioskMode() {
-		$this->page->login()->open('zabbix.php?action=web.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=web.view')->waitUntilReady();
 
 		// Check title, filter and table display after pressing Kiosk mode/Normal view.
 		foreach (['Kiosk mode', 'Normal view'] as $status) {
@@ -709,7 +709,7 @@ class testPageMonitoringWeb extends CWebTest {
 	 * Function which checks if disabled web services aren't displayed.
 	 */
 	public function testPageMonitoringWeb_CheckDisabledWebServices() {
-		$this->page->login()->open('zabbix.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
 		$values = $this->getTableColumnData('Name');
 
 		// Turn off/on web services and check table results.
@@ -721,7 +721,7 @@ class testPageMonitoringWeb extends CWebTest {
 
 			$this->assertMessage(TEST_GOOD, ($status === 'Disable' ? 'Web scenarios disabled' : 'Web scenarios enabled'));
 
-			$this->page->open('zabbix.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
+			$this->page->open('sdnet.php?action=web.view&filter_rst=1&sort=name&sortorder=DESC')->waitUntilReady();
 			$changed = ($status === 'Disable')
 				? array_diff($values, ['Template_Web_scenario', 'Scenario for Update', 'Scenario for Delete'])
 				: array_merge($values, ['Scenario for Clone']);

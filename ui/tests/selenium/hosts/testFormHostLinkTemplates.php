@@ -42,7 +42,7 @@ class testFormHostLinkTemplates extends CLegacyWebTest {
 	}
 
 	public function testFormHostLinkTemplates_Layout() {
-		$this->page->login()->open('zabbix.php?action=host.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=host.list')->waitUntilReady();
 		$this->query('button:Create host')->one()->click();
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		$form->selectTab('Inventory');
@@ -94,13 +94,13 @@ class testFormHostLinkTemplates extends CLegacyWebTest {
 
 		// this should be a separate test
 		// should check that items, triggers and graphs are not linked to the template anymore
-		$this->zbxTestClickXpathWait("//a[contains(@href,'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D=".self::$hostid."')]");
+		$this->zbxTestClickXpathWait("//a[contains(@href,'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D=".self::$hostid."')]");
 		$this->page->waitUntilReady();
 		$this->zbxTestTextNotPresent(self::LINKED_TEMPLATE.':');
 		// using "host navigation bar" at the top of entity list
-		$this->zbxTestHrefClickWait('zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid);
+		$this->zbxTestHrefClickWait('sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid);
 		$this->zbxTestTextNotPresent(self::LINKED_TEMPLATE.':');
-		$this->zbxTestHrefClickWait('zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid.'&context=host');
+		$this->zbxTestHrefClickWait('sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid.'&context=host');
 		$this->zbxTestTextNotPresent(self::LINKED_TEMPLATE.':');
 	}
 
@@ -140,13 +140,13 @@ class testFormHostLinkTemplates extends CLegacyWebTest {
 		$this->zbxTestCheckTitle('Configuration of hosts');
 		$this->zbxTestWaitUntilMessageTextPresent('msg-good', 'Host updated');
 
-		$this->zbxTestClickXpathWait("//a[contains(@href,'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D=".self::$hostid."')]");
+		$this->zbxTestClickXpathWait("//a[contains(@href,'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D=".self::$hostid."')]");
 		$this->page->waitUntilReady();
 		$this->zbxTestTextNotPresent(self::LINKED_TEMPLATE.':');
 
-		$this->zbxTestHrefClickWait('zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid);
+		$this->zbxTestHrefClickWait('sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid);
 		$this->zbxTestTextNotPresent(self::LINKED_TEMPLATE.':');
-		$this->zbxTestHrefClickWait('zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid.'&context=host');
+		$this->zbxTestHrefClickWait('sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D='.self::$hostid.'&context=host');
 		$this->zbxTestTextNotPresent(self::LINKED_TEMPLATE.':');
 	}
 
@@ -155,20 +155,20 @@ class testFormHostLinkTemplates extends CLegacyWebTest {
 			// #0 Attach template to template
 			[
 				[
-					'link' => 'zabbix.php?action=template.list',
+					'link' => 'sdnet.php?action=template.list',
 					'entity' => 'Template'
 				]
 			],
 			// #1 Attach template to host from Data collection -> Hosts
 			[
 				[
-					'link' => 'zabbix.php?action=host.list'
+					'link' => 'sdnet.php?action=host.list'
 				]
 			],
 			// #2 Attach template to host from Monitoring -> Hosts
 			[
 				[
-					'link' => 'zabbix.php?action=host.view'
+					'link' => 'sdnet.php?action=host.view'
 				]
 			]
 		];
@@ -225,7 +225,7 @@ class testFormHostLinkTemplates extends CLegacyWebTest {
 	protected function openConfigurationForm($data) {
 		if (CTestArrayHelper::get($data, 'entity', 'Host') === 'Host') {
 			$host_link = $this->query('link', self::HOST_VISIBLE_NAME)->waitUntilVisible()->one();
-			if ($data['link'] === 'zabbix.php?action=host.view') {
+			if ($data['link'] === 'sdnet.php?action=host.view') {
 				$host_link->asPopupButton()->select('Host');
 			}
 			else {

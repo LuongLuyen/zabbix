@@ -289,7 +289,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 	}
 
 	public function testDashboardTopHostsWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_CREATE]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_CREATE]);
 		$dialog = CDashboardElement::find()->one()->edit()->addWidget();
 		$form = $dialog->asForm();
 		$this->assertEquals('Add widget', $dialog->getTitle());
@@ -1692,7 +1692,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardTopHostsWidget_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_CREATE]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_CREATE]);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 		$form = $dashboard->edit()->addWidget()->asForm();
@@ -1764,7 +1764,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 		// Hash before simple update.
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_UPDATE]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_UPDATE]);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit()->getWidget(self::$updated_name)->edit()->submit();
 		$dashboard->save();
@@ -2522,7 +2522,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 			$old_hash = CDBHelper::getHash(self::SQL);
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_UPDATE]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_UPDATE]);
 		$dashboard = CDashboardElement::find()->one();
 		$form = $dashboard->edit()->getWidget(self::$updated_name)->edit();
 
@@ -2586,7 +2586,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 	 * Delete top hosts widget.
 	 */
 	public function testDashboardTopHostsWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_DELETE]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_DELETE]);
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$name = 'Top hosts delete';
 		$dashboard->deleteWidget($name);
@@ -2636,7 +2636,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 	 * @dataProvider getRemoveData
 	 */
 	public function testDashboardTopHostsWidget_Remove($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_REMOVE]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_REMOVE]);
 		$dashboard = CDashboardElement::find()->one();
 		$form = $dashboard->edit()->getWidget('Top hosts for remove')->edit();
 
@@ -3954,7 +3954,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 	 * @dataProvider getWidgetTimePeriodData
 	 */
 	public function testDashboardTopHostsWidget_TimePeriodFilter($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$other_dashboardids[self::DASHBOARD_ZOOM]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$other_dashboardids[self::DASHBOARD_ZOOM]);
 		$dashboard = CDashboardElement::find()->one();
 
 		foreach ($data['widgets'] as $widget) {
@@ -6241,7 +6241,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 	 * @return CDashboardElement
 	 */
 	protected function createTopHostsWidget($data, $dashboardid, $widget_name = null) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$fields = array_key_exists('main_fields', $data) ? $data['main_fields'] : ['Name' => $widget_name];
 		$form = $this->openWidgetAndFill($dashboard, 'Top hosts', $fields);
@@ -6314,7 +6314,7 @@ class testDashboardTopHostsWidget extends testWidgets {
 	 * Test function for assuring that binary items are not available in Top hosts widget.
 	 */
 	public function testDashboardTopHostsWidget_CheckAvailableItems() {
-		$this->checkAvailableItems('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->checkAvailableItems('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardids[self::DASHBOARD_CREATE], self::DEFAULT_WIDGET_NAME
 		);
 	}

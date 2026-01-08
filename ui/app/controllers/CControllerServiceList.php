@@ -75,7 +75,7 @@ class CControllerServiceList extends CControllerServiceListGeneral {
 			$filter['tags'][] = $tag;
 		}
 
-		$reset_curl = (new CUrl('zabbix.php'))
+		$reset_curl = (new CUrl('sdnet.php'))
 			->setArgument('action', 'service.list')
 			->setArgument('path', $path ?: null)
 			->setArgument('serviceid', $this->service !== null ? $this->service['serviceid'] : null);

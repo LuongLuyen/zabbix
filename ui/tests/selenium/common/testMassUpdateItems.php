@@ -2309,8 +2309,8 @@ class testMassUpdateItems extends CWebTest{
 	 */
 	private function openMassUpdateForm($prototypes, $data) {
 		$link = ($prototypes)
-			? 'zabbix.php?action=item.prototype.list&parent_discoveryid='.self::RULEID.'&context=host'
-			: 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.self::HOSTID.'&context=host';
+			? 'sdnet.php?action=item.prototype.list&parent_discoveryid='.self::RULEID.'&context=host'
+			: 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.self::HOSTID.'&context=host';
 		$this->page->login()->open($link);
 
 		// Get item table.

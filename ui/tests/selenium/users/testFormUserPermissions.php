@@ -130,7 +130,7 @@ class testFormUserPermissions extends CWebTest {
 	 * @dataProvider getUpdateRoleData
 	 */
 	public function testFormUserPermissions_UpdateRole($data) {
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$table = $this->query('class:list-table')->one()->asTable();
 
 		// Find user current role.
@@ -153,7 +153,7 @@ class testFormUserPermissions extends CWebTest {
 
 		if ($data['expected'] === TEST_BAD) {
 			$this->assertMessage(TEST_BAD, 'Cannot update user', 'Field "roleid" is mandatory.');
-			$this->page->open('zabbix.php?action=user.list');
+			$this->page->open('sdnet.php?action=user.list');
 			$this->assertEquals($standard_role, $table->findRow('Username', $data['user_name'])->getColumn('User role')->getText());
 			$this->assertEquals($hash_before, CDBHelper::getHash('SELECT * FROM users'));
 		}
@@ -214,7 +214,7 @@ class testFormUserPermissions extends CWebTest {
 	 * @depends testFormUserPermissions_UpdateRole
 	 */
 	public function testFormUserPermissions_Display($data) {
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$this->query('link', $data['user_name'])->waitUntilClickable()->one()->click();
 		$this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm()->selectTab('Permissions');
 		$screenshot_area = $this->query('xpath://div[@class="ui-tabs-panel ui-corner-bottom ui-widget-content"][3]')->one();
@@ -247,7 +247,7 @@ class testFormUserPermissions extends CWebTest {
 	 * @dataProvider getUpdateUserRoletypeData
 	 */
 	public function testFormUserPermissions_UpdateUserRoletype($data) {
-		$this->page->login()->open('zabbix.php?action=user.edit&userid=40');
+		$this->page->login()->open('sdnet.php?action=user.edit&userid=40');
 		$this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm()->selectTab('Permissions');
 		$form = $this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm();
 		$form->fill($data);
@@ -291,13 +291,13 @@ class testFormUserPermissions extends CWebTest {
 	 * @dataProvider getUpdateRoleParametersData
 	 */
 	public function testFormUserPermissions_UpdateRoleParameters($data) {
-		$this->page->login()->open('zabbix.php?action=user.edit&userid='.self::$admin_user);
+		$this->page->login()->open('sdnet.php?action=user.edit&userid='.self::$admin_user);
 
 		$form = $this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm();
 		$form->selectTab('Permissions');
 		$form->checkValue($data['before']);
 
-		$this->page->open('zabbix.php?action=userrole.edit&roleid='.self::$admin_roleid);
+		$this->page->open('sdnet.php?action=userrole.edit&roleid='.self::$admin_roleid);
 		$role_form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 
 		$update_field = (array_key_exists('User type', $data['before'])) ? $data['after'] : $data['change'];
@@ -305,7 +305,7 @@ class testFormUserPermissions extends CWebTest {
 		$role_form->submit();
 		$this->assertMessage(TEST_GOOD, 'User role updated');
 
-		$this->page->open('zabbix.php?action=user.edit&userid='.self::$admin_user);
+		$this->page->open('sdnet.php?action=user.edit&userid='.self::$admin_user);
 		$form->selectTab('Permissions');
 		$form->checkValue($data['after']);
 	}
@@ -314,7 +314,7 @@ class testFormUserPermissions extends CWebTest {
 	 * Check that changing rules (UI) color changed in permission page for UI and action.
 	 */
 	public function testFormUserPermissions_UpdateFrontendAccess() {
-		$this->page->login()->open('zabbix.php?action=user.edit&userid='.self::$admin_user);
+		$this->page->login()->open('sdnet.php?action=user.edit&userid='.self::$admin_user);
 
 		// UI elements that should be DISPLAYED. Other UI elements from Reports, will be disabled. Action checked out.
 		$fields = (['Reports' => ['Notifications', 'Top 100 triggers'], 'Create and edit maps' => false]);
@@ -329,12 +329,12 @@ class testFormUserPermissions extends CWebTest {
 
 			// Select UI elements from $fields. Other elements from report, will be disabled.
 			if ($status === 'status-green') {
-				$this->page->open('zabbix.php?action=userrole.edit&roleid='.self::$admin_roleid);
+				$this->page->open('sdnet.php?action=userrole.edit&roleid='.self::$admin_roleid);
 				$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 				$form->fill($fields);
 				$form->submit();
 				$this->assertMessage(TEST_GOOD, 'User role updated');
-				$this->page->open('zabbix.php?action=user.edit&userid='.self::$admin_user);
+				$this->page->open('sdnet.php?action=user.edit&userid='.self::$admin_user);
 			}
 		}
 	}
@@ -343,7 +343,7 @@ class testFormUserPermissions extends CWebTest {
 	 * Check that changing rules (API) color changed in permission page for API. Add/Remove api requests.
 	 */
 	public function testFormUserPermissions_UpdateApiAccess() {
-		$this->page->login()->open('zabbix.php?action=user.edit&userid='.self::$admin_user);
+		$this->page->login()->open('sdnet.php?action=user.edit&userid='.self::$admin_user);
 		$selector = 'xpath://h4[text()="Access to API"]/../../following::li/div/div/span[text()=';
 
 		// Access to API enabled or disabled.
@@ -378,7 +378,7 @@ class testFormUserPermissions extends CWebTest {
 					}
 
 					// User role page.
-					$this->page->open('zabbix.php?action=userrole.edit&roleid='.self::$admin_roleid);
+					$this->page->open('sdnet.php?action=userrole.edit&roleid='.self::$admin_roleid);
 					$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 
 					// API gets disabled.
@@ -393,7 +393,7 @@ class testFormUserPermissions extends CWebTest {
 					}
 					$form->submit();
 					$this->assertMessage(TEST_GOOD, 'User role updated');
-					$this->page->open('zabbix.php?action=user.edit&userid='.self::$admin_user);
+					$this->page->open('sdnet.php?action=user.edit&userid='.self::$admin_user);
 				}
 			}
 		}
@@ -404,7 +404,7 @@ class testFormUserPermissions extends CWebTest {
 	 */
 	public function testFormUserPermissions_UpdatePermissions() {
 		$table_selector = 'xpath://ul[@id="permissionsFormList"]//table';
-		$this->page->login()->open('zabbix.php?action=user.edit&userid=2')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=user.edit&userid=2')->waitUntilReady();
 		$this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm()->selectTab('Permissions');
 		$this->assertEquals('Permissions can be assigned for user groups only.',
 				$this->query('xpath://ul[@id="permissionsFormList"]/li[4]')->one()->getText()
@@ -425,7 +425,7 @@ class testFormUserPermissions extends CWebTest {
 		];
 		$this->assertTableData($permissions_before, $table_selector);
 
-		$this->page->open('zabbix.php?action=usergroup.edit&usrgrpid=8')->waitUntilReady();
+		$this->page->open('sdnet.php?action=usergroup.edit&usrgrpid=8')->waitUntilReady();
 		$this->query('link:Host permissions')->one()->click();
 		$this->query('id:hostgroup-right-table')->asMultifieldTable()->one()->fill([
 			[
@@ -444,7 +444,7 @@ class testFormUserPermissions extends CWebTest {
 		$this->query('button:Update')->one()->click();
 		$this->assertMessage(TEST_GOOD, 'User group updated');
 
-		$this->page->open('zabbix.php?action=user.edit&userid=2')->waitUntilReady();
+		$this->page->open('sdnet.php?action=user.edit&userid=2')->waitUntilReady();
 		$this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm()->selectTab('Permissions');
 		$permissions_after = [
 			[
@@ -487,7 +487,7 @@ class testFormUserPermissions extends CWebTest {
 			'Top hosts', 'Top items', 'Top triggers', 'Trigger overview', 'URL', 'Web monitoring'
 		];
 
-		$this->page->login()->open('zabbix.php?action=user.edit&userid='.self::$admin_user)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=user.edit&userid='.self::$admin_user)->waitUntilReady();
 		$this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm()->selectTab('Permissions');
 
 		// Check that the default modules are present in form.
@@ -495,7 +495,7 @@ class testFormUserPermissions extends CWebTest {
 		$modules = $this->query($modules_selector)->all()->asText();
 		$this->assertEquals($widget_modules, array_values($modules));
 
-		$this->page->open('zabbix.php?action=module.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=module.list')->waitUntilReady();
 		$this->query('button:Scan directory')->one()->click();
 		$this->page->waitUntilReady();
 		CMessageElement::find()->one()->close();
@@ -507,14 +507,14 @@ class testFormUserPermissions extends CWebTest {
 		$this->assertMessage(TEST_GOOD, 'Module enabled');
 
 		foreach ([true, false] as $enable_modules) {
-			$this->page->open('zabbix.php?action=user.edit&userid='.self::$admin_user)->waitUntilReady();
+			$this->page->open('sdnet.php?action=user.edit&userid='.self::$admin_user)->waitUntilReady();
 			$this->query('xpath://form[@name="user_form"]')->waitUntilPresent()->one()->asForm()->selectTab('Permissions');
 
 			if ($enable_modules) {
 				$this->assertEquals('status-green', $this->query($modules_selector.'[text()="4th Module"]')->one()
 						->getAttribute('class')
 				);
-				$this->page->open('zabbix.php?action=userrole.edit&roleid='.self::$admin_roleid)->waitUntilReady();
+				$this->page->open('sdnet.php?action=userrole.edit&roleid='.self::$admin_roleid)->waitUntilReady();
 				$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 				$form->getField('4th Module')->uncheck();
 				$form->submit();

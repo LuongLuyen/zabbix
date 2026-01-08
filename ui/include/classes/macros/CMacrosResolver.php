@@ -601,7 +601,7 @@ class CMacrosResolver extends CMacrosResolverGeneral {
 									$link = (new CSpan('/'.$function['host'].'/'.$function['key_']))->addClass($style);
 								}
 								elseif ($function['flags'] & ZBX_FLAG_DISCOVERY_PROTOTYPE) {
-									$item_url = (new CUrl('zabbix.php'))
+									$item_url = (new CUrl('sdnet.php'))
 										->setArgument('action', 'popup')
 										->setArgument('popup', 'item.prototype.edit')
 										->setArgument('context', $options['context'])
@@ -617,7 +617,7 @@ class CMacrosResolver extends CMacrosResolverGeneral {
 											->addClass($style);
 								}
 								else {
-									$item_url = (new CUrl('zabbix.php'))
+									$item_url = (new CUrl('sdnet.php'))
 										->setArgument('action', 'popup')
 										->setArgument('popup', 'item.edit')
 										->setArgument('context', $options['context'])
@@ -1829,7 +1829,7 @@ class CMacrosResolver extends CMacrosResolverGeneral {
 	 *         10084 => [
 	 *             57 => [
 	 *                 'confirmation' => 'Are you sure you want to edit {HOST.HOST} now?',
-	 *                 'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}'
+	 *                 'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}'
 	 *             ],
 	 *             61 => [
 	 *                 'confirmation' => 'Hello, {USER.FULLNAME}! Execute script?',
@@ -1851,7 +1851,7 @@ class CMacrosResolver extends CMacrosResolverGeneral {
 	 *         10084 => [
 	 *             57 => [
 	 *                 'confirmation' => 'Are you sure you want to edit Zabbix server now?',
-	 *                 'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid=10084'
+	 *                 'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid=10084'
 	 *             ],
 	 *             61 => [
 	 *                 'confirmation' => 'Hello, Zabbix Administrator! Execute script?',

@@ -47,14 +47,14 @@ $title = $submenu_source[$data['eventsource']];
 $submenu = [];
 
 foreach ($submenu_source as $value => $label) {
-	$url = (new CUrl('zabbix.php'))
+	$url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'action.list')
 		->setArgument('eventsource', $value)
 		->getUrl();
 	$submenu[$url] = $label;
 }
 
-$current_url = (new CUrl('zabbix.php'))
+$current_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'action.list')
 	->setArgument('eventsource', $data['eventsource']);
 
@@ -144,7 +144,7 @@ if ($data['actions']) {
 				->addClass('js-enable-action')
 				->setAttribute('data-actionid', $action['actionid']);
 
-		$action_url = (new CUrl('zabbix.php'))
+		$action_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'action.edit')
 			->setArgument('actionid', $action['actionid'])

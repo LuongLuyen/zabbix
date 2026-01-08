@@ -100,7 +100,7 @@ class CControllerModuleList extends CController {
 		$page_num = getRequest('page', 1);
 		CPagerHelper::savePage('module.list', $page_num);
 		$paging = CPagerHelper::paginate($page_num, $modules, $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		$data = [

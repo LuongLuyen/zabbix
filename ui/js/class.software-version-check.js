@@ -54,7 +54,7 @@ class CSoftwareVersionCheck {
 	}
 
 	#getSavedData() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'softwareversioncheck.get');
 
@@ -109,7 +109,7 @@ class CSoftwareVersionCheck {
 	}
 
 	#update() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'softwareversioncheck.update');
 

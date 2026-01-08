@@ -53,7 +53,7 @@ class testPageAdministrationProxyGroups extends CWebTest {
 	}
 
 	public function testPageAdministrationProxyGroups_Layout() {
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 		$this->page->assertTitle('Configuration of proxy groups');
 		$this->page->assertHeader('Proxy groups');
 
@@ -397,7 +397,7 @@ class testPageAdministrationProxyGroups extends CWebTest {
 	 * @dataProvider getProxyGroupFilterData
 	 */
 	public function testPageAdministrationProxyGroups_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 
 		// Reset filter in case if some filtering remained before ongoing test case.
@@ -416,7 +416,7 @@ class testPageAdministrationProxyGroups extends CWebTest {
 	}
 
 	public function testPageAdministrationProxyGroups_Sort() {
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 
 		// Reset filter to avoid impact from the filter scenario on this test.
 		$this->query('button:Reset')->one()->click();
@@ -497,7 +497,7 @@ class testPageAdministrationProxyGroups extends CWebTest {
 			$old_hash = CDBHelper::getHash($sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 		$this->query('class:list-table')->asTable()->one()->findRows('Name', $data['groups'])->select();
 		$this->query('button:Delete')->waitUntilClickable()->one()->click();
 

@@ -384,28 +384,28 @@ class testLowLevelDiscoveryDisabledObjects extends CWebTest {
 			[
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list&filter_set=1&filter_host=KEY1'
+					'url' => 'sdnet.php?action=host.list&filter_set=1&filter_host=KEY1'
 				]
 			],
 			// #1.
 			[
 				[
 					'object' => 'item',
-					'url' => 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='
 				]
 			],
 			// #2.
 			[
 				[
 					'object' => 'trigger',
-					'url' => 'zabbix.php?action=trigger.list&context=host&filter_set=1&filter_hostids%5B0%5D='
+					'url' => 'sdnet.php?action=trigger.list&context=host&filter_set=1&filter_hostids%5B0%5D='
 				]
 			],
 			// #3.
 			[
 				[
 					'object' => 'graph',
-					'url' => 'zabbix.php?action=graph.list&context=host&filter_set=1&filter_hostids%5B%5D='
+					'url' => 'sdnet.php?action=graph.list&context=host&filter_set=1&filter_hostids%5B%5D='
 				]
 			],
 			// #4.

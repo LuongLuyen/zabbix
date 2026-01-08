@@ -37,7 +37,7 @@
 					uncheckTableRows(this.checkbox_hash);
 
 					if (data.submit.success?.action === 'delete') {
-						const url = new URL('zabbix.php', location.href);
+						const url = new URL('sdnet.php', location.href);
 
 						url.searchParams.set('action', 'template.list');
 

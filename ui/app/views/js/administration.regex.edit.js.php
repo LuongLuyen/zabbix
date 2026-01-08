@@ -111,7 +111,7 @@
 					}
 				});
 
-				var url = new Curl('zabbix.php');
+				var url = new Curl('sdnet.php');
 				url.setArgument('action', 'regex.test');
 
 				return $.post(
@@ -236,7 +236,7 @@
 			});
 
 		$form.find('#clone').click(function() {
-			var url = new Curl('zabbix.php?action=regex.edit');
+			var url = new Curl('sdnet.php?action=regex.edit');
 
 			$form.serializeArray().forEach(function(field) {
 				url.setArgument(field.name, field.value);

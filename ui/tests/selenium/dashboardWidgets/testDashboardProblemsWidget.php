@@ -115,7 +115,7 @@ class testDashboardProblemsWidget extends CWebTest {
 	}
 
 	public function testDashboardProblemsWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dialog =  CDashboardElement::find()->one()->edit()->addWidget();
 		$form = $dialog->asForm();
 
@@ -521,7 +521,7 @@ class testDashboardProblemsWidget extends CWebTest {
 			$old_hash = CDBHelper::getHash($this->sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -707,7 +707,7 @@ class testDashboardProblemsWidget extends CWebTest {
 	private function checkNoChanges($cancel = false, $create = false, $save_dashboard = true) {
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -793,7 +793,7 @@ class testDashboardProblemsWidget extends CWebTest {
 	public function testDashboardProblemsWidget_Delete() {
 		$name = 'Problem widget for delete';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$this->assertTrue($dashboard->edit()->getWidget($name)->isEditable());
 		$dashboard->deleteWidget($name);

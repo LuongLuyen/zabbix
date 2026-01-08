@@ -44,7 +44,7 @@ class CWebTest extends CTest {
 	const NETWORK_THROTTLING_OFFLINE	= 'offline';
 	const NETWORK_THROTTLING_SLOW		= 'slow';
 	const NETWORK_THROTTLING_FAST		= 'fast';
-	const HOST_LIST_PAGE				= 'zabbix.php?action=host.list';
+	const HOST_LIST_PAGE				= 'sdnet.php?action=host.list';
 
 	// Screenshot capture on error.
 	private $capture_screenshot = true;

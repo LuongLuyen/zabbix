@@ -35,7 +35,7 @@ class testUsersAuthentication extends CWebTest {
 	 * Check saving default authentication page.
 	 */
 	public function testUsersAuthentication_Layout() {
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$this->page->assertTitle('Configuration of authentication');
 		$this->page->assertHeader('Authentication');
 		$form = $this->query('id:authentication-form')->asForm()->one();
@@ -166,7 +166,7 @@ class testUsersAuthentication extends CWebTest {
 			$old_hash = CDBHelper::getHash('SELECT * FROM settings');
 		}
 
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$form = $this->query('id:authentication-form')->asForm()->one();
 
 		if (array_key_exists('fields', $data)) {

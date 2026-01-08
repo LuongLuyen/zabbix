@@ -143,7 +143,7 @@ function makeSectionsHeader(array $item, string $context, bool $show_path, bool 
 		if ($problems) {
 			$problems_indicator = CWebUser::checkAccess(CRoleHelper::UI_MONITORING_PROBLEMS)
 				? new CLink(null,
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'problem.view')
 						->setArgument('hostids', [$item['hostid']])
 						->setArgument('triggerids', $item['triggerids'])
@@ -164,7 +164,7 @@ function makeSectionsHeader(array $item, string $context, bool $show_path, bool 
 
 	if ($show_path) {
 		if ($context === 'host') {
-			$host_url = (new CUrl('zabbix.php'))
+			$host_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'host.edit')
 				->setArgument('hostid', $item['hostid'])
@@ -195,7 +195,7 @@ function makeSectionsHeader(array $item, string $context, bool $show_path, bool 
 
 			if ($item['is_discovery_rule_editable']) {
 				$path[] = (new CLink($item['discoveryRule']['name'],
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'item.prototype.list')
 						->setArgument('parent_discoveryid', $item['discoveryRule']['itemid'])
 						->setArgument('context', $context)
@@ -222,7 +222,7 @@ function makeSectionsHeader(array $item, string $context, bool $show_path, bool 
 					->addClass('path-element');
 			}
 			else {
-				$item_url = (new CUrl('zabbix.php'))
+				$item_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'item.edit')
 					->setArgument('context', $context)
@@ -246,7 +246,7 @@ function makeSectionsHeader(array $item, string $context, bool $show_path, bool 
 					->setMenuPopup(CMenuPopupHelper::getItem([
 						'itemid' => $item['itemid'],
 						'context' => $context,
-						'backurl' => (new CUrl('zabbix.php'))
+						'backurl' => (new CUrl('sdnet.php'))
 							->setArgument('action', 'latest.view')
 							->setArgument('context', $context)
 							->getUrl()
@@ -314,7 +314,7 @@ function makeSectionTriggers(array $item_triggers, string $hostid, array $trigge
 		$hint_trigger[] = $trigger['description_expanded'];
 
 		if ($is_context_editable) {
-			$trigger_url = (new CUrl('zabbix.php'))
+			$trigger_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'trigger.edit')
 				->setArgument('triggerid', $trigger['triggerid'])

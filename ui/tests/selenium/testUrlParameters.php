@@ -23,7 +23,7 @@ require_once __DIR__.'/../include/CLegacyWebTest.php';
  */
 class testUrlParameters extends CLegacyWebTest {
 
-	const POPUP = 'zabbix.php?action=popup&popup=';
+	const POPUP = 'sdnet.php?action=popup&popup=';
 
 	protected static $ids; // Contains all required ids of created test data entities both for host and template.
 
@@ -875,19 +875,19 @@ class testUrlParameters extends CLegacyWebTest {
 					'server_name_on_page' => false,
 					'test_cases' => [
 						[
-							'url' => 'zabbix.php?action=latest.view&groupids[]=4&hostids[]=50009',
+							'url' => 'sdnet.php?action=latest.view&groupids[]=4&hostids[]=50009',
 							'text_present' => 'Latest data'
 						],
 						[
-							'url' => 'zabbix.php?action=latest.view&groupids[]=9999999&hostids[]=50009',
+							'url' => 'sdnet.php?action=latest.view&groupids[]=9999999&hostids[]=50009',
 							'text_present' => 'Latest data'
 						],
 						[
-							'url' => 'zabbix.php?action=latest.view&groupids[]=4&hostids[]=9999999',
+							'url' => 'sdnet.php?action=latest.view&groupids[]=4&hostids[]=9999999',
 							'text_present' => 'Latest data'
 						],
 						[
-							'url' => 'zabbix.php?action=latest.view&groupids[]=abc&hostids[]=abc',
+							'url' => 'sdnet.php?action=latest.view&groupids[]=abc&hostids[]=abc',
 							'text_not_present' => 'Latest data',
 							'fatal_error' => true,
 							'text_present' => [
@@ -897,7 +897,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=latest.view&groupids[]=&hostids[]=',
+							'url' => 'sdnet.php?action=latest.view&groupids[]=&hostids[]=',
 							'text_not_present' => 'Latest data',
 							'fatal_error' => true,
 							'text_present' => [
@@ -907,7 +907,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=latest.view&groupids[]=-1&hostids[]=-1',
+							'url' => 'sdnet.php?action=latest.view&groupids[]=-1&hostids[]=-1',
 							'text_not_present' => 'Latest data',
 							'fatal_error' => true,
 							'text_present' => [
@@ -917,11 +917,11 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=latest.view',
+							'url' => 'sdnet.php?action=latest.view',
 							'text_present' => 'Latest data'
 						],
 						[
-							'url' => 'zabbix.php?action[]=latest.view',
+							'url' => 'sdnet.php?action[]=latest.view',
 							'text_not_present' => 'Latest data',
 							'fatal_error' => true,
 							'text_present' => [
@@ -990,11 +990,11 @@ class testUrlParameters extends CLegacyWebTest {
 					'server_name_on_page' => true,
 					'test_cases' => [
 						[
-							'url' => 'zabbix.php?action=problem.view',
+							'url' => 'sdnet.php?action=problem.view',
 							'text_present' => 'Problems'
 						],
 						[
-							'url' => 'zabbix.php?action=problem.view&filter_triggerids[]=13491',
+							'url' => 'sdnet.php?action=problem.view&filter_triggerids[]=13491',
 							'text_present' => 'Problems'
 						]
 					]
@@ -1007,7 +1007,7 @@ class testUrlParameters extends CLegacyWebTest {
 					'server_name_on_page' => false,
 					'test_cases' => [
 						[
-							'url' => 'zabbix.php?action=problem.view&triggerids%5B%5D=abc',
+							'url' => 'sdnet.php?action=problem.view&triggerids%5B%5D=abc',
 							'text_not_present' => 'Problems',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1015,7 +1015,7 @@ class testUrlParameters extends CLegacyWebTest {
 								]
 						],
 						[
-							'url' => 'zabbix.php?action=problem.view&triggerids%5B%5D=',
+							'url' => 'sdnet.php?action=problem.view&triggerids%5B%5D=',
 							'text_not_present' => 'Problems',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1023,7 +1023,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=problem.view&triggerids%5B%5D=-1',
+							'url' => 'sdnet.php?action=problem.view&triggerids%5B%5D=-1',
 							'text_not_present' => 'Problems',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1040,27 +1040,27 @@ class testUrlParameters extends CLegacyWebTest {
 					'server_name_on_page' => false,
 					'test_cases' => [
 						[
-							'url' => 'zabbix.php?action=charts.view&filter_hostids%5B%5D=66666&filter_show=2&filter_set=1',
+							'url' => 'sdnet.php?action=charts.view&filter_hostids%5B%5D=66666&filter_show=2&filter_set=1',
 							'text_present' => [
 								'No permissions to referred object or it does not exist!'
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=charts.view&filter_hostids%5B%5D=99012&filter_hostids%5B%5D=66666&'.
+							'url' => 'sdnet.php?action=charts.view&filter_hostids%5B%5D=99012&filter_hostids%5B%5D=66666&'.
 									'filter_show=1&filter_set=1',
 							'text_present' => [
 								'No permissions to referred object or it does not exist!'
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=charts.view&filter_hostids%5B%5D=50011&filter_hostids%5B%5D=66666&'.
+							'url' => 'sdnet.php?action=charts.view&filter_hostids%5B%5D=50011&filter_hostids%5B%5D=66666&'.
 							'filter_name=2_item&filter_show=0&filter_set=1',
 							'text_present' => [
 								'No permissions to referred object or it does not exist!'
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=charts.view&filter_hostids%5B0%5D=abc&filter_show=1&filter_set=1',
+							'url' => 'sdnet.php?action=charts.view&filter_hostids%5B0%5D=abc&filter_show=1&filter_set=1',
 							'text_not_present' => 'Graphs',
 							'fatal_error' => true,
 							'text_present' => [
@@ -1069,7 +1069,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=charts.view&filter_hostids%5B0%5D=-1&filter_show=1&filter_set=1',
+							'url' => 'sdnet.php?action=charts.view&filter_hostids%5B0%5D=-1&filter_show=1&filter_set=1',
 							'text_not_present' => 'Graphs',
 							'fatal_error' => true,
 							'text_present' => [
@@ -1078,7 +1078,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=charts.view&filter_hostids=1&filter_show[]=1&filter_set[]=1',
+							'url' => 'sdnet.php?action=charts.view&filter_hostids=1&filter_show[]=1&filter_set[]=1',
 							'text_not_present' => 'Graphs',
 							'fatal_error' => true,
 							'text_present' => [
@@ -1198,7 +1198,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=map.view&sysmapid[]=1',
+							'url' => 'sdnet.php?action=map.view&sysmapid[]=1',
 							'text_not_present' => 'Maps',
 							'fatal_error' => true,
 							'text_present' => [
@@ -1217,19 +1217,19 @@ class testUrlParameters extends CLegacyWebTest {
 					'server_name_on_page' => true,
 					'test_cases' => [
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_druleids[]=3&filter_set=1',
+							'url' => 'sdnet.php?action=discovery.view&filter_druleids[]=3&filter_set=1',
 							'text_present' => 'Status of discovery'
 						],
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_druleids[]=3',
+							'url' => 'sdnet.php?action=discovery.view&filter_druleids[]=3',
 							'text_present' => 'Status of discovery'
 						],
 						[
-							'url' => 'zabbix.php?action=discovery.view',
+							'url' => 'sdnet.php?action=discovery.view',
 							'text_present' => 'Status of discovery'
 						],
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_rst=1',
+							'url' => 'sdnet.php?action=discovery.view&filter_rst=1',
 							'text_present' => 'Status of discovery'
 						]
 					]
@@ -1242,7 +1242,7 @@ class testUrlParameters extends CLegacyWebTest {
 					'server_name_on_page' => false,
 					'test_cases' => [
 						[
-							'url' => 'zabbix.php?action[]=dashboard.list',
+							'url' => 'sdnet.php?action[]=dashboard.list',
 							'text_not_present' => 'Dashboards',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1250,7 +1250,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action[]=dashboard.view',
+							'url' => 'sdnet.php?action[]=dashboard.view',
 							'text_not_present' => 'Dashboards',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1267,7 +1267,7 @@ class testUrlParameters extends CLegacyWebTest {
 					'server_name_on_page' => false,
 					'test_cases' => [
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_druleids[]=abc',
+							'url' => 'sdnet.php?action=discovery.view&filter_druleids[]=abc',
 							'text_not_present' => 'Status of discovery',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1275,7 +1275,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_druleids[]=-123',
+							'url' => 'sdnet.php?action=discovery.view&filter_druleids[]=-123',
 							'text_not_present' => 'Status of discovery',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1283,7 +1283,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_druleids=123',
+							'url' => 'sdnet.php?action=discovery.view&filter_druleids=123',
 							'text_not_present' => 'Status of discovery',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1291,7 +1291,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_druleids=',
+							'url' => 'sdnet.php?action=discovery.view&filter_druleids=',
 							'text_not_present' => 'Status of discovery',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',
@@ -1299,7 +1299,7 @@ class testUrlParameters extends CLegacyWebTest {
 							]
 						],
 						[
-							'url' => 'zabbix.php?action=discovery.view&filter_rst[]=1',
+							'url' => 'sdnet.php?action=discovery.view&filter_rst[]=1',
 							'text_not_present' => 'Status of discovery',
 							'text_present' => [
 								'Fatal error, please report to the Zabbix team',

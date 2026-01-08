@@ -553,7 +553,7 @@ window.trigger_edit_popup = new class {
 
 		fields.readonly = this.readonly;
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'trigger.expression.constructor');
 
 		fetch(curl.getUrl(), {
@@ -822,7 +822,7 @@ window.trigger_edit_popup = new class {
 
 	submit() {
 		const fields = this.#getFormFields();
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		if (this.action === 'trigger.edit') {
 			curl.setArgument('action', this.triggerid !== null ? 'trigger.update' : 'trigger.create');
@@ -868,7 +868,7 @@ window.trigger_edit_popup = new class {
 	delete() {
 		const action = this.action === 'trigger.edit' ? 'trigger.delete' : 'trigger.prototype.delete';
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', action);
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('trigger')) ?>);
 
@@ -916,7 +916,7 @@ window.trigger_edit_popup = new class {
 	}
 
 	#constructTriggerUrl(triggerid, is_prototype) {
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 
 		url.setArgument('action', 'popup');
 		url.setArgument('popup', is_prototype ? 'trigger.prototype.edit' : 'trigger.edit');

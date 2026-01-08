@@ -23,7 +23,7 @@ window.module_edit = new class {
 		this.form_element = this.overlay.$dialogue.$body[0].querySelector('form');
 		this.form = new CForm(this.form_element, rules);
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 
 		return_url.searchParams.set('action', 'module.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
@@ -38,7 +38,7 @@ window.module_edit = new class {
 					return;
 				}
 
-				const curl = new Curl('zabbix.php');
+				const curl = new Curl('sdnet.php');
 
 				curl.setArgument('action', 'module.update');
 

@@ -147,7 +147,7 @@ class testGraphAxis extends CWebTest {
 	 */
 	public function testGraphAxis_DaylightSaving($data) {
 		// Set timezone.
-		$this->page->login()->open('zabbix.php?action=userprofile.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=userprofile.edit')->waitUntilReady();
 		$form = $this->query('name:userprofile_form')->asForm()->waitUntilVisible()->one();
 
 		/** For Pacific/Chatham timezone on clock change dates (in September and April) there might be one fail
@@ -162,7 +162,7 @@ class testGraphAxis extends CWebTest {
 		$form->submit()->waitUntilStalled();
 
 		// Go to Graphs and set time period.
-		$this->page->open('zabbix.php?action=host.view')->waitUntilReady();
+		$this->page->open('sdnet.php?action=host.view')->waitUntilReady();
 		$table = $this->query('xpath://form[@name="host_view"]/table[@class="list-table"]')
 				->waitUntilReady()->asTable()->one();
 		$table->findRow('Name', 'Dynamic widgets H2')->getColumn('Graphs')->query('tag:a')->one()->click();

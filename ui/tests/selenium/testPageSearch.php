@@ -45,17 +45,17 @@ class testPageSearch extends CWebTest {
 			'title' => 'Hosts',
 			'column_groups' => ['Host', 'IP', 'DNS', 'Monitoring', 'Configuration'],
 			'columns' => [
-				['text' => 'Test object Host', 'href' => 'zabbix.php?action=popup&popup=host.edit&hostid={id}'],
+				['text' => 'Test object Host', 'href' => 'sdnet.php?action=popup&popup=host.edit&hostid={id}'],
 				['text' => '127.0.0.1'],
 				['text' => 'testdnstwo.example.com'],
-				['text' => 'Latest data', 'href' => 'zabbix.php?action=latest.view&hostids%5B%5D={id}&filter_set=1'],
-				['text' => 'Problems', 'href' => 'zabbix.php?action=problem.view&hostids%5B0%5D={id}&filter_set=1'],
-				['text' => 'Graphs', 'href' => 'zabbix.php?action=charts.view&filter_hostids%5B0%5D={id}&filter_set=1'],
-				['text' => 'Dashboards', 'href' => 'zabbix.php?action=host.dashboard.view&hostid={id}'],
-				['text' => 'Web', 'href' => 'zabbix.php?action=web.view&filter_hostids%5B%5D={id}&filter_set=1'],
-				['text' => 'Items', 'href' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D={id}&context=host'],
-				['text' => 'Triggers', 'href' => 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D={id}&context=host'],
-				['text' => 'Graphs', 'href' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D={id}&context=host'],
+				['text' => 'Latest data', 'href' => 'sdnet.php?action=latest.view&hostids%5B%5D={id}&filter_set=1'],
+				['text' => 'Problems', 'href' => 'sdnet.php?action=problem.view&hostids%5B0%5D={id}&filter_set=1'],
+				['text' => 'Graphs', 'href' => 'sdnet.php?action=charts.view&filter_hostids%5B0%5D={id}&filter_set=1'],
+				['text' => 'Dashboards', 'href' => 'sdnet.php?action=host.dashboard.view&hostid={id}'],
+				['text' => 'Web', 'href' => 'sdnet.php?action=web.view&filter_hostids%5B%5D={id}&filter_set=1'],
+				['text' => 'Items', 'href' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D={id}&context=host'],
+				['text' => 'Triggers', 'href' => 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D={id}&context=host'],
+				['text' => 'Graphs', 'href' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D={id}&context=host'],
 				['text' => 'Discovery', 'href' => 'host_discovery.php?filter_set=1&filter_hostids%5B0%5D={id}&context=host'],
 				['text' => 'Web', 'href' => 'httpconf.php?filter_set=1&filter_hostids%5B0%5D={id}&context=host']
 			]
@@ -67,11 +67,11 @@ class testPageSearch extends CWebTest {
 			'title' => 'Host groups',
 			'column_groups' => ['Host group', 'Monitoring', 'Configuration'],
 			'columns' => [
-				['text' => 'Test object Hostgroup', 'href' => 'zabbix.php?action=popup&popup=hostgroup.edit&groupid={id}'],
-				['text' => 'Latest data', 'href' => 'zabbix.php?action=latest.view&groupids%5B%5D={id}&filter_set=1'],
-				['text' => 'Problems', 'href' => 'zabbix.php?action=problem.view&groupids%5B0%5D={id}&filter_set=1'],
-				['text' => 'Web', 'href' => 'zabbix.php?action=web.view&filter_groupids%5B%5D={id}&filter_set=1'],
-				['text' => 'Hosts 1', 'href' => 'zabbix.php?action=host.list&filter_set=1&filter_groups%5B0%5D={id}']
+				['text' => 'Test object Hostgroup', 'href' => 'sdnet.php?action=popup&popup=hostgroup.edit&groupid={id}'],
+				['text' => 'Latest data', 'href' => 'sdnet.php?action=latest.view&groupids%5B%5D={id}&filter_set=1'],
+				['text' => 'Problems', 'href' => 'sdnet.php?action=problem.view&groupids%5B0%5D={id}&filter_set=1'],
+				['text' => 'Web', 'href' => 'sdnet.php?action=web.view&filter_groupids%5B%5D={id}&filter_set=1'],
+				['text' => 'Hosts 1', 'href' => 'sdnet.php?action=host.list&filter_set=1&filter_groups%5B0%5D={id}']
 			]
 		],
 		'templates' => [
@@ -81,11 +81,11 @@ class testPageSearch extends CWebTest {
 			'title' => 'Templates',
 			'column_groups' => ['Template', 'Configuration'],
 			'columns' => [
-				['text' => 'Test object Template', 'href' => 'zabbix.php?action=popup&popup=template.edit&templateid={id}'],
-				['text' => 'Items', 'href' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D={id}&context=template'],
-				['text' => 'Triggers', 'href' => 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D={id}&context=template'],
-				['text' => 'Graphs', 'href' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D={id}&context=template'],
-				['text' => 'Dashboards', 'href' => 'zabbix.php?action=template.dashboard.list&templateid={id}'],
+				['text' => 'Test object Template', 'href' => 'sdnet.php?action=popup&popup=template.edit&templateid={id}'],
+				['text' => 'Items', 'href' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D={id}&context=template'],
+				['text' => 'Triggers', 'href' => 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D={id}&context=template'],
+				['text' => 'Graphs', 'href' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D={id}&context=template'],
+				['text' => 'Dashboards', 'href' => 'sdnet.php?action=template.dashboard.list&templateid={id}'],
 				['text' => 'Discovery', 'href' => 'host_discovery.php?filter_set=1&filter_hostids%5B0%5D={id}&context=template'],
 				['text' => 'Web', 'href' => 'httpconf.php?filter_set=1&filter_hostids%5B0%5D={id}&context=template']
 			]
@@ -97,8 +97,8 @@ class testPageSearch extends CWebTest {
 			'title' => 'Template groups',
 			'column_groups' => ['Template group','Configuration'],
 			'columns' => [
-				['text' => 'Test object Templategroup', 'href' => 'zabbix.php?action=popup&popup=templategroup.edit&groupid={id}'],
-				['text' => 'Templates 1', 'href' => 'zabbix.php?action=template.list&filter_set=1&filter_groups%5B0%5D={id}']
+				['text' => 'Test object Templategroup', 'href' => 'sdnet.php?action=popup&popup=templategroup.edit&groupid={id}'],
+				['text' => 'Templates 1', 'href' => 'sdnet.php?action=template.list&filter_set=1&filter_groups%5B0%5D={id}']
 			]
 		]
 	];
@@ -272,7 +272,7 @@ class testPageSearch extends CWebTest {
 	 * Check the layout of the Search form.
 	 */
 	public function testPageSearch_LayoutForm() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view');
+		$this->page->login()->open('sdnet.php?action=dashboard.view');
 		$form = $this->query('class:form-search')->waitUntilVisible()->asForm()->one();
 
 		$search_field = $form->getField('id:search');
@@ -710,7 +710,7 @@ class testPageSearch extends CWebTest {
 	 * @dataProvider getSuggestionsData
 	 */
 	public function testPageSearch_VerifySearchSuggestions($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view');
+		$this->page->login()->open('sdnet.php?action=dashboard.view');
 		$form = $this->query('class:form-search')->waitUntilVisible()->asForm()->one();
 		$form->fill(['id:search' => $data['search_string']]);
 
@@ -740,7 +740,7 @@ class testPageSearch extends CWebTest {
 	 * Test if the global search form is not being submitted with empty search string.
 	 */
 	public function testPageSearch_FindEmptyString() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=1');
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=1');
 		$form = $this->query('class:form-search')->waitUntilVisible()->asForm()->one();
 
 		foreach (['', '   '] as $search_string) {
@@ -769,7 +769,7 @@ class testPageSearch extends CWebTest {
 	 * @param string  $search_string    text that will be entered in the search field
 	 */
 	protected function openSearchResults($search_string, $send_keyup = false) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view')->waitUntilReady();
 		$form = $this->query('class:form-search')->waitUntilVisible()->asForm()->one();
 		$form->fill(['id:search' => $search_string]);
 

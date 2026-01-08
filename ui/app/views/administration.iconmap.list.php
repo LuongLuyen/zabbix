@@ -26,7 +26,7 @@ $html_page = (new CHtmlPage())
 		(new CTag('nav', true,
 			(new CList())
 				->addItem(new CRedirectButton(_('Create icon map'),
-					(new CUrl('zabbix.php'))->setArgument('action', 'iconmap.edit')
+					(new CUrl('sdnet.php'))->setArgument('action', 'iconmap.edit')
 				))
 		))->setAttribute('aria-label', _('Content controls'))
 	);
@@ -45,7 +45,7 @@ foreach ($data['iconmaps'] as $icon_map) {
 		];
 	}
 
-	$table->addRow([new CLink($icon_map['name'], (new CUrl('zabbix.php'))
+	$table->addRow([new CLink($icon_map['name'], (new CUrl('sdnet.php'))
 		->setArgument('action', 'iconmap.edit')
 		->setArgument('iconmapid', $icon_map['iconmapid'])
 	), $mappings]);

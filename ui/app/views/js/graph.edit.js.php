@@ -548,7 +548,7 @@ window.graph_edit_popup = new class {
 	delete() {
 		const action = this.action === 'graph.edit' ? 'graph.delete' : 'graph.prototype.delete';
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', action);
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('graph')) ?>);
@@ -565,7 +565,7 @@ window.graph_edit_popup = new class {
 
 		fields.name = fields.name.trim();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		if (this.action === 'graph.edit') {
 			curl.setArgument('action', !this.graph.graphid ? 'graph.create' : 'graph.update');

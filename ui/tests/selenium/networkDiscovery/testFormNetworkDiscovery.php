@@ -60,7 +60,7 @@ class testFormNetworkDiscovery extends CWebTest {
 	}
 
 	public function testFormNetworkDiscovery_Layout() {
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 		$this->query('button:Create discovery rule')->waitUntilClickable()->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 		$this->assertEquals('New discovery rule', $dialog->getTitle());
@@ -1108,7 +1108,7 @@ class testFormNetworkDiscovery extends CWebTest {
 			$old_hash = $this->getHash();
 		}
 
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 
 		if ($update) {
 			$this->query('link', self::$update_rule)->waitUntilClickable()->one()->click();
@@ -1540,7 +1540,7 @@ class testFormNetworkDiscovery extends CWebTest {
 			$old_hash = $this->getHash();
 		}
 
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 		$this->query('link', self::CHECKS_RULE)->waitUntilClickable()->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 		$form = $dialog->asForm();
@@ -1692,7 +1692,7 @@ class testFormNetworkDiscovery extends CWebTest {
 	 * @dataProvider getCloneData
 	 */
 	public function testFormNetworkDiscovery_Clone($data) {
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 		$this->query('link', self::CLONE_RULE)->waitUntilClickable()->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 		$dialog->query('button:Clone')->waitUntilClickable()->one()->click();
@@ -1780,7 +1780,7 @@ class testFormNetworkDiscovery extends CWebTest {
 			$old_hash = $this->getHash().CDBHelper::getHash('SELECT * FROM actions');
 		}
 
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 		$this->query('link', $data['discovery'])->waitUntilClickable()->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 		$dialog->query('button:Delete')->waitUntilClickable()->one()->click();
@@ -1806,7 +1806,7 @@ class testFormNetworkDiscovery extends CWebTest {
 	public function testFormNetworkDiscovery_DuplicateChecksValidation() {
 		$discovery_name = 'Double checks validation';
 
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 		$this->query('button:Create discovery rule')->waitUntilClickable()->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 		$form = $dialog->asForm();
@@ -1910,7 +1910,7 @@ class testFormNetworkDiscovery extends CWebTest {
 		$old_hash = $this->getHash().CDBHelper::getHash('SELECT * FROM actions');
 		$new_name = microtime(true).' Cancel '.self::CANCEL_RULE;
 
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 		$selector = ($data['action'] === 'Add') ? 'button:Create discovery rule' : ('link:'.self::CANCEL_RULE);
 		$this->query($selector)->waitUntilClickable()->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
@@ -2047,7 +2047,7 @@ class testFormNetworkDiscovery extends CWebTest {
 	 * Checks for the presence of a tooltip icon and disabled button for the discovery check if it is used in Action.
 	 */
 	public function testFormNetworkDiscovery_LayoutForUsedInAction() {
-		$this->page->login()->open('zabbix.php?action=discovery.list');
+		$this->page->login()->open('sdnet.php?action=discovery.list');
 		$this->query('link:Discovery rule for deleting, check used in Action')->waitUntilClickable()->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 

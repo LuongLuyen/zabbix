@@ -1141,7 +1141,7 @@ class CWidgetBase {
 		this._rf_rate = rf_rate;
 
 		if (this._widgetid !== null) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'dashboard.widget.rfrate');
 			curl.setArgument(CSRF_TOKEN_NAME, this._csrf_token);

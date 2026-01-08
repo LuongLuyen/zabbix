@@ -44,7 +44,7 @@ class CControllerHousekeepingUpdate extends CController {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'housekeeping.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'housekeeping.edit')
 					);
 					$response->setFormData($this->getInputAll() + [
 						'hk_events_mode' => '0',
@@ -128,7 +128,7 @@ class CControllerHousekeepingUpdate extends CController {
 		$result = API::Housekeeping()->update($hk);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'housekeeping.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'housekeeping.edit')
 		);
 
 		if ($result) {

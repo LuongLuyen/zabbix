@@ -82,7 +82,7 @@ class testPageUsers extends CLegacyWebTest {
 	}
 
 	public function testPageUsers_CheckLayout() {
-		$this->zbxTestLogin('zabbix.php?action=user.list');
+		$this->zbxTestLogin('sdnet.php?action=user.list');
 		$this->zbxTestCheckTitle('Configuration of users');
 		$this->zbxTestCheckHeader('Users');
 		$table = $this->getTable();
@@ -135,7 +135,7 @@ class testPageUsers extends CLegacyWebTest {
 		$sqlHashMedia = 'select * from media where userid='.$userid.' order by mediaid';
 		$oldHashMedia = CDBHelper::getHash($sqlHashMedia);
 
-		$this->zbxTestLogin('zabbix.php?action=user.list');
+		$this->zbxTestLogin('sdnet.php?action=user.list');
 		$this->zbxTestCheckTitle('Configuration of users');
 
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
@@ -155,7 +155,7 @@ class testPageUsers extends CLegacyWebTest {
 	}
 
 	public function testPageUsers_FilterByAlias() {
-		$this->zbxTestLogin('zabbix.php?action=user.list');
+		$this->zbxTestLogin('sdnet.php?action=user.list');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$form->query('button:Reset')->waitUntilClickable()->one()->click();
 		$form->fill(['Username' => $this->userAlias]);
@@ -165,7 +165,7 @@ class testPageUsers extends CLegacyWebTest {
 	}
 
 	public function testPageUsers_FilterNone() {
-		$this->zbxTestLogin('zabbix.php?action=user.list');
+		$this->zbxTestLogin('sdnet.php?action=user.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$form->query('button:Reset')->waitUntilClickable()->one()->click();
@@ -181,7 +181,7 @@ class testPageUsers extends CLegacyWebTest {
 	}
 
 	public function testPageUsers_FilterByAllFields() {
-		$this->zbxTestLogin('zabbix.php?action=user.list');
+		$this->zbxTestLogin('sdnet.php?action=user.list');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$form->query('button:Reset')->waitUntilClickable()->one()->click();
 
@@ -198,7 +198,7 @@ class testPageUsers extends CLegacyWebTest {
 	}
 
 	public function testPageUsers_FilterReset() {
-		$this->zbxTestLogin('zabbix.php?action=user.list');
+		$this->zbxTestLogin('sdnet.php?action=user.list');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$form->query('button:Reset')->waitUntilClickable()->one()->click();
 		$this->zbxTestTextNotPresent('Displaying 0 of 0 found');
@@ -210,7 +210,7 @@ class testPageUsers extends CLegacyWebTest {
 	public function testPageUsers_MassDelete() {
 		$result=DBselect("SELECT userid,username FROM users");
 
-		$this->zbxTestLogin('zabbix.php?action=user.list');
+		$this->zbxTestLogin('sdnet.php?action=user.list');
 		$this->zbxTestCheckTitle('Configuration of users');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$form->query('button:Reset')->waitUntilClickable()->one()->click();

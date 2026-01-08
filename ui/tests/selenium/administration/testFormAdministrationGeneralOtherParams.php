@@ -21,7 +21,7 @@ require_once __DIR__.'/../common/testFormAdministrationGeneral.php';
  */
 class testFormAdministrationGeneralOtherParams extends testFormAdministrationGeneral {
 
-	public $config_link = 'zabbix.php?action=miscconfig.edit';
+	public $config_link = 'sdnet.php?action=miscconfig.edit';
 	public $form_selector = 'name:otherForm';
 
 	public $default_values = [
@@ -219,7 +219,7 @@ class testFormAdministrationGeneralOtherParams extends testFormAdministrationGen
 			[
 				[
 					'fields' => [
-						'Frontend URL' => 'zabbix.php',
+						'Frontend URL' => 'sdnet.php',
 						'Default host inventory mode' => 'Automatic',
 						'Log unmatched SNMP traps' => true,
 						// Authorization.
@@ -231,7 +231,7 @@ class testFormAdministrationGeneralOtherParams extends testFormAdministrationGen
 						'id:iframe_sandboxing_exceptions' => ''
 					],
 					'db' => [
-						'url' => 'zabbix.php',
+						'url' => 'sdnet.php',
 						'default_inventory_mode' => 1,
 						'snmptrap_logging' => 1,
 						// Authorization.
@@ -588,7 +588,7 @@ class testFormAdministrationGeneralOtherParams extends testFormAdministrationGen
 				[
 					'trim' => true,
 					'fields' => [
-						'Frontend URL' => '    zabbix.php    ',
+						'Frontend URL' => '    sdnet.php    ',
 						// Authorization.
 						'Login attempts' => ' 5',
 						'Login blocking interval' => '    32s   ',
@@ -598,7 +598,7 @@ class testFormAdministrationGeneralOtherParams extends testFormAdministrationGen
 						'id:iframe_sandboxing_exceptions' => '   test   '
 					],
 					'db' => [
-						'url' => 'zabbix.php',
+						'url' => 'sdnet.php',
 						// Authorization.
 						'login_attempts' => 5,
 						'login_block' => '32s',

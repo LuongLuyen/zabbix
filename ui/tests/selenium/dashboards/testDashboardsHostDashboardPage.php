@@ -100,7 +100,7 @@ class testDashboardsHostDashboardPage extends CWebTest {
 		$this->page->assertHeader('Host dashboards');
 
 		$breadcrumbs = $this->query('class:breadcrumbs')->one();
-		$this->assertEquals('zabbix.php?action=host.view', $breadcrumbs->query('link:All hosts')->one()->getAttribute('href'));
+		$this->assertEquals('sdnet.php?action=host.view', $breadcrumbs->query('link:All hosts')->one()->getAttribute('href'));
 		$this->assertEquals(['All hosts', self::HOST_NAME], $breadcrumbs->query('tag:li')->all()->asText());
 
 		$host_dashboard_navigation = $this->query('class:host-dashboard-navigation')->one();
@@ -593,7 +593,7 @@ class testDashboardsHostDashboardPage extends CWebTest {
 	protected function openDashboardsForHost($host_name) {
 		// Instead of searching the Host in the UI it is faster to just get the ID from the database.
 		$id = CDBHelper::getValue('SELECT hostid FROM hosts WHERE host='.zbx_dbstr($host_name));
-		$this->page->login()->open('zabbix.php?action=host.dashboard.view&hostid='.$id)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=host.dashboard.view&hostid='.$id)->waitUntilReady();
 	}
 
 	/**

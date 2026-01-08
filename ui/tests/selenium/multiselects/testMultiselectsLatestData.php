@@ -49,7 +49,7 @@ class testMultiselectsLatestData extends testMultiselectDialogs {
 	 * @dataProvider getCheckDialogsData
 	 */
 	public function testMultiselectsLatestData_CheckDialogs($data) {
-		$this->page->login()->open('zabbix.php?action=latest.view');
+		$this->page->login()->open('sdnet.php?action=latest.view');
 		$filter_form = $this->query('name:zbx_filter')->asForm()->one();
 
 		// Check empty filter popup.

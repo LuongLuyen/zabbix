@@ -73,7 +73,7 @@
 		executeNow(button) {
 			button.classList.add('is-loading');
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'item.execute');
 
 			const data = {

@@ -385,7 +385,7 @@ window.item_edit_form = new class {
 
 	create() {
 		const fields = this.#getFormFields();
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', this.actions.create);
 
@@ -401,7 +401,7 @@ window.item_edit_form = new class {
 
 	update() {
 		const fields = this.#getFormFields();
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', this.actions.update);
 
@@ -448,7 +448,7 @@ window.item_edit_form = new class {
 			context: this.form_data.context,
 			itemids: [this.form_data.itemid]
 		}
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', this.actions.delete);
 		this.#post(curl.getUrl(), data);
@@ -459,7 +459,7 @@ window.item_edit_form = new class {
 			context: this.form_data.context,
 			itemids: [this.form_data.itemid]
 		}
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'item.clear');
 		this.#post(curl.getUrl(), data, true);
@@ -470,7 +470,7 @@ window.item_edit_form = new class {
 			discovery_rule: this.form_data.discovery_rule,
 			itemids: [this.form_data.itemid]
 		}
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'item.execute');
 		this.#post(curl.getUrl(), data, true);
@@ -696,7 +696,7 @@ window.item_edit_form = new class {
 			hostid: fields.hostid
 		}
 
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 		url.setArgument('action', 'item.tags.list');
 		this.overlay.setLoading();
 

@@ -873,7 +873,7 @@ class testFormSetup extends CWebTest {
 
 		// Cancel setup form update.
 		$this->query('button:Cancel')->one()->click()->waitUntilStalled();
-		$this->assertStringContainsString('zabbix.php?action=dashboard.view', $this->page->getCurrentURL());
+		$this->assertStringContainsString('sdnet.php?action=dashboard.view', $this->page->getCurrentURL());
 	}
 
 	/**

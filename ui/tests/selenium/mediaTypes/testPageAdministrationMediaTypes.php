@@ -107,7 +107,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 	 * Check basic elements on page.
 	 */
 	public function testPageAdministrationMediaTypes_Layout() {
-		$this->page->login()->open('zabbix.php?action=mediatype.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=mediatype.list')->waitUntilReady();
 
 		$this->page->assertTitle('Configuration of media types');
 		$this->page->assertHeader('Media types');
@@ -171,7 +171,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 	 * @onAfterOnce resetFilter
 	 */
 	public function testPageAdministrationMediaTypes_Sort() {
-		$this->page->login()->open('zabbix.php?action=mediatype.list&sortorder=DESC');
+		$this->page->login()->open('sdnet.php?action=mediatype.list&sortorder=DESC');
 		$table = $this->query('class:list-table')->asTable()->one();
 
 		foreach (['Name', 'Type'] as $column) {
@@ -324,7 +324,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 	 * @onAfterOnce resetFilter
 	 */
 	public function testPageAdministrationMediaTypes_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$this->query('button:Reset')->waitUntilClickable()->one()->click();
 		$table = $this->query('class:list-table')->asTable()->one();
 
@@ -364,7 +364,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 	 * Disable and enable media type by link in column Status.
 	 */
 	public function testPageAdministrationMediaTypes_StatusLink() {
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 
 		// Get row by column Name.
 		$row = $this->query('class:list-table')->asTable()->one()->findRow('Name', self::MEDIA_NAME);
@@ -452,7 +452,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 	 * @param string	$action		action to be performed with the selected media types
 	 */
 	private function checkStatusChangeButton($data, $action = 'disable') {
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$this->selectTableRows(CTestArrayHelper::get($data, 'rows', []));
 
 		// Check number of all selected media types.
@@ -650,7 +650,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 	 * @depends testPageAdministrationMediaTypes_Enable
 	 */
 	public function testPageAdministrationMediaTypes_TestMediaType($data) {
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 
 		// Get row by media Name and click on Test button.
 		$this->query('class:list-table')->asTable()->one()->findRow('Name', $data['name'])->query('button:Test')
@@ -705,7 +705,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 			'Message' => 'new message'
 		];
 
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 
 		// Get row by media Name and click on Test button.
 		$this->query('class:list-table')->asTable()->one()->findRow('Name', self::MEDIA_NAME)
@@ -729,7 +729,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 			$old_hash = CDBHelper::getHash($sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$this->selectTableRows(CTestArrayHelper::get($data, 'rows', []));
 
 		$this->query('button:Delete')->one()->click();
@@ -1006,7 +1006,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 			$expected = $data['expected'];
 		}
 
-		$this->page->login()->open('zabbix.php?action=mediatype.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=mediatype.list')->waitUntilReady();
 		$row = $this->getTable()->waitUntilPresent()->findRow('Name', $data['name']);
 		$this->assertEquals($expected, $row->getColumn('Used in actions')->getText());
 		$count = ($expected === '') ? '' : count(explode(', ', $expected));

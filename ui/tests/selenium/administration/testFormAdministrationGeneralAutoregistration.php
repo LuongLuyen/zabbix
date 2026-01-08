@@ -26,7 +26,7 @@ class testFormAdministrationGeneralAutoregistration extends CWebTest {
 	 */
 	public function testFormAdministrationGeneralAutoregistration_checkDefaultState() {
 		// Navigate to autoregistration page from dashboard page.
-		$this->page->login()->open('zabbix.php?action=gui.edit');
+		$this->page->login()->open('sdnet.php?action=gui.edit');
 		$this->query('id:page-title-general')->asPopupButton()->one()->select('Autoregistration');
 
 		// Check elements default state.
@@ -46,7 +46,7 @@ class testFormAdministrationGeneralAutoregistration extends CWebTest {
 			'PSK' => '07df83bf21bf0be663090bb8d4128558ab9b95fba66a6dbf834f8b91ae5e08ae'
 		];
 
-		$this->page->login()->open('zabbix.php?action=autoreg.edit');
+		$this->page->login()->open('sdnet.php?action=autoreg.edit');
 
 		$form = $this->query('id:autoreg-form')->asForm()->one();
 		$form->fill($data);
@@ -146,7 +146,7 @@ class testFormAdministrationGeneralAutoregistration extends CWebTest {
 	 */
 	public function testFormAdministrationGeneralAutoregistration_Audit($data) {
 		// Add encryption.
-		$this->page->login()->open('zabbix.php?action=autoreg.edit');
+		$this->page->login()->open('sdnet.php?action=autoreg.edit');
 		// Added sleep, because sorting on Audit page is by time,
 		// but sometimes there is no time difference between test cases and they are sorted unpredictably
 		sleep(1);
@@ -158,7 +158,7 @@ class testFormAdministrationGeneralAutoregistration extends CWebTest {
 		$this->assertEquals('Configuration updated', $message->getTitle());
 
 		// Check Audit record about autoregistration update.
-		$this->page->open('zabbix.php?action=auditlog.list');
+		$this->page->open('sdnet.php?action=auditlog.list');
 
 		// Click on Filter tab if it is not selected.
 		if ($this->query('xpath://li[@aria-labelledby="ui-id-2" and @aria-selected="false"]')->exists()) {
@@ -310,7 +310,7 @@ class testFormAdministrationGeneralAutoregistration extends CWebTest {
 		$old_settings_hash = CDBHelper::getHash($sql_settings);
 		$old_autoreg_hash = CDBHelper::getHash($sql_autoreg);
 
-		$this->page->login()->open('zabbix.php?action=autoreg.edit');
+		$this->page->login()->open('sdnet.php?action=autoreg.edit');
 		$form = $this->query('id:autoreg-form')->asForm()->one();
 		if (array_key_exists('uncheck_all', $data)) {
 			$form->getField('Encryption level')->uncheckAll();
@@ -336,7 +336,7 @@ class testFormAdministrationGeneralAutoregistration extends CWebTest {
 	 */
 	private function executeUpdate($data) {
 		$tls_accept_sql = 'SELECT value_int FROM settings WHERE name=\'autoreg_tls_accept\'';
-		$this->page->login()->open('zabbix.php?action=autoreg.edit');
+		$this->page->login()->open('sdnet.php?action=autoreg.edit');
 		$form = $this->query('id:autoreg-form')->asForm()->one();
 
 		// Modify existing PSK values.
@@ -448,7 +448,7 @@ class testFormAdministrationGeneralAutoregistration extends CWebTest {
 			'PSK' => '00df83bf21bf0be663090bb8d4128558ab9b95fba66a6dbf834f8b91ae5e08ae'
 		];
 
-		$this->page->login()->open('zabbix.php?action=autoreg.edit');
+		$this->page->login()->open('sdnet.php?action=autoreg.edit');
 		$form = $this->query('id:autoreg-form')->asForm()->one();
 		$form->fill($data);
 		$form->submit();

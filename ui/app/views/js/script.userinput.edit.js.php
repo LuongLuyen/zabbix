@@ -48,7 +48,7 @@ window.script_userinput_popup = new class {
 	}
 
 	submitTestForm() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		const fields = getFormFields(this.form);
 
 		fields.manualinput_validator_type = this.input_type;
@@ -72,7 +72,7 @@ window.script_userinput_popup = new class {
 		fields.manualinput_validator = this.input_validator;
 		fields.manualinput_default_value = this.default_input;
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'script.userinput.check');
 

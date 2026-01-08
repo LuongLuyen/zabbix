@@ -63,7 +63,7 @@ class testInheritanceTrigger extends CLegacyWebTest {
 		$sqlTriggers = 'SELECT * FROM triggers ORDER BY triggerid';
 		$oldHashTriggers = CDBHelper::getHash($sqlTriggers);
 
-		$this->zbxTestLogin('zabbix.php?action=trigger.list&context=host&filter_rst=1&filter_hostids[0]='.$this->hostid);
+		$this->zbxTestLogin('sdnet.php?action=trigger.list&context=host&filter_rst=1&filter_hostids[0]='.$this->hostid);
 		$this->zbxTestClickLinkTextWait($data['description']);
 
 		COverlayDialogElement::find()->waitUntilReady()->one();
@@ -99,7 +99,7 @@ class testInheritanceTrigger extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testInheritanceTrigger_SimpleCreate($data) {
-		$this->zbxTestLogin('zabbix.php?action=trigger.list&context=template&filter_rst=1&filter_hostids[0]='.$this->templateid);
+		$this->zbxTestLogin('sdnet.php?action=trigger.list&context=template&filter_rst=1&filter_hostids[0]='.$this->templateid);
 		$this->zbxTestContentControlButtonClickTextWait('Create trigger');
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 		$this->zbxTestInputType('name', $data['description']);

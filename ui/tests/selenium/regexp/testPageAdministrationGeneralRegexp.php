@@ -96,7 +96,7 @@ class testPageAdministrationGeneralRegexp extends CWebTest {
 	 * Test the layout and general functionality.
 	 */
 	public function testPageAdministrationGeneralRegexp_Layout() {
-		$this->page->login()->open('zabbix.php?action=regex.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=regex.list')->waitUntilReady();
 		$this->page->assertTitle('Configuration of regular expressions');
 		$this->page->assertHeader('Regular expressions');
 
@@ -152,7 +152,7 @@ class testPageAdministrationGeneralRegexp extends CWebTest {
 		$db_hash = CDBHelper::getHash($hash_sql);
 
 		// Cancel delete.
-		$this->page->login()->open('zabbix.php?action=regex.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=regex.list')->waitUntilReady();
 		$this->query('name:all-regexes')->one()->click();
 		$this->query('button:Delete')->one()->click();
 		$this->assertEquals('Delete selected regular expressions?', $this->page->getAlertText());
@@ -184,7 +184,7 @@ class testPageAdministrationGeneralRegexp extends CWebTest {
 	 * @dataProvider getDeleteData
 	 */
 	public function testPageAdministrationGeneralRegexp_Delete($data) {
-		$this->page->login()->open('zabbix.php?action=regex.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=regex.list')->waitUntilReady();
 
 		// Variables for checks after deletion.
 		$all_regexps = $this->getTableColumnData('Name');
@@ -220,7 +220,7 @@ class testPageAdministrationGeneralRegexp extends CWebTest {
 	 * Test delete all.
 	 */
 	public function testPageAdministrationGeneralRegexp_DeleteAll(): void {
-		$this->page->login()->open('zabbix.php?action=regex.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=regex.list')->waitUntilReady();
 
 		$this->query('name:all-regexes')->asCheckbox()->one()->check();
 

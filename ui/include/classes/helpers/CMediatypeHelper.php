@@ -424,7 +424,7 @@ class CMediatypeHelper {
 		$base_url = rtrim(CSettingsHelper::get(CSettingsHelper::URL), '/');
 
 		if ($base_url !== '') {
-			$url = new CUrl($base_url.'/zabbix.php');
+			$url = new CUrl($base_url.'/sdnet.php');
 			$url->setArgument('action', 'oauth.authorize');
 			$redirection_url = $url->getUrl();
 		}

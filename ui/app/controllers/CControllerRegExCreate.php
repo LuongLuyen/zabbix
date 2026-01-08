@@ -29,7 +29,7 @@ class CControllerRegExCreate extends CController {
 		if (!$ret) {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
-					$url = (new CUrl('zabbix.php'))->setArgument('action', 'regex.edit');
+					$url = (new CUrl('sdnet.php'))->setArgument('action', 'regex.edit');
 
 					$response = new CControllerResponseRedirect($url);
 					$response->setFormData($this->getInputAll());
@@ -59,13 +59,13 @@ class CControllerRegExCreate extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))->setArgument('action', 'regex.list')
+				(new CUrl('sdnet.php'))->setArgument('action', 'regex.list')
 			);
 			CMessageHelper::setSuccessTitle(_('Regular expression added'));
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))->setArgument('action', 'regex.edit')
+				(new CUrl('sdnet.php'))->setArgument('action', 'regex.edit')
 			);
 			$response->setFormData($this->getInputAll());
 			CMessageHelper::setErrorTitle(_('Cannot add regular expression'));

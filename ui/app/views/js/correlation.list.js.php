@@ -71,7 +71,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'correlation.delete');
 			this.#post(target, correlationids, curl);
@@ -97,7 +97,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'correlation.enable');
 			this.#post(target, correlationids, curl);
@@ -123,7 +123,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'correlation.disable');
 			this.#post(target, correlationids, curl);

@@ -26,7 +26,7 @@ require_once __DIR__.'/../common/testSystemInformation.php';
 class testPageReportsSystemInformation extends testSystemInformation {
 
 	public function testPageReportsSystemInformation_checkDisabledHA() {
-		$this->page->login()->open('zabbix.php?action=report.status')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=report.status')->waitUntilReady();
 
 		// Check field that is skipped in screenshot assertion.
 		$data = [

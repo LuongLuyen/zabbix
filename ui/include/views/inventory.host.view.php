@@ -131,14 +131,14 @@ if ($data['host']['description'] !== '') {
 $overviewFormList->addRow(_('Monitoring'),
 	new CHorList([
 		$data['allowed_ui_hosts']
-			? new CLink(_('Web'), (new CUrl('zabbix.php'))
+			? new CLink(_('Web'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'web.view')
 				->setArgument('filter_hostids[]', $data['host']['hostid'])
 				->setArgument('filter_set', '1')
 			)
 			: _('Web'),
 		$data['allowed_ui_latest_data']
-			? new CLink(_('Latest data'), (new CUrl('zabbix.php'))
+			? new CLink(_('Latest data'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'latest.view')
 				->setArgument('hostids[]', $data['host']['hostid'])
 				->setArgument('show_details', '1')
@@ -146,7 +146,7 @@ $overviewFormList->addRow(_('Monitoring'),
 			)
 			: _('Latest data'),
 		$data['allowed_ui_problems']
-			? new CLink(_('Problems'), (new CUrl('zabbix.php'))
+			? new CLink(_('Problems'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'problem.view')
 				->setArgument('hostids', [$data['host']['hostid']])
 				->setArgument('filter_set', '1')
@@ -154,14 +154,14 @@ $overviewFormList->addRow(_('Monitoring'),
 			: _('Problems'),
 		$data['allowed_ui_hosts']
 			? new CLink(_('Graphs'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'charts.view')
 					->setArgument('filter_hostids', [$data['host']['hostid']])
 					->setArgument('filter_set', '1')
 		)
 			: _('Graphs'),
 		$data['allowed_ui_hosts']
-			? new CLink(_('Dashboards'), (new CUrl('zabbix.php'))
+			? new CLink(_('Dashboards'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'host.dashboard.view')
 				->setArgument('hostid', $data['host']['hostid'])
 			)
@@ -171,7 +171,7 @@ $overviewFormList->addRow(_('Monitoring'),
 
 // configuration
 if ($data['allowed_ui_conf_hosts'] && $data['rwHost']) {
-	$host_url = (new CUrl('zabbix.php'))
+	$host_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'host.edit')
 		->setArgument('hostid', $data['host']['hostid'])
@@ -180,21 +180,21 @@ if ($data['allowed_ui_conf_hosts'] && $data['rwHost']) {
 	$hostLink = new CLink(_('Host'), $host_url);
 
 	$itemsLink = new CLink(_('Items'),
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'item.list')
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$data['host']['hostid']])
 			->setArgument('context', 'host')
 	);
 	$triggersLink = new CLink(_('Triggers'),
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'trigger.list')
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$data['host']['hostid']])
 			->setArgument('context', 'host')
 	);
 	$graphsLink = new CLink(_('Graphs'),
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'graph.list')
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$data['host']['hostid']])

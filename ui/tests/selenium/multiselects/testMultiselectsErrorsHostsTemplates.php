@@ -157,7 +157,7 @@ class testMultiselectsErrorsHostsTemplates extends testMultiselectDialogs {
 	 * @dataProvider getCheckDialogsData
 	 */
 	public function testMultiselectsErrorsHostsTemplates_CheckDialogs($data) {
-		$this->page->login()->open(($data['object'] === 'Hosts') ? 'zabbix.php?action=host.list' : 'zabbix.php?action=template.list');
+		$this->page->login()->open(($data['object'] === 'Hosts') ? 'sdnet.php?action=host.list' : 'sdnet.php?action=template.list');
 
 		if (array_key_exists('sub_object', $data)) {
 			$this->query('class:list-table')->asTable()->waitUntilPresent()->one()

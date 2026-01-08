@@ -109,7 +109,7 @@ foreach ($data['maps'] as $map) {
 		$checkbox,
 		(new CCol(
 			(new CLink($map['name'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'map.view')
 				->setArgument('sysmapid', $map['sysmapid'])
 			))

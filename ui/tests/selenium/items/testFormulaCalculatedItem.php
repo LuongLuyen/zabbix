@@ -24,7 +24,7 @@ require_once __DIR__.'/../common/testCalculatedFormula.php';
  */
 class testFormulaCalculatedItem extends testCalculatedFormula {
 
-	public $url = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids[0]=40001';
+	public $url = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids[0]=40001';
 
 	public function getItemValidationData() {
 		return [

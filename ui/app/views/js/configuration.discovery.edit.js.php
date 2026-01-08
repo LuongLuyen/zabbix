@@ -32,7 +32,7 @@ window.drule_edit_popup = new class {
 		this.dcheckid = getUniqueId();
 		this.available_device_types = [<?= SVC_AGENT ?>, <?= SVC_SNMPv1 ?>, <?= SVC_SNMPv2c ?>, <?= SVC_SNMPv3 ?>];
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'discovery.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -364,7 +364,7 @@ window.drule_edit_popup = new class {
 	}
 
 	delete() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'discovery.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('discovery')) ?>);
 
@@ -382,7 +382,7 @@ window.drule_edit_popup = new class {
 			field => fields[field] = fields[field].trim()
 		);
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', this.druleid === null ? 'discovery.create' : 'discovery.update');
 
 		this.#post(curl.getUrl(), fields, (response) => {

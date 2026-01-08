@@ -17,7 +17,7 @@ require_once __DIR__.'/../include/CLegacyWebTest.php';
 
 class testPageStatusOfZabbix extends CLegacyWebTest {
 	public function testPageStatusOfZabbix_CheckLayout() {
-		$this->zbxTestLogin('zabbix.php?action=report.status');
+		$this->zbxTestLogin('sdnet.php?action=report.status');
 		$this->zbxTestCheckTitle('System information');
 		$this->zbxTestCheckHeader('System information');
 		$this->zbxTestTextPresent(['Parameter', 'Value', 'Details']);

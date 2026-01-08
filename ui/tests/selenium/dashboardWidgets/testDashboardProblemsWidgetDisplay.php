@@ -762,7 +762,7 @@ class testDashboardProblemsWidgetDisplay extends testWidgets {
 	 * @onAfter deleteWidgets
 	 */
 	public function testDashboardProblemsWidgetDisplay_CheckTable($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$form = $this->openWidgetAndFill($dashboard, 'Problems', $data['fields']);
 

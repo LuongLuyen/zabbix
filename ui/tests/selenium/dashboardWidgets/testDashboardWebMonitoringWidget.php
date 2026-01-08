@@ -121,7 +121,7 @@ class testDashboardWebMonitoringWidget extends testWidgets {
 	 */
 	public function testDashboardWebMonitoringWidget_Layout() {
 		// Open the create form.
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dialog = CDashboardElement::find()->one()->edit()->addWidget();
 		$this->assertEquals('Add widget', $dialog->getTitle());
@@ -404,7 +404,7 @@ class testDashboardWebMonitoringWidget extends testWidgets {
 		$data['fields']['Name'] = ($data['fields'] === [])
 			? ''
 			: CTestArrayHelper::get($data, 'fields.Name', 'Web monitoring '.microtime());
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DASHBOARD_FOR_WIDGET_ACTIONS])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -527,7 +527,7 @@ class testDashboardWebMonitoringWidget extends testWidgets {
 	protected function checkNoChanges($cancel = false, $create = false, $save_dashboard = true) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DASHBOARD_FOR_WIDGET_ACTIONS])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->waitUntilReady();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -592,7 +592,7 @@ class testDashboardWebMonitoringWidget extends testWidgets {
 	 * Delete Web monitoring widget check.
 	 */
 	public function testDashboardWebMonitoringWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DASHBOARD_FOR_WIDGET_ACTIONS])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget('WebMonitoring for delete');

@@ -26,7 +26,7 @@ $parent_lld_link = null;
 if ($item['discovered']) {
 	$parent_lld = $item['discoveryRule'] ?: $item['discoveryRulePrototype'];
 
-	$discovered_url = (new CUrl('zabbix.php'))
+	$discovered_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'item.prototype.edit')
 		->setArgument('context', $item['context'])
@@ -701,14 +701,14 @@ $custom_timeout_enabled = $item['custom_timeout'] == ZBX_ITEM_CUSTOM_TIMEOUT_ENA
 
 if ($data['can_edit_source_timeouts'] && (!$readonly || !$custom_timeout_enabled)) {
 	$edit_source_timeouts_link = $data['host']['proxyid']
-		? (new CLink(_('Timeouts'), (new CUrl('zabbix.php'))
+		? (new CLink(_('Timeouts'), (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'proxy.edit')
 			->setArgument('proxyid', $data['host']['proxyid'])
 			->getUrl()
 		))->addClass(ZBX_STYLE_LINK)
 		: (new CLink(_('Timeouts'),
-			(new CUrl('zabbix.php'))->setArgument('action', 'timeouts.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'timeouts.edit')
 		))
 			->addClass(ZBX_STYLE_LINK)
 			->setTarget('_blank');

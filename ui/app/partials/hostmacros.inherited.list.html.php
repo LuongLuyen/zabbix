@@ -39,7 +39,7 @@ else {
 	}
 
 	if (CWebUser::getType() == USER_TYPE_SUPER_ADMIN) {
-		$link = (new CLink(_('configure'), (new CUrl('zabbix.php'))
+		$link = (new CLink(_('configure'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'macros.edit')
 				->getUrl()
 			))
@@ -190,7 +190,7 @@ else {
 
 		if (array_key_exists('template', $macro)) {
 			if ($macro['template']['rights'] == PERM_READ_WRITE) {
-				$template_url = (new CUrl('zabbix.php'))
+				$template_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'template.edit')
 					->setArgument('templateid', $macro['template']['templateid'])

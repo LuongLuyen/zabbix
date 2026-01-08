@@ -42,7 +42,7 @@ class testPageProblems extends CWebTest {
 		];
 	}
 
-	const URL = 'zabbix.php?action=problem.view&filter_reset=1';
+	const URL = 'sdnet.php?action=problem.view&filter_reset=1';
 	protected static $time;
 
 	public function prepareProblemsData() {
@@ -1666,7 +1666,7 @@ class testPageProblems extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageProblems_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=problem.view&filter_reset=1&sort=clock&sortorder=ASC');
+		$this->page->login()->open('sdnet.php?action=problem.view&filter_reset=1&sort=clock&sortorder=ASC');
 		$form = CFilterElement::find()->one()->getForm();
 		$table = $this->query('class:list-table')->asTable()->waitUntilPresent()->one();
 
@@ -2045,7 +2045,7 @@ class testPageProblems extends CWebTest {
 			$row->query('link', $popup_row['button'])->one()->click();
 			$this->page->waitUntilReady();
 			$this->page->assertHeader($popup_row['header']);
-			$this->page->open('zabbix.php?action=problem.view')->waitUntilReady();
+			$this->page->open('sdnet.php?action=problem.view')->waitUntilReady();
 		}
 	}
 

@@ -42,7 +42,7 @@ $html_page = (new CHtmlPage())
 	)
 	->setNavigation(getHostNavigation('triggers', $this->data['hostid'], $this->data['parent_discoveryid']));
 
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'trigger.prototype.list')
 	->setArgument('parent_discoveryid', $data['parent_discoveryid'])
 	->setArgument('context', $data['context'])
@@ -87,7 +87,7 @@ foreach ($data['triggers'] as $trigger) {
 
 	if ($trigger['flags'] & ZBX_FLAG_DISCOVERY_CREATED) {
 		$description[] = (new CLink($data['source_link_data']['name'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'trigger.prototype.edit')
 				->setArgument('parent_discoveryid', $data['source_link_data']['parent_itemid'])
@@ -101,7 +101,7 @@ foreach ($data['triggers'] as $trigger) {
 		$description[] = NAME_DELIMITER;
 	}
 
-	$trigger_url = (new CUrl('zabbix.php'))
+	$trigger_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'trigger.prototype.edit')
 		->setArgument('parent_discoveryid', $data['parent_discoveryid'])
@@ -121,7 +121,7 @@ foreach ($data['triggers'] as $trigger) {
 				implode(', ', array_column($dep_trigger['hosts'], 'name')).NAME_DELIMITER.$dep_trigger['description'];
 
 			if ($dep_trigger['flags'] & ZBX_FLAG_DISCOVERY_PROTOTYPE) {
-				$dep_trigger_prototype_url = (new CUrl('zabbix.php'))
+				$dep_trigger_prototype_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'trigger.prototype.edit')
 					->setArgument('triggerid', $dep_trigger['triggerid'])
@@ -134,7 +134,7 @@ foreach ($data['triggers'] as $trigger) {
 					->addClass(ZBX_STYLE_LINK_ALT);
 			}
 			elseif ($dep_trigger['flags'] == ZBX_FLAG_DISCOVERY_NORMAL) {
-				$dep_trigger_url = (new CUrl('zabbix.php'))
+				$dep_trigger_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'trigger.edit')
 					->setArgument('triggerid', $dep_trigger['triggerid'])

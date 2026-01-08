@@ -63,7 +63,7 @@ class testFormTabIndicators extends CWebTest {
 			// #0 Template configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=template.list',
+					'url' => 'sdnet.php?action=template.list',
 					'form' => 'name:templatesForm',
 					'close_dialog' => true,
 					'tabs' => [
@@ -118,7 +118,7 @@ class testFormTabIndicators extends CWebTest {
 			// #1 Host configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'form' => 'id:host-form',
 					'create_button' => 'Create host',
 					'tabs' => [
@@ -245,7 +245,7 @@ class testFormTabIndicators extends CWebTest {
 			// #3 Item configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]=10084',
+					'url' => 'sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]=10084',
 					'create_button' => 'Create item',
 					'form' => 'name:itemForm',
 					'close_dialog' => true,
@@ -275,7 +275,7 @@ class testFormTabIndicators extends CWebTest {
 			[
 				[
 					// Zabbix server, Discovery rule => Block devices discovery
-					'url' => 'zabbix.php?action=item.prototype.list&parent_discoveryid=66355&context=host',
+					'url' => 'sdnet.php?action=item.prototype.list&parent_discoveryid=66355&context=host',
 					'create_button' => 'Create item prototype',
 					'form' => 'name:itemForm',
 					'close_dialog' => true,
@@ -304,7 +304,7 @@ class testFormTabIndicators extends CWebTest {
 			// #5 Trigger configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D=40001&context=host',
+					'url' => 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D=40001&context=host',
 					'create_button' => 'Create trigger',
 					'form' => 'id:trigger-edit',
 					'close_dialog' => true,
@@ -340,7 +340,7 @@ class testFormTabIndicators extends CWebTest {
 			// #6 Trigger prototype configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=trigger.prototype.list&parent_discoveryid=133800&context=host',
+					'url' => 'sdnet.php?action=trigger.prototype.list&parent_discoveryid=133800&context=host',
 					'create_button' => 'Create trigger prototype',
 					'form' => 'id:trigger-edit',
 					'close_dialog' => true,
@@ -546,7 +546,7 @@ class testFormTabIndicators extends CWebTest {
 			// #10 Proxy configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'create_button' => 'Create proxy',
 					'form' => 'id:proxy-form',
 					'close_dialog' => true,
@@ -566,7 +566,7 @@ class testFormTabIndicators extends CWebTest {
 			// #11 Authentication configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=authentication.edit',
+					'url' => 'sdnet.php?action=authentication.edit',
 					'form' => 'id:authentication-form',
 					'tabs' => [
 						[
@@ -611,7 +611,7 @@ class testFormTabIndicators extends CWebTest {
 			// #12 User configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=user.edit',
+					'url' => 'sdnet.php?action=user.edit',
 					'form' => 'name:user_form',
 					'tabs' => [
 						[
@@ -633,7 +633,7 @@ class testFormTabIndicators extends CWebTest {
 			// #13 Media type configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=mediatype.list',
+					'url' => 'sdnet.php?action=mediatype.list',
 					'create_button' => 'Create media type',
 					'form' => 'id:media-type-form',
 					'close_dialog' => true,
@@ -661,7 +661,7 @@ class testFormTabIndicators extends CWebTest {
 			// #14 Graph widget configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=dashboard.view',
+					'url' => 'sdnet.php?action=dashboard.view',
 					'form' => 'id:widget-form',
 					'widget_type' => 'Graph',
 					'close_dialog' => true,
@@ -724,7 +724,7 @@ class testFormTabIndicators extends CWebTest {
 			// #15 Pie chart widget configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=dashboard.view',
+					'url' => 'sdnet.php?action=dashboard.view',
 					'form' => 'id:widget-form',
 					'widget_type' => 'Pie chart',
 					'close_dialog' => true,
@@ -789,7 +789,7 @@ class testFormTabIndicators extends CWebTest {
 			// #17 User profile configuration form tab data.
 			[
 				[
-					'url' => 'zabbix.php?action=userprofile.notification.edit',
+					'url' => 'sdnet.php?action=userprofile.notification.edit',
 					'form' => 'id:userprofile-notification-form',
 					'tabs' => [
 						[
@@ -832,14 +832,14 @@ class testFormTabIndicators extends CWebTest {
 		$this->page->login()->open($data['url'])->waitUntilReady();
 
 		// Open widget configuration form if indicator check is performed on dashboard.
-		if ($data['url'] === 'zabbix.php?action=dashboard.view') {
+		if ($data['url'] === 'sdnet.php?action=dashboard.view') {
 			$this->query('class:js-widget-edit')->one()->click();
 			COverlayDialogElement::find()->asForm()->one()->waitUntilReady();
 			$form = $this->query($data['form'])->asForm()->one()->waitUntilVisible();
 			$form->fill(['Type' => CFormElement::RELOADABLE_FILL($data['widget_type'])]);
 			$form->invalidate();
 		}
-		elseif ($data['url'] === 'zabbix.php?action=template.list') {
+		elseif ($data['url'] === 'sdnet.php?action=template.list') {
 			$this->query('button:Create template')->one()->click();
 			$form = COverlayDialogElement::find()->asForm()->waitUntilReady()->one();
 		}
@@ -890,7 +890,7 @@ class testFormTabIndicators extends CWebTest {
 	}
 
 	public function testFormTabIndicators_CheckActionOperationsCounter() {
-		$this->page->login()->open('zabbix.php?action=action.list&eventsource=0')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=action.list&eventsource=0')->waitUntilReady();
 		$this->query('button:Create action')->one()->click()->waitUntilReady();
 
 		// Open Operations tab and check indicator value.
@@ -941,7 +941,7 @@ class testFormTabIndicators extends CWebTest {
 			]
 		];
 
-		$this->page->login()->open('zabbix.php?action=usergroup.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=usergroup.edit')->waitUntilReady();
 		$tag_table = $this->query('id:tag-filter-table')->one();
 
 		// Check status indicator in Permissions tab.
@@ -987,7 +987,7 @@ class testFormTabIndicators extends CWebTest {
 	}
 
 	public function testFormTabIndicators_CheckServiceIndicators() {
-		$this->page->login()->open('zabbix.php?action=service.list.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=service.list.edit')->waitUntilReady();
 
 		// Check status indicator in Child services tab.
 		$this->query('button:Create service')->one()->waitUntilClickable()->click();

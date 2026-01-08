@@ -208,7 +208,7 @@ class CControllerTemplateList extends CController {
 		CPagerHelper::savePage('template.list', $page_num);
 		$data['page'] = $page_num;
 		$data['paging'] = CPagerHelper::paginate($page_num, $data['templates'], $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		$response = new CControllerResponseData($data);

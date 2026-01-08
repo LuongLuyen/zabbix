@@ -209,7 +209,7 @@ if ($data['source'] === 'reports') {
 		->setEnabled($data['allowed_edit']);
 
 	$cancel_button = (new CRedirectButton(_('Cancel'),
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'scheduledreport.list')
 			->setArgument('page', CPagerHelper::loadPage('scheduledreport.list', null))
 	))->setId('cancel');
@@ -223,7 +223,7 @@ if ($data['source'] === 'reports') {
 				->setEnabled($data['allowed_edit']),
 			$test_button,
 			(new CRedirectButton(_('Delete'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'scheduledreport.delete')
 					->setArgument('reportids', [$data['reportid']])
 					->setArgument(CSRF_TOKEN_NAME, CCsrfTokenHelper::get('scheduledreport')),

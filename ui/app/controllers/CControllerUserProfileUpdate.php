@@ -59,7 +59,7 @@ class CControllerUserProfileUpdate extends CControllerUserUpdateGeneral {
 			switch ($result) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'userprofile.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'userprofile.edit')
 					);
 					$response->setFormData($this->getInputAll());
 					CMessageHelper::setErrorTitle(_('Cannot update user'));
@@ -116,7 +116,7 @@ class CControllerUserProfileUpdate extends CControllerUserUpdateGeneral {
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))->setArgument('action', 'userprofile.edit')
+				(new CUrl('sdnet.php'))->setArgument('action', 'userprofile.edit')
 			);
 			$response->setFormData($this->getInputAll());
 			CMessageHelper::setErrorTitle(_('Cannot update user'));

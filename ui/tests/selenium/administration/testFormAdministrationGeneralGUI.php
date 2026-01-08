@@ -23,7 +23,7 @@ require_once __DIR__.'/../common/testFormAdministrationGeneral.php';
  */
 class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 
-	public $config_link = 'zabbix.php?action=gui.edit';
+	public $config_link = 'sdnet.php?action=gui.edit';
 	public $form_selector = 'xpath://form[contains(@action, "gui.update")]';
 
 	public $default_values = [
@@ -71,7 +71,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 	];
 
 	public function testFormAdministrationGeneralGUI_CheckLayout() {
-		$this->page->login()->open('zabbix.php?action=gui.edit');
+		$this->page->login()->open('sdnet.php?action=gui.edit');
 		$this->page->assertTitle('Configuration of GUI');
 		$this->page->assertHeader('GUI');
 
@@ -920,7 +920,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 					'field' => [
 						'Default theme' => 'High-contrast dark'
 					],
-					'link' => 'zabbix.php?action=template.list&filter_name=cisco&filter_set=1',
+					'link' => 'sdnet.php?action=template.list&filter_name=cisco&filter_set=1',
 					'color' => 'rgba(224, 224, 224, 1)'
 				]
 			],
@@ -929,7 +929,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 					'field' => [
 						'Default theme' => 'High-contrast light'
 					],
-					'link' => 'zabbix.php?action=template.list&filter_name=cisco&filter_set=1',
+					'link' => 'sdnet.php?action=template.list&filter_name=cisco&filter_set=1',
 					'color' => 'rgba(85, 85, 85, 1)'
 				]
 			],
@@ -938,7 +938,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 					'field' => [
 						'Default theme' => 'Dark'
 					],
-					'link' => 'zabbix.php?action=template.list&filter_name=cisco&filter_set=1',
+					'link' => 'sdnet.php?action=template.list&filter_name=cisco&filter_set=1',
 					'color' => 'rgba(105, 128, 141, 1)'
 				]
 			],
@@ -947,7 +947,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 					'field' => [
 						'Limit for search and filter results' => '2'
 					],
-					'link' => 'zabbix.php?action=template.list&filter_name=cisco&filter_set=1',
+					'link' => 'sdnet.php?action=template.list&filter_name=cisco&filter_set=1',
 					'row_count' => 2
 				]
 			],
@@ -956,7 +956,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 					'field' => [
 						'Max count of elements to show inside table cell' => '2'
 					],
-					'link' => 'zabbix.php?action=templategroup.list&filter_name=Templates&filter_set=1',
+					'link' => 'sdnet.php?action=templategroup.list&filter_name=Templates&filter_set=1',
 					'element_count' => 2
 				]
 			],
@@ -965,7 +965,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 					'field' => [
 						'Time filter default period' => '5h'
 					],
-					'link' => 'zabbix.php?action=dashboard.view&dashboardid=2'
+					'link' => 'sdnet.php?action=dashboard.view&dashboardid=2'
 				]
 			],
 			[
@@ -973,7 +973,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 					'field' => [
 						'Max period for time selector' => '1y'
 					],
-					'link' => 'zabbix.php?action=dashboard.view&dashboardid=2'
+					'link' => 'sdnet.php?action=dashboard.view&dashboardid=2'
 				]
 			]
 		];
@@ -983,7 +983,7 @@ class testFormAdministrationGeneralGUI extends testFormAdministrationGeneral {
 	 * @dataProvider getCheckSavedValuesData
 	 */
 	public function testFormAdministrationGeneralGUI_CheckSavedValues($data) {
-		$this->page->login()->open('zabbix.php?action=gui.edit');
+		$this->page->login()->open('sdnet.php?action=gui.edit');
 		$form = $this->query($this->form_selector)->waitUntilReady()->asForm()->one();
 		// Reset form in case of previous test case.
 		$this->resetConfiguration($form, $this->default_values, 'Reset defaults');

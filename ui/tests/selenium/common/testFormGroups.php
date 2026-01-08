@@ -419,7 +419,7 @@ class testFormGroups extends CWebTest {
 		$title = 'New '.$this->object.' group';
 		$this->assertEquals($title, COverlayDialogElement::find()->one()->waitUntilReady()->getTitle());
 
-		$this->assertEquals(PHPUNIT_URL.'zabbix.php?action=popup&popup='.$this->object.'group.edit'.'&groupid='.$groupid, $this->page->getCurrentUrl());
+		$this->assertEquals(PHPUNIT_URL.'sdnet.php?action=popup&popup='.$this->object.'group.edit'.'&groupid='.$groupid, $this->page->getCurrentUrl());
 		$this->assertEquals(['Add', 'Cancel'], $footer->query('button')->all()->filter(CElementFilter::CLICKABLE)->asText());
 		$form->fill(CTestArrayHelper::get($data, 'fields', []));
 		$form->submit();
@@ -831,7 +831,7 @@ class testFormGroups extends CWebTest {
 		$this->assertMessage(TEST_GOOD, ucfirst($this->object).' group updated');
 
 		// Check group and tag permissions in user group.
-		$this->page->open('zabbix.php?action=usergroup.edit&usrgrpid='.self::$user_groupid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=usergroup.edit&usrgrpid='.self::$user_groupid)->waitUntilReady();
 		$group_form = $this->query('id:user-group-form')->asForm()->one();
 		$group_form->selectTab(ucfirst($this->object).' permissions');
 		$group_form->getField('Permissions')->asMultifieldTable()->checkValue($data['groups_after']);

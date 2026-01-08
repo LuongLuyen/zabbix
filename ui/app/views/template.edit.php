@@ -60,7 +60,7 @@ if ($data['linked_templates']) {
 
 	foreach ($data['linked_templates'] as $template) {
 		if (array_key_exists($template['templateid'], $data['writable_templates'])) {
-			$template_url = (new CUrl('zabbix.php'))
+			$template_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'template.edit')
 				->setArgument('templateid', $template['templateid'])

@@ -1025,7 +1025,7 @@ class testDashboardPieChartWidget extends testWidgets {
 			$dashboard->save();
 		}
 
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_id);
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_id);
 
 		// TODO: temporarily commented out due webdriver issue #351858989, alert is not displayed while leaving page during test execution
 		// Check that alert is present in case of saving the widget without saving the dashboard.
@@ -1327,7 +1327,7 @@ class testDashboardPieChartWidget extends testWidgets {
 	 * Tests that only the correct item types can be used in the Pie chart widget.
 	 */
 	public function testDashboardPieChartWidget_CheckAvailableItems() {
-		$this->checkAvailableItems('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_id, 'Pie chart');
+		$this->checkAvailableItems('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_id, 'Pie chart');
 	}
 
 	/**
@@ -1707,7 +1707,7 @@ class testDashboardPieChartWidget extends testWidgets {
 
 		$id = $dashboard_id === null ? self::$dashboard_id : $dashboard_id;
 
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.$id)->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.$id)->waitUntilReady();
 
 		$dashboard = CDashboardElement::find()->one();
 		if ($page) {

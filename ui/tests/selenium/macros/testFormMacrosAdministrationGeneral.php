@@ -69,7 +69,7 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 	}
 
 	private function openGlobalMacros() {
-		$this->zbxTestLogin('zabbix.php?action=macros.edit');
+		$this->zbxTestLogin('sdnet.php?action=macros.edit');
 
 		$this->zbxTestCheckTitle('Configuration of macros');
 		$this->zbxTestCheckHeader('Macros');
@@ -662,7 +662,7 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 	 * @dataProvider getCreateSecretMacrosData
 	 */
 	public function testFormMacrosAdministrationGeneral_CreateSecretMacros($data) {
-		$this->page->login()->open('zabbix.php?action=macros.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=macros.edit')->waitUntilReady();
 		$this->fillMacros([$data['macro_fields']]);
 
 		// Check that value field is filled correctly.
@@ -758,7 +758,7 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 	 * @dataProvider getUpdateSecretMacrosData
 	 */
 	public function testFormMacrosAdministrationGeneral_UpdateSecretMacros($data) {
-		$this->page->login()->open('zabbix.php?action=macros.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=macros.edit')->waitUntilReady();
 		$this->fillMacros([$data]);
 		$this->query('button:Update')->one()->click();
 
@@ -801,7 +801,7 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 	 * @dataProvider getRevertSecretMacrosData
 	 */
 	public function testFormMacrosAdministrationGeneral_RevertSecretMacroChanges($data) {
-		$this->page->login()->open('zabbix.php?action=macros.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=macros.edit')->waitUntilReady();
 
 		$sql = 'SELECT * FROM globalmacro WHERE macro in ('.CDBHelper::escape($data['macro_fields']['macro']).')';
 		$old_values = CDBHelper::getRow($sql);
@@ -843,7 +843,7 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 	 */
 	public function testFormMacrosAdministrationGeneral_CreateVaultMacros($data) {
 		$this->selectVault($data['vault']);
-		$this->page->login()->open('zabbix.php?action=macros.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=macros.edit')->waitUntilReady();
 		$this->fillMacros([$data['macro_fields']]);
 		$this->query('button:Update')->one()->click();
 		if ($data['expected'] == TEST_BAD) {
@@ -881,7 +881,7 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 	 */
 	public function testFormMacrosAdministrationGeneral_UpdateVaultMacros($data) {
 		$this->selectVault($data['vault']);
-		$this->page->login()->open('zabbix.php?action=macros.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=macros.edit')->waitUntilReady();
 		$this->fillMacros([$data['fields']]);
 		$this->query('button:Update')->one()->click();
 		$this->assertMessage(TEST_GOOD, 'Macros updated');
@@ -916,7 +916,7 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 
 		$this->page->login();
 
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 
 		// Check in setting what Vault is enabled.
 		$setting_form = $this->query('name:otherForm')->asForm()->one();
@@ -925,16 +925,16 @@ class testFormMacrosAdministrationGeneral extends testFormMacros {
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
 		// Try to create macros with Vault type different from settings.
-		$this->page->open('zabbix.php?action=macros.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=macros.edit')->waitUntilReady();
 		$this->fillMacros([$hashicorp['fields']]);
 		$this->query('button:Update')->one()->click();
 		$this->assertMessage(TEST_BAD, 'Cannot update macros', $hashicorp['error']);
 
 		// Change Vault in settings to correct one and create macros with this Vault.
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$setting_form->fill(['Vault provider'=> 'HashiCorp Vault'])->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
-		$this->page->open('zabbix.php?action=macros.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=macros.edit')->waitUntilReady();
 		$this->fillMacros([$hashicorp['fields']]);
 		$this->query('button:Update')->one()->click();
 		$this->assertMessage(TEST_GOOD, 'Macros updated');

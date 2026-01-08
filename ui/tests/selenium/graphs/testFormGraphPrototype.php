@@ -28,7 +28,7 @@ require_once __DIR__.'/../common/testFormGraphs.php';
 class testFormGraphPrototype extends testFormGraphs {
 
 	protected $prototype = true;
-	protected $url = 'zabbix.php?action=graph.prototype.list&parent_discoveryid='.self::LLDID.'&context=host';
+	protected $url = 'sdnet.php?action=graph.prototype.list&parent_discoveryid='.self::LLDID.'&context=host';
 	protected $formid = 'graph-prototype-form';
 
 	public function prepareGraphPrototypesData() {
@@ -666,7 +666,7 @@ class testFormGraphPrototype extends testFormGraphs {
 	 */
 	public function testFormGraphPrototype_CheckAvailableItems() {
 		$lldid = CDBHelper::getValue('SELECT itemid FROM items WHERE name='.zbx_dbstr(self::LLD_WITH_ITEMS));
-		$url = 'zabbix.php?action=popup&popup=graph.prototype.edit&context=host&parent_discoveryid='.$lldid;
+		$url = 'sdnet.php?action=popup&popup=graph.prototype.edit&context=host&parent_discoveryid='.$lldid;
 
 		$this->checkAvailableItems($url);
 	}

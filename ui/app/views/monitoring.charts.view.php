@@ -42,7 +42,7 @@ $html_page = (new CHtmlPage())
 	);
 
 $filter = (new CFilter())
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'charts.view'))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'charts.view'))
 	->setProfile($data['timeline']['profileIdx'], $data['timeline']['profileIdx2'])
 	->setActiveTab($data['active_tab'])
 	->addTimeSelector($data['timeline']['from'], $data['timeline']['to'], $web_layout_mode != ZBX_LAYOUT_KIOSKMODE,

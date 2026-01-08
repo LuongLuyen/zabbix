@@ -194,7 +194,7 @@ class testPageApiTokensAdministrationGeneral extends testPageApiTokens {
 	}
 
 	public function testPageApiTokensAdministrationGeneral_ChangeStatus() {
-		$this->checkStatusChange('zabbix.php?action=token.list', self::STATUS_CHANGE_TOKEN);
+		$this->checkStatusChange('sdnet.php?action=token.list', self::STATUS_CHANGE_TOKEN);
 	}
 
 	public function getFilterData() {
@@ -583,10 +583,10 @@ class testPageApiTokensAdministrationGeneral extends testPageApiTokens {
 			}
 		}
 
-		$this->checkSorting($data, 'zabbix.php?action=token.list');
+		$this->checkSorting($data, 'sdnet.php?action=token.list');
 	}
 
 	public function testPageApiTokensAdministrationGeneral_Delete() {
-		$this->checkDelete('zabbix.php?action=token.list', self::DELETE_TOKEN);
+		$this->checkDelete('sdnet.php?action=token.list', self::DELETE_TOKEN);
 	}
 }

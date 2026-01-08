@@ -194,7 +194,7 @@ class testDashboardGaugeWidget extends testWidgets {
 	}
 
 	public function testDashboardGaugeWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dialog = CDashboardElement::find()->one()->edit()->addWidget();
 		$form = $dialog->asForm();
 		$this->assertEquals('Add widget', $dialog->getTitle());
@@ -934,7 +934,7 @@ class testDashboardGaugeWidget extends testWidgets {
 			$old_hash = CDBHelper::getHash(self::SQL);
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -1090,7 +1090,7 @@ class testDashboardGaugeWidget extends testWidgets {
 	protected function checkNoChanges($cancel = false, $create = false, $save_dashboard = true) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 		$dashboard->edit();
@@ -1154,7 +1154,7 @@ class testDashboardGaugeWidget extends testWidgets {
 	}
 
 	public function testDashboardGaugeWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->waitUntilReady()->edit();
 		$widget = $dashboard->getWidget(self::DELETE_GAUGE);
 		$this->assertTrue($widget->isEditable());
@@ -1177,7 +1177,7 @@ class testDashboardGaugeWidget extends testWidgets {
 	 * Test function for assuring that text, log, binary and char items are not available in Gauge widget.
 	 */
 	public function testDashboardGaugeWidget_CheckAvailableItems() {
-		$url = 'zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid;
+		$url = 'sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid;
 		$this->checkAvailableItems($url, 'Gauge');
 	}
 
@@ -1297,7 +1297,7 @@ class testDashboardGaugeWidget extends testWidgets {
 	 * @dataProvider getScreenshotsData
 	 */
 	public function testDashboardGaugeWidget_Screenshots($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->waitUntilReady();
 		$dashboard->selectPage('Screenshot page');
 		$dashboard->invalidate();

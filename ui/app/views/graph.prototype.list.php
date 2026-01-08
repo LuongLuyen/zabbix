@@ -40,7 +40,7 @@ $html_page = (new CHtmlPage())
 	)
 	->setNavigation(getHostNavigation('graphs', $data['hostid'], $data['parent_discoveryid']));
 
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'graph.prototype.list')
 	->setArgument('context', $data['context'])
 	->setArgument('parent_discoveryid', $data['parent_discoveryid'])
@@ -80,7 +80,7 @@ foreach ($data['graphs'] as $graph) {
 				$hosts[] = ', ';
 			}
 
-			$host_url = (new CUrl('zabbix.php'))
+			$host_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', $data['context'] === 'host' ? 'host.edit' : 'template.edit')
 				->setArgument($data['context'] === 'host' ? 'hostid' : 'templateid', $host['hostid'])
@@ -104,7 +104,7 @@ foreach ($data['graphs'] as $graph) {
 
 	if ($graph['flags'] & ZBX_FLAG_DISCOVERY_CREATED) {
 		$name[] = (new CLink($data['source_link_data']['name'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'graph.prototype.edit')
 				->setArgument('parent_discoveryid', $data['source_link_data']['parent_itemid'])
@@ -118,7 +118,7 @@ foreach ($data['graphs'] as $graph) {
 		$name[] = NAME_DELIMITER;
 	}
 
-	$name[] = new CLink($graph['name'], (new CUrl('zabbix.php'))
+	$name[] = new CLink($graph['name'], (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'graph.prototype.edit')
 		->setArgument('context', $data['context'])

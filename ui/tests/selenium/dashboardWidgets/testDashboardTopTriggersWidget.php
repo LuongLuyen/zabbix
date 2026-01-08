@@ -292,7 +292,7 @@ class testDashboardTopTriggersWidget extends testWidgets {
 	}
 
 	public function testDashboardTopTriggersWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dialog = $dashboard->edit()->addWidget();
 		$this->assertEquals('Add widget', $dialog->getTitle());
@@ -655,7 +655,7 @@ class testDashboardTopTriggersWidget extends testWidgets {
 	public function testDashboardTopTriggersWidget_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->getWidget(self::$update_widget)->edit()->submit();
 		$dashboard->save();
@@ -683,7 +683,7 @@ class testDashboardTopTriggersWidget extends testWidgets {
 			$data['fields']['Name'] = CTestArrayHelper::get($data, 'fields.Name', 'Top triggers ' . microtime());
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -796,7 +796,7 @@ class testDashboardTopTriggersWidget extends testWidgets {
 		$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -852,7 +852,7 @@ class testDashboardTopTriggersWidget extends testWidgets {
 	}
 
 	public function testDashboardTopTriggersWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::DELETE_WIDGET);
 		$dashboard->deleteWidget(self::DELETE_WIDGET);
@@ -1377,7 +1377,7 @@ class testDashboardTopTriggersWidget extends testWidgets {
 			}
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_data)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_data)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->waitUntilReady();
 
@@ -1414,14 +1414,14 @@ class testDashboardTopTriggersWidget extends testWidgets {
 		// Create problem.
 		CDBHelper::setTriggerProblem('First test trigger with tag priority', TRIGGER_VALUE_TRUE);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_data)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_data)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->waitUntilReady();
 
 		$data = [
 			'trigger_menu' => [
 				'VIEW' => [
-					'Problems' => 'zabbix.php?action=problem.view&filter_set=1&triggerids%5B%5D=99252',
+					'Problems' => 'sdnet.php?action=problem.view&filter_set=1&triggerids%5B%5D=99252',
 					'History' => [ 'Number of processes' => 'history.php?action=showgraph&itemids%5B%5D=42253']
 				],
 				'CONFIGURATION' => [
@@ -1431,18 +1431,18 @@ class testDashboardTopTriggersWidget extends testWidgets {
 			],
 			'host_menu' => [
 				'VIEW' => [
-					'Dashboards' => 'zabbix.php?action=host.dashboard.view&hostid=10084',
-					'Problems' => 'zabbix.php?action=problem.view&hostids%5B%5D=10084&filter_set=1',
-					'Latest data' => 'zabbix.php?action=latest.view&hostids%5B%5D=10084&filter_set=1',
-					'Graphs' => 'zabbix.php?action=charts.view&filter_hostids%5B%5D=10084&filter_set=1',
+					'Dashboards' => 'sdnet.php?action=host.dashboard.view&hostid=10084',
+					'Problems' => 'sdnet.php?action=problem.view&hostids%5B%5D=10084&filter_set=1',
+					'Latest data' => 'sdnet.php?action=latest.view&hostids%5B%5D=10084&filter_set=1',
+					'Graphs' => 'sdnet.php?action=charts.view&filter_hostids%5B%5D=10084&filter_set=1',
 					'Web' => 'menu-popup-item disabled',
 					'Inventory' => 'hostinventories.php?hostid=10084'
 				],
 				'CONFIGURATION' => [
-					'Host' => 'zabbix.php?action=popup&popup=host.edit&hostid=10084',
-					'Items' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
-					'Triggers' => 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
-					'Graphs' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
+					'Host' => 'sdnet.php?action=popup&popup=host.edit&hostid=10084',
+					'Items' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
+					'Triggers' => 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
+					'Graphs' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B%5D=10084&context=host',
 					'Discovery' => 'host_discovery.php?filter_set=1&filter_hostids%5B%5D=10084&context=host',
 					'Web' => 'httpconf.php?filter_set=1&filter_hostids%5B%5D=10084&context=host'
 				],

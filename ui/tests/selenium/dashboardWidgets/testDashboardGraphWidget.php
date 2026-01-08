@@ -278,7 +278,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * @browsers chrome
 	 */
 	public function testDashboardGraphWidget_FormLayout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$overlay = $dashboard->addWidget();
 		$dashboard->getWidget('Graph');
@@ -309,7 +309,7 @@ class testDashboardGraphWidget extends testWidgets {
 	protected function validate($data, $tab) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration(CTestArrayHelper::get($data, 'Widget name'));
 
 		$this->fillDatasets(CTestArrayHelper::get($data, 'Data set'));
@@ -1764,7 +1764,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardGraphWidget_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 
 		$this->fillForm($data, $form);
@@ -2066,7 +2066,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * @backup widget
 	 */
 	public function testDashboardGraphWidget_Update($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration(self::UPDATE_WIDGET);
 
 		$this->fillForm($data, $form);
@@ -2089,7 +2089,7 @@ class testDashboardGraphWidget extends testWidgets {
 	public function testDashboardGraphWidget_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration(self::DEFAULT_WIDGET);
 		$form->submit();
 		$this->saveGraphWidget(self::DEFAULT_WIDGET);
@@ -2383,7 +2383,7 @@ class testDashboardGraphWidget extends testWidgets {
 	public function testDashboardGraphWidget_cancelDashboardUpdate($data) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration(CTestArrayHelper::get($data, 'Existing widget', []));
 		$form->fill(CTestArrayHelper::get($data, 'main_fields', []));
 		$this->fillDataSets($data['Data set']);
@@ -2437,7 +2437,7 @@ class testDashboardGraphWidget extends testWidgets {
 	public function testDashboardGraphWidget_cancelWidgetEditing($data) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration(CTestArrayHelper::get($data, 'Existing widget', []));
 		$form->fill($data['main_fields']);
 		$this->fillDataSets($data['Data set']);
@@ -2462,7 +2462,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * Test deleting of graph widget.
 	 */
 	public function testDashboardGraphWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard->edit()->getWidget(self::DEFAULT_WIDGET);
 		$this->assertEquals(true, $widget->isEditable());
@@ -2485,7 +2485,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * Test disabled fields in "Data set" tab.
 	 */
 	public function testDashboardGraphWidget_DatasetDisabledFields() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 
 		foreach (['Line', 'Points', 'Staircase', 'Bar'] as $option) {
@@ -2522,7 +2522,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * Test "From" and "To" fields in tab "Time period" by setting 'Time period' to 'Custom'.
 	 */
 	public function testDashboardGraphWidget_TimePeriodDisabledFields() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 		$form->selectTab('Time period');
 		$fields = ['From', 'To'];
@@ -2544,7 +2544,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * Test enable/disable "Number of rows" field by check/uncheck "Show legend".
 	 */
 	public function testDashboardGraphWidget_LegendFieldValidation() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$fields = ['Rows', 'Number of rows', 'Display min/avg/max', 'Number of columns'];
 		$form = $this->openGraphWidgetConfiguration();
 		$form->selectTab('Legend');
@@ -2716,7 +2716,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * @dataProvider getSlidebarData
 	 */
 	public function testDashboardGraphWidget_LegendRangeControlsValidation($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 		$form->selectTab('Legend');
 
@@ -2745,7 +2745,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * Check "Displaying options" tab layout.
 	 */
 	public function testDashboardGraphWidget_DisplayingOptionsFieldValidation() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 		$form->selectTab('Displaying options');
 
@@ -2797,7 +2797,7 @@ class testDashboardGraphWidget extends testWidgets {
 	}
 
 	public function testDashboardGraphWidget_ProblemsDisabledFields() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 		$form->selectTab('Problems');
 
@@ -2869,7 +2869,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * @dataProvider getAxesDisabledFieldsData
 	 */
 	public function testDashboardGraphWidget_AxesDisabledFields($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 
 		$form->fill($data['Data set']);
@@ -2957,7 +2957,7 @@ class testDashboardGraphWidget extends testWidgets {
 			]
 		];
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = $this->openGraphWidgetConfiguration();
 
 		// Check hint next to the "Data set label" field.
@@ -2987,7 +2987,7 @@ class testDashboardGraphWidget extends testWidgets {
 	 * Test function for assuring that text, log, binary and char items are not available in Graph widget.
 	 */
 	public function testDashboardGraphWidget_CheckAvailableItems() {
-		$this->checkAvailableItems('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid, 'Graph');
+		$this->checkAvailableItems('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid, 'Graph');
 	}
 
 	/**

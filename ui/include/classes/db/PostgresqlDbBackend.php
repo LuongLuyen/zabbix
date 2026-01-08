@@ -53,7 +53,7 @@ class PostgresqlDbBackend extends DbBackend {
 		));
 
 		if (!$table_exists) {
-			$this->setError(_s('Unable to determine current Zabbix database version: %1$s.',
+			$this->setError(_s('Unable to determine current SDNet database version: %1$s.',
 				_s('the table "%1$s" was not found', 'dbversion')
 			));
 
@@ -87,7 +87,7 @@ class PostgresqlDbBackend extends DbBackend {
 		));
 
 		if ($row && $row['db_charset'] != ZBX_DB_POSTGRESQL_ALLOWED_CHARSET) {
-			$this->setWarning(_s('Incorrect default charset for Zabbix database: %1$s.',
+			$this->setWarning(_s('Incorrect default charset for SDNet database: %1$s.',
 				_s('"%1$s" instead "%2$s"', $row['db_charset'], ZBX_DB_POSTGRESQL_ALLOWED_CHARSET)
 			));
 			return false;

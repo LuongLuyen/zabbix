@@ -40,7 +40,7 @@ class CControllerRegExDelete extends CController {
 		$result = API::Regexp()->delete($regexids);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'regex.list')
+			(new CUrl('sdnet.php'))->setArgument('action', 'regex.list')
 		);
 
 		if ($result) {

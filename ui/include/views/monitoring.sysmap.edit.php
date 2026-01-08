@@ -137,7 +137,7 @@ foreach ($data['iconMaps'] as $iconMap) {
 	$icon_mapping->addOption(new CSelectOption($iconMap['iconmapid'], $iconMap['name']));
 }
 
-$icon_mapping_link = (new CLink(_('show icon mappings'), (new CUrl('zabbix.php'))
+$icon_mapping_link = (new CLink(_('show icon mappings'), (new CUrl('sdnet.php'))
 		->setArgument('action', 'iconmap.list')
 		->getUrl()
 	))

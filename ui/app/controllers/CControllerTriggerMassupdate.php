@@ -204,13 +204,13 @@ class CControllerTriggerMassupdate extends CController {
 				'parent_discoveryid' => $this->getInput('parent_discoveryid', 0),
 				'context' => $this->getInput('context'),
 				'location_url' => $this->hasInput('prototype')
-					? (new CUrl('zabbix.php'))
+					? (new CUrl('sdnet.php'))
 						->setArgument('action', 'trigger.prototype.list')
 						->setArgument('parent_discoveryid', $this->getInput('parent_discoveryid', 0))
 						->setArgument('uncheck', '1')
 						->setArgument('context', $this->getInput('context'))
 						->getUrl()
-					: (new CUrl('zabbix.php'))
+					: (new CUrl('sdnet.php'))
 						->setArgument('action', 'trigger.list')
 						->setArgument('uncheck', '1')
 						->setArgument('context', $this->getInput('context'))

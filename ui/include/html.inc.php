@@ -352,7 +352,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 	$list = new CList();
 
 	if ($is_template) {
-		$template_url = (new CUrl('zabbix.php'))
+		$template_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'template.edit')
 			->setArgument('templateid', $db_host['templateid'])
@@ -365,7 +365,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		}
 
 		$list->addItem(new CBreadcrumbs([
-			new CSpan(new CLink(_('All templates'), (new CUrl('zabbix.php'))->setArgument('action', 'template.list'))),
+			new CSpan(new CLink(_('All templates'), (new CUrl('sdnet.php'))->setArgument('action', 'template.list'))),
 			$template
 		]));
 
@@ -389,7 +389,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 				break;
 		}
 
-		$host_url = (new CUrl('zabbix.php'))
+		$host_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'host.edit')
 			->setArgument('hostid', $db_host['hostid'])
@@ -403,7 +403,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 
 		$list
 			->addItem(new CBreadcrumbs([new CSpan(new CLink(_('All hosts'),
-				(new CUrl('zabbix.php'))->setArgument('action', 'host.list'))), $host
+				(new CUrl('sdnet.php'))->setArgument('action', 'host.list'))), $host
 			]))
 			->addItem($status)
 			->addItem(getHostAvailabilityTable($db_host['interfaces']));
@@ -436,7 +436,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		// items
 		$items = new CSpan([
 			new CLink(_('Items'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'item.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$db_host['hostid']])
@@ -452,7 +452,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		// triggers
 		$triggers = new CSpan([
 			new CLink(_('Triggers'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'trigger.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$db_host['hostid']])
@@ -468,7 +468,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		// graphs
 		$graphs = new CSpan([
 			new CLink(_('Graphs'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'graph.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$db_host['hostid']])
@@ -485,7 +485,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		if ($is_template) {
 			$dashboards = new CSpan([
 				new CLink(_('Dashboards'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'template.dashboard.list')
 						->setArgument('templateid', $db_host['hostid'])
 				),
@@ -582,7 +582,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		// item prototypes
 		$item_prototypes = new CSpan([
 			new CLink(_('Item prototypes'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'item.prototype.list')
 					->setArgument('parent_discoveryid', $db_discovery_rule['itemid'])
 					->setArgument('context', $context)
@@ -597,7 +597,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		// trigger prototypes
 		$trigger_prototypes = new CSpan([
 			new CLink(_('Trigger prototypes'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'trigger.prototype.list')
 					->setArgument('parent_discoveryid', $db_discovery_rule['itemid'])
 					->setArgument('context', $context)
@@ -612,7 +612,7 @@ function getHostNavigation(string $current_element, $hostid, $lld_ruleid = 0): ?
 		// graph prototypes
 		$graph_prototypes = new CSpan([
 			new CLink(_('Graph prototypes'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'graph.prototype.list')
 					->setArgument('parent_discoveryid', $db_discovery_rule['itemid'])
 					->setArgument('context', $context)
@@ -675,7 +675,7 @@ function getSysmapNavigation($sysmapid, $name, $severity_min): CList {
 		(new CSpan())
 			->addClass(ZBX_STYLE_SELECTED)
 			->addItem(new CLink($name,
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'map.view')
 					->setArgument('sysmapid', $sysmapid)
 					->setArgument('severity_min', $severity_min)
@@ -691,7 +691,7 @@ function getSysmapNavigation($sysmapid, $name, $severity_min): CList {
 
 		foreach ($parent_sysmaps as $parent_sysmap) {
 			$parent_maps->addItem((new CSpan())->addItem(new CLink($parent_sysmap['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'map.view')
 					->setArgument('sysmapid', $parent_sysmap['sysmapid'])
 					->setArgument('severity_min', $severity_min)
@@ -952,11 +952,11 @@ function makePageFooter(bool $with_version = true): CTag {
  * @return array  Menu definition for CHtmlPage::setTitleSubmenu.
  */
 function getUserSettingsSubmenu(): array {
-	$profile_url = (new CUrl('zabbix.php'))
+	$profile_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'userprofile.edit')
 		->getUrl();
 
-	$notification = (new CUrl('zabbix.php'))
+	$notification = (new CUrl('sdnet.php'))
 		->setArgument('action', 'userprofile.notification.edit')
 		->getUrl();
 
@@ -966,7 +966,7 @@ function getUserSettingsSubmenu(): array {
 	];
 
 	if (CWebUser::checkAccess(CRoleHelper::ACTIONS_MANAGE_API_TOKENS)) {
-		$tokens_url = (new CUrl('zabbix.php'))
+		$tokens_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'user.token.list')
 			->getUrl();
 
@@ -986,47 +986,47 @@ function getUserSettingsSubmenu(): array {
  * @return array  Menu definition for CHtmlPage::setTitleSubmenu.
  */
 function getAdministrationGeneralSubmenu(): array {
-	$gui_url = (new CUrl('zabbix.php'))
+	$gui_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'gui.edit')
 		->getUrl();
 
-	$autoreg_url = (new CUrl('zabbix.php'))
+	$autoreg_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'autoreg.edit')
 		->getUrl();
 
-	$timeouts_url = (new CUrl('zabbix.php'))
+	$timeouts_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'timeouts.edit')
 		->getUrl();
 
-	$image_url = (new CUrl('zabbix.php'))
+	$image_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'image.list')
 		->getUrl();
 
-	$iconmap_url = (new CUrl('zabbix.php'))
+	$iconmap_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'iconmap.list')
 		->getUrl();
 
-	$regex_url = (new CUrl('zabbix.php'))
+	$regex_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'regex.list')
 		->getUrl();
 
-	$trigdisplay_url = (new CUrl('zabbix.php'))
+	$trigdisplay_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'trigdisplay.edit')
 		->getUrl();
 
-	$geomap_url = (new CUrl('zabbix.php'))
+	$geomap_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'geomaps.edit')
 		->getUrl();
 
-	$modules_url = (new CUrl('zabbix.php'))
+	$modules_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'module.list')
 		->getUrl();
 
-	$connectors_url = (new CUrl('zabbix.php'))
+	$connectors_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'connector.list')
 		->getUrl();
 
-	$miscconfig_url = (new CUrl('zabbix.php'))
+	$miscconfig_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'miscconfig.edit')
 		->getUrl();
 

@@ -377,7 +377,7 @@ class testFormItem extends CLegacyWebTest {
 				$templateid = $template_info['templateid'];
 		}
 
-		$this->page->login()->open('zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context='.$context);
+		$this->page->login()->open('sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context='.$context);
 		$this->page->assertTitle('Configuration of items');
 		$this->page->assertHeader('Items');
 
@@ -2267,7 +2267,7 @@ class testFormItem extends CLegacyWebTest {
 	}
 
 	public function testFormItem_HousekeeperUpdate() {
-		$this->zbxTestLogin('zabbix.php?action=housekeeping.edit');
+		$this->zbxTestLogin('sdnet.php?action=housekeeping.edit');
 
 		$this->zbxTestCheckboxSelect('hk_history_global', false);
 		$this->zbxTestCheckboxSelect('hk_trends_global', false);
@@ -2281,7 +2281,7 @@ class testFormItem extends CLegacyWebTest {
 		$this->zbxTestAssertElementNotPresentId('history_mode_hint');
 		$this->zbxTestAssertElementNotPresentId('trends_mode_hint');
 
-		$this->zbxTestOpen('zabbix.php?action=housekeeping.edit');
+		$this->zbxTestOpen('sdnet.php?action=housekeeping.edit');
 
 		$this->zbxTestCheckboxSelect('hk_history_global');
 		$this->zbxTestInputType('hk_history', '99d');
@@ -2303,7 +2303,7 @@ class testFormItem extends CLegacyWebTest {
 		$this->zbxTestAssertElementText("//div[@class='overlay-dialogue wordbreak'][2]", 'Overridden by global housekeeping settings (455d)');
 		$dialog->close();
 
-		$this->zbxTestOpen('zabbix.php?action=housekeeping.edit');
+		$this->zbxTestOpen('sdnet.php?action=housekeeping.edit');
 
 		$this->zbxTestInputType('hk_history', 90);
 		$this->zbxTestCheckboxSelect('hk_history_global', false);

@@ -460,7 +460,7 @@ class testTemplateTriggerDependencies extends testTriggerDependencies {
 	 * @dataProvider getTriggerCreateData
 	 */
 	public function testTemplateTriggerDependencies_TriggerCreate($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.
 				self::$templateids['Template with everything'].'&context=template'
 		)->waitUntilReady();
 		$this->query('button:Create trigger')->one()->click();
@@ -510,7 +510,7 @@ class testTemplateTriggerDependencies extends testTriggerDependencies {
 	 * @dataProvider getTriggerCreateData
 	 */
 	public function testTemplateTriggerDependencies_TriggerUpdate($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.
 				self::$templateids['Template with everything'].'&context=template'
 		)->waitUntilReady();
 		$this->query('link:Template trigger update')->one()->click();
@@ -556,7 +556,7 @@ class testTemplateTriggerDependencies extends testTriggerDependencies {
 	 * @dataProvider getTriggerCreateData
 	 */
 	public function testTemplateTriggerDependencies_LinkedTriggerUpdate($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.
 				self::$templateids['Template with everything'].'&context=template'
 		)->waitUntilReady();
 		$this->query('link:trigger template linked update')->one()->click();
@@ -608,7 +608,7 @@ class testTemplateTriggerDependencies extends testTriggerDependencies {
 	 * @dataProvider getTriggerPrototypeCreateData
 	 */
 	public function testTemplateTriggerDependencies_TriggerPrototypeCreate($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.prototype.list&parent_discoveryid='.
+		$this->page->login()->open('sdnet.php?action=trigger.prototype.list&parent_discoveryid='.
 				self::$template_druleids['Template with everything:everything_drule'].'&context=template'
 		)->waitUntilReady();
 		$this->query('button:Create trigger prototype')->one()->click();
@@ -627,7 +627,7 @@ class testTemplateTriggerDependencies extends testTriggerDependencies {
 	 * @dataProvider getTriggerPrototypeCreateData
 	 */
 	public function testTemplateTriggerDependencies_TriggerPrototypeUpdate($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.prototype.list&parent_discoveryid='.
+		$this->page->login()->open('sdnet.php?action=trigger.prototype.list&parent_discoveryid='.
 				self::$template_druleids['Template with everything:everything_drule'].'&context=template'
 		)->waitUntilReady();
 		$this->query('link:Template trigger prototype update{#KEY}')->one()->click();

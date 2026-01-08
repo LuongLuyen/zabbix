@@ -99,7 +99,7 @@ class CControllerItemPrototypeList extends CControllerItemPrototype {
 		}
 
 		$data['paging'] = CPagerHelper::paginate($this->getInput('page', 1), $data['items'], $profile['sort'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', $data['action'])
 				->setArgument('parent_discoveryid', $data['parent_discoveryid'])
 				->setArgument('context', $data['context'])

@@ -25,7 +25,7 @@ class testPageGraphPrototypesTemplate extends testPagePrototypes {
 
 	public $source = 'graph';
 
-	protected $link = 'zabbix.php?action=graph.prototype.list&context=template&parent_discoveryid=';
+	protected $link = 'sdnet.php?action=graph.prototype.list&context=template&parent_discoveryid=';
 	protected static $prototype_graphids;
 	protected static $host_druleids;
 
@@ -133,7 +133,7 @@ class testPageGraphPrototypesTemplate extends testPagePrototypes {
 	 * @dataProvider getGraphPrototypesSortingData
 	 */
 	public function testPageGraphPrototypesTemplate_Sorting($data) {
-		$this->page->login()->open('zabbix.php?action=graph.prototype.list&context=template&parent_discoveryid='.
+		$this->page->login()->open('sdnet.php?action=graph.prototype.list&context=template&parent_discoveryid='.
 				self::$host_druleids['Template for prototype check:drule'].'&sort='.$data['sort'].'&sortorder=ASC'
 		)->waitUntilReady();
 		$this->executeSorting($data);

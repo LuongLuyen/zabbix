@@ -918,7 +918,7 @@ class testUsersAuthenticationMfa extends testFormAuthentication {
 	 * @return CFormElement
 	 */
 	protected function openMfaForm() {
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$form = $this->query('id:authentication-form')->asForm()->one();
 		$form->selectTab('MFA settings');
 		$form->fill(['Enable multi-factor authentication' => true]);

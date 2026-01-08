@@ -24,7 +24,7 @@ require_once __DIR__.'/../common/testCalculatedFormula.php';
  */
 class testFormulaCalculatedItemPrototype extends testCalculatedFormula {
 
-	public $url = 'zabbix.php?action=item.prototype.list&parent_discoveryid=10080&context=host';
+	public $url = 'sdnet.php?action=item.prototype.list&parent_discoveryid=10080&context=host';
 
 	public function getItemPrototypeValidationData() {
 		return [

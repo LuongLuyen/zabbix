@@ -24,7 +24,7 @@
  *
  *     Example:
  *         const url = new URL(location.href); // Current URL.
- *         const url = new URL('zabbix.php?action=test', location.href);
+ *         const url = new URL('sdnet.php?action=test', location.href);
  *         const search_params = url.searchParams;
  *         const action = search_params.get('action');
  *         const deep_object = searchParamsToObject(search_params);
@@ -33,7 +33,7 @@
  *             action: 'test',
  *             itemids: [123, 456, 789]
  *         });
- *         const url = new URL(`zabbix.php?${url_params}`, location.href);
+ *         const url = new URL(`sdnet.php?${url_params}`, location.href);
  *
  * @see searchParamsToObject
  * @see objectToSearchParams

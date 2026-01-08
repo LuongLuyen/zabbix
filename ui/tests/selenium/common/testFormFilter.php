@@ -111,7 +111,7 @@ class testFormFilter extends CWebTest {
 		$filter_result = $result_table->getRows()->asText();
 
 		// Go to another page, to check saved filter after.
-		$this->page->open('zabbix.php?action=dashboard.view')->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view')->waitUntilReady();
 
 		// Open filter page again.
 		$this->page->open($this->url)->waitUntilReady();

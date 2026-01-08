@@ -36,7 +36,7 @@ $html_page = (new CHtmlPage())
 			->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'discovery.view'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'discovery.view'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [

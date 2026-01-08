@@ -48,7 +48,7 @@ class CControllerScheduledReportCreate extends CController {
 			switch ($result) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'scheduledreport.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'scheduledreport.edit')
 					);
 					$response->setFormData($this->getInputAll());
 					CMessageHelper::setErrorTitle(_('Cannot create scheduled report'));
@@ -132,7 +132,7 @@ class CControllerScheduledReportCreate extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'scheduledreport.list')
 					->setArgument('page', CPagerHelper::loadPage('scheduledreport.list', null))
 			);
@@ -141,7 +141,7 @@ class CControllerScheduledReportCreate extends CController {
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))->setArgument('action', 'scheduledreport.edit')
+				(new CUrl('sdnet.php'))->setArgument('action', 'scheduledreport.edit')
 			);
 			$response->setFormData($this->getInputAll());
 			CMessageHelper::setErrorTitle(_('Cannot add scheduled report'));

@@ -81,7 +81,7 @@ class testLanguage extends CWebTest {
 	 */
 	public function testLanguage_Gui($data) {
 		$this->page->login();
-		$this->page->open('zabbix.php?action=gui.edit');
+		$this->page->open('sdnet.php?action=gui.edit');
 
 		// Change default language.
 		$form = $this->query('xpath://form[@aria-labelledby="page-title-general"]')->one()->asForm();
@@ -159,7 +159,7 @@ class testLanguage extends CWebTest {
 	 */
 	public function testLanguage_User($data) {
 		$this->page->userLogin('user-zabbix', 'zabbix');
-		$this->page->open('zabbix.php?action=userprofile.edit');
+		$this->page->open('sdnet.php?action=userprofile.edit');
 		$form = $this->query('id:userprofile-form')->one()->asForm();
 
 		// Yellow info icon check.
@@ -245,7 +245,7 @@ class testLanguage extends CWebTest {
 	 */
 	public function testLanguage_CreateUser($data) {
 		$this->page->login();
-		$this->page->open('zabbix.php?action=user.edit');
+		$this->page->open('sdnet.php?action=user.edit');
 		$form = $this->query('name:user_form')->asForm()->waitUntilVisible()->one();
 		$form->fill($data['fields']);
 		$form->selectTab('Permissions');

@@ -458,7 +458,7 @@ function submitPopup(overlay) {
 	// Remove error message.
 	overlay.$dialogue.find('.<?= ZBX_STYLE_MSG_BAD ?>').remove();
 
-	const url = new Curl('zabbix.php');
+	const url = new Curl('sdnet.php');
 	url.setArgument('action', action);
 	url.setArgument('output', 'ajax');
 

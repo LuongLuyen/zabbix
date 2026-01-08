@@ -324,7 +324,7 @@ if ($data['form_refresh'] == 0) {
 	$tabs->setSelected(0);
 }
 
-$cancel_button = (new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+$cancel_button = (new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 	->setArgument('action', 'usergroup.list')
 	->setArgument('page', CPagerHelper::loadPage('usergroup.list', null))
 ))->setId('cancel');
@@ -334,7 +334,7 @@ if ($data['usrgrpid'] != 0) {
 		(new CSubmitButton(_('Update'), 'action', 'usergroup.update'))->setId('update'),
 		[
 			(new CRedirectButton(_('Delete'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'usergroup.delete')
 					->setArgument('usrgrpids', [$data['usrgrpid']])
 					->setArgument(CSRF_TOKEN_NAME, $csrf_token),

@@ -37,7 +37,7 @@ $html_page = (new CHtmlPage())
 		->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'script.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'script.list'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [
@@ -72,7 +72,7 @@ $scriptsForm = (new CForm())
 	->setName('scriptsForm')
 	->setId('scripts');
 
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'script.list')
 	->getUrl();
 
@@ -106,7 +106,7 @@ foreach ($data['scripts'] as $script) {
 				$action_count_total = (new CSpan($script['action_count_total']))->addClass(ZBX_STYLE_ENTITY_COUNT);
 
 				foreach ($script['actions'] as $action) {
-					$action_url = (new CUrl('zabbix.php'))
+					$action_url = (new CUrl('sdnet.php'))
 						->setArgument('action', 'popup')
 						->setArgument('popup', 'action.edit')
 						->setArgument('actionid', $action['actionid'])
@@ -183,7 +183,7 @@ foreach ($data['scripts'] as $script) {
 		$execute_on = '';
 	}
 
-	$script_url = (new CUrl('zabbix.php'))
+	$script_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'script.edit')
 		->setArgument('scriptid', $script['scriptid'])

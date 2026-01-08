@@ -19,7 +19,7 @@
  * @var array $data
  */
 
-$form_action = (new CUrl('zabbix.php'))
+$form_action = (new CUrl('sdnet.php'))
 	->setArgument('action', 'popup.ldap.check')
 	->getUrl();
 
@@ -256,7 +256,7 @@ $form
 			(new CLabel([
 				_('Media type mapping'),
 				makeHelpIcon(
-					_("Map user's LDAP media attributes (e.g. email) to Zabbix user media for sending notifications.")
+					_("Map user's LDAP media attributes (e.g. email) to SDNet user media for sending notifications.")
 			)]))->addClass('allow-jit-provisioning'),
 			(new CFormField(
 				(new CDiv(

@@ -99,7 +99,7 @@ class testDashboardFavoriteMapsWidget extends CWebTest {
 			]
 		])['dashboardids'][0];
 
-		self::$dashboard_url = 'zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid;
+		self::$dashboard_url = 'sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid;
 
 		// Create host for map.
 		$hosts = CDataHelper::call('host.create', [
@@ -142,7 +142,7 @@ class testDashboardFavoriteMapsWidget extends CWebTest {
 		$this->page->login()->open(self::$dashboard_url)->waitUntilReady();
 		$widget = CDashboardElement::find()->one()->getWidget(self::$edit_widget)->waitUntilReady()->getContent();
 
-		$this->assertEquals('zabbix.php?action=map.view&sysmapid='.self::$mapid,
+		$this->assertEquals('sdnet.php?action=map.view&sysmapid='.self::$mapid,
 				$widget->query('link', self::MAP_NAME)->one()->getAttribute('href')
 		);
 

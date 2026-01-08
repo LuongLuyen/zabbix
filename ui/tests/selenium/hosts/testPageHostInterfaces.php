@@ -418,7 +418,7 @@ class testPageHostInterfaces extends CWebTest {
 	 * @dataProvider getCheckInterfacesData
 	 */
 	public function testPageHostInterfaces_MonitoringHosts($data) {
-		$this->checkInterfaces($data, 'zabbix.php?action=host.view', 'host_view');
+		$this->checkInterfaces($data, 'sdnet.php?action=host.view', 'host_view');
 	}
 
 	/**

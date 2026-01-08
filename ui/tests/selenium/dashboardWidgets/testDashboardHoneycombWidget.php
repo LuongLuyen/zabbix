@@ -769,7 +769,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 	}
 
 	public function testDashboardHoneycombWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating honeycomb widgets'])->waitUntilReady();
 
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
@@ -1416,7 +1416,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardHoneycombWidget_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating honeycomb widgets'])->waitUntilReady();
 
 		// Get hash if expected is TEST_BAD.
@@ -1440,7 +1440,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 		// Hash before simple update.
 		self::$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for simple updating honeycomb widget'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit()->getWidget('UpdateHoneycomb')->edit()->submit();
@@ -1498,7 +1498,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardHoneycombWidget_Update($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$disposable_dashboard_id)->waitUntilReady();
 
 		// Get hash if expected is TEST_BAD.
@@ -1520,7 +1520,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 	 */
 	public function testDashboardHoneycombWidget_Delete() {
 		$widget_name = 'DeleteHoneycomb';
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for deleting honeycomb widget'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->waitUntilReady()->edit();
 		$widget = $dashboard->getWidget($widget_name);
@@ -1803,7 +1803,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 	 * @dataProvider getDisplayData
 	 */
 	public function testDashboardHoneycombWidget_Display($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$disposable_dashboard_id)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$this->fillWidgetForm($data, 'update', $dashboard);
@@ -1845,7 +1845,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 	 * Test function for assuring that all item types available in Honeycomb widget.
 	 */
 	public function testDashboardHoneycombWidget_CheckAvailableItems() {
-		$this->checkAvailableItems('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->checkAvailableItems('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for deleting honeycomb widget'], 'Honeycomb'
 		);
 	}
@@ -1892,7 +1892,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 		self::$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for canceling honeycomb widget']
 		);
 		$dashboard = CDashboardElement::find()->one()->edit();
@@ -1959,7 +1959,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 		$this->page->login();
 
 		for ($i = 1; $i <= 5; $i++) {
-			$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.
+			$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.
 					self::$dashboardid['Dashboard for Honeycomb screenshot'].'&page='.$i)->waitUntilReady();
 
 			$element = CDashboardElement::find()->one()->getWidget('Honeycomb');
@@ -2269,7 +2269,7 @@ class testDashboardHoneycombWidget extends testWidgets {
 	 * @onBefore prepareFilteringHoneycomb
 	 */
 	public function testDashboardHoneycombWidget_CheckFiltering($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$disposable_dashboard_id)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$this->fillWidgetForm($data, 'update', $dashboard);

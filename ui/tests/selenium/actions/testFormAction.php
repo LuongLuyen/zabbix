@@ -318,7 +318,7 @@ class testFormAction extends CLegacyWebTest {
 	public function testFormAction_CheckLayout($data) {
 		$eventsource = $data['eventsource'];
 
-		$this->zbxTestLogin('zabbix.php?action=action.list&eventsource='.$eventsource.'');
+		$this->zbxTestLogin('sdnet.php?action=action.list&eventsource='.$eventsource.'');
 		$this->zbxTestCheckTitle('Configuration of actions');
 		$this->zbxTestClickButtonText('Create action');
 		$this->zbxTestLaunchOverlayDialog('New action');
@@ -1099,7 +1099,7 @@ class testFormAction extends CLegacyWebTest {
 		}
 		$oldHashActions = CDBHelper::getHash($sqlActions);
 
-		$this->page->login()->open('zabbix.php?action=action.list&eventsource='.$eventsource);
+		$this->page->login()->open('sdnet.php?action=action.list&eventsource='.$eventsource);
 		$this->zbxTestClickLinkTextWait($name);
 		$this->zbxTestClickButtonText('Update');
 		$this->zbxTestCheckTitle('Configuration of actions');
@@ -1368,7 +1368,7 @@ class testFormAction extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testFormAction_SimpleCreate($data) {
-		$this->page->login()->open('zabbix.php?action=action.list&eventsource='.$data['eventsource']);
+		$this->page->login()->open('sdnet.php?action=action.list&eventsource='.$data['eventsource']);
 		$this->zbxTestCheckTitle('Configuration of actions');
 		$this->zbxTestCheckHeader($this->event_sources[$data['eventsource']]);
 		$this->zbxTestClickButtonText('Create action');
@@ -1480,7 +1480,7 @@ class testFormAction extends CLegacyWebTest {
 	}
 
 	public function testFormAction_Create() {
-		$this->zbxTestLogin('zabbix.php?action=action.list&eventsource=0');
+		$this->zbxTestLogin('sdnet.php?action=action.list&eventsource=0');
 		$this->zbxTestCheckTitle('Configuration of actions');
 		$this->query('button:Create action')->one()->click()->waitUntilReady();
 		$dialog = COverlayDialogElement::find()->waitUntilReady();
@@ -1615,7 +1615,7 @@ class testFormAction extends CLegacyWebTest {
 
 		$original_hash = CDBHelper::getHash($sql);
 
-		$this->page->login()->open('zabbix.php?action=action.list&eventsource=4')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=action.list&eventsource=4')->waitUntilReady();
 		$this->zbxTestClickXpath('//a[text()="Service action"]');
 		$this->zbxTestClickXpathWait('//div[@data-dialogueid="action.edit"]//button[text()="Clone"]');
 		$dialog = $this->query('class:overlay-dialogue-body')->asOverlayDialog()->one()->waitUntilReady();

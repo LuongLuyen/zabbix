@@ -134,7 +134,7 @@ class CControllerSlaList extends CController {
 		$page_num = getRequest('page', 1);
 		CPagerHelper::savePage('sla.list', $page_num);
 		$data['paging'] = CPagerHelper::paginate($page_num, $slas, $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		$options = [

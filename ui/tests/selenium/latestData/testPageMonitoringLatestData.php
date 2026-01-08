@@ -162,7 +162,7 @@ class testPageMonitoringLatestData extends CWebTest {
 	}
 
 	public function testPageMonitoringLatestData_CheckLayout() {
-		$this->page->login()->open('zabbix.php?action=latest.view&filter_reset=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view&filter_reset=1')->waitUntilReady();
 		$this->page->assertTitle('Latest data');
 		$this->page->assertHeader('Latest data');
 		$form = $this->query('name:zbx_filter')->asForm()->one();
@@ -531,7 +531,7 @@ class testPageMonitoringLatestData extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageMonitoringLatestData_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 		$table = $this->getTable()->waitUntilPresent();
 
@@ -636,8 +636,8 @@ class testPageMonitoringLatestData extends CWebTest {
 		$hostid = CDBHelper::getValue('SELECT hostid FROM hosts WHERE name='.zbx_dbstr(self::FILTER_HOSTNAME));
 
 		$link = (CTestArrayHelper::get($data['subfilter'], 'Data'))
-			? 'zabbix.php?action=latest.view&hostids%5B%5D='.$hostid
-			: 'zabbix.php?action=latest.view&name=item';
+			? 'sdnet.php?action=latest.view&hostids%5B%5D='.$hostid
+			: 'sdnet.php?action=latest.view&name=item';
 
 		$this->page->login()->open($link)->waitUntilReady();
 
@@ -689,7 +689,7 @@ class testPageMonitoringLatestData extends CWebTest {
 	protected function checkClickTag($kiosk_mode = false) {
 		$tag = ['tag' => 'component: ', 'value' => 'storage'];
 		$hostid = CDBHelper::getValue('SELECT hostid FROM hosts WHERE name='.zbx_dbstr('ЗАББИКС Сервер'));
-		$this->page->login()->open('zabbix.php?action=latest.view&hostids%5B%5D='.$hostid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view&hostids%5B%5D='.$hostid)->waitUntilReady();
 
 		if ($kiosk_mode) {
 			$this->query('xpath://button[@title="Kiosk mode"]')->one()->click();
@@ -756,7 +756,7 @@ class testPageMonitoringLatestData extends CWebTest {
 			)
 		];
 
-		$this->page->login()->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$this->query('button:Reset')->waitUntilClickable()->one()->click();
 		$this->page->waitUntilReady();
 		CFilterElement::find()->one()->waitUntilVisible()->getForm()->fill(['State' => 'Normal']);
@@ -872,7 +872,7 @@ class testPageMonitoringLatestData extends CWebTest {
 	 */
 	public function testPageMonitoringLatestData_checkItemDescription($data) {
 		// Open Latest data for host 'Host with item descriptions'
-		$this->page->login()->open('zabbix.php?&action=latest.view&show_details=0&hostids%5B%5D='.
+		$this->page->login()->open('sdnet.php?&action=latest.view&show_details=0&hostids%5B%5D='.
 				self::$hostids['Host with item descriptions'])->waitUntilReady();
 
 		// Find rows from the data provider and click on the description icon if such should persist.
@@ -907,7 +907,7 @@ class testPageMonitoringLatestData extends CWebTest {
 	 * Maintenance icon hintbox.
 	 */
 	public function testPageMonitoringLatestData_checkMaintenanceIcon() {
-		$this->page->login()->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$form->fill(['Hosts' => self::MAINTENANCE_HOSTNAME]);
 		$form->submit();
@@ -932,7 +932,7 @@ class testPageMonitoringLatestData extends CWebTest {
 				', '.zbx_dbstr($time).', '.zbx_dbstr($value).', 0)'
 		);
 
-		$this->page->login()->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->getTable()->waitUntilPresent();
 		$this->query('button:Reset')->one()->click();

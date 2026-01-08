@@ -150,7 +150,7 @@ class testDashboardCopyWidgets extends CWebTest {
 			$new_pageid = CDBHelper::getValue('SELECT dashboard_pageid FROM dashboard_page WHERE name='.
 					zbx_dbstr(self::TEMPLATED_PAGE_NAME)
 			);
-			$url = 'zabbix.php?action=template.dashboard.edit&dashboardid=';
+			$url = 'sdnet.php?action=template.dashboard.edit&dashboardid=';
 		}
 		else {
 			$dashboardid = $start_dashboardid;
@@ -161,7 +161,7 @@ class testDashboardCopyWidgets extends CWebTest {
 			$new_pageid = CDBHelper::getValue('SELECT dashboard_pageid FROM dashboard_page WHERE dashboardid ='.
 					$start_dashboardid.' AND name ='.zbx_dbstr(self::NEW_PAGE_NAME)
 			);
-			$url = 'zabbix.php?action=dashboard.view&dashboardid=';
+			$url = 'sdnet.php?action=dashboard.view&dashboardid=';
 		}
 
 		$this->page->login()->open($url.$dashboardid);
@@ -586,11 +586,11 @@ class testDashboardCopyWidgets extends CWebTest {
 				break;
 
 			case 'another template':
-				$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$templated_dashboardid);
+				$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$templated_dashboardid);
 				$dashboard = CDashboardElement::find()->one()->waitUntilVisible();
 				$dashboard->copyWidget($data['name']);
 
-				$this->page->open('zabbix.php?action=template.dashboard.edit&templateid=50002');
+				$this->page->open('sdnet.php?action=template.dashboard.edit&templateid=50002');
 				$this->page->waitUntilReady();
 				COverlayDialogElement::find()->one()->close();
 				$this->query('id:dashboard-add')->one()->click();
@@ -627,7 +627,7 @@ class testDashboardCopyWidgets extends CWebTest {
 	 * @dataProvider getTemplateDashboardPageData
 	 */
 	public function testDashboardCopyWidgets_CopyTemplateDashboardPage($data) {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$templated_dashboardid);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$templated_dashboardid);
 		$dashboard = CDashboardElement::find()->one()->waitUntilVisible();
 		$dashboard->query('xpath://span[text()= "Page with widgets"]/../button')->one()->click();
 		CPopupMenuElement::find()->one()->waitUntilVisible()->select('Copy');
@@ -641,7 +641,7 @@ class testDashboardCopyWidgets extends CWebTest {
 				break;
 
 			case 'another dashboard':
-				$this->page->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$templated_empty_dashboardid);
+				$this->page->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$templated_empty_dashboardid);
 				$this->page->waitUntilReady();
 
 				$this->query('id:dashboard-add')->one()->click();
@@ -652,7 +652,7 @@ class testDashboardCopyWidgets extends CWebTest {
 				break;
 
 			case 'another template':
-				$this->page->open('zabbix.php?action=template.dashboard.edit&templateid=50002');
+				$this->page->open('sdnet.php?action=template.dashboard.edit&templateid=50002');
 				$this->page->waitUntilReady();
 				COverlayDialogElement::find()->one()->close();
 				$this->query('id:dashboard-add')->one()->click();
@@ -729,8 +729,8 @@ class testDashboardCopyWidgets extends CWebTest {
 	 */
 	public function testDashboardCopyWidgets_CopyDisabledModuleWidgets($data) {
 		$url = CTestArrayHelper::get($data, 'template')
-			? 'zabbix.php?action=template.dashboard.edit&dashboardid='.self::$templated_dashboardid
-			: 'zabbix.php?action=dashboard.view&dashboardid='.self::$modules_dashboardid;
+			? 'sdnet.php?action=template.dashboard.edit&dashboardid='.self::$templated_dashboardid
+			: 'sdnet.php?action=dashboard.view&dashboardid='.self::$modules_dashboardid;
 		$this->page->login()->open($url)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->waitUntilVisible();
 
@@ -746,7 +746,7 @@ class testDashboardCopyWidgets extends CWebTest {
 		}
 
 		// Disable widget module that corresponds to the copied widget or to one of the widgets on the copied page.
-		$this->page->open('zabbix.php?action=module.list');
+		$this->page->open('sdnet.php?action=module.list');
 		$this->query('class:list-table')->asTable()->one()->findRow('Name', $data['module_name'])
 				->query('link', 'Enabled')->one()->click();
 

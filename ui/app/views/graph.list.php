@@ -56,7 +56,7 @@ $hostgroup_ms_params = $data['context'] === 'host' ? ['with_hosts' => true] : ['
 
 $html_page->addItem(
 	(new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))
+		->setResetUrl((new CUrl('sdnet.php'))
 			->setArgument('action', 'graph.list')
 			->setArgument('context', $data['context'])
 		)
@@ -115,7 +115,7 @@ $html_page->addItem(
 		])
 );
 
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'graph.list')
 	->setArgument('context', $data['context'])
 	->getUrl();
@@ -152,7 +152,7 @@ foreach ($data['graphs'] as $graph) {
 				$hosts[] = ', ';
 			}
 
-			$host_url = (new CUrl('zabbix.php'))
+			$host_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', $data['context'] === 'host' ? 'host.edit' : 'template.edit')
 				->setArgument($data['context'] === 'host' ? 'hostid' : 'templateid', $host['hostid'])
@@ -186,7 +186,7 @@ foreach ($data['graphs'] as $graph) {
 		$name[] = NAME_DELIMITER;
 	}
 
-	$name[] = new CLink($graph['name'], (new CUrl('zabbix.php'))
+	$name[] = new CLink($graph['name'], (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'graph.edit')
 		->setArgument('graphid', $graph['graphid'])

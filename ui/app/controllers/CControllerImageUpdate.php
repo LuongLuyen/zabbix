@@ -28,7 +28,7 @@ class CControllerImageUpdate extends CController {
 		if (!$ret) {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
-					$url = (new CUrl('zabbix.php'))
+					$url = (new CUrl('sdnet.php'))
 						->setArgument('action', 'image.edit')
 						->setArgument('imagetype', $this->getInput('imagetype'))
 						->setArgument('imageid', $this->getInput('imageid'));
@@ -94,7 +94,7 @@ class CControllerImageUpdate extends CController {
 
 		if ($error) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'image.edit')
 					->setArgument('imagetype', $this->getInput('imagetype'))
 					->setArgument('imageid', $this->getInput('imageid'))
@@ -134,7 +134,7 @@ class CControllerImageUpdate extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'image.list')
 					->setArgument('imagetype', $this->getInput('imagetype'))
 			);
@@ -142,7 +142,7 @@ class CControllerImageUpdate extends CController {
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'image.edit')
 					->setArgument('imagetype', $this->getInput('imagetype'))
 					->setArgument('imageid', $this->getInput('imageid'))

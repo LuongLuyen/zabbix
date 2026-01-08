@@ -252,7 +252,7 @@ class CTabFilter extends CBaseComponent {
 	 * @return {Promise}
 	 */
 	profileUpdate(property, body) {
-		let url = new Curl('zabbix.php'),
+		let url = new Curl('sdnet.php'),
 			signal = null;
 
 		url.setArgument('action', 'tabfilter.profile.update');
@@ -743,7 +743,7 @@ class CTabFilter extends CBaseComponent {
 			 */
 			buttonResetAction: () => {
 				let current_url = new Curl(),
-					url = new Curl('zabbix.php');
+					url = new Curl('sdnet.php');
 
 				url.setArgument('action', current_url.getArgument('action'));
 				url.setArgument('filter_reset', 1);

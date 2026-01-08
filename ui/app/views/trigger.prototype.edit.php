@@ -136,7 +136,7 @@ $popup_parameters = [
 	'context' => $data['context']
 ];
 
-$return_url = (new CUrl('zabbix.php'))
+$return_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'trigger.prototype.list')
 	->setArgument('context', $data['context']);
 

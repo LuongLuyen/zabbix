@@ -225,7 +225,7 @@ class CMenuHelper {
 						CWebUser::checkAccess(CRoleHelper::UI_CONFIGURATION_TRIGGER_ACTIONS)
 							? (new CMenuItem(_('Trigger actions')))
 								->setUrl(
-									(new CUrl('zabbix.php'))
+									(new CUrl('sdnet.php'))
 										->setArgument('action', 'action.list')
 										->setArgument('eventsource', EVENT_SOURCE_TRIGGERS),
 									'action.list?eventsource='.EVENT_SOURCE_TRIGGERS
@@ -234,7 +234,7 @@ class CMenuHelper {
 						CWebUser::checkAccess(CRoleHelper::UI_CONFIGURATION_SERVICE_ACTIONS)
 							? (new CMenuItem(_('Service actions')))
 								->setUrl(
-									(new CUrl('zabbix.php'))
+									(new CUrl('sdnet.php'))
 										->setArgument('action', 'action.list')
 										->setArgument('eventsource', EVENT_SOURCE_SERVICE),
 									'action.list?eventsource='.EVENT_SOURCE_SERVICE
@@ -243,7 +243,7 @@ class CMenuHelper {
 						CWebUser::checkAccess(CRoleHelper::UI_CONFIGURATION_DISCOVERY_ACTIONS)
 							? (new CMenuItem(_('Discovery actions')))
 								->setUrl(
-									(new CUrl('zabbix.php'))
+									(new CUrl('sdnet.php'))
 										->setArgument('action', 'action.list')
 										->setArgument('eventsource', EVENT_SOURCE_DISCOVERY),
 									'action.list?eventsource='.EVENT_SOURCE_DISCOVERY
@@ -252,7 +252,7 @@ class CMenuHelper {
 						CWebUser::checkAccess(CRoleHelper::UI_CONFIGURATION_AUTOREGISTRATION_ACTIONS)
 							? (new CMenuItem(_('Autoregistration actions')))
 								->setUrl(
-									(new CUrl('zabbix.php'))
+									(new CUrl('sdnet.php'))
 										->setArgument('action', 'action.list')
 										->setArgument('eventsource', EVENT_SOURCE_AUTOREGISTRATION),
 									'action.list?eventsource='.EVENT_SOURCE_AUTOREGISTRATION
@@ -261,7 +261,7 @@ class CMenuHelper {
 						CWebUser::checkAccess(CRoleHelper::UI_CONFIGURATION_INTERNAL_ACTIONS)
 							? (new CMenuItem(_('Internal actions')))
 								->setUrl(
-									(new CUrl('zabbix.php'))
+									(new CUrl('sdnet.php'))
 										->setArgument('action', 'action.list')
 										->setArgument('eventsource', EVENT_SOURCE_INTERNAL),
 									'action.list?eventsource='.EVENT_SOURCE_INTERNAL

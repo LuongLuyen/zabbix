@@ -31,7 +31,7 @@ $csv[] = array_filter([
 	_('Time'),
 	_('Action'),
 	_('Media type'),
-	_("Recipient's Zabbix username"),
+	_("Recipient's SDNet username"),
 	_("Recipient's name"),
 	_("Recipient's surname"),
 	_('Recipient'),

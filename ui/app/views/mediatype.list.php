@@ -42,7 +42,7 @@ $html_page = (new CHtmlPage())
 		))->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'mediatype.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'mediatype.list'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [
@@ -99,7 +99,7 @@ $html_page = (new CHtmlPage())
 $media_type_form = (new CForm())->setName('media-types-form');
 
 // create table
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'mediatype.list')
 	->getUrl();
 
@@ -156,7 +156,7 @@ foreach ($data['mediatypes'] as $media_type) {
 		$action_count_total = (new CSpan($media_type['action_count_total']))->addClass(ZBX_STYLE_ENTITY_COUNT);
 
 		foreach ($media_type['actions'] as $action) {
-			$action_url = (new CUrl('zabbix.php'))
+			$action_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'action.edit')
 				->setArgument('actionid', $action['actionid'])
@@ -197,7 +197,7 @@ foreach ($data['mediatypes'] as $media_type) {
 		->setAttribute('data-mediatypeid', $media_type['mediatypeid'])
 		->addClass('js-test-edit');
 
-	$media_type_url = (new CUrl('zabbix.php'))
+	$media_type_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'mediatype.edit')
 		->setArgument('mediatypeid', $media_type['mediatypeid'])
@@ -236,7 +236,7 @@ $media_type_form->addItem([
 		],
 		'mediatype.export' => [
 			'content' => new CButtonExport('export.mediatypes',
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'mediatype.list')
 					->setArgument('page', ($data['page'] == 1) ? null : $data['page'])
 					->getUrl()

@@ -37,7 +37,7 @@ $html_page = (new CHtmlPage())
 			(new CList())
 				->addItem(
 					(new CRedirectButton(_('Create dashboard'),
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'dashboard.view')
 							->setArgument('new', '1')
 							->getUrl()
@@ -51,7 +51,7 @@ $html_page = (new CHtmlPage())
 if ($web_layout_mode == ZBX_LAYOUT_NORMAL) {
 	$html_page
 		->addItem((new CFilter())
-			->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'dashboard.list'))
+			->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'dashboard.list'))
 			->setProfile($data['profileIdx'])
 			->setActiveTab($data['active_tab'])
 			->addFilterTab(_('Filter'), [
@@ -80,7 +80,7 @@ $table = (new CTableInfo())
 				->onClick("checkAll('".$form->getName()."', 'all_dashboards', 'dashboardids');")
 		))->addClass(ZBX_STYLE_CELL_WIDTH),
 		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'dashboard.list')
 				->getUrl()
 		)->setColSpan(2)
@@ -105,7 +105,7 @@ foreach ($data['dashboards'] as $dashboard) {
 			->setEnabled($dashboard['editable']),
 		new CDiv([
 			(new CLink($dashboard['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'dashboard.view')
 					->setArgument('dashboardid', $dashboard['dashboardid'])
 					->getUrl()

@@ -31,7 +31,7 @@ class CControllerRegExUpdate extends CController {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'regex.edit')
 							->setArgument('regexid', $this->getInput('regexid'))
 					);
@@ -72,14 +72,14 @@ class CControllerRegExUpdate extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))->setArgument('action', 'regex.list')
+				(new CUrl('sdnet.php'))->setArgument('action', 'regex.list')
 			);
 
 			CMessageHelper::setSuccessTitle(_('Regular expression updated'));
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'regex.edit')
 					->setArgument('regexid', $this->getInput('regexid'))
 			);

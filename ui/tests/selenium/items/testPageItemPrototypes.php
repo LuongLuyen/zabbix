@@ -26,7 +26,7 @@ class testPageItemPrototypes extends testPagePrototypes {
 	public $source = 'item';
 	public $tag = 'Yw Item prototype trapper with text type';
 
-	protected $link = 'zabbix.php?action=item.prototype.list&context=host&sort=name&sortorder=ASC&parent_discoveryid=';
+	protected $link = 'sdnet.php?action=item.prototype.list&context=host&sort=name&sortorder=ASC&parent_discoveryid=';
 	protected static $prototype_itemids;
 	protected static $host_druleids;
 
@@ -159,7 +159,7 @@ class testPageItemPrototypes extends testPagePrototypes {
 	 * @dataProvider getItemPrototypesSortingData
 	 */
 	public function testPageItemPrototypes_Sorting($data) {
-		$this->page->login()->open('zabbix.php?action=item.prototype.list&context=host&sort='.$data['sort'].'&sortorder=ASC&'.
+		$this->page->login()->open('sdnet.php?action=item.prototype.list&context=host&sort='.$data['sort'].'&sortorder=ASC&'.
 				'parent_discoveryid='.self::$host_druleids)->waitUntilReady();
 		$this->executeSorting($data);
 	}

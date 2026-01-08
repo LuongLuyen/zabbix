@@ -26,7 +26,7 @@ require_once __DIR__.'/../common/testFormHost.php';
 class testFormHostFromMonitoring extends testFormHost {
 
 	public $monitoring = true;
-	public $link = 'zabbix.php?action=host.view';
+	public $link = 'sdnet.php?action=host.view';
 
 	public function testFormHostFromMonitoring_Layout() {
 		$this->checkHostLayout();

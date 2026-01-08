@@ -112,7 +112,7 @@ function getMenuPopupHost(options, trigger_element) {
 	if (options.hasGoTo) {
 		// dashboard
 		if (options.allowed_ui_hosts) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'host.dashboard.view')
 			url.setArgument('hostid', options.hostid)
 
@@ -125,7 +125,7 @@ function getMenuPopupHost(options, trigger_element) {
 
 		// problems
 		if (options.allowed_ui_problems) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'problem.view');
 			url.setArgument('hostids[]', options.hostid);
 			url.setArgument('filter_set', '1');
@@ -152,7 +152,7 @@ function getMenuPopupHost(options, trigger_element) {
 
 		// latest data
 		if (options.allowed_ui_latest_data) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'latest.view');
 
 			if ('tags' in options) {
@@ -171,7 +171,7 @@ function getMenuPopupHost(options, trigger_element) {
 
 		// graphs
 		if (options.allowed_ui_hosts) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'charts.view')
 			url.setArgument('filter_hostids[]', options.hostid);
 			url.setArgument('filter_set', '1');
@@ -185,7 +185,7 @@ function getMenuPopupHost(options, trigger_element) {
 
 		// web
 		if (options.allowed_ui_hosts) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'web.view');
 			url.setArgument('filter_hostids[]', options.hostid);
 			url.setArgument('filter_set', '1');
@@ -218,7 +218,7 @@ function getMenuPopupHost(options, trigger_element) {
 		// Configuration
 		if (options.allowed_ui_conf_hosts) {
 			// host wizard
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'popup');
 			url.setArgument('popup', 'host.wizard.edit');
 			url.setArgument('hostid', options.hostid);
@@ -230,7 +230,7 @@ function getMenuPopupHost(options, trigger_element) {
 			});
 
 			// host
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'popup');
 			url.setArgument('popup', 'host.edit');
 			url.setArgument('hostid', options.hostid);
@@ -242,7 +242,7 @@ function getMenuPopupHost(options, trigger_element) {
 			});
 
 			// items
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'item.list');
 			url.setArgument('filter_set', '1');
 			url.setArgument('filter_hostids[]', options.hostid);
@@ -255,7 +255,7 @@ function getMenuPopupHost(options, trigger_element) {
 			});
 
 			// triggers
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'trigger.list');
 			url.setArgument('filter_set', '1');
 			url.setArgument('filter_hostids[]', options.hostid);
@@ -268,7 +268,7 @@ function getMenuPopupHost(options, trigger_element) {
 			});
 
 			// graphs
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'graph.list');
 			url.setArgument('filter_set', '1');
 			url.setArgument('filter_hostids[]', options.hostid);
@@ -364,7 +364,7 @@ function getMenuPopupMapElementSubmap(options) {
 			return [];
 		}
 
-		const submap_url = new Curl('zabbix.php');
+		const submap_url = new Curl('sdnet.php');
 		submap_url.setArgument('action', 'map.view');
 		submap_url.setArgument('sysmapid', options.sysmapid);
 
@@ -414,7 +414,7 @@ function getMenuPopupMapElementGroup(options) {
 	}
 
 	var sections = [],
-		problems_url = new Curl('zabbix.php');
+		problems_url = new Curl('sdnet.php');
 
 	problems_url.setArgument('action', 'problem.view');
 	problems_url.setArgument('filter_set', '1');
@@ -470,7 +470,7 @@ function getMenuPopupMapElementTrigger(options) {
 	let url;
 
 	if (options.allowed_ui_problems) {
-		url = new Curl('zabbix.php');
+		url = new Curl('sdnet.php');
 		url.setArgument('action', 'problem.view');
 		url.setArgument('filter_set', '1');
 		url.setArgument('triggerids', options.triggers.map((value) => value.triggerid));
@@ -525,7 +525,7 @@ function getMenuPopupMapElementTrigger(options) {
 		const item_urls = [];
 
 		for (const value of options.triggers) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'popup');
 			url.setArgument('popup', 'trigger.edit');
 			url.setArgument('context', 'host');
@@ -551,7 +551,7 @@ function getMenuPopupMapElementTrigger(options) {
 					});
 				}
 				else {
-					url = new Curl('zabbix.php');
+					url = new Curl('sdnet.php');
 					url.setArgument('action', 'popup');
 					url.setArgument('popup', 'item.edit');
 					url.setArgument('context', 'host');
@@ -628,16 +628,16 @@ function getMenuPopupDashboard(options, trigger_element) {
 
 	// Dashboard actions.
 	if (options.can_edit_dashboards) {
-		const url_create = new Curl('zabbix.php');
+		const url_create = new Curl('sdnet.php');
 		url_create.setArgument('action', 'dashboard.view');
 		url_create.setArgument('new', '1');
 
-		const url_clone = new Curl('zabbix.php');
+		const url_clone = new Curl('sdnet.php');
 		url_clone.setArgument('action', 'dashboard.view');
 		url_clone.setArgument('dashboardid', options.dashboardid);
 		url_clone.setArgument('clone', '1');
 
-		const url_delete = new Curl('zabbix.php');
+		const url_delete = new Curl('sdnet.php');
 		url_delete.setArgument('action', 'dashboard.delete');
 		url_delete.setArgument('dashboardids', [options.dashboardid]);
 		url_delete.setArgument(CSRF_TOKEN_NAME, options.csrf_token);
@@ -761,7 +761,7 @@ function getMenuPopupTrigger(options, trigger_element) {
 
 	if (options.allowed_ui_problems) {
 		// events
-		url = new Curl('zabbix.php');
+		url = new Curl('sdnet.php');
 		url.setArgument('action', 'problem.view');
 		url.setArgument('filter_set', '1');
 		url.setArgument('triggerids[]', options.triggerid);
@@ -802,7 +802,7 @@ function getMenuPopupTrigger(options, trigger_element) {
 	}
 
 	if ('show_update_problem' in options && options.show_update_problem) {
-		url = new Curl('zabbix.php');
+		url = new Curl('sdnet.php');
 		url.setArgument('action', 'popup');
 		url.setArgument('popup', 'acknowledge.edit');
 		url.setArgument('eventid', options.eventid);
@@ -821,7 +821,7 @@ function getMenuPopupTrigger(options, trigger_element) {
 		const config_urls = [];
 		const item_urls = [];
 
-		url = new Curl('zabbix.php');
+		url = new Curl('sdnet.php');
 		url.setArgument('action', 'popup');
 		url.setArgument('popup', 'trigger.edit');
 		url.setArgument('context', 'host');
@@ -841,7 +841,7 @@ function getMenuPopupTrigger(options, trigger_element) {
 					});
 				}
 				else {
-					url = new Curl('zabbix.php');
+					url = new Curl('sdnet.php');
 					url.setArgument('action', 'popup');
 					url.setArgument('popup', 'item.edit');
 					url.setArgument('context', 'host');
@@ -871,7 +871,7 @@ function getMenuPopupTrigger(options, trigger_element) {
 			&& ((typeof options.show_rank_change_cause !== 'undefined' && options.show_rank_change_cause)
 				|| (typeof options.show_rank_change_symptom !== 'undefined' && options.show_rank_change_symptom))) {
 		let items = [];
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'popup.acknowledge.create');
 
@@ -1028,7 +1028,7 @@ function getMenuPopupItem(options) {
 	if (options.context !== 'template') {
 		// latest data link
 		if (options.allowed_ui_latest_data) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'latest.view');
 			url.setArgument('hostids[]', options.hostid);
 			url.setArgument('name', options.name);
@@ -1084,7 +1084,7 @@ function getMenuPopupItem(options) {
 		};
 
 		if (options.isWriteable) {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'popup');
 			url.setArgument('popup', 'item.edit');
 			url.setArgument('context', options.context);
@@ -1097,7 +1097,7 @@ function getMenuPopupItem(options) {
 		}
 
 		if (options.context === 'host') {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'popup');
 			url.setArgument('popup', 'host.edit');
 			url.setArgument('hostid', options.hostid);
@@ -1109,7 +1109,7 @@ function getMenuPopupItem(options) {
 			});
 		}
 		else {
-			url = new Curl('zabbix.php');
+			url = new Curl('sdnet.php');
 			url.setArgument('action', 'popup');
 			url.setArgument('popup', 'template.edit');
 			url.setArgument('templateid', options.hostid);
@@ -1124,7 +1124,7 @@ function getMenuPopupItem(options) {
 			const trigger_items = [];
 
 			for (const value of options.triggers) {
-				url = new Curl('zabbix.php');
+				url = new Curl('sdnet.php');
 				url.setArgument('action', 'popup');
 				url.setArgument('popup', 'trigger.edit');
 				url.setArgument('triggerid', value.triggerid);
@@ -1246,7 +1246,7 @@ function getMenuPopupItemPrototype(options) {
 		disabled: true
 	};
 
-	const url = new Curl('zabbix.php');
+	const url = new Curl('sdnet.php');
 	url.setArgument('action', 'popup');
 	url.setArgument('popup', 'item.prototype.edit');
 	url.setArgument('context', options.context);
@@ -1668,7 +1668,7 @@ function getMenuPopupDRule(options) {
 	const sections = [];
 	const config_urls = [];
 
-	const url = new Curl('zabbix.php');
+	const url = new Curl('sdnet.php');
 	url.setArgument('action', 'popup');
 	url.setArgument('popup', 'discovery.edit');
 	url.setArgument('druleid', options.druleid);

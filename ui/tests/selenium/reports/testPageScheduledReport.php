@@ -81,7 +81,7 @@ class testPageScheduledReport extends CWebTest {
 	 */
 	public function testPageScheduledReport_Dashboard($data) {
 		$dashboardid = CDBHelper::getValue('SELECT dashboardid FROM dashboard WHERE name='.zbx_dbstr($data['name']));
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.$dashboardid)->waitUntilReady();
 		$this->query('id:dashboard-actions')->one()->waitUntilClickable()->click();
 		$popup = CPopupMenuElement::find()->waitUntilVisible()->one();
 
@@ -108,7 +108,7 @@ class testPageScheduledReport extends CWebTest {
 			'Status' => 'Expired',
 			'Info' => 'Expired on 2020-01-01.'
 		];
-		$this->page->login()->open('zabbix.php?action=scheduledreport.list');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.list');
 		$this->page->assertHeader('Scheduled reports');
 
 		$this->assertEquals(3, $this->query('button', ['Enable', 'Disable', 'Delete'])->all()
@@ -297,7 +297,7 @@ class testPageScheduledReport extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageScheduledReport_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=scheduledreport.list');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.list');
 		$table = $this->getTable();
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$form->fill($data['filter'])->submit();
@@ -390,7 +390,7 @@ class testPageScheduledReport extends CWebTest {
 			'Report for filter - expired',
 			'Report for filter - expired, owner admin'
 		];
-		$this->page->login()->open('zabbix.php?action=scheduledreport.list');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.list');
 		$this->page->waitUntilReady();
 
 		//  Enable/disable single report by clicking on table column "Status".
@@ -445,7 +445,7 @@ class testPageScheduledReport extends CWebTest {
 	 * Test reports sorting by Name column.
 	 */
 	public function testPageScheduledReport_Sorting() {
-		$this->page->login()->open('zabbix.php?action=scheduledreport.list');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$header = $table->query('xpath:.//a[text()="Name"]')->one();
 
@@ -493,7 +493,7 @@ class testPageScheduledReport extends CWebTest {
 	 */
 	public function testPageScheduledReport_Delete($data) {
 		$reports = CDBHelper::getCount('SELECT reportid FROM report');
-		$this->page->login()->open('zabbix.php?action=scheduledreport.list');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.list');
 		$this->page->waitUntilReady();
 
 		$this->selectTableRows(CTestArrayHelper::get($data, 'Name', []));

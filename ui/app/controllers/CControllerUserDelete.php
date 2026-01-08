@@ -42,7 +42,7 @@ class CControllerUserDelete extends CController {
 		$deleted = count($userids);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'user.list')
 				->setArgument('page', CPagerHelper::loadPage('user.list', null))
 		);

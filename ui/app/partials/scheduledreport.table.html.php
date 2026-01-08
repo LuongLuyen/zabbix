@@ -29,7 +29,7 @@ $table = (new CTableInfo())
 			: null,
 		($data['source'] === 'scheduledreport-form')
 			? make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'scheduledreport.list')
 					->getUrl()
 			)
@@ -60,7 +60,7 @@ $periods = [
 $now = time();
 
 foreach ($data['reports'] as $report) {
-	$name = new CLink($report['name'], (new CUrl('zabbix.php'))
+	$name = new CLink($report['name'], (new CUrl('sdnet.php'))
 		->setArgument('action', 'scheduledreport.edit')
 		->setArgument('reportid', $report['reportid'])
 	);
@@ -96,7 +96,7 @@ foreach ($data['reports'] as $report) {
 	}
 
 	$status = ($data['source'] === 'scheduledreport-form' && $data['allowed_edit'])
-		? (new CLink($status_name, (new CUrl('zabbix.php'))
+		? (new CLink($status_name, (new CUrl('sdnet.php'))
 			->setArgument('action', ($report['status'] == ZBX_REPORT_STATUS_DISABLED)
 				? 'scheduledreport.enable'
 				: 'scheduledreport.disable'

@@ -101,7 +101,7 @@ class CControllerChartsViewJson extends CControllerCharts {
 		CArrayHelper::sort($graphs, ['name', 'graphid', 'itemid']);
 
 		$paging = CPagerHelper::paginate($this->getInput('page', 1), $graphs, ZBX_SORT_UP,
-			(new CUrl('zabbix.php'))->setArgument('action', 'charts.view')
+			(new CUrl('sdnet.php'))->setArgument('action', 'charts.view')
 		);
 
 		$data = [

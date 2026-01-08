@@ -414,7 +414,7 @@ class testFormPreprocessingTest extends CWebTest {
 		COverlayDialogElement::ensureNotPresent();
 
 		// Assert right steps order after item saving.
-		$this->page->open('zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.self::HOST_ID);
+		$this->page->open('sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.self::HOST_ID);
 		$this->query('link', self::$name)->one()->click();
 		$form->selectTab('Preprocessing');
 		$this->assertPreprocessingSteps($preprocessing);
@@ -423,7 +423,7 @@ class testFormPreprocessingTest extends CWebTest {
 	}
 
 	private function openPreprocessing($data) {
-		$this->page->login()->open('zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.self::HOST_ID);
+		$this->page->login()->open('sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.self::HOST_ID);
 		$this->query('button:Create item')->one()->click();
 		$form = COverlayDialogElement::find()->one()->waitUntilReady()->asForm();
 		self::$key = CTestArrayHelper::get($data, 'Key', false) ? $data['Key'] : 'test.key'.time();

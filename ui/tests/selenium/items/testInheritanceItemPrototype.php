@@ -60,7 +60,7 @@ class testInheritanceItemPrototype extends CLegacyWebTest {
 		$sqlItems = 'SELECT * FROM items ORDER BY itemid';
 		$oldHashItems = CDBHelper::getHash($sqlItems);
 
-		$this->page->login()->open('zabbix.php?action=item.prototype.list&parent_discoveryid='.
+		$this->page->login()->open('sdnet.php?action=item.prototype.list&parent_discoveryid='.
 				$this->discoveryRuleId.'&context=template');
 		$this->query('link:'.CDBHelper::getValue('SELECT name from items WHERE itemid='.$data['itemid']))->one()->click();
 		COverlayDialogElement::find()->one()->waitUntilready()->getFooter()->query('button:Update')->one()->click();
@@ -100,7 +100,7 @@ class testInheritanceItemPrototype extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testInheritanceItemPrototype_SimpleCreate($data) {
-		$this->page->login()->open('zabbix.php?action=item.prototype.list&parent_discoveryid='.
+		$this->page->login()->open('sdnet.php?action=item.prototype.list&parent_discoveryid='.
 				$this->discoveryRuleId.'&context=template');
 		$this->query('button:Create item prototype')->one()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();

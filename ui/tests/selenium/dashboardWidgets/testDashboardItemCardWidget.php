@@ -981,7 +981,7 @@ class testDashboardItemCardWidget extends testWidgets {
 	}
 
 	public function testDashboardItemCardWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for creating Item Card widgets']
 		)->waitUntilReady();
 
@@ -1487,7 +1487,7 @@ class testDashboardItemCardWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardItemCardWidget_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for creating Item Card widgets']
 		)->waitUntilReady();
 
@@ -1512,7 +1512,7 @@ class testDashboardItemCardWidget extends testWidgets {
 		// Hash before simple update.
 		self::$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for Item Card widget update']
 		)->waitUntilReady();
 
@@ -1535,7 +1535,7 @@ class testDashboardItemCardWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardItemCardWidget_Update($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for Item Card widget update']
 		)->waitUntilReady();
 
@@ -1559,7 +1559,7 @@ class testDashboardItemCardWidget extends testWidgets {
 	public function testDashboardItemCardWidget_Delete() {
 		$widget_name = 'DeleteItemCardWidget';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for deleting Item Card widget']
 		)->waitUntilReady();
 
@@ -1657,33 +1657,33 @@ class testDashboardItemCardWidget extends testWidgets {
 					],
 					'Context menu' => [
 						'VIEW' => [
-							'Latest data' => 'zabbix.php?action=latest.view&hostids%5B%5D={hostid}'.
+							'Latest data' => 'sdnet.php?action=latest.view&hostids%5B%5D={hostid}'.
 									'&name=Item%20for%20item%20card%20widget&filter_set=1',
 							'Graph' => 'history.php?action=showgraph&itemids%5B%5D={itemid}',
 							'Values' => 'history.php?action=showvalues&itemids%5B%5D={itemid}',
 							'500 latest values' => 'history.php?action=showlatest&itemids%5B%5D={itemid}'
 						],
 						'CONFIGURATION' => [
-							'Item' => 'zabbix.php?action=popup&popup=item.edit&context=host&itemid={itemid}',
-							'Host' => 'zabbix.php?action=popup&popup=host.edit&hostid={hostid}',
+							'Item' => 'sdnet.php?action=popup&popup=item.edit&context=host&itemid={itemid}',
+							'Host' => 'sdnet.php?action=popup&popup=host.edit&hostid={hostid}',
 							'Triggers' => [
-								'Not classified trigger' => 'zabbix.php?action=popup&popup=trigger.edit'.
+								'Not classified trigger' => 'sdnet.php?action=popup&popup=trigger.edit'.
 										'&triggerid={triggerid}&hostid={hostid}&context=host',
-								'Information trigger' => 'zabbix.php?action=popup&popup=trigger.edit'.
+								'Information trigger' => 'sdnet.php?action=popup&popup=trigger.edit'.
 										'&triggerid={triggerid}&hostid={hostid}&context=host',
-								'Warning trigger' => 'zabbix.php?action=popup&popup=trigger.edit'.
+								'Warning trigger' => 'sdnet.php?action=popup&popup=trigger.edit'.
 										'&triggerid={triggerid}&hostid={hostid}&context=host',
-								'Average trigger' => 'zabbix.php?action=popup&popup=trigger.edit'.
+								'Average trigger' => 'sdnet.php?action=popup&popup=trigger.edit'.
 										'&triggerid={triggerid}&hostid={hostid}&context=host',
-								'High trigger' => 'zabbix.php?action=popup&popup=trigger.edit'.
+								'High trigger' => 'sdnet.php?action=popup&popup=trigger.edit'.
 										'&triggerid={triggerid}&hostid={hostid}&context=host',
-								'Disaster trigger' => 'zabbix.php?action=popup&popup=trigger.edit'.
+								'Disaster trigger' => 'sdnet.php?action=popup&popup=trigger.edit'.
 										'&triggerid={triggerid}&hostid={hostid}&context=host'
 							],
 							'Create trigger' => 'menu-popup-item',
 							'Create dependent item' => 'menu-popup-item',
 							'Create dependent discovery rule' => 'host_discovery.php?form=create&hostid={hostid}&type=18'.
-									'&master_itemid={itemid}&backurl=zabbix.php%3Faction%3Dlatest.view%26context%3Dhost'.
+									'&master_itemid={itemid}&backurl=sdnet.php%3Faction%3Dlatest.view%26context%3Dhost'.
 									'&context=host'
 						],
 						'ACTIONS' => [
@@ -1726,23 +1726,23 @@ class testDashboardItemCardWidget extends testWidgets {
 					'Tags' => ['tagFromItem: 🙃zabbix🙃'],
 					'Context menu' => [
 						'VIEW' => [
-							'Latest data' => 'zabbix.php?action=latest.view&hostids%5B%5D={hostid}&name=Dependent%20'.
+							'Latest data' => 'sdnet.php?action=latest.view&hostids%5B%5D={hostid}&name=Dependent%20'.
 									'item%201&filter_set=1',
 							'Graph' => 'history.php?action=showgraph&itemids%5B%5D={itemid}',
 							'Values' => 'history.php?action=showvalues&itemids%5B%5D={itemid}',
 							'500 latest values' => 'history.php?action=showlatest&itemids%5B%5D={itemid}'
 						],
 						'CONFIGURATION' => [
-							'Item' => 'zabbix.php?action=popup&popup=item.edit&context=host&itemid={itemid}',
-							'Host' => 'zabbix.php?action=popup&popup=host.edit&hostid={hostid}',
+							'Item' => 'sdnet.php?action=popup&popup=item.edit&context=host&itemid={itemid}',
+							'Host' => 'sdnet.php?action=popup&popup=host.edit&hostid={hostid}',
 							'Triggers' => [
-								'Disabled trigger' => 'zabbix.php?action=popup&popup=trigger.edit'.
+								'Disabled trigger' => 'sdnet.php?action=popup&popup=trigger.edit'.
 										'&triggerid={triggerid}&hostid={hostid}&context=host'
 							],
 							'Create trigger' => 'menu-popup-item',
 							'Create dependent item' => 'menu-popup-item',
 							'Create dependent discovery rule' => 'host_discovery.php?form=create&hostid={hostid}&type=18'.
-									'&master_itemid={itemid}&backurl=zabbix.php%3Faction%3Dlatest.view%26context%3Dhost'.
+									'&master_itemid={itemid}&backurl=sdnet.php%3Faction%3Dlatest.view%26context%3Dhost'.
 									'&context=host'
 						],
 						'ACTIONS' => [
@@ -1834,7 +1834,7 @@ class testDashboardItemCardWidget extends testWidgets {
 	 * @dataProvider getDisplayData
 	 */
 	public function testDashboardItemCardWidget_Display($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for Item Card widget display check']
 		)->waitUntilReady();
 
@@ -2128,7 +2128,7 @@ class testDashboardItemCardWidget extends testWidgets {
 	 * @dataProvider getCheckLinksData
 	 */
 	public function testDashboardItemCardWidget_CheckLinks($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for Item Card widget display check']
 		)->waitUntilReady();
 
@@ -2137,7 +2137,7 @@ class testDashboardItemCardWidget extends testWidgets {
 
 		switch ($data['link_name']) {
 			case 'host':
-				$link = 'zabbix.php?action=popup&popup=host.edit&hostid='.self::$host_ids['hostids'][self::HOST_NAME];
+				$link = 'sdnet.php?action=popup&popup=host.edit&hostid='.self::$host_ids['hostids'][self::HOST_NAME];
 				$this->assertEquals($link, $widget->query('class:sections-header')->query('class:section-path')
 						->query('class:path-element')->one()->getAttribute('href')
 				);
@@ -2153,7 +2153,7 @@ class testDashboardItemCardWidget extends testWidgets {
 
 			case 'severity':
 				$link = ($data['widget_name'] === 'Master item from host')
-					? 'zabbix.php?action=problem.view&hostids%5B0%5D='.self::$host_ids['hostids']
+					? 'sdnet.php?action=problem.view&hostids%5B0%5D='.self::$host_ids['hostids']
 						[self::HOST_NAME].'&triggerids%5B0%5D='.
 						self::$trigger_ids['Not classified trigger'].'&triggerids%5B1%5D='.
 						self::$trigger_ids['Information trigger'].'&triggerids%5B2%5D='.
@@ -2161,7 +2161,7 @@ class testDashboardItemCardWidget extends testWidgets {
 						self::$trigger_ids['Average trigger'].'&triggerids%5B4%5D='.
 						self::$trigger_ids['High trigger'].'&triggerids%5B5%5D='.
 						self::$trigger_ids['Disaster trigger'].'&filter_set=1'
-					: 'zabbix.php?action=problem.view&hostids%5B0%5D='.
+					: 'sdnet.php?action=problem.view&hostids%5B0%5D='.
 						self::$host_ids['hostids'][self::HOST_NAME].'&triggerids%5B0%5D='.
 						self::$trigger_ids['Trigger 1'].'&filter_set=1';
 
@@ -2174,7 +2174,7 @@ class testDashboardItemCardWidget extends testWidgets {
 				break;
 
 			case 'master_item':
-				$link = 'zabbix.php?action=popup&popup=item.edit&context=host&itemid='.self::$itemids['Item for item card widget'];
+				$link = 'sdnet.php?action=popup&popup=item.edit&context=host&itemid='.self::$itemids['Item for item card widget'];
 				$this->assertEquals($link, $widget->query('class:sections-header')->query('class:section-path')
 						->query('class:teal')->one()->getAttribute('href')
 				);
@@ -2184,7 +2184,7 @@ class testDashboardItemCardWidget extends testWidgets {
 				break;
 
 			case 'lld_rule':
-				$link = 'zabbix.php?action=item.prototype.list&parent_discoveryid='.self::$discovery_rule_id.'&context=host';
+				$link = 'sdnet.php?action=item.prototype.list&parent_discoveryid='.self::$discovery_rule_id.'&context=host';
 				$this->assertEquals($link, $widget->query('class:sections-header')->query('class:section-path')
 						->query('class:link-alt orange')->one()->getAttribute('href')
 				);
@@ -2194,7 +2194,7 @@ class testDashboardItemCardWidget extends testWidgets {
 				break;
 
 			case 'template':
-				$link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.
+				$link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.
 						self::$templateid.'&context=template';
 				$this->assertEquals($link, $widget->query('class:sections-header')->query('class:section-path')
 						->query('class:link-alt')->one()->getAttribute('href')
@@ -2259,7 +2259,7 @@ class testDashboardItemCardWidget extends testWidgets {
 		self::$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for canceling Item Card widget']
 		);
 
@@ -2343,7 +2343,7 @@ class testDashboardItemCardWidget extends testWidgets {
 	 * @dataProvider getWidgetName
 	 */
 	public function testDashboardItemCardWidget_Screenshots($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboard_ids['Dashboard for Item Card widget display check']
 		)->waitUntilReady();
 

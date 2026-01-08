@@ -343,7 +343,7 @@ var hintBox = {
 	},
 
 	preloadHint: function(e, target, box) {
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 		const data = jQuery(target).data('hintbox-preload');
 
 		url.setArgument('action', data.action || hintBox.getHintboxAction(data.type));

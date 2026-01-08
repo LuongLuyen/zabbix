@@ -96,7 +96,7 @@ class testPageTriggerUrl extends CWebTest {
 				[
 					'trigger' => '1_trigger_High',
 					'links' => [
-						'Problems' => 'zabbix.php?action=problem.view&filter_set=1&triggerids%5B%5D={trigger_id}',
+						'Problems' => 'sdnet.php?action=problem.view&filter_set=1&triggerids%5B%5D={trigger_id}',
 						'History' => ['1_item' => 'history.php?action=showgraph&itemids%5B%5D={item_id}'],
 						'Trigger' => 'menu-popup-item',
 						'Items' => ['1_item' => 'menu-popup-item'],
@@ -113,7 +113,7 @@ class testPageTriggerUrl extends CWebTest {
 				[
 					'trigger' => '1_trigger_Not_classified',
 					'links' => [
-						'Problems' => 'zabbix.php?action=problem.view&filter_set=1&triggerids%5B%5D={trigger_id}',
+						'Problems' => 'sdnet.php?action=problem.view&filter_set=1&triggerids%5B%5D={trigger_id}',
 						'History' => ['1_item' => 'history.php?action=showgraph&itemids%5B%5D={item_id}'],
 						'Trigger' => 'menu-popup-item',
 						'Items' => ['1_item' => 'menu-popup-item'],
@@ -137,7 +137,7 @@ class testPageTriggerUrl extends CWebTest {
 		// Prepare data provider.
 		unset($data['links']['Mark selected as symptoms']);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=1');
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=1');
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard->getWidget('Current problems');
 		$table = $widget->getContent()->asTable();
@@ -161,7 +161,7 @@ class testPageTriggerUrl extends CWebTest {
 		unset($data['links']['Mark as cause']);
 		unset($data['links']['Mark selected as symptoms']);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard->getWidget('Group to check Overview');
 
@@ -179,7 +179,7 @@ class testPageTriggerUrl extends CWebTest {
 	 * @dataProvider getTriggerLinkData
 	 */
 	public function testPageTriggerUrl_ProblemsPage($data) {
-		$this->page->login()->open('zabbix.php?action=problem.view');
+		$this->page->login()->open('sdnet.php?action=problem.view');
 
 		// Open trigger context menu.
 		$this->query('class:list-table')->asTable()->one()->query('link', $data['trigger'])->one()->click();

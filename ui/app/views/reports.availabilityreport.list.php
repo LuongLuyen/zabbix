@@ -49,7 +49,7 @@ $html_page = (new CHtmlPage())
 
 $filter = (new CFilter())
 	->addVar('action', 'availabilityreport.list')
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'availabilityreport.list'))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'availabilityreport.list'))
 	->setProfile($data['profileIdx'])
 	->setActiveTab($data['active_tab'])
 	->addTimeSelector($data['timeline']['from'], $data['timeline']['to'], true, $data['timeline']['profileIdx'],
@@ -217,7 +217,7 @@ foreach ($data['triggers'] as $trigger) {
 		$data['can_monitor_problems']
 			? (new CCol(
 			new CLink($trigger['description'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'problem.view')
 					->setArgument('filter_set', '1')
 					->setArgument('triggerids', [$trigger['triggerid']])
@@ -230,7 +230,7 @@ foreach ($data['triggers'] as $trigger) {
 		$availability['false'] < 0.00005
 			? ''
 			: (new CSpan(sprintf('%.4f%%', $availability['false'])))->addClass(ZBX_STYLE_GREEN),
-		new CLink(_('Show'), (new CUrl('zabbix.php'))
+		new CLink(_('Show'), (new CUrl('sdnet.php'))
 			->setArgument('action', 'availabilityreport.trigger')
 			->setArgument('triggerid', [$trigger['triggerid']])
 		)

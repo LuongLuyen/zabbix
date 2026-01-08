@@ -32,7 +32,7 @@ class CWidgetItemCard extends CWidget {
 
 		if (button !== null) {
 			const cell = button.closest('div');
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'widget.itemcard.value.check');
 			curl.setArgument('itemid', cell.dataset.itemid);
@@ -237,7 +237,7 @@ class CWidgetItemCard extends CWidget {
 	}
 
 	#getHintboxContentCUrl() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		const value = this.#binary_button;
 
 		curl.setArgument('itemid', value.itemid);

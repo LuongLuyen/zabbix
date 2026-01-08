@@ -580,7 +580,7 @@ class testFormItemPrototype extends CLegacyWebTest {
 
 		$discoveryid = $dbRow['itemid'];
 
-		$this->page->login()->open('zabbix.php?action=item.prototype.list&parent_discoveryid='.$discoveryid.'&context='.$context);
+		$this->page->login()->open('sdnet.php?action=item.prototype.list&parent_discoveryid='.$discoveryid.'&context='.$context);
 		$this->page->assertTitle('Configuration of item prototypes');
 		$this->page->assertHeader('Item prototypes');
 
@@ -1130,7 +1130,7 @@ class testFormItemPrototype extends CLegacyWebTest {
 		$sqlItems = "select itemid, hostid, name, key_, delay from items order by itemid";
 		$oldHashItems = CDBHelper::getHash($sqlItems);
 
-		$this->page->login()->open('zabbix.php?action=item.prototype.list&parent_discoveryid=133800&context=host');
+		$this->page->login()->open('sdnet.php?action=item.prototype.list&parent_discoveryid=133800&context=host');
 		$this->query('link:'.$data['name'])->one()->click();
 		COverlayDialogElement::find()->one()->waitUntilReady()->getFooter()->query('button:Update')->one()->click();
 		COverlayDialogElement::ensureNotPresent();
@@ -2159,7 +2159,7 @@ class testFormItemPrototype extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testFormItemPrototype_SimpleCreate($data) {
-		$this->page->login()->open('zabbix.php?action=item.prototype.list&parent_discoveryid=133800&context=host');
+		$this->page->login()->open('sdnet.php?action=item.prototype.list&parent_discoveryid=133800&context=host');
 
 		if (isset($data['name'])) {
 			$itemName = $data['name'];

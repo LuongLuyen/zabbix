@@ -60,7 +60,7 @@ class CControllerLicenseList extends CController {
 		order_result($licenses, $sortField, $sortOrder);
 
 		$paging = CPagerHelper::paginate($pageNum, $licenses, $sortOrder,
-			(new CUrl('zabbix.php'))->setArgument('action', 'license.list')
+			(new CUrl('sdnet.php'))->setArgument('action', 'license.list')
 		);
 
 		$data = [
@@ -87,7 +87,7 @@ class CControllerLicenseList extends CController {
         $lsid = API_License::create($data);
 
         // Redirect về danh sách License
-        $url = (new CUrl('zabbix.php'))
+        $url = (new CUrl('sdnet.php'))
             ->setArgument('action', 'license.list')   // ✔ đúng route
             ->setArgument('sort', 'ls_text')
             ->setArgument('sortorder', ZBX_SORT_DOWN);

@@ -720,7 +720,7 @@ class CScript extends CApiService {
 						&& $script['execute_on'] == ZBX_SCRIPT_EXECUTE_ON_SERVER) {
 					self::exception(ZBX_API_ERROR_PARAMETERS,
 						_s('Invalid parameter "%1$s": %2$s.', '/'.($index + 1).'/execute_on',
-							_('global script execution on Zabbix server is disabled by server configuration')
+							_('global script execution on SDNet server is disabled by server configuration')
 						)
 					);
 				}
@@ -945,7 +945,7 @@ class CScript extends CApiService {
 				&& ($db_script['execute_on'] == ZBX_SCRIPT_EXECUTE_ON_SERVER
 					|| ($db_script['execute_on'] == ZBX_SCRIPT_EXECUTE_ON_PROXY && $db_hosts[0]['proxyid'] == 0))) {
 			self::exception(ZBX_API_ERROR_INTERNAL,
-				_('Global script execution on Zabbix server is disabled by server configuration.')
+				_('Global script execution on SDNet server is disabled by server configuration.')
 			);
 		}
 

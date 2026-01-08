@@ -66,7 +66,7 @@ class testPageTriggers extends CLegacyWebTest {
 	 */
 	public function testPageTriggers_CheckLayout($data) {
 		$context = ($data['status'] === '3') ? '&context=template' : '&context=host';
-		$this->zbxTestLogin('zabbix.php?action=trigger.list&filter_set=1&filter_hostids[0]='.$data['hostid'].$context);
+		$this->zbxTestLogin('sdnet.php?action=trigger.list&filter_set=1&filter_hostids[0]='.$data['hostid'].$context);
 		$this->zbxTestCheckTitle('Configuration of triggers');
 		$this->zbxTestCheckHeader('Triggers');
 
@@ -456,7 +456,7 @@ class testPageTriggers extends CLegacyWebTest {
 	 * @dataProvider getTagsFilterData
 	 */
 	public function testPageTriggers_TagsFilter($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&filter_hostids[0]='.
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&filter_hostids[0]='.
 				$this->hostid.'&context=host')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 		$table = $this->getTable();
@@ -477,7 +477,7 @@ class testPageTriggers extends CLegacyWebTest {
 			'Third trigger for tag filtering'
 		];
 
-		$this->zbxTestLogin('zabbix.php?action=trigger.list&filter_set=1&filter_hostids[0]='.$this->hostid.'&context=host');
+		$this->zbxTestLogin('sdnet.php?action=trigger.list&filter_set=1&filter_hostids[0]='.$this->hostid.'&context=host');
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->getTable();
 		$form->getField('Tags')->query('id:filter_tags_0_tag')->one()->fill('Tag1234');
@@ -722,7 +722,7 @@ class testPageTriggers extends CLegacyWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageTriggers_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&filter_hostids[0]=99062&context=host');
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&filter_hostids[0]=99062&context=host');
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->getTable();
 		$form->fill($data['filter_options']);
@@ -889,7 +889,7 @@ class testPageTriggers extends CLegacyWebTest {
 	 * @dataProvider getHostAndGroupData
 	 */
 	public function testPageTriggers_FilterHostAndGroups($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&filter_hostids[0]=99062&context=host');
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&filter_hostids[0]=99062&context=host');
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->getTable();
 

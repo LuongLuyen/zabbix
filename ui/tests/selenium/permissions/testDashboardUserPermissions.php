@@ -395,7 +395,7 @@ class testDashboardUserPermissions extends CWebTest {
 	 */
 	protected function checkAccessViaMonitoringHosts($data) {
 		// Open host list in monitorting section.
-		$this->page->open('zabbix.php?action=host.view&groupids%5B%5D='.self::$host_groupid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=host.view&groupids%5B%5D='.self::$host_groupid)->waitUntilReady();
 		$table = $this->query('class:list-table')->waitUntilPresent()->asTable()->one();
 
 		if ($data['view']) {
@@ -431,7 +431,7 @@ class testDashboardUserPermissions extends CWebTest {
 	 */
 	protected function checkAccessViaUrlOnHost($data) {
 		// Open inherited dashboard.
-		$this->page->open('zabbix.php?action=host.dashboard.view&hostid='.self::$hostid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=host.dashboard.view&hostid='.self::$hostid)->waitUntilReady();
 
 		if ($data['view']) {
 			// Check dashboard name.
@@ -456,7 +456,7 @@ class testDashboardUserPermissions extends CWebTest {
 	 * @param array		$data		Data from data provider.
 	 */
 	protected function checkAccessViaUrlOnTemplate($data) {
-		$this->page->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$template_dashboardid)->waitUntilReady();
 
 		if ($data['edit']) {
 			$dashboard = CDashboardElement::find()->one()->waitUntilVisible();
@@ -1139,7 +1139,7 @@ class testDashboardUserPermissions extends CWebTest {
 
 		// Login under updated user and open dashboard.
 		$this->page->userLogin(self::USERNAME, self::PASSWORD);
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 
 		if ($data['view'] || $sharing_type === PUBLIC_SHARING) {
 			// Check dashboard name.

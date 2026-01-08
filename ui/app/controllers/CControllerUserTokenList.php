@@ -125,7 +125,7 @@ class CControllerUserTokenList extends CController {
 		$page_num = $this->getInput('page', 1);
 		CPagerHelper::savePage('user.token.list', $page_num);
 		$data['paging'] = CPagerHelper::paginate($page_num, $data['tokens'], $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		$response = new CControllerResponseData($data);

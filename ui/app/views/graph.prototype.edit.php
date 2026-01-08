@@ -83,7 +83,7 @@ else {
 	];
 }
 
-$return_url = (new CUrl('zabbix.php'))
+$return_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'graph.prototype.list')
 	->setArgument('parent_discoveryid', $data['parent_discoveryid'])
 	->setArgument('context', $data['context'])

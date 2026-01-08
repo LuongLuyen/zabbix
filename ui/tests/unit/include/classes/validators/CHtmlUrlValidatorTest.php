@@ -47,30 +47,30 @@ class CHtmlUrlValidatorTest extends TestCase {
 			['http://localhost/file.php',								[],															true],
 			['http://localhost/file.html',								[],															true],
 			['http://localhost/file',									[],															true],
-			['http://zabbix.php',										[],															true],
+			['http://sdnet.php',										[],															true],
 			['http://hello/world/hosts.html?abc=123',					[],															true],
-			['http:/zabbix.php',										[],															true], // Because we allow tel:1-111-111-1111 and "/zabbix.php" is a valid path which falls in same category.
+			['http:/sdnet.php',										[],															true], // Because we allow tel:1-111-111-1111 and "/sdnet.php" is a valid path which falls in same category.
 			['http:localost',											[],															true], // Because we allow tel:1-111-111-1111 and "localost" is a valid path which falls in same category.
 			['http:/localost',											[],															true], // Because we allow tel:1-111-111-1111 and "/localost" is a valid path which falls in same category.
 			['http/',													[],															true], // Because "http/" is a valid relative path.
-			['http:/localhost/zabbix.php',								[],															true], // Because we allow tel:1-111-111-1111 and "/localhost/zabbix.php" is a valid path which falls in same category.
-			['http:myhost/zabbix.php',									[],															true], // Because we allow tel:1-111-111-1111 and "myhost/zabbix.php" is a valid path which falls in same category.
+			['http:/localhost/sdnet.php',								[],															true], // Because we allow tel:1-111-111-1111 and "/localhost/sdnet.php" is a valid path which falls in same category.
+			['http:myhost/sdnet.php',									[],															true], // Because we allow tel:1-111-111-1111 and "myhost/sdnet.php" is a valid path which falls in same category.
 			['localhost',												[],															true],
-			['notzabbix.php',											[],															true],
-			['zabbix.php',												[],															true],
+			['notsdnet.php',											[],															true],
+			['sdnet.php',												[],															true],
 			['hosts.html',												[],															true],
 			['/secret/.htaccess',										[],															true], // No file type restrictions.
-			['/zabbix.php',												[],															true],
-			['subdir/zabbix.php',										[],															true],
+			['/sdnet.php',												[],															true],
+			['subdir/sdnet.php',										[],															true],
 			['subdir/hosts/id/10084',									[],															true],
 			['subdir/'.'/100500/',										[],															true], // Comment hook does not allow "//".
-			['zabbix.php/..',											[],															true],
+			['sdnet.php/..',											[],															true],
 			['hosts/..php',												[],															true],
 			['subdir1/../subdir2/../subdir3/',							[],															true],
-			['subdir1/subdir2/zabbix.php',								[],															true],
+			['subdir1/subdir2/sdnet.php',								[],															true],
 			['192.168.1.1.',											[],															true], // Not a valid IP, but it is accepted as "path".
-			['zabbix.php?a=1',											[],															true],
-			['zabbix.php?action=image.list',							[],															true],
+			['sdnet.php?a=1',											[],															true],
+			['sdnet.php?action=image.list',							[],															true],
 			['chart_bar.php?a=1&b=2',									[],															true],
 			['mailto:example@example.com',								[],															true],
 			['file://localhost/path',									[],															true],
@@ -115,8 +115,8 @@ class CHtmlUrlValidatorTest extends TestCase {
 			['{$USER_URL_MACRO}',										['allow_user_macro' => false],								true],
 			['{INVENTORY.URL.A}',										['allow_user_macro' => false],								true],
 			['http://localhost/{$USER_URL_MACRO}/',						['allow_user_macro' => false],								true], // User macros not allowed, but it's a subdir.
-			['http://localhost/zabbix.php?hostid={$ID}',				['allow_user_macro' => false],								true], // User macros not allowed, but it's in query.
-			['http://localhost/zabbix.php?hostid=1#comment={$COMMENT}',	['allow_user_macro' => false],								true],
+			['http://localhost/sdnet.php?hostid={$ID}',				['allow_user_macro' => false],								true], // User macros not allowed, but it's in query.
+			['http://localhost/sdnet.php?hostid=1#comment={$COMMENT}',	['allow_user_macro' => false],								true],
 			['http://localhost/{NOT_AUSER_MACRO}/',						['allow_user_macro' => false],								true], // User macros not allowed, but it's not a macro.
 			['http://localhost?host={HOST.NAME}',						['allow_user_macro' => false],								true],
 			// Invalid URLs.
@@ -148,17 +148,17 @@ class CHtmlUrlValidatorTest extends TestCase {
 
 	public function dataProviderValidateSameSiteURL() {
 		return [
-			['zabbix.php',									true],
-			['zabbix.php?',									true],
-			['zabbix.php?action=host.list',					true],
-			['zabbix.php?action=item.list&context=host',	true],
-			['zabbix.php?action=host.list#id=12345',		true],
-			['zabbix.php?action=item.list&context=host&filter_hostids%5B%5D=10605',	true],
+			['sdnet.php',									true],
+			['sdnet.php?',									true],
+			['sdnet.php?action=host.list',					true],
+			['sdnet.php?action=item.list&context=host',	true],
+			['sdnet.php?action=host.list#id=12345',		true],
+			['sdnet.php?action=item.list&context=host&filter_hostids%5B%5D=10605',	true],
 
 			['items1.php',								false],
 			['items.html',								false],
-			['zabbix.php&itemids=12345',				false],
-			['http://www.zabbix.com/zabbix.php',		false],
+			['sdnet.php&itemids=12345',				false],
+			['http://www.zabbix.com/sdnet.php',		false],
 			['http://www.zabbix.com',					false],
 			['www.zabbix.com',							false],
 			['zabbix.com',								false]

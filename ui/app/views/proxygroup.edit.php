@@ -71,7 +71,7 @@ if ($data['proxies']) {
 	$proxies = [];
 
 	foreach ($data['proxies'] as $proxy) {
-		$proxy_url = (new CUrl('zabbix.php'))
+		$proxy_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'proxy.edit')
 			->setArgument('proxyid', $proxy['proxyid']);

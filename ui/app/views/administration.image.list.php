@@ -20,7 +20,7 @@
 
 $this->includeJsFile('administration.image.list.js.php');
 
-$page_url = (new CUrl('zabbix.php'))->setArgument('action', 'image.list');
+$page_url = (new CUrl('sdnet.php'))->setArgument('action', 'image.list');
 $html_page = (new CHtmlPage())
 	->setTitle(_('Images'))
 	->setTitleSubmenu(getAdministrationGeneralSubmenu())
@@ -53,7 +53,7 @@ $html_page = (new CHtmlPage())
 				->addItem(
 					(new CSimpleButton(
 						$data['imagetype'] == IMAGE_TYPE_ICON ? _('Create icon') : _('Create background')
-					))->onClick(sprintf('javascript: document.location="%s";', (new CUrl('zabbix.php'))
+					))->onClick(sprintf('javascript: document.location="%s";', (new CUrl('sdnet.php'))
 						->setArgument('action', 'image.edit')
 						->setArgument('imagetype', $data['imagetype'])
 						->getUrl()
@@ -74,7 +74,7 @@ else {
 
 	$count = 0;
 	$image_row = (new CDiv())->addClass(ZBX_STYLE_ROW);
-	$edit_url = (new Curl('zabbix.php'))->setArgument('action', 'image.edit');
+	$edit_url = (new Curl('sdnet.php'))->setArgument('action', 'image.edit');
 
 	foreach ($data['images'] as $image) {
 		$img = ($image['imagetype'] == IMAGE_TYPE_BACKGROUND)

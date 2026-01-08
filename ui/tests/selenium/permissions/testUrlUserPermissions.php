@@ -69,7 +69,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 		return [
 			// #0 Dashboards.
 			[[
-				'url' => 'zabbix.php?action=dashboard.view',
+				'url' => 'sdnet.php?action=dashboard.view',
 				'title' =>	'Dashboard',
 				'header' =>	'Global view',
 				'users' => [
@@ -84,7 +84,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			// dashboard differs for this user. To ensure the default dashboard check for other users,
 			// the super admin check is moved to a separate case with the dashboardid hardcoded in the URL.
 			[[
-				'url' => 'zabbix.php?action=dashboard.view&dashboardid=1',
+				'url' => 'sdnet.php?action=dashboard.view&dashboardid=1',
 				'title' =>	'Dashboard',
 				'header' =>	'Global view',
 				'users' => [
@@ -93,7 +93,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #2. Monitoring
 			[[
-				'url' => 'zabbix.php?action=problem.view',
+				'url' => 'sdnet.php?action=problem.view',
 				'title' =>	'Problems',
 				'header' =>	'Problems',
 				'users' => [
@@ -107,7 +107,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #3.
 			[[
-				'url' => 'zabbix.php?action=web.view',
+				'url' => 'sdnet.php?action=web.view',
 				'title' =>	'Web monitoring',
 				'header' =>	'Web monitoring',
 				'users' => [
@@ -135,7 +135,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #5.
 			[[
-				'url' => 'zabbix.php?action=latest.view',
+				'url' => 'sdnet.php?action=latest.view',
 				'title' =>	'Latest data',
 				'header' =>	'Latest data',
 				'users' => [
@@ -163,7 +163,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #7.
 			[[
-				'url' => 'zabbix.php?action=charts.view',
+				'url' => 'sdnet.php?action=charts.view',
 				'title' =>	'Custom graphs',
 				'header' =>	'Graphs',
 				'users' => [
@@ -177,7 +177,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #8.
 			[[
-				'url' => 'zabbix.php?action=charts.view&filter_hostids%5B0%5D=10084&filter_show=1&filter_set=1',
+				'url' => 'sdnet.php?action=charts.view&filter_hostids%5B0%5D=10084&filter_show=1&filter_set=1',
 				'title' =>	'Custom graphs',
 				'header' => 'Graphs',
 				'users' => [
@@ -191,7 +191,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #9.
 			[[
-				'url' => 'zabbix.php?action=map.view',
+				'url' => 'sdnet.php?action=map.view',
 				'title' =>	'Configuration of network maps',
 				'header' =>	'Maps',
 				'users' => [
@@ -219,7 +219,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #11.
 			[[
-				'url' => 'zabbix.php?action=map.view&sysmapid=1',
+				'url' => 'sdnet.php?action=map.view&sysmapid=1',
 				'title' => 'Network maps',
 				'header' => 'Maps',
 				'users' => [
@@ -233,7 +233,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #12.
 			[[
-				'url' => 'zabbix.php?action=discovery.view',
+				'url' => 'sdnet.php?action=discovery.view',
 				'title' =>	'Status of discovery',
 				'header' =>	'Status of discovery',
 				'users' => [
@@ -247,7 +247,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #13. Services
 			[[
-				'url' => 'zabbix.php?action=service.list',
+				'url' => 'sdnet.php?action=service.list',
 				'title' =>	'Services',
 				'header' =>	'Services',
 				'users' => [
@@ -289,7 +289,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #16 Reports.
 			[[
-				'url' => 'zabbix.php?action=report.status',
+				'url' => 'sdnet.php?action=report.status',
 				'title' =>	'System information',
 				'header' => 'System information',
 				'users' => [
@@ -303,7 +303,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #17.
 			[[
-				'url' => 'zabbix.php?action=availabilityreport.list',
+				'url' => 'sdnet.php?action=availabilityreport.list',
 				'title' =>	'Availability report',
 				'header' =>	'Availability report',
 				'users' => [
@@ -317,7 +317,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #18.
 			[[
-				'url' => 'zabbix.php?action=toptriggers.list',
+				'url' => 'sdnet.php?action=toptriggers.list',
 				'title' =>	'Top 100 triggers',
 				'header' =>	'Top 100 triggers',
 				'users' => [
@@ -331,7 +331,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #19.
 			[[
-				'url' => 'zabbix.php?action=auditlog.list',
+				'url' => 'sdnet.php?action=auditlog.list',
 				'title' =>	'Audit log',
 				'header' =>	'Audit log',
 				'users' => [
@@ -345,7 +345,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #20.
 			[[
-				'url' => 'zabbix.php?action=actionlog.list',
+				'url' => 'sdnet.php?action=actionlog.list',
 				'title' =>	'Action log',
 				'header' =>	'Action log',
 				'users' => [
@@ -373,7 +373,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #22 Configuration.
 			[[
-				'url' => 'zabbix.php?action=hostgroup.list',
+				'url' => 'sdnet.php?action=hostgroup.list',
 				'title' => 'Configuration of host groups',
 				'header' => 'Host groups',
 				'users' => [
@@ -387,7 +387,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #23.
 			[[
-				'url' => 'zabbix.php?action=popup&popup=hostgroup.edit&groupid=4',
+				'url' => 'sdnet.php?action=popup&popup=hostgroup.edit&groupid=4',
 				'title' => 'Host group edit',
 				'header' => 'Host group',
 				'users' => [
@@ -401,7 +401,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #24. Admin users should be uncommented after the bugfix: https://support.zabbix.com/browse/ZBX-26649
 			[[
-				'url' => 'zabbix.php?action=popup&popup=hostgroup.edit&groupid=0',
+				'url' => 'sdnet.php?action=popup&popup=hostgroup.edit&groupid=0',
 				'title' => 'Host group edit',
 				'header' => 'New host group',
 				'users' => [
@@ -415,7 +415,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #25.
 			[[
-				'url' => 'zabbix.php?action=templategroup.list',
+				'url' => 'sdnet.php?action=templategroup.list',
 				'title' => 'Configuration of template groups',
 				'header' => 'Template groups',
 				'users' => [
@@ -429,7 +429,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #26.
 			[[
-				'url' => 'zabbix.php?action=popup&popup=templategroup.edit&groupid=1',
+				'url' => 'sdnet.php?action=popup&popup=templategroup.edit&groupid=1',
 				'title' => 'Template group edit',
 				'header' => 'Template group',
 				'users' => [
@@ -443,7 +443,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #27. Admin users should be uncommented after the bugfix: https://support.zabbix.com/browse/ZBX-26649
 			[[
-				'url' => 'zabbix.php?action=popup&popup=templategroup.edit&groupid=0',
+				'url' => 'sdnet.php?action=popup&popup=templategroup.edit&groupid=0',
 				'title' =>	'Template group edit',
 				'header' => 'New template group',
 				'users' => [
@@ -457,7 +457,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #28.
 			[[
-				'url' => 'zabbix.php?action=template.list',
+				'url' => 'sdnet.php?action=template.list',
 				'title' =>	'Configuration of templates',
 				'header' => 'Templates',
 				'users' => [
@@ -485,7 +485,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #30.
 			[[
-				'url' => 'zabbix.php?action=popup&popup=host.edit',
+				'url' => 'sdnet.php?action=popup&popup=host.edit',
 				'title' =>	'Host edit',
 				'header' => 'New host',
 				'users' => [
@@ -499,7 +499,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #31.
 			[[
-				'url' => 'zabbix.php?action=item.list&context=host',
+				'url' => 'sdnet.php?action=item.list&context=host',
 				'title' =>	'Configuration of items',
 				'header' => 'Items',
 				'users' => [
@@ -513,7 +513,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #32.
 			[[
-				'url' => 'zabbix.php?action=trigger.list&context=host',
+				'url' => 'sdnet.php?action=trigger.list&context=host',
 				'title' =>	'Configuration of triggers',
 				'header' => 'Triggers',
 				'users' => [
@@ -527,7 +527,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #33.
 			[[
-				'url' => 'zabbix.php?action=graph.list&context=host',
+				'url' => 'sdnet.php?action=graph.list&context=host',
 				'title' =>	'Configuration of graphs',
 				'header' => 'Graphs',
 				'users' => [
@@ -579,7 +579,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #37.
 			[[
-				'url' => 'zabbix.php?action=maintenance.list',
+				'url' => 'sdnet.php?action=maintenance.list',
 				'title' =>	'Configuration of maintenance periods',
 				'header' => 'Maintenance periods',
 				'users' => [
@@ -593,7 +593,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #38.
 			[[
-				'url' => 'zabbix.php?action=action.list&eventsource=0',
+				'url' => 'sdnet.php?action=action.list&eventsource=0',
 				'title' =>	'Configuration of actions',
 				'header' => 'Trigger actions',
 				'users' => [
@@ -607,7 +607,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #39.
 			[[
-				'url' => 'zabbix.php?action=action.list&eventsource=1',
+				'url' => 'sdnet.php?action=action.list&eventsource=1',
 				'title' =>	'Configuration of actions',
 				'header' => 'Discovery actions',
 				'users' => [
@@ -621,7 +621,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #40.
 			[[
-				'url' => 'zabbix.php?action=action.list&eventsource=2',
+				'url' => 'sdnet.php?action=action.list&eventsource=2',
 				'title' =>	'Configuration of actions',
 				'header' => 'Autoregistration actions',
 				'users' => [
@@ -635,7 +635,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #41.
 			[[
-				'url' => 'zabbix.php?action=action.list&eventsource=3',
+				'url' => 'sdnet.php?action=action.list&eventsource=3',
 				'title' =>	'Configuration of actions',
 				'header' => 'Internal actions',
 				'users' => [
@@ -649,7 +649,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #42.
 			[[
-				'url' => 'zabbix.php?action=action.list&eventsource=4',
+				'url' => 'sdnet.php?action=action.list&eventsource=4',
 				'title' =>	'Configuration of actions',
 				'header' => 'Service actions',
 				'users' => [
@@ -663,7 +663,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #43.
 			[[
-				'url' => 'zabbix.php?action=correlation.list',
+				'url' => 'sdnet.php?action=correlation.list',
 				'title' =>	'Event correlation rules',
 				'header' => 'Event correlation',
 				'users' => [
@@ -677,7 +677,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #44.
 			[[
-				'url' => 'zabbix.php?action=discovery.list',
+				'url' => 'sdnet.php?action=discovery.list',
 				'title' =>	'Configuration of discovery rules',
 				'header' => 'Discovery rules',
 				'users' => [
@@ -691,7 +691,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #45.
 			[[
-				'url' => 'zabbix.php?action=service.list.edit',
+				'url' => 'sdnet.php?action=service.list.edit',
 				'title' =>	'Services',
 				'header' => 'Services',
 				'users' => [
@@ -705,7 +705,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #46 Administration.
 			[[
-				'url' => 'zabbix.php?action=gui.edit',
+				'url' => 'sdnet.php?action=gui.edit',
 				'title' =>	'Configuration of GUI',
 				'header' => 'GUI',
 				'users' => [
@@ -719,7 +719,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #47.
 			[[
-				'url' => 'zabbix.php?action=housekeeping.edit',
+				'url' => 'sdnet.php?action=housekeeping.edit',
 				'title' =>	'Configuration of housekeeping',
 				'header' =>	'Housekeeping',
 				'users' => [
@@ -733,7 +733,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #48.
 			[[
-				'url' => 'zabbix.php?action=image.list',
+				'url' => 'sdnet.php?action=image.list',
 				'title' =>	'Configuration of images',
 				'header' =>	'Images',
 				'users' => [
@@ -747,7 +747,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #49.
 			[[
-				'url' => 'zabbix.php?action=iconmap.list',
+				'url' => 'sdnet.php?action=iconmap.list',
 				'title' =>	'Configuration of icon mapping',
 				'header' =>	'Icon mapping',
 				'users' => [
@@ -761,7 +761,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #50.
 			[[
-				'url' => 'zabbix.php?action=regex.list',
+				'url' => 'sdnet.php?action=regex.list',
 				'title' =>	'Configuration of regular expressions',
 				'header' =>	'Regular expressions',
 				'users' => [
@@ -775,7 +775,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #51.
 			[[
-				'url' => 'zabbix.php?action=macros.edit',
+				'url' => 'sdnet.php?action=macros.edit',
 				'title' =>	'Configuration of macros',
 				'header' =>	'Macros',
 				'users' => [
@@ -789,7 +789,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #52.
 			[[
-				'url' => 'zabbix.php?action=trigdisplay.edit',
+				'url' => 'sdnet.php?action=trigdisplay.edit',
 				'title' =>	'Configuration of trigger displaying options',
 				'header' =>	'Trigger displaying options',
 				'users' => [
@@ -803,7 +803,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #53.
 			[[
-				'url' => 'zabbix.php?action=miscconfig.edit',
+				'url' => 'sdnet.php?action=miscconfig.edit',
 				'title' =>	'Other configuration parameters',
 				'header' =>	'Other configuration parameters',
 				'users' => [
@@ -817,7 +817,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #54.
 			[[
-				'url' => 'zabbix.php?action=proxy.list',
+				'url' => 'sdnet.php?action=proxy.list',
 				'title' =>	'Configuration of proxies',
 				'header' =>	'Proxies',
 				'users' => [
@@ -831,7 +831,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #55.
 			[[
-				'url' => 'zabbix.php?action=authentication.edit',
+				'url' => 'sdnet.php?action=authentication.edit',
 				'title' =>	'Configuration of authentication',
 				'header' =>	'Authentication',
 				'users' => [
@@ -845,7 +845,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #56.
 			[[
-				'url' => 'zabbix.php?action=usergroup.list',
+				'url' => 'sdnet.php?action=usergroup.list',
 				'title' =>	'Configuration of user groups',
 				'header' =>	'User groups',
 				'users' => [
@@ -859,7 +859,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #57.
 			[[
-				'url' => 'zabbix.php?action=user.list',
+				'url' => 'sdnet.php?action=user.list',
 				'title' =>	'Configuration of users',
 				'header' =>	'Users',
 				'users' => [
@@ -873,7 +873,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #58.
 			[[
-				'url' => 'zabbix.php?action=mediatype.list',
+				'url' => 'sdnet.php?action=mediatype.list',
 				'title' =>	'Configuration of media types',
 				'header' =>	'Media types',
 				'users' => [
@@ -887,7 +887,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #59.
 			[[
-				'url' => 'zabbix.php?action=script.list',
+				'url' => 'sdnet.php?action=script.list',
 				'title' =>	'Configuration of scripts',
 				'header' =>	'Scripts',
 				'users' => [
@@ -901,7 +901,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #60.
 			[[
-				'url' => 'zabbix.php?action=queue.overview',
+				'url' => 'sdnet.php?action=queue.overview',
 				'title' =>	'Queue [refreshed every 30 sec.]',
 				'header' =>	'Queue overview',
 				'users' => [
@@ -915,7 +915,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #61 Misc.
 			[[
-				'url' => 'zabbix.php?action=search&search=server',
+				'url' => 'sdnet.php?action=search&search=server',
 				'title' =>	'Search',
 				'header' => 'Search: server',
 				'users' => [
@@ -929,7 +929,7 @@ class testUrlUserPermissions extends CLegacyWebTest {
 			]],
 			// #62.
 			[[
-				'url' => 'zabbix.php?action=userprofile.edit',
+				'url' => 'sdnet.php?action=userprofile.edit',
 				'title' =>	'Profile',
 				'header' => 'Profile',
 				'users' => [

@@ -72,7 +72,7 @@
 		}
 
 		#enable(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'item.prototype.enable');
 
@@ -85,7 +85,7 @@
 		}
 
 		#disable(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'item.prototype.disable');
 
@@ -98,7 +98,7 @@
 		}
 
 		#delete(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'item.prototype.delete');
 

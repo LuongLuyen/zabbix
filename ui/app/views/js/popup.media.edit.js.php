@@ -88,7 +88,7 @@ window.media_edit_popup = new class {
 
 	submit() {
 		const fields = this.#trimFields(getFormFields(this.#form));
-		const url = new URL('zabbix.php', location.href);
+		const url = new URL('sdnet.php', location.href);
 
 		url.searchParams.set('action', 'popup.media.check');
 

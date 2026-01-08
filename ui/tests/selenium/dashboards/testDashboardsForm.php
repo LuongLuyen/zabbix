@@ -167,7 +167,7 @@ class testDashboardsForm extends CWebTest {
 	}
 
 	public function testDashboardsForm_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.list')->waitUntilReady();
 		$this->query('button:Create dashboard')->one()->click();
 		$this->page->assertHeader('New dashboard');
 		$this->page->assertTitle('Dashboard');
@@ -300,7 +300,7 @@ class testDashboardsForm extends CWebTest {
 	 */
 	public function testDashboardsForm_Create($data) {
 		$old_hash = ($data['expected'] === TEST_BAD) ? $this->getHash() : null;
-		$this->page->login()->open('zabbix.php?action=dashboard.view&new=1');
+		$this->page->login()->open('sdnet.php?action=dashboard.view&new=1');
 		$dashboard = CDashboardElement::find()->one();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$this->checkProperties($data, 'create', $dashboard, $dialog, $old_hash);
@@ -318,7 +318,7 @@ class testDashboardsForm extends CWebTest {
 			$data['dashboard_properties']['Name'] = $data['dashboard_properties']['Name'].microtime();
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for update']);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for update']);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
 		$dialog = $dashboard->editProperties();
@@ -375,7 +375,7 @@ class testDashboardsForm extends CWebTest {
 			$this->assertEquals($title, $dashboard->getTitle());
 
 			// Open dashboard from dashboard list.
-			$this->page->login()->open('zabbix.php?action=dashboard.list')->waitUntilReady();
+			$this->page->login()->open('sdnet.php?action=dashboard.list')->waitUntilReady();
 			$this->query('link', $title)->one()->waitUntilClickable()->click();
 			$dashboard = CDashboardElement::find()->one()->waitUntilReady();
 			$dashboard->edit();
@@ -421,7 +421,7 @@ class testDashboardsForm extends CWebTest {
 	public function testDashboardsForm_CancelCreate($data) {
 		$old_hash = $this->getHash();
 
-		$this->page->login()->open('zabbix.php?action=dashboard.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.list')->waitUntilReady();
 
 		if (CTestArrayHelper::get($data, 'opened_dashboard', false)) {
 			$this->query('link', $data['opened_dashboard'])->one()->click();
@@ -450,11 +450,11 @@ class testDashboardsForm extends CWebTest {
 		$dashboard->cancelEditing();
 
 		if (CTestArrayHelper::get($data, 'opened_dashboard', false)) {
-			$url = 'zabbix.php?action=dashboard.view&dashboardid=1&from=now-1h&to=now';
+			$url = 'sdnet.php?action=dashboard.view&dashboardid=1&from=now-1h&to=now';
 			$title = $data['opened_dashboard'];
 		}
 		else {
-			$url = 'zabbix.php?action=dashboard.list';
+			$url = 'sdnet.php?action=dashboard.list';
 			$title = 'Dashboards';
 		}
 
@@ -499,7 +499,7 @@ class testDashboardsForm extends CWebTest {
 	public function testDashboardsForm_Cancel($data) {
 		$old_hash = $this->getHash();
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for update']);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for update']);
 		$dashboard = CDashboardElement::find()->one();
 
 		// Open dashboard properties overlay dialog for update and clone action.
@@ -549,7 +549,7 @@ class testDashboardsForm extends CWebTest {
 		$cloned_name = 'Cloned dashboard';
 		$original_hashes = $this->getDashboardHashes($original_values['Name']);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$ids['Dashboard for clone and delete'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 
@@ -741,7 +741,7 @@ class testDashboardsForm extends CWebTest {
 	 * @dataProvider getShareData
 	 */
 	public function testDashboardsForm_SharingPopup($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids[$data['dashboard']]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids[$data['dashboard']]);
 		CDashboardElement::find()->one()->waitUntilReady();
 		$this->query('id:dashboard-actions')->one()->click();
 		CPopupMenuElement::find()->waitUntilVisible()->one()->select('Sharing');
@@ -896,7 +896,7 @@ class testDashboardsForm extends CWebTest {
 				zbx_dbstr(self::$ids['Dashboard for clone and delete']));
 		$widgetid = CDBHelper::getValue('SELECT widgetid FROM widget WHERE dashboard_pageid='.zbx_dbstr($pageid));
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for clone and delete']);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$ids['Dashboard for clone and delete']);
 		CDashboardElement::find()->one()->waitUntilReady();
 		$this->query('id:dashboard-actions')->one()->click();
 		CPopupMenuElement::find()->waitUntilVisible()->one()->select('Delete');

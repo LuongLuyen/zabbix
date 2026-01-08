@@ -484,7 +484,7 @@ class testFormUserMedia extends CWebTest {
 		$this->page->login();
 
 		foreach (['Cancel', 'Update'] as $action) {
-			$this->page->open('zabbix.php?action=user.edit&userid=1');
+			$this->page->open('sdnet.php?action=user.edit&userid=1');
 			$this->query('id:tab_mediaTab')->waitUntilVisible()->one()->click();
 			$table = $this->query('xpath://ul[@id="userMediaFormList"]//table')->asTable()->one();
 
@@ -517,7 +517,7 @@ class testFormUserMedia extends CWebTest {
 			['email' => '2@zabbix.com'],
 			['email' => '3@zabbix.com']
 		];
-		$this->page->login()->open('zabbix.php?action=user.edit&userid=50');
+		$this->page->login()->open('sdnet.php?action=user.edit&userid=50');
 		$user_form = $this->query('name:user_form')->asForm()->waitUntilPresent()->one();
 		$user_form->selectTab('Media');
 
@@ -590,7 +590,7 @@ class testFormUserMedia extends CWebTest {
 	 * @dataProvider getUserData
 	 */
 	public function testFormUserMedia_UserWithMediaActions($data) {
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 
 		// Fill in user form for the created user or just open an existing one.
 		if ($data['action'] === 'create') {
@@ -659,7 +659,7 @@ class testFormUserMedia extends CWebTest {
 	 * @return CFormElement
 	 */
 	private function getUserMediaTab($user) {
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$this->query('link', $user)->waitUntilVisible()->one()->click();
 		$user_form = $this->query('name:user_form')->asForm()->waitUntilPresent()->one()->selectTab('Media');
 

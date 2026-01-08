@@ -46,7 +46,7 @@ class testFormServicesSla extends CWebTest {
 	 * Check SLA create form layout.
 	 */
 	public function testFormServicesSla_Layout() {
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$this->query('button:Create SLA')->waitUntilClickable()->one()->click();
 
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -867,7 +867,7 @@ class testFormServicesSla extends CWebTest {
 	public function testFormServicesSla_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::$sla_sql);
 
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$this->query('link', self::$sla_with_downtimes)->waitUntilClickable()->one()->click();
 
 		$form = COverlayDialogElement::find()->waitUntilReady()->one()->asForm();
@@ -881,7 +881,7 @@ class testFormServicesSla extends CWebTest {
 		// Get ID of the SLA to be deleted.
 		$id_to_delete = CDataHelper::get('Sla.slaids')[self::$delete_sla];
 
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$this->query('link', self::$delete_sla)->waitUntilClickable()->one()->click();
 
 		// Click on the Delete button in the opened SLA configuration dialog.
@@ -926,7 +926,7 @@ class testFormServicesSla extends CWebTest {
 		$old_hash = CDBHelper::getHash(self::$sla_sql);
 		$locator = ($action === 'create') ? 'button:Create SLA' : 'link:'.self::$update_sla;
 
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$this->query($locator)->one()->click();
 
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
@@ -939,7 +939,7 @@ class testFormServicesSla extends CWebTest {
 	}
 
 	public function testFormServicesSla_Clone() {
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$this->query('link', self::$sla_with_downtimes)->waitUntilClickable()->one()->click();
 
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -994,7 +994,7 @@ class testFormServicesSla extends CWebTest {
 		}
 
 		// Open service form depending on create or update scenario.
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 
 		if ($update) {
 			$update_sla = (array_key_exists('downtime_action', $data)) ? self::$sla_with_downtimes : self::$update_sla;

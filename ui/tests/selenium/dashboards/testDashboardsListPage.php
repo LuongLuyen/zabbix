@@ -74,7 +74,7 @@ class testDashboardsListPage extends CWebTest {
 	}
 
 	public function testDashboardsListPage_CheckLayout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.list');
+		$this->page->login()->open('sdnet.php?action=dashboard.list');
 		$this->page->assertTitle('Dashboards');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$this->assertEquals(['', 'Name'], $table->getHeadersText());
@@ -181,7 +181,7 @@ class testDashboardsListPage extends CWebTest {
 	 * @dataProvider getCheckFilterData
 	 */
 	public function testDashboardsListPage_CheckFilter($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.list');
+		$this->page->login()->open('sdnet.php?action=dashboard.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$start_rows_count = $table->getRows()->count();
 		$this->assertTableStats($start_rows_count);
@@ -203,7 +203,7 @@ class testDashboardsListPage extends CWebTest {
 	 * Check that My and Sharing tags displays correctly in Dashboard Lists for Admin.
 	 */
 	public function testDashboardsListPage_CheckOwners() {
-		$this->page->login()->open('zabbix.php?action=dashboard.list');
+		$this->page->login()->open('sdnet.php?action=dashboard.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 
 		$dashboards = CDBHelper::getAll('SELECT name, userid, private, dashboardid FROM dashboard');
@@ -229,7 +229,7 @@ class testDashboardsListPage extends CWebTest {
 	}
 
 	public function testDashboardsListPage_DeleteSingleDashboard() {
-		$this->page->login()->open('zabbix.php?action=dashboard.list');
+		$this->page->login()->open('sdnet.php?action=dashboard.list');
 		$dashboard_name = 'Testing share dashboard';
 		$table = $this->query('class:list-table')->asTable()->one();
 
@@ -248,7 +248,7 @@ class testDashboardsListPage extends CWebTest {
 	}
 
 	public function testDashboardsListPage_DeleteAllDashboards() {
-		$this->page->login()->open('zabbix.php?action=dashboard.list');
+		$this->page->login()->open('sdnet.php?action=dashboard.list');
 		$this->selectTableRows();
 		$this->query('button:Delete')->one()->click();
 		$this->page->acceptAlert();

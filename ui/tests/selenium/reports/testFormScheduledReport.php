@@ -67,7 +67,7 @@ class testFormScheduledReport extends CWebTest {
 	];
 
 	public function testFormScheduledReport_Layout() {
-		$this->page->login()->open('zabbix.php?action=scheduledreport.list');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.list');
 		$this->query('button:Create report')->waitUntilClickable()->one()->click();
 		$form = $this->query('id:scheduledreport-form')->waitUntilVisible()->asForm()->one();
 
@@ -75,7 +75,7 @@ class testFormScheduledReport extends CWebTest {
 	}
 
 	public function testFormScheduledReport_DashboardLayout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=2');
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=2');
 		$this->page->waitUntilReady();
 		$this->query('id:dashboard-actions')->one()->waitUntilClickable()->click();
 		CPopupMenuElement::find()->waitUntilVisible()->one()->select('Create new report');
@@ -708,7 +708,7 @@ class testFormScheduledReport extends CWebTest {
 	 * @dataProvider getCreateData
 	 */
 	public function testFormScheduledReport_Create($data) {
-		$this->page->login()->open('zabbix.php?action=scheduledreport.edit');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.edit');
 		$this->executeAction($data, 'add', 'Scheduled report added');
 	}
 
@@ -764,7 +764,7 @@ class testFormScheduledReport extends CWebTest {
 	 * @dataProvider getDashboardCreateData
 	 */
 	public function testFormScheduledReport_CreateInDashboard($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
 		$this->query('id:dashboard-actions')->one()->waitUntilClickable()->hoverMouse()->click();
 		CPopupMenuElement::find()->waitUntilVisible()->one()->select('Create new report');
 
@@ -774,7 +774,7 @@ class testFormScheduledReport extends CWebTest {
 	public function testFormScheduledReport_SimpleUpdate() {
 		$old_hash = $this->getHash();
 		$name = CDBHelper::getRandom('SELECT name FROM report', 1);
-		$this->page->login()->open('zabbix.php?action=scheduledreport.list');
+		$this->page->login()->open('sdnet.php?action=scheduledreport.list');
 		$this->query('link', $name)->waitUntilClickable()->one()->click();
 		$this->query('button:Update')->waitUntilClickable()->one()->click();
 		$this->assertMessage(TEST_GOOD, 'Scheduled report updated');
@@ -1052,7 +1052,7 @@ class testFormScheduledReport extends CWebTest {
 	public function testFormScheduledReport_Update($data) {
 		$update_reportid = CDataHelper::get('ScheduledReports.reportids.'.
 				CTestArrayHelper::get($data, 'report', self::UPDATE_REPORT_NAME));
-		$this->page->login()->open('zabbix.php?action=scheduledreport.edit&reportid='.$update_reportid);
+		$this->page->login()->open('sdnet.php?action=scheduledreport.edit&reportid='.$update_reportid);
 
 		$this->executeAction($data, 'update', 'Scheduled report updated');
 	}
@@ -1116,7 +1116,7 @@ class testFormScheduledReport extends CWebTest {
 	 * @dataProvider getCloneData
 	 */
 	public function testFormScheduledReport_Clone($data) {
-		$this->page->login()->open('zabbix.php?action=scheduledreport.edit&reportid='.
+		$this->page->login()->open('sdnet.php?action=scheduledreport.edit&reportid='.
 				CDataHelper::get('ScheduledReports.reportids.'.self::TEST_REPORT_NAME));
 		$form = $this->query('id:scheduledreport-form')->waitUntilVisible()->asForm()->one();
 
@@ -1221,16 +1221,16 @@ class testFormScheduledReport extends CWebTest {
 		];
 
 		if ($data['action'] === 'Add') {
-			$this->page->login()->open('zabbix.php?action=scheduledreport.edit');
+			$this->page->login()->open('sdnet.php?action=scheduledreport.edit');
 		}
 		elseif ($data['action'] === 'Dashboard') {
-			$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=1');
+			$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=1');
 			$this->page->waitUntilReady();
 			$this->query('id:dashboard-actions')->one()->waitUntilClickable()->click();
 			CPopupMenuElement::find()->waitUntilVisible()->one()->select('Create new report');
 		}
 		else {
-			$this->page->login()->open('zabbix.php?action=scheduledreport.edit&reportid='.
+			$this->page->login()->open('sdnet.php?action=scheduledreport.edit&reportid='.
 					CDataHelper::get('ScheduledReports.reportids.'.self::TEST_REPORT_NAME));
 		}
 
@@ -1259,7 +1259,7 @@ class testFormScheduledReport extends CWebTest {
 		}
 		else {
 			$this->page->waitUntilReady();
-			$this->assertEquals(PHPUNIT_URL.'zabbix.php?action=scheduledreport.list', $this->page->getCurrentUrl());
+			$this->assertEquals(PHPUNIT_URL.'sdnet.php?action=scheduledreport.list', $this->page->getCurrentUrl());
 		}
 
 		// Check invariability of report data in the database.
@@ -1327,11 +1327,11 @@ class testFormScheduledReport extends CWebTest {
 	 */
 	public function testFormScheduledReport_TestOption($data) {
 		if (array_key_exists('report', $data)) {
-			$url = 'zabbix.php?action=scheduledreport.edit&reportid='.
+			$url = 'sdnet.php?action=scheduledreport.edit&reportid='.
 					CDataHelper::get('ScheduledReports.reportids.'.$data['report']);
 		}
 		else {
-			$url = 'zabbix.php?action=scheduledreport.edit';
+			$url = 'sdnet.php?action=scheduledreport.edit';
 		}
 		$this->page->login()->open($url);
 		$form = $this->query('id:scheduledreport-form')->waitUntilVisible()->asForm()->one();
@@ -1349,7 +1349,7 @@ class testFormScheduledReport extends CWebTest {
 
 	public function testFormScheduledReport_Delete() {
 		$reportid = CDataHelper::get('ScheduledReports.reportids.Report for delete');
-		$this->page->login()->open('zabbix.php?action=scheduledreport.edit&reportid='.$reportid);
+		$this->page->login()->open('sdnet.php?action=scheduledreport.edit&reportid='.$reportid);
 		$this->query('button:Delete')->waitUntilClickable()->one()->click();
 		$this->page->acceptAlert();
 
@@ -1437,7 +1437,7 @@ class testFormScheduledReport extends CWebTest {
 					$table = COverlayDialogElement::find()->waitUntilReady()->one()->asTable();
 					$this->assertFalse($table->query('link', $name)->one(false)->isValid());
 					// Open another dashboard and check related reports.
-					$this->page->open('zabbix.php?action=dashboard.list')->waitUntilReady();
+					$this->page->open('sdnet.php?action=dashboard.list')->waitUntilReady();
 					$this->query('link', $data['fields']['Dashboard'])->waitUntilClickable()->one()->click();
 				}
 				$this->query('id:dashboard-actions')->one()->waitUntilClickable()->click();

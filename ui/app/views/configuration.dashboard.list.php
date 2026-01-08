@@ -38,7 +38,7 @@ $table = (new CTableInfo())
 				->onClick("checkAll('".$form->getName()."', 'all_dashboards', 'dashboardids');")
 		))->addClass(ZBX_STYLE_CELL_WIDTH),
 		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'template.dashboard.list')
 				->setArgument('templateid', $data['templateid'])
 				->getUrl()
@@ -51,7 +51,7 @@ foreach ($data['dashboards'] as $dashboardid => $dashboard) {
 		new CCheckBox('dashboardids['.$dashboardid.']', $dashboardid),
 		(new CCol(
 			new CLink($dashboard['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'template.dashboard.edit')
 					->setArgument('dashboardid', $dashboardid)
 					->getUrl()
@@ -79,7 +79,7 @@ $form->addItem([
 		(new CTag('nav', true,
 			(new CList())
 				->addItem(new CRedirectButton(_('Create dashboard'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'template.dashboard.edit')
 						->setArgument('templateid', $data['templateid'])
 				))

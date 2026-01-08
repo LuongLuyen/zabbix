@@ -137,7 +137,7 @@ class CWidgetTopHosts extends CWidget {
 
 		for (const button of this.#table_body.querySelectorAll('.js-show-binary')) {
 			const cell = button.closest('td');
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'widget.tophosts.value.check');
 			curl.setArgument('itemid', cell.dataset.itemid);
@@ -269,7 +269,7 @@ class CWidgetTopHosts extends CWidget {
 	}
 
 	#getHintboxContentCUrl(button) {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		const value = this.#binary_buttons.get(button);
 
 		curl.setArgument('itemid', value.itemid);

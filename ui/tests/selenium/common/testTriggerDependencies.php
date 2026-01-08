@@ -176,8 +176,8 @@ class testTriggerDependencies extends CWebTest {
 	 */
 	protected function checkDependencyList($data, $name, $objectid, $lldid, $context) {
 		$url = (str_contains($data['dependant_trigger'], 'prototype'))
-			? 'zabbix.php?action=trigger.prototype.list&parent_discoveryid='.$lldid.'&context='.$context
-			: 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.$objectid.'&context='.$context;
+			? 'sdnet.php?action=trigger.prototype.list&parent_discoveryid='.$lldid.'&context='.$context
+			: 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.$objectid.'&context='.$context;
 
 		$this->page->login()->open($url)->waitUntilReady();
 		$this->query('link', $data['dependant_trigger'])->waitUntilClickable()->one()->click();

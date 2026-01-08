@@ -280,7 +280,7 @@ function makeGraphTemplatePrefix($graphid, array $parent_templates, $flag, bool 
 	$template = $parent_templates['templates'][$parent_templates['links'][$graphid]['hostid']];
 
 	if ($provide_links && $template['permission'] == PERM_READ_WRITE) {
-		$url = (new CUrl('zabbix.php'))
+		$url = (new CUrl('sdnet.php'))
 			->setArgument('action', ($flag & ZBX_FLAG_DISCOVERY_PROTOTYPE) ? 'graph.prototype.list' : 'graph.list')
 			->setArgument('context', 'template')
 			->setArgument('uncheck', '1');
@@ -321,7 +321,7 @@ function makeGraphTemplatesHtml($graphid, array $parent_templates, $flag, bool $
 		$template = $parent_templates['templates'][$parent_templates['links'][$graphid]['hostid']];
 
 		if ($provide_links && $template['permission'] == PERM_READ_WRITE) {
-			$url = (new CUrl('zabbix.php'))
+			$url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('context', 'template')
 				->setArgument('graphid', $parent_templates['links'][$graphid]['graphid']);

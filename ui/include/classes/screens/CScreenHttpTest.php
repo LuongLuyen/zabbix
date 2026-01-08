@@ -76,7 +76,7 @@ class CScreenHttpTest extends CScreenBase {
 		order_result($httptests, $sort_field, $sort_order);
 
 		$paging = CPagerHelper::paginate($this->page, $httptests, $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', 'web.view')
+			(new CUrl('sdnet.php'))->setArgument('action', 'web.view')
 		);
 
 		$httptests = resolveHttpTestMacros($httptests, true, false);
@@ -101,8 +101,8 @@ class CScreenHttpTest extends CScreenBase {
 		// Create table.
 		$table = (new CTableInfo())
 			->setHeader([
-				make_sorting_header(_('Host'), 'hostname', $sort_field, $sort_order, 'zabbix.php?action=web.view'),
-				make_sorting_header(_('Name'), 'name', $sort_field, $sort_order, 'zabbix.php?action=web.view'),
+				make_sorting_header(_('Host'), 'hostname', $sort_field, $sort_order, 'sdnet.php?action=web.view'),
+				make_sorting_header(_('Name'), 'name', $sort_field, $sort_order, 'sdnet.php?action=web.view'),
 				_('Number of steps'),
 				_('Last check'),
 				_('Status'),

@@ -46,7 +46,7 @@ class testFormFilterProblems extends testFormFilter {
 	 */
 	protected static $time;
 
-	public $url = 'zabbix.php?action=problem.view&show_timeline=0';
+	public $url = 'sdnet.php?action=problem.view&show_timeline=0';
 	public $table_selector = 'class:list-table';
 
 	public function prepareProblemsData() {

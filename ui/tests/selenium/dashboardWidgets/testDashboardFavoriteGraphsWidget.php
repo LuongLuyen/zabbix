@@ -55,7 +55,7 @@ class testDashboardFavoriteGraphsWidget extends CWebTest {
 		$cpu_itemid = CDBHelper::getValue('SELECT itemid FROM items WHERE hostid=10084 AND name='.zbx_dbstr($this->graph_cpu));
 		$memory_itemid = CDBHelper::getValue('SELECT itemid FROM items WHERE hostid=10084 AND name='.zbx_dbstr($this->graph_memory));
 
-		$this->page->login()->open('zabbix.php?action=latest.view&filter_selected=0&filter_reset=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view&filter_selected=0&filter_reset=1')->waitUntilReady();
 		$this->page->assertHeader('Latest data');
 		$filter = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->query('xpath://table['.CXPathHelper::fromClass('list-table fixed').']')->asTable()->one();
@@ -72,12 +72,12 @@ class testDashboardFavoriteGraphsWidget extends CWebTest {
 			$this->assertEquals('Add to favorites', $button->getAttribute('title'));
 			$button->waitUntilClickable()->click();
 			$button->waitUntilAttributesPresent(['title' => 'Remove from favorites']);
-			$this->page->open('zabbix.php?action=latest.view')->waitUntilReady();
+			$this->page->open('sdnet.php?action=latest.view')->waitUntilReady();
 			$this->query('button:Reset')->waitUntilClickable()->one()->click();
 			$table->waitUntilReloaded();
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$widget = CDashboardElement::find()->one()->getWidget('Favorite graphs')->waitUntilReady()->getContent();
 
 		// Check favorite graphs in widget.
@@ -94,7 +94,7 @@ class testDashboardFavoriteGraphsWidget extends CWebTest {
 	public function testDashboardFavoriteGraphsWidget_RemoveFavoriteGraphs() {
 		$favorite_graphs = CDBHelper::getAll('SELECT value_id FROM profiles WHERE idx='.zbx_dbstr('web.favorite.graphids'));
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$widget = CDashboardElement::find()->one()->getWidget('Favorite graphs')->waitUntilReady()->getContent();
 
 		foreach ($favorite_graphs as $graph) {

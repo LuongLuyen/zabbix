@@ -34,7 +34,7 @@ window.mediatype_edit_popup = new class {
 		this.smtp_email_default = smtp_email_default;
 		this.oauth_defaults_by_provider = oauth_defaults_by_provider;
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'mediatype.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -139,7 +139,7 @@ window.mediatype_edit_popup = new class {
 	}
 
 	delete() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'mediatype.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('mediatype')) ?>);
@@ -194,7 +194,7 @@ window.mediatype_edit_popup = new class {
 				break;
 		}
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', this.mediatypeid === null ? 'mediatype.create' : 'mediatype.update');
 

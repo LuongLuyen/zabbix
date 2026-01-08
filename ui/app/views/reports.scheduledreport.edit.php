@@ -34,7 +34,7 @@ $form = (new CForm())
 	->setId('scheduledreport-form')
 	->setName('scheduledreport-form')
 	->setAction(
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', ($data['reportid'] == 0) ? 'scheduledreport.create' : 'scheduledreport.update')
 			->getUrl()
 	)

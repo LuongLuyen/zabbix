@@ -23,7 +23,7 @@ $this->includeJsFile('maintenance.list.js.php');
 
 $filter = (new CFilter())
 	->addVar('action', 'maintenance.list')
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'maintenance.list'))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'maintenance.list'))
 	->setProfile($data['filter_profile'])
 	->setActiveTab($data['filter_active_tab'])
 	->addFilterTab(_('Filter'), [
@@ -74,7 +74,7 @@ $form = (new CForm())
 	->setId('maintenance-list')
 	->setName('maintenance_list');
 
-$view_url = (new CUrl('zabbix.php'))
+$view_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'maintenance.list')
 	->getUrl();
 
@@ -109,7 +109,7 @@ foreach ($data['maintenances'] as $maintenanceid => $maintenance) {
 			break;
 	}
 
-	$maintenance_url = (new CUrl('zabbix.php'))
+	$maintenance_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'maintenance.edit')
 		->setArgument('maintenanceid', $maintenanceid)

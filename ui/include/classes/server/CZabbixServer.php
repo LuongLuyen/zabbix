@@ -486,7 +486,7 @@ class CZabbixServer {
 		// Send the command.
 		$json = json_encode($params);
 		if (fwrite($this->socket, ZBX_TCP_HEADER.pack('V', strlen($json))."\x00\x00\x00\x00".$json) === false) {
-			$this->error = _s('Cannot send command, check connection with Zabbix server "%1$s".', $this->host);
+			$this->error = _s('Cannot send command, check connection with SDNet server "%1$s".', $this->host);
 
 			fclose($this->socket);
 
@@ -508,7 +508,7 @@ class CZabbixServer {
 						secondsToPeriod($this->timeout), $this->host
 					);
 				} else {
-					$this->error = _s('Cannot read response from Zabbix server "%1$s".', $this->host);
+					$this->error = _s('Cannot read response from SDNet server "%1$s".', $this->host);
 				}
 
 				fclose($this->socket);

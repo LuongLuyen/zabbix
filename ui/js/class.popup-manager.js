@@ -170,7 +170,7 @@ class CPopupManager {
 				...action_parameters
 			}).toString();
 
-			const standalone_url = new URL(`zabbix.php?${standalone_url_params}`, location.href);
+			const standalone_url = new URL(`sdnet.php?${standalone_url_params}`, location.href);
 
 			history.replaceState(null, '', standalone_url);
 		}

@@ -25,7 +25,7 @@ window.copy_popup = new class {
 		this.overlay = overlays_stack.getById('copy');
 		this.dialogue = this.overlay.$dialogue[0];
 		this.form = this.overlay.$dialogue.$body[0].querySelector('form');
-		this.curl = new Curl('zabbix.php');
+		this.curl = new Curl('sdnet.php');
 		this.curl.setArgument('action', action);
 
 		for (const element of document.querySelectorAll('input[name="copy_type"]')) {

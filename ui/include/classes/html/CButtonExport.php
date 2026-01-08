@@ -39,7 +39,7 @@ class CButtonExport extends CList {
 						form.dataset.action = form.getAttribute("action");
 					}'.
 					'form.setAttribute("action", '. json_encode(
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', $action)
 							->setArgument('format', CExportWriterFactory::YAML)
 							->setArgument('backurl', $back_url)
@@ -56,7 +56,7 @@ class CButtonExport extends CList {
 						'items' => [
 							[
 								'label' => _('YAML'),
-								'url' => (new CUrl('zabbix.php'))
+								'url' => (new CUrl('sdnet.php'))
 									->setArgument('action', $action)
 									->setArgument('format', CExportWriterFactory::YAML)
 									->setArgument('backurl', $back_url)
@@ -64,7 +64,7 @@ class CButtonExport extends CList {
 							],
 							[
 								'label' => _('XML'),
-								'url' => (new CUrl('zabbix.php'))
+								'url' => (new CUrl('sdnet.php'))
 									->setArgument('action', $action)
 									->setArgument('format', CExportWriterFactory::XML)
 									->setArgument('backurl', $back_url)
@@ -72,7 +72,7 @@ class CButtonExport extends CList {
 							],
 							[
 								'label' => _('JSON'),
-								'url' => (new CUrl('zabbix.php'))
+								'url' => (new CUrl('sdnet.php'))
 									->setArgument('action', $action)
 									->setArgument('format', CExportWriterFactory::JSON)
 									->setArgument('backurl', $back_url)

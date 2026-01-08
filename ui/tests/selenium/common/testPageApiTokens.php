@@ -42,13 +42,13 @@ class testPageApiTokens extends CWebTest {
 	 */
 	public function checkLayout($token_data, $source) {
 		if ($source === 'user settings') {
-			$url = 'zabbix.php?action=user.token.list';
+			$url = 'sdnet.php?action=user.token.list';
 			$filter_fields = ['Name', 'Expires in less than', 'Status'];
 			$tokens_count = CDBHelper::getCount('SELECT tokenid FROM token WHERE userid=1');
 			$reference_headers = ['Name', 'Expires at', 'Created at', 'Last accessed at', 'Status'];
 		}
 		else {
-			$url = 'zabbix.php?action=token.list';
+			$url = 'sdnet.php?action=token.list';
 			$filter_fields = ['Name', 'Users', 'Expires in less than', 'Created by users', 'Status'];
 			$tokens_count = CDBHelper::getCount('SELECT tokenid FROM token');
 			$reference_headers = ['Name', 'User', 'Expires at', 'Created at', 'Created by user', 'Last accessed at', 'Status'];
@@ -184,11 +184,11 @@ class testPageApiTokens extends CWebTest {
 	 */
 	public function checkFilter($data, $source) {
 		if ($source === 'administration') {
-			$url = 'zabbix.php?action=token.list';
+			$url = 'sdnet.php?action=token.list';
 			$sql = 'SELECT tokenid FROM token';
 		}
 		else {
-			$url = 'zabbix.php?action=user.token.list';
+			$url = 'sdnet.php?action=user.token.list';
 			$sql = 'SELECT tokenid FROM token WHERE userid=1';
 		}
 		$this->page->login()->open($url);

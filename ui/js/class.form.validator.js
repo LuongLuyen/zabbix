@@ -491,7 +491,7 @@ class CFormValidator {
 	 * @returns {Promise}
 	 */
 	#validateApiExists(validations) {
-		const url = new URL('zabbix.php', location.href);
+		const url = new URL('sdnet.php', location.href);
 		url.searchParams.set('action', 'validate.api.exists');
 
 		return fetch(url.href, {
@@ -582,7 +582,7 @@ class CFormValidator {
 
 				for (const check of delayed_checks) {
 					requests.push(new Promise((resolve) => {
-						const curl = new Curl('zabbix.php');
+						const curl = new Curl('sdnet.php');
 						curl.setArgument('action', 'validate');
 
 						return fetch(curl.getUrl(), {

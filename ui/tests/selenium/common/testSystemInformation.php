@@ -150,7 +150,7 @@ class testSystemInformation extends CWebTest {
 	public function assertEnabledHACluster($dashboardid = null) {
 		global $DB;
 		self::$skip_fields = [];
-		$url = (!$dashboardid) ? 'zabbix.php?action=report.status' : 'zabbix.php?action=dashboard.view&dashboardid='.$dashboardid;
+		$url = (!$dashboardid) ? 'sdnet.php?action=report.status' : 'sdnet.php?action=dashboard.view&dashboardid='.$dashboardid;
 
 		// Wait for frontend to get the new config from updated zabbix.conf.php file.
 		sleep((int) ini_get('opcache.revalidate_freq') + 1);
@@ -260,7 +260,7 @@ class testSystemInformation extends CWebTest {
 	 * @param integer $dashboardid	id of the dashboard that the widgets are located in.
 	 */
 	public function assertServerStatusAfterFailover($dashboardid = null) {
-		$url = (!$dashboardid) ? 'zabbix.php?action=report.status' : 'zabbix.php?action=dashboard.view&dashboardid='.$dashboardid;
+		$url = (!$dashboardid) ? 'sdnet.php?action=report.status' : 'sdnet.php?action=dashboard.view&dashboardid='.$dashboardid;
 		$this->page->login()->open($url)->waitUntilReady();
 		if ($dashboardid !== null) {
 			CDashboardElement::find()->waitUntilReady();

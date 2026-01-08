@@ -37,7 +37,7 @@ if ($data['discovered']) {
 		new CLabel(_('Discovered by')),
 		new CFormField(
 			new CLink($parent_lld['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'graph.prototype.edit')
 					->setArgument('parent_discoveryid', $data['discoveryData']['lldruleid'])

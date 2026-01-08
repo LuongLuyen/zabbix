@@ -1759,7 +1759,7 @@ class testDashboardWidgetCommunication extends testWidgetCommunication {
 			self::$current_broadcasters[$data['page']] = $data['broadcaster'];
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 
@@ -1872,7 +1872,7 @@ class testDashboardWidgetCommunication extends testWidgetCommunication {
 	 * @dataProvider getMixedBroadcastingWidgetData
 	 */
 	public function testDashboardWidgetCommunication_CheckMixedDataBroadcasting($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$dashboard->selectPage('Multi-broadcasting page');
@@ -1891,7 +1891,7 @@ class testDashboardWidgetCommunication extends testWidgetCommunication {
 	 * Check listener widget behavior when broadcasting widget is deleted.
 	 */
 	public function testDashboardWidgetCommunication_BroadcasterDeletion() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$dashboard->edit();
@@ -1999,7 +1999,7 @@ class testDashboardWidgetCommunication extends testWidgetCommunication {
 	 * @dataProvider getCopyWidgetsData
 	 */
 	public function testDashboardWidgetCommunication_CopyWidgets($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$dashboard->edit()->selectPage('Copy widgets page');
@@ -2430,7 +2430,7 @@ class testDashboardWidgetCommunication extends testWidgetCommunication {
 	 * @dataProvider getWidgetRebroadcastingData
 	 */
 	public function testDashboardWidgetCommunication_CheckDataRebroadcasting($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid'])
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 

@@ -32,7 +32,7 @@ $html_page = (new CHtmlPage())
 		))->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'correlation.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'correlation.list'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [
@@ -64,7 +64,7 @@ $html_page = (new CHtmlPage())
 
 $form = (new CForm())->setName('correlations-form');
 
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'correlation.list')
 	->getUrl();
 
@@ -113,7 +113,7 @@ foreach ($data['correlations'] as $correlation) {
 			->addClass('js-enable')
 			->setAttribute('data-correlationid', (int) $correlation['correlationid']);
 
-	$correlation_url = (new CUrl('zabbix.php'))
+	$correlation_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'correlation.edit')
 		->setArgument('correlationid', $correlation['correlationid'])

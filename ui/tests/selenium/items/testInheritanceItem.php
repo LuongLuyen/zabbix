@@ -58,7 +58,7 @@ class testInheritanceItem extends CLegacyWebTest {
 		$sqlItems = 'SELECT * FROM items ORDER BY itemid';
 		$oldHashItems = CDBHelper::getHash($sqlItems);
 
-		$this->page->login()->open('zabbix.php?action=item.list&filter_set=1&filter_hostids[0]=15001&context=host');
+		$this->page->login()->open('sdnet.php?action=item.list&filter_set=1&filter_hostids[0]=15001&context=host');
 		$this->query('link:'.CDBHelper::getValue('SELECT name from items WHERE itemid='.$data['itemid']))->one()->click();
 		COverlayDialogElement::find()->one()->waitUntilready()->getFooter()->query('button:Update')->one()->click();
 		COverlayDialogElement::ensureNotPresent();
@@ -97,7 +97,7 @@ class testInheritanceItem extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testInheritanceItem_SimpleCreate($data) {
-		$this->page->login()->open('zabbix.php?action=item.list&filter_set=1&filter_hostids[0]='.$this->templateid.'&context=template');
+		$this->page->login()->open('sdnet.php?action=item.list&filter_set=1&filter_hostids[0]='.$this->templateid.'&context=template');
 		$this->query('button:Create item')->one()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$form = $dialog->asForm();

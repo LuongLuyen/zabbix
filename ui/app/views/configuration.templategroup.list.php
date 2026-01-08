@@ -34,7 +34,7 @@ $html_page = (new CHtmlPage())
 		))->setAttribute('aria-label', _('Content controls')));
 
 $filter = (new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'templategroup.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'templategroup.list'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [
@@ -54,7 +54,7 @@ $form = (new CForm())
 	->setId('templategroup-list')
 	->setName('templategroup_list');
 
-$view_url = (new CUrl('zabbix.php'))
+$view_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'templategroup.list')
 	->getUrl();
 
@@ -87,7 +87,7 @@ foreach ($data['groups'] as $group) {
 		}
 
 		if ($data['allowed_ui_conf_templates']) {
-			$template_url = (new CUrl('zabbix.php'))
+			$template_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'template.edit')
 				->setArgument('templateid', $template['templateid'])
@@ -104,7 +104,7 @@ foreach ($data['groups'] as $group) {
 
 	$template_count = $data['groupCounts'][$group['groupid']]['templates'];
 
-	$templategroup_url = (new CUrl('zabbix.php'))
+	$templategroup_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'templategroup.edit')
 		->setArgument('groupid', $group['groupid'])
@@ -115,7 +115,7 @@ foreach ($data['groups'] as $group) {
 	$count = '';
 	if ($template_count > 0) {
 		if ($data['allowed_ui_conf_templates']) {
-			$count = new CLink($template_count, (new CUrl('zabbix.php'))
+			$count = new CLink($template_count, (new CUrl('sdnet.php'))
 				->setArgument('action', 'template.list')
 				->setArgument('filter_set', '1')
 				->setArgument('filter_groups', [$group['groupid']]));
@@ -153,7 +153,7 @@ $html_page
 	->show();
 
 (new CScriptTag('view.init('.json_encode([
-	'delete_url' => (new CUrl('zabbix.php'))
+	'delete_url' => (new CUrl('sdnet.php'))
 		->setArgument('action', 'templategroup.delete')
 		->setArgument(CSRF_TOKEN_NAME, CCsrfTokenHelper::get('templategroup'))
 		->getUrl()

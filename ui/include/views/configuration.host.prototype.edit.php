@@ -107,7 +107,7 @@ if ($host_prototype['templateid']) {
 
 			if ($data['allowed_ui_conf_templates']
 					&& array_key_exists($template['templateid'], $host_prototype['writable_templates'])) {
-				$template_url = (new CUrl('zabbix.php'))
+				$template_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'template.edit')
 					->setArgument('templateid', $template['templateid'])
@@ -138,7 +138,7 @@ else {
 
 			if ($data['allowed_ui_conf_templates']
 					&& array_key_exists($template['templateid'], $host_prototype['writable_templates'])) {
-				$template_url = (new CUrl('zabbix.php'))
+				$template_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'template.edit')
 					->setArgument('templateid', $template['templateid'])

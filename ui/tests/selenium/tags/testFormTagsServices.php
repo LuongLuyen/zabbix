@@ -26,7 +26,7 @@ class testFormTagsServices extends testFormTags {
 	public $update_name = 'Service with tags for updating';
 	public $clone_name = 'Service with tags for cloning';
 	public $remove_name = 'Service for removing tags';
-	public $link = 'zabbix.php?action=service.list.edit';
+	public $link = 'sdnet.php?action=service.list.edit';
 
 	/**
 	 * Test creating of Service with tags.

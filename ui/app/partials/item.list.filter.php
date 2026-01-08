@@ -265,7 +265,7 @@ $filter
 	->setProfile($data['filter_data']['filter_profile'])
 	->setActiveTab($data['filter_data']['filter_tab'])
 	->setResetUrl(
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', $data['action'])
 			->setArgument('context', $data['context'])
 	)

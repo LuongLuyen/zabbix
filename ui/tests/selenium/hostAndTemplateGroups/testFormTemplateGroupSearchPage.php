@@ -25,13 +25,13 @@ require_once __DIR__.'/../common/testFormGroups.php';
  */
 class testFormTemplateGroupSearchPage extends testFormGroups {
 
-	protected $link = 'zabbix.php?action=search&search=group';
+	protected $link = 'sdnet.php?action=search&search=group';
 	protected $object = 'template';
 	protected $search = 'true';
 	protected static $update_group = 'Group for Update test';
 
 	public function testFormTemplateGroupSearchPage_Layout() {
-		$this->link = 'zabbix.php?action=search&search=Templates';
+		$this->link = 'sdnet.php?action=search&search=Templates';
 		$this->layout('Templates');
 	}
 
@@ -71,7 +71,7 @@ class testFormTemplateGroupSearchPage extends testFormGroups {
 	 * @dataProvider getTemplateUpdateData
 	 */
 	public function testFormTemplateGroupSearchPage_Update($data) {
-		$this->link = 'zabbix.php?action=search&search=updat';
+		$this->link = 'sdnet.php?action=search&search=updat';
 		$this->checkForm($data, 'update');
 	}
 
@@ -79,7 +79,7 @@ class testFormTemplateGroupSearchPage extends testFormGroups {
 	 * Test group simple update without changing data.
 	 */
 	public function testFormTemplateGroupSearchPage_SimpleUpdate() {
-		$this->link = 'zabbix.php?action=search&search=Templates';
+		$this->link = 'sdnet.php?action=search&search=Templates';
 		$this->simpleUpdate('Templates');
 	}
 
@@ -209,7 +209,7 @@ class testFormTemplateGroupSearchPage extends testFormGroups {
 	 * @dataProvider getSubgroupPermissionsData
 	 */
 	public function testFormTemplateGroupSearchPage_ApplyPermissionsToSubgroups($data) {
-		$this->link = 'zabbix.php?action=search&search=europe';
+		$this->link = 'sdnet.php?action=search&search=europe';
 		$this->checkSubgroupsPermissions($data);
 	}
 }

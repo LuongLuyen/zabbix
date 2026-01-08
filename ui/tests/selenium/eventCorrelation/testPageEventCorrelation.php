@@ -318,7 +318,7 @@ class testPageEventCorrelation extends CWebTest {
 	public function testPageEventCorrelation_Layout($data) {
 		$event_count = count($data);
 
-		$this->page->login()->open('zabbix.php?action=correlation.list');
+		$this->page->login()->open('sdnet.php?action=correlation.list');
 		$this->page->assertTitle('Event correlation rules');
 		$this->page->assertHeader('Event correlation');
 
@@ -569,7 +569,7 @@ class testPageEventCorrelation extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageEventCorrelation_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=correlation.list');
+		$this->page->login()->open('sdnet.php?action=correlation.list');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$table = $this->getTable();
 
@@ -627,7 +627,7 @@ class testPageEventCorrelation extends CWebTest {
 	 * @dataProvider getSortData
 	 */
 	public function testPageEventCorrelation_Sort($data) {
-		$this->page->login()->open('zabbix.php?action=correlation.list');
+		$this->page->login()->open('sdnet.php?action=correlation.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$header = $table->query('link', $data['sort_field'])->one();
 
@@ -686,7 +686,7 @@ class testPageEventCorrelation extends CWebTest {
 			$data['name'] = [$data['name']];
 		}
 
-		$this->page->login()->open('zabbix.php?action=correlation.list');
+		$this->page->login()->open('sdnet.php?action=correlation.list');
 
 		// Events count that will be selected before Enable/Disable/Delete action.
 		$selected_count = array_key_exists('name', $data) ? count($data['name']) : CDBHelper::getCount(self::CORRELATION_SQL);
@@ -766,7 +766,7 @@ class testPageEventCorrelation extends CWebTest {
 	 * @dataProvider getStatusData
 	 */
 	public function testPageEventCorrelation_ChangeStatus($data) {
-		$this->page->login()->open('zabbix.php?action=correlation.list');
+		$this->page->login()->open('sdnet.php?action=correlation.list');
 
 		// Event correlation(s) count that will be enabled or disabled via button.
 		if (!is_array(CTestArrayHelper::get($data, 'name', []))) {
@@ -832,7 +832,7 @@ class testPageEventCorrelation extends CWebTest {
 	protected function deleteAction($names = []) {
 		$plural = (count($names) === 1) ? '' : 's';
 		$all = CDBHelper::getCount(self::CORRELATION_SQL);
-		$this->page->login()->open('zabbix.php?action=correlation.list');
+		$this->page->login()->open('sdnet.php?action=correlation.list');
 
 		// Delete event correlation(s).
 		$this->selectTableRows($names);

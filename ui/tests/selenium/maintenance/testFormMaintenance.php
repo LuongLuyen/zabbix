@@ -77,7 +77,7 @@ class testFormMaintenance extends CLegacyWebTest {
 	 * Create maintenance with periods and host group.
 	 */
 	public function testFormMaintenance_Create() {
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->page->assertTitle('Configuration of maintenance periods');
 		$this->page->assertHeader('Maintenance periods');
 		$this->query('button:Create maintenance period')->one()->waitUntilClickable()->click();
@@ -157,7 +157,7 @@ class testFormMaintenance extends CLegacyWebTest {
 	 * Check screenshots of period form.
 	 */
 	public function testFormMaintenance_CheckPeriodForm() {
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->query('button:Create maintenance period')->one()->waitUntilClickable()->click();
 
 		$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
@@ -215,7 +215,7 @@ class testFormMaintenance extends CLegacyWebTest {
 		$old_hash = CDBHelper::getHash($sql_hash);
 
 		// Open form and change maintenance name.
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->query('link', $this->name)->one()->waitUntilClickable()->click();
 		$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
 		$form->fill(['Name' => 'Some random text']);
@@ -247,7 +247,7 @@ class testFormMaintenance extends CLegacyWebTest {
 	 * @depends testFormMaintenance_Create
 	 */
 	public function testFormMaintenance_Update() {
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->query('link', $this->name)->one()->waitUntilClickable()->click();
 		$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
 
@@ -303,7 +303,7 @@ class testFormMaintenance extends CLegacyWebTest {
 
 	public function testFormMaintenance_UpdateTags() {
 		$maintenance = 'Maintenance for update (data collection)';
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->query('link', $maintenance)->one()->waitUntilClickable()->click();
 		$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
 		$form->fill(['id:tags_evaltype' => 'And/Or']);
@@ -344,7 +344,7 @@ class testFormMaintenance extends CLegacyWebTest {
 	 */
 	public function testFormMaintenance_Clone() {
 		$suffix = ' (clone)';
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->query('link', $this->name)->one()->waitUntilClickable()->click();
 		COverlayDialogElement::find()->waitUntilReady();
 
@@ -369,7 +369,7 @@ class testFormMaintenance extends CLegacyWebTest {
 	 * @depends testFormMaintenance_Create
 	 */
 	public function testFormMaintenance_Delete() {
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->query('link', $this->name)->one()->waitUntilClickable()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 

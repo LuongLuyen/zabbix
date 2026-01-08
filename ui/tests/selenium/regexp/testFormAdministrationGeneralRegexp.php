@@ -38,7 +38,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_Layout() {
-		$this->zbxTestLogin('zabbix.php?action=gui.edit');
+		$this->zbxTestLogin('sdnet.php?action=gui.edit');
 		$this->query('id:page-title-general')->asPopupButton()->one()->select('Regular expressions');
 		$this->zbxTestCheckTitle('Configuration of regular expressions');
 		$this->zbxTestCheckHeader('Regular expressions');
@@ -86,7 +86,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	 * @dataProvider dataCreate
 	 */
 	public function testFormAdministrationGeneralRegexp_Create($result, $name, $test_string, $expression, $expression_type, $exp_delimiter, $case_sensitive) {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestClickButtonText('New regular expression');
 
@@ -111,7 +111,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_AddExisting() {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestClickButtonText('New regular expression');
 
@@ -125,7 +125,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralRegexp_AddIncorrect() {
 		// creating regexp without expression
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 
 		$this->zbxTestClickButtonText('New regular expression');
@@ -136,7 +136,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_TestTrue() {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestClickLinkText($this->regexp);
 
@@ -146,7 +146,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_TestFalse() {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestClickLinkText($this->regexp);
 		$this->zbxTestTabSwitchById('tab_test', 'Test');
@@ -159,7 +159,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_Clone() {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestClickLinkText($this->regexp);
 		$this->zbxTestClickWait('clone');
@@ -172,7 +172,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_Update() {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestClickLinkText($this->regexp);
 		$this->zbxTestInputTypeOverwrite('name', $this->regexp.'2');
@@ -184,7 +184,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_Delete() {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestClickLinkTextWait($this->regexp2);
 
@@ -203,7 +203,7 @@ class testFormAdministrationGeneralRegexp extends CLegacyWebTest {
 	}
 
 	public function testFormAdministrationGeneralRegexp_DeleteAll() {
-		$this->zbxTestLogin('zabbix.php?action=regex.list');
+		$this->zbxTestLogin('sdnet.php?action=regex.list');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestCheckboxSelect('all-regexes');
 		$this->zbxTestClickButton('regex.delete');

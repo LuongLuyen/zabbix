@@ -19,7 +19,7 @@ require_once __DIR__.'/../../include/CLegacyWebTest.php';
 class testPageAdministrationGeneralIconMapping extends CLegacyWebTest {
 
 	public function testPageAdministrationGeneralIconMapping_CheckLayout(){
-		$this->zbxTestLogin('zabbix.php?action=gui.edit');
+		$this->zbxTestLogin('sdnet.php?action=gui.edit');
 		$this->query('id:page-title-general')->asPopupButton()->one()->select('Icon mapping');
 		$this->zbxTestCheckHeader('Icon mapping');
 		$strings = [];

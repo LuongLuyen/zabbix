@@ -106,7 +106,7 @@ class CControllerDashboardList extends CController {
 		$page_num = getRequest('page', 1);
 		CPagerHelper::savePage('dashboard.list', $page_num);
 		$data['paging'] = CPagerHelper::paginate($page_num, $data['dashboards'], $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		CDashboardHelper::updateEditableFlag($data['dashboards']);

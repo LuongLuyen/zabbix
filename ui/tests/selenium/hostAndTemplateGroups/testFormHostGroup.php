@@ -25,7 +25,7 @@ require_once __DIR__.'/../common/testFormGroups.php';
  */
 class testFormHostGroup extends testFormGroups {
 
-	protected $link = 'zabbix.php?action=hostgroup.list';
+	protected $link = 'sdnet.php?action=hostgroup.list';
 	protected $object = 'host';
 	protected static $update_group = 'Group for Update test';
 

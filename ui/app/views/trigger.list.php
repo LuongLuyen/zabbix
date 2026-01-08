@@ -152,7 +152,7 @@ $filter_column2->addItem([new CLabel(_('With dependencies'), 'filter_dependent')
 ]);
 
 $filter = (new CFilter())
-	->setResetUrl((new CUrl('zabbix.php'))
+	->setResetUrl((new CUrl('sdnet.php'))
 		->setArgument('action', 'trigger.list')
 		->setArgument('context', $data['context']))
 	->setProfile($data['profileIdx'])
@@ -190,7 +190,7 @@ if ($data['single_selected_hostid'] != 0) {
 
 $html_page->addItem($filter);
 
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'trigger.list')
 	->setArgument('context', $data['context'])
 	->getUrl();
@@ -243,7 +243,7 @@ foreach ($data['triggers'] as $tnum => $trigger) {
 	if ($trigger['discoveryRule']) {
 		$description[] = (new CLink(
 			$trigger['discoveryRule']['name'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'trigger.prototype.list')
 				->setArgument('parent_discoveryid', $trigger['discoveryRule']['itemid'])
 				->setArgument('context', $data['context'])
@@ -253,7 +253,7 @@ foreach ($data['triggers'] as $tnum => $trigger) {
 		$description[] = NAME_DELIMITER;
 	}
 
-	$trigger_url = (new CUrl('zabbix.php'))
+	$trigger_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'trigger.edit')
 		->setArgument('triggerid', $triggerid)
@@ -273,7 +273,7 @@ foreach ($data['triggers'] as $tnum => $trigger) {
 			$dep_trigger_desc =
 				implode(', ', array_column($dep_trigger['hosts'], 'name')).NAME_DELIMITER.$dep_trigger['description'];
 
-			$dep_trigger_url = (new CUrl('zabbix.php'))
+			$dep_trigger_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'trigger.edit')
 				->setArgument('triggerid', $dep_trigger['triggerid'])
@@ -327,7 +327,7 @@ foreach ($data['triggers'] as $tnum => $trigger) {
 				$hosts[] = ', ';
 			}
 
-			$host_url = (new CUrl('zabbix.php'))
+			$host_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', $data['context'] === 'host' ? 'host.edit' : 'template.edit')
 				->setArgument($data['context'] === 'host' ? 'hostid' : 'templateid', $host['hostid'])

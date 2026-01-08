@@ -30,12 +30,12 @@ $html_page = (new CHtmlPage())
 		(new CTag('nav', true,
 			(new CList())
 				->addItem(new CRedirectButton(_('Create user group'),
-					(new CUrl('zabbix.php'))->setArgument('action', 'usergroup.edit')
+					(new CUrl('sdnet.php'))->setArgument('action', 'usergroup.edit')
 				))
 		))->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'usergroup.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'usergroup.list'))
 		->addVar('action', 'usergroup.list')
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
@@ -65,7 +65,7 @@ $table = (new CTableInfo())
 			'checkAll(\'%s\',\'all_groups\',\'usrgrpids\');', $form->getName()
 		))))->addClass(ZBX_STYLE_CELL_WIDTH),
 		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.list')
 				->getUrl()
 		),
@@ -81,7 +81,7 @@ $csrf_token = CCsrfTokenHelper::get('usergroup');
 
 foreach ($data['usergroups'] as $usergroup) {
 	$debug_mode = ($usergroup['debug_mode'] == GROUP_DEBUG_MODE_ENABLED)
-		? (new CLink(_('Enabled'), (new CUrl('zabbix.php'))
+		? (new CLink(_('Enabled'), (new CUrl('sdnet.php'))
 			->setArgument('action', 'usergroup.massupdate')
 			->setArgument('debug_mode', GROUP_DEBUG_MODE_DISABLED)
 			->setArgument('usrgrpids', [$usergroup['usrgrpid']])
@@ -90,7 +90,7 @@ foreach ($data['usergroups'] as $usergroup) {
 			->addCsrfToken($csrf_token)
 			->addClass(ZBX_STYLE_LINK_ACTION)
 			->addClass(ZBX_STYLE_ORANGE)
-		: (new CLink(_('Disabled'), (new CUrl('zabbix.php'))
+		: (new CLink(_('Disabled'), (new CUrl('sdnet.php'))
 			->setArgument('action', 'usergroup.massupdate')
 			->setArgument('debug_mode', GROUP_DEBUG_MODE_ENABLED)
 			->setArgument('usrgrpids', [$usergroup['usrgrpid']])
@@ -109,7 +109,7 @@ foreach ($data['usergroups'] as $usergroup) {
 
 		$gui_access = (new CLink(
 			$gui_access,
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.massupdate')
 				->setArgument('gui_access', $next_gui_auth)
 				->setArgument('usrgrpids', [$usergroup['usrgrpid']])
@@ -119,7 +119,7 @@ foreach ($data['usergroups'] as $usergroup) {
 			->addClass(ZBX_STYLE_LINK_ACTION);
 
 		$user_status = ($usergroup['users_status'] == GROUP_STATUS_ENABLED)
-			? (new CLink(_('Enabled'), (new CUrl('zabbix.php'))
+			? (new CLink(_('Enabled'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.massupdate')
 				->setArgument('users_status', GROUP_STATUS_DISABLED)
 				->setArgument('usrgrpids', [$usergroup['usrgrpid']])
@@ -128,7 +128,7 @@ foreach ($data['usergroups'] as $usergroup) {
 				->addCsrfToken($csrf_token)
 				->addClass(ZBX_STYLE_LINK_ACTION)
 				->addClass(ZBX_STYLE_GREEN)
-			: (new CLink(_('Disabled'), (new CUrl('zabbix.php'))
+			: (new CLink(_('Disabled'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.massupdate')
 				->setArgument('users_status', GROUP_STATUS_ENABLED)
 				->setArgument('usrgrpids', [$usergroup['usrgrpid']])
@@ -166,7 +166,7 @@ foreach ($data['usergroups'] as $usergroup) {
 		);
 
 		$user = $data['allowed_ui_users']
-			? (new CLink(getUserFullname($user), (new CUrl('zabbix.php'))
+			? (new CLink(getUserFullname($user), (new CUrl('sdnet.php'))
 				->setArgument('action', 'user.edit')
 				->setArgument('userid', $user['userid'])
 				->getUrl()
@@ -181,7 +181,7 @@ foreach ($data['usergroups'] as $usergroup) {
 		$users[] = [' ', HELLIP()];
 	}
 
-	$name = new CLink($usergroup['name'], (new CUrl('zabbix.php'))
+	$name = new CLink($usergroup['name'], (new CUrl('sdnet.php'))
 		->setArgument('action', 'usergroup.edit')
 		->setArgument('usrgrpid', $usergroup['usrgrpid'])
 		->getUrl()
@@ -192,7 +192,7 @@ foreach ($data['usergroups'] as $usergroup) {
 		(new CCol($name))->addClass(ZBX_STYLE_NOWRAP),
 		[
 			$data['allowed_ui_users']
-				? new CLink(_('Users'), (new CUrl('zabbix.php'))
+				? new CLink(_('Users'), (new CUrl('sdnet.php'))
 					->setArgument('action', 'user.list')
 					->setArgument('filter_usrgrpids', [$usergroup['usrgrpid']])
 					->setArgument('filter_set', '1')
@@ -215,7 +215,7 @@ $form->addItem([
 			'name' => _('Enable'),
 			'confirm_singular' => _('Enable selected group?'),
 			'confirm_plural' => _('Enable selected groups?'),
-			'redirect' => (new CUrl('zabbix.php'))
+			'redirect' => (new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.massupdate')
 				->setArgument('users_status', GROUP_STATUS_ENABLED)
 				->setArgument(CSRF_TOKEN_NAME, $csrf_token)
@@ -225,7 +225,7 @@ $form->addItem([
 			'name' => _('Disable'),
 			'confirm_singular' => _('Disable selected group?'),
 			'confirm_plural' => _('Disable selected groups?'),
-			'redirect' => (new CUrl('zabbix.php'))
+			'redirect' => (new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.massupdate')
 				->setArgument('users_status', GROUP_STATUS_DISABLED)
 				->setArgument(CSRF_TOKEN_NAME, $csrf_token)
@@ -235,7 +235,7 @@ $form->addItem([
 			'name' => _('Enable debug mode'),
 			'confirm_singular' => _('Enable debug mode in selected group?'),
 			'confirm_plural' => _('Enable debug mode in selected groups?'),
-			'redirect' => (new CUrl('zabbix.php'))
+			'redirect' => (new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.massupdate')
 				->setArgument('debug_mode', GROUP_DEBUG_MODE_ENABLED)
 				->setArgument(CSRF_TOKEN_NAME, $csrf_token)
@@ -245,7 +245,7 @@ $form->addItem([
 			'name' => _('Disable debug mode'),
 			'confirm_singular' => _('Disable debug mode in selected group?'),
 			'confirm_plural' => _('Disable debug mode in selected groups?'),
-			'redirect' => (new CUrl('zabbix.php'))
+			'redirect' => (new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.massupdate')
 				->setArgument('debug_mode', GROUP_DEBUG_MODE_DISABLED)
 				->setArgument(CSRF_TOKEN_NAME, $csrf_token)

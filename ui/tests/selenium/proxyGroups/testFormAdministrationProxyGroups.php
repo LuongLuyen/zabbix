@@ -41,7 +41,7 @@ class testFormAdministrationProxyGroups extends CWebTest {
 	}
 
 	public function testFormAdministrationProxyGroups_Layout() {
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 
 		// Open proxy group configuration form in create mode and check layout.
 		$this->query('button:Create proxy group')->one()->waitUntilClickable()->click();
@@ -384,7 +384,7 @@ class testFormAdministrationProxyGroups extends CWebTest {
 			$old_hash = CDBHelper::getHash(self::SQL);
 		}
 
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 		$this->query(($update ? 'link:'.self::$update_group : 'button:Create proxy group'))->one()->waitUntilClickable()->click();
 
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -458,7 +458,7 @@ class testFormAdministrationProxyGroups extends CWebTest {
 	}
 
 	public function testFormAdministrationProxyGroups_Clone() {
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 		$this->query('link', self::CLONE_GROUP)->one()->waitUntilClickable()->click();
 
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -491,7 +491,7 @@ class testFormAdministrationProxyGroups extends CWebTest {
 
 	public function testFormAdministrationProxyGroups_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::SQL);
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 		$this->query('link', self::CLONE_GROUP)->one()->waitUntilClickable()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$dialog->query('button:Update')->waitUntilClickable()->one()->click();
@@ -534,7 +534,7 @@ class testFormAdministrationProxyGroups extends CWebTest {
 	 */
 	public function testFormAdministrationProxyGroups_Cancel($data) {
 		$old_hash = CDBHelper::getHash(self::SQL);
-		$this->page->login()->open('zabbix.php?action=proxygroup.list');
+		$this->page->login()->open('sdnet.php?action=proxygroup.list');
 
 		$new_fields = [
 			'Name' => 'New name',
@@ -614,7 +614,7 @@ class testFormAdministrationProxyGroups extends CWebTest {
 			$old_hash = CDBHelper::getHash(self::SQL);
 		}
 
-		$this->page->login()->open('zabbix.php?action=proxygroup.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxygroup.list')->waitUntilReady();
 		$this->query('link', $data['group'])->one()->waitUntilClickable()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$dialog->query('button:Delete')->waitUntilClickable()->one()->click();

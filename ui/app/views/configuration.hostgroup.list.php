@@ -36,7 +36,7 @@ $html_page = (new CHtmlPage())
 		))->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'hostgroup.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'hostgroup.list'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [
@@ -55,7 +55,7 @@ $html_page = (new CHtmlPage())
 
 $form = (new CForm())->setName('hostgroup_list');
 
-$view_url = (new CUrl('zabbix.php'))
+$view_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'hostgroup.list')
 	->getUrl();
 
@@ -91,7 +91,7 @@ foreach ($data['groups'] as $group) {
 		}
 
 		if ($data['allowed_ui_conf_hosts']) {
-			$host_url = (new CUrl('zabbix.php'))
+			$host_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'host.edit')
 				->setArgument('hostid', $host['hostid'])
@@ -156,7 +156,7 @@ foreach ($data['groups'] as $group) {
 		$name[] = NAME_DELIMITER;
 	}
 
-	$group_url = (new CUrl('zabbix.php'))
+	$group_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'hostgroup.edit')
 		->setArgument('groupid', $group['groupid'])
@@ -188,7 +188,7 @@ foreach ($data['groups'] as $group) {
 	$count = '';
 	if ($host_count > 0) {
 		if ($data['allowed_ui_conf_hosts']) {
-			$count = new CLink($host_count, (new CUrl('zabbix.php'))
+			$count = new CLink($host_count, (new CUrl('sdnet.php'))
 				->setArgument('action', 'host.list')
 				->setArgument('filter_set', '1')
 				->setArgument('filter_groups', [$group['groupid']]));
@@ -240,15 +240,15 @@ $html_page
 $csrf_token = CCsrfTokenHelper::get('hostgroup');
 
 (new CScriptTag('view.init('.json_encode([
-	'enable_url' => (new CUrl('zabbix.php'))
+	'enable_url' => (new CUrl('sdnet.php'))
 		->setArgument('action', 'hostgroup.enable')
 		->setArgument(CSRF_TOKEN_NAME, $csrf_token)
 		->getUrl(),
-	'disable_url' => (new CUrl('zabbix.php'))
+	'disable_url' => (new CUrl('sdnet.php'))
 		->setArgument('action', 'hostgroup.disable')
 		->setArgument(CSRF_TOKEN_NAME, $csrf_token)
 		->getUrl(),
-	'delete_url' => (new CUrl('zabbix.php'))
+	'delete_url' => (new CUrl('sdnet.php'))
 		->setArgument('action', 'hostgroup.delete')
 		->setArgument(CSRF_TOKEN_NAME, $csrf_token)
 		->getUrl()

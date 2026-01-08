@@ -370,7 +370,7 @@ $form_grid->addItem([
 ]);
 
 $cancel_button = (new CRedirectButton(_('Cancel'),
-	(new CUrl('zabbix.php'))
+	(new CUrl('sdnet.php'))
 		->setArgument('action', 'userrole.list')
 		->setArgument('page', CPagerHelper::loadPage('userrole.list', null))
 ))->setId('cancel');
@@ -381,7 +381,7 @@ if ($data['roleid'] !== null) {
 	$buttons = [
 		(new CSimpleButton(_('Clone')))->setId('clone'),
 		(new CRedirectButton(_('Delete'),
-			(new CUrl('zabbix.php'))->setArgument('action', 'userrole.delete')
+			(new CUrl('sdnet.php'))->setArgument('action', 'userrole.delete')
 				->setArgument('roleids', [$data['roleid']])
 				->setArgument(CSRF_TOKEN_NAME, $csrf_token),
 			_('Delete selected role?')

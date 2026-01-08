@@ -105,7 +105,7 @@ foreach ($data['discoveries'] as $discovery) {
 		}
 		else {
 			if ($discovery['master_item']['flags'] & ZBX_FLAG_DISCOVERY_PROTOTYPE) {
-				$item_url = (new CUrl('zabbix.php'))
+				$item_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'item.prototype.edit')
 					->setArgument('context', $data['context'])
@@ -114,7 +114,7 @@ foreach ($data['discoveries'] as $discovery) {
 					->getUrl();
 			}
 			else {
-				$item_url = (new CUrl('zabbix.php'))
+				$item_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'item.edit')
 					->setArgument('context', $data['context'])
@@ -192,7 +192,7 @@ foreach ($data['discoveries'] as $discovery) {
 		$checkbox->setAttribute('data-actions', 'execute');
 	}
 
-	$host_url = (new CUrl('zabbix.php'))
+	$host_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', $data['context'] === 'host' ? 'host.edit' : 'template.edit')
 		->setArgument($data['context'] === 'host' ? 'hostid' : 'templateid', $discovery['hosts'][0]['hostid'])
@@ -204,7 +204,7 @@ foreach ($data['discoveries'] as $discovery) {
 		$description,
 		[
 			new CLink(_('Item prototypes'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'item.prototype.list')
 					->setArgument('parent_discoveryid', $discovery['itemid'])
 					->setArgument('context', $data['context'])
@@ -213,7 +213,7 @@ foreach ($data['discoveries'] as $discovery) {
 		],
 		[
 			new CLink(_('Trigger prototypes'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'trigger.prototype.list')
 					->setArgument('parent_discoveryid', $discovery['itemid'])
 					->setArgument('context', $data['context'])
@@ -222,7 +222,7 @@ foreach ($data['discoveries'] as $discovery) {
 		],
 		[
 			new CLink(_('Graph prototypes'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'graph.prototype.list')
 					->setArgument('parent_discoveryid', $discovery['itemid'])
 					->setArgument('context', $data['context'])

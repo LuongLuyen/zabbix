@@ -386,7 +386,7 @@ class testDashboardGraphWidgetSelectedHosts extends CWebTest {
 	 * @dataProvider getDatasetData
 	 */
 	public function testDashboardGraphWidgetSelectedHosts_CheckSuggestionList($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = CDashboardElement::find()->one()->edit()->addWidget()->asForm();
 		$form->fill(['Type' => CFormElement::RELOADABLE_FILL('Graph')]);
 

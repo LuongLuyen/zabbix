@@ -24,7 +24,7 @@ $this->includeJsFile('administration.proxy.list.js.php');
 $filter = (new CFilter())
 	->addVar('action', 'proxy.list')
 	->setResetUrl(
-		(new CUrl('zabbix.php'))->setArgument('action', 'proxy.list')
+		(new CUrl('sdnet.php'))->setArgument('action', 'proxy.list')
 	)
 	->setProfile('web.proxies.filter')
 	->setActiveTab($data['active_tab'])
@@ -69,7 +69,7 @@ $form = (new CForm())
 	->setId('proxy-list')
 	->setName('proxy_list');
 
-$view_url = (new CUrl('zabbix.php'))
+$view_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'proxy.list')
 	->getUrl();
 
@@ -94,7 +94,7 @@ foreach ($data['proxies'] as $proxyid => $proxy) {
 	$proxy_name_prefix = [];
 
 	if ($proxy['proxyGroup']) {
-		$proxy_group_url = (new CUrl('zabbix.php'))
+		$proxy_group_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'proxygroup.edit')
 			->setArgument('proxy_groupid', $proxy['proxy_groupid'])
@@ -181,7 +181,7 @@ foreach ($data['proxies'] as $proxyid => $proxy) {
 				$can_enable_disable_hosts = true;
 			}
 
-			$host_url = (new CUrl('zabbix.php'))
+			$host_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'host.edit')
 				->setArgument('hostid', $host['hostid'])
@@ -204,7 +204,7 @@ foreach ($data['proxies'] as $proxyid => $proxy) {
 		$host_count_total = (new CSpan($proxy['host_count_total']))->addClass(ZBX_STYLE_ENTITY_COUNT);
 	}
 
-	$proxy_url = (new CUrl('zabbix.php'))
+	$proxy_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'proxy.edit')
 		->setArgument('proxyid', $proxyid)

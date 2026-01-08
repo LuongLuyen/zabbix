@@ -25,7 +25,7 @@ class testFormUserGroups extends CLegacyWebTest {
 	private $userGroup = 'Selenium user group';
 
 	public function testFormUserGroups_CheckLayout() {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestClickButtonText('Create user group');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 		$this->zbxTestCheckHeader('User groups');
@@ -102,7 +102,7 @@ class testFormUserGroups extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testFormUserGroups_Create($data) {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.edit');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.edit');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 		$this->zbxTestCheckHeader('User groups');
 
@@ -209,7 +209,7 @@ class testFormUserGroups extends CLegacyWebTest {
 	 * @dataProvider update
 	 */
 	public function testFormUserGroups_Update($data) {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestClickLinkTextWait($this->userGroup);
 		$this->zbxTestCheckTitle('Configuration of user groups');
 		$this->zbxTestCheckHeader('User groups');
@@ -300,7 +300,7 @@ class testFormUserGroups extends CLegacyWebTest {
 	 * @dataProvider delete
 	 */
 	public function testFormUserGroups_Delete($data) {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestClickLinkTextWait($data['name']);
 		$this->zbxTestCheckTitle('Configuration of user groups');
 		$this->zbxTestCheckHeader('User groups');

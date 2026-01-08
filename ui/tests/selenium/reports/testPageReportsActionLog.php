@@ -34,7 +34,7 @@ class testPageReportsActionLog extends CWebTest {
 	}
 
 	public function testPageReportsActionLog_CheckLayout() {
-		$this->page->login()->open('zabbix.php?action=actionlog.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=actionlog.list')->waitUntilReady();
 
 		// Check header and title.
 		$this->page->assertHeader('Action log');
@@ -646,7 +646,7 @@ class testPageReportsActionLog extends CWebTest {
 	 * @dataProvider getCheckFilterData
 	 */
 	public function testPageReportsActionLog_CheckFilter($data) {
-		$this->page->login()->open('zabbix.php?action=actionlog.list&from=2012-02-20+09:01:00&to=2012-02-20+11:01:00&'.
+		$this->page->login()->open('sdnet.php?action=actionlog.list&from=2012-02-20+09:01:00&to=2012-02-20+11:01:00&'.
 				'filter_messages=&filter_set=1')->waitUntilReady();
 
 		// Filter by time.
@@ -695,7 +695,7 @@ class testPageReportsActionLog extends CWebTest {
 	 * Check Status column colors and Info column hintbox.
 	 */
 	public function testPageReportsActionLog_CheckStatusInfo() {
-		$this->page->login()->open('zabbix.php?action=actionlog.list&from=2012-02-20+09:01:00&to=2012-02-20+11:01:00&'.
+		$this->page->login()->open('sdnet.php?action=actionlog.list&from=2012-02-20+09:01:00&to=2012-02-20+11:01:00&'.
 				'filter_messages=&filter_set=1')->waitUntilReady();
 
 		// Check status color correctness.
@@ -724,7 +724,7 @@ class testPageReportsActionLog extends CWebTest {
 	 * Check Reset button.
 	 */
 	public function testPageReportsActionLog_CheckResetButton() {
-		$this->page->login()->open('zabbix.php?action=actionlog.list&from=2012-02-20+09:01:00&to=2012-02-20+11:01:00&'.
+		$this->page->login()->open('sdnet.php?action=actionlog.list&from=2012-02-20+09:01:00&to=2012-02-20+11:01:00&'.
 				'filter_messages=&filter_set=1')->waitUntilReady();
 		$table = $this->getTable();
 

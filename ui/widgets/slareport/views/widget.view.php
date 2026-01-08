@@ -52,7 +52,7 @@ elseif (!$data['has_serviceid']) {
 			(new CCol($data['has_access'][CRoleHelper::ACTIONS_MANAGE_SLA]
 				? new CLink(
 					$service['name'],
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'slareport.list')
 						->setArgument('filter_slaid', $data['sla']['slaid'])
 						->setArgument('filter_serviceid', $serviceid)

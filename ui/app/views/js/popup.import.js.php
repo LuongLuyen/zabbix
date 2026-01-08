@@ -139,7 +139,7 @@ window.popup_import = new class {
 	}
 
 	openImportComparePopup() {
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 		url.setArgument('action', 'popup.import.compare');
 
 		fetch(url.getUrl(), {
@@ -193,7 +193,7 @@ window.popup_import = new class {
 	}
 
 	submitImportPopup() {
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 		url.setArgument('action', 'popup.import');
 
 		this.overlay.setLoading();

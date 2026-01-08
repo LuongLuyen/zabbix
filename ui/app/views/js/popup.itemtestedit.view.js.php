@@ -161,7 +161,7 @@ function itemGetValueTest(overlay) {
 		form_data = $form.serializeJSON(),
 		post_data = getItemTestProperties('#preprocessing-test-form'),
 		interface = (typeof form_data['interface'] !== 'undefined') ? form_data['interface'] : null,
-		url = new Curl('zabbix.php');
+		url = new Curl('sdnet.php');
 
 	url.setArgument('action', 'popup.itemtest.getvalue');
 	url.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('itemtest')) ?>);
@@ -257,7 +257,7 @@ function itemCompleteTest(overlay) {
 	const form_data = $form.serializeJSON();
 	let post_data = getItemTestProperties('#preprocessing-test-form');
 	const interface = (form_data['interface'] !== undefined) ? form_data['interface'] : null;
-	const url = new Curl('zabbix.php');
+	const url = new Curl('sdnet.php');
 
 	const macros = {};
 

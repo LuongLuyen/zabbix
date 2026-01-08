@@ -65,7 +65,7 @@ class testDashboardsViewMode extends CLegacyWebTest {
 	public function testDashboardViewMode_CheckLayoutForDifferentUsers($data) {
 		$userid = CDBHelper::getValue('SELECT userid FROM users WHERE username='.zbx_dbstr($data['username']));
 		$this->authenticateUser($data['sessionid'], $userid);
-		$this->zbxTestOpen('zabbix.php?action=dashboard.view&dashboardid=1');
+		$this->zbxTestOpen('sdnet.php?action=dashboard.view&dashboardid=1');
 		$dashboard = $dashboard = CDashboardElement::find()->one()->waitUntilReady();
 
 		$this->page->assertTitle('Dashboard');
@@ -120,7 +120,7 @@ class testDashboardsViewMode extends CLegacyWebTest {
 	}
 
 	public function testDashboardsViewMode_KioskMode() {
-		$this->zbxTestLogin('zabbix.php?action=dashboard.view&dashboardid=1', false);
+		$this->zbxTestLogin('sdnet.php?action=dashboard.view&dashboardid=1', false);
 		$this->zbxTestCheckHeader('Global view');
 		$this->zbxTestAssertElementPresentXpath("//header");
 
@@ -143,7 +143,7 @@ class testDashboardsViewMode extends CLegacyWebTest {
 
 	public function testDashboardsViewMode_KioskModeUrlParameter() {
 		// Set layout mode to kiosk view.
-		$this->zbxTestLogin('zabbix.php?action=dashboard.view&kiosk=1', false);
+		$this->zbxTestLogin('sdnet.php?action=dashboard.view&kiosk=1', false);
 		$this->zbxTestWaitForPageToLoad();
 		$this->zbxTestWaitUntilElementPresent(WebDriverBy::xpath('//button[@title="Normal view"]'));
 		$this->zbxTestAssertElementNotPresentXpath("//header");
@@ -152,7 +152,7 @@ class testDashboardsViewMode extends CLegacyWebTest {
 		$this->zbxTestAssertAttribute('//button['.CXPathHelper::fromClass('btn-dashboard-normal').']', 'title', 'Normal view');
 
 		// Set layout mode to default layout.
-		$this->zbxTestOpen('zabbix.php?action=dashboard.view&kiosk=0');
+		$this->zbxTestOpen('sdnet.php?action=dashboard.view&kiosk=0');
 		$this->zbxTestCheckHeader('Global view');
 		$this->zbxTestAssertElementPresentXpath("//header");
 		$this->zbxTestAssertAttribute("//button[contains(@class, 'btn-kiosk')]", 'title', 'Kiosk mode');

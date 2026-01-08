@@ -25,7 +25,7 @@ require_once __DIR__.'/../common/testFormFilter.php';
  */
 class testFormFilterLatestData extends testFormFilter {
 
-	public $url = 'zabbix.php?action=latest.view';
+	public $url = 'sdnet.php?action=latest.view';
 
 	protected static $users = [
 		'user-delete',

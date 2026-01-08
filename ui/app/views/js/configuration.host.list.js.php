@@ -37,7 +37,7 @@
 		},
 
 		enable(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'host.enable');
 
 			target.classList.add('is-loading');
@@ -51,7 +51,7 @@
 		},
 
 		disable(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'host.disable');
 
 			target.classList.add('is-loading');
@@ -219,7 +219,7 @@
 				},
 				callback: ({data, event}) => {
 					if (data.submit.redirect_latest) {
-						const url = new URL('zabbix.php', location.href);
+						const url = new URL('sdnet.php', location.href);
 
 						url.searchParams.set('action', 'latest.view');
 						url.searchParams.set('hostids[]', data.submit.hostid);
@@ -242,7 +242,7 @@
 
 			button.classList.add('is-loading');
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'host.massdelete');
 			curl.setArgument(CSRF_TOKEN_NAME, this.csrf_token);
 

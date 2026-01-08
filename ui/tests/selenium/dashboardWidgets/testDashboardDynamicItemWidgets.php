@@ -318,7 +318,7 @@ class testDashboardDynamicItemWidgets extends CWebTest {
 	 * @dataProvider getWidgetsData
 	 */
 	public function testDashboardDynamicItemWidgets_Layout($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardids['Dashboard for Dynamic item'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 

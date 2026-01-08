@@ -76,7 +76,7 @@ window.webscenario_step_edit_popup = new class {
 
 		this.#overlay.setLoading();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'webscenario.step.check');
 

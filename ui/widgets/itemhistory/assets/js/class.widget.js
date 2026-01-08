@@ -233,7 +233,7 @@ class CWidgetItemHistory extends CWidget {
 
 		for (const button of this.#values_table.querySelectorAll('.js-show-binary')) {
 			const cell = button.closest('td');
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'widget.itemhistory.value.check');
 			curl.setArgument('itemid', cell.dataset.itemid);
@@ -365,7 +365,7 @@ class CWidgetItemHistory extends CWidget {
 	}
 
 	#getHintboxContentCUrl(button) {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		const value = this.#binary_buttons.get(button);
 
 		curl.setArgument('itemid', value.itemid);

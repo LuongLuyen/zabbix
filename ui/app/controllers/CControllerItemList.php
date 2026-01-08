@@ -120,7 +120,7 @@ class CControllerItemList extends CControllerItem {
 		$items = $this->sortItems($items, ['sort' => $filter['sort'], 'sortorder' => $filter['sortorder']]);
 
 		$selected_filters = array_merge($filter, $this->getselectedSubfilters($subfilter_fields));
-		$view_url = new CUrl('zabbix.php');
+		$view_url = new CUrl('sdnet.php');
 		$view_url_params = ['action' => $data['action'], 'context' => $data['context']] + $selected_filters;
 
 		array_map([$view_url, 'setArgument'], array_keys($view_url_params), $view_url_params);

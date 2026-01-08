@@ -154,7 +154,7 @@ class testDashboardTriggerOverviewWidget extends CWebTest {
 	}
 
 	public function testDashboardTriggerOverviewWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = CDashboardElement::find()->one()->edit()->addWidget()->asForm();
 		$form->fill(['Type' => CFormElement::RELOADABLE_FILL('Trigger overview')]);
 		$this->assertEquals(['Type', 'Show header', 'Name', 'Refresh interval', 'Show', 'Host groups', 'Hosts',
@@ -560,7 +560,7 @@ class testDashboardTriggerOverviewWidget extends CWebTest {
 	public function testDashboardTriggerOverviewWidget_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
 
@@ -616,7 +616,7 @@ class testDashboardTriggerOverviewWidget extends CWebTest {
 		$old_hash = CDBHelper::getHash($this->sql);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->edit();
 
 		// Start updating or creating a widget.
@@ -672,7 +672,7 @@ class testDashboardTriggerOverviewWidget extends CWebTest {
 	}
 
 	public function testDashboardTriggerOverviewWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::$delete_widget);
 
@@ -708,7 +708,7 @@ class testDashboardTriggerOverviewWidget extends CWebTest {
 			]
 		];
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->edit();
 
 		$form = $dashboard->getWidget(self::$update_widget)->edit();
@@ -743,7 +743,7 @@ class testDashboardTriggerOverviewWidget extends CWebTest {
 	 * @param boolean	$create		flag that specifies whether a create action is performed
 	 */
 	public function checkWidgetAction($data, $create = true) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
 

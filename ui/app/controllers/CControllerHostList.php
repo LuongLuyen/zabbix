@@ -231,7 +231,7 @@ class CControllerHostList extends CController {
 		CPagerHelper::savePage($this->getAction(), $page_num);
 
 		$paging = CPagerHelper::paginate($page_num, $hosts, $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		$hosts = API::Host()->get([

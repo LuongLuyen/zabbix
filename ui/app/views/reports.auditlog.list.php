@@ -25,7 +25,7 @@ $this->addJsFile('gtlc.js');
 $this->includeJsFile('reports.auditlog.list.js.php');
 
 $filter = (new CFilter())
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', $data['action']));
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', $data['action']));
 
 $filter_resourcetype = (new CSelect('filter_resourcetype'))
 	->setId('resourcetype-select')
@@ -115,7 +115,7 @@ foreach ($data['auditlogs'] as $auditlog) {
 			? new CTag('em', true, $auditlog['username'])
 			: $data['users'][$auditlog['userid']],
 		new CLink($auditlog['ip'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', $data['action'])
 				->setArgument('filter_ip', $auditlog['ip'])
 				->setArgument('filter_set', 1)
@@ -124,7 +124,7 @@ foreach ($data['auditlogs'] as $auditlog) {
 			? $data['resources'][$auditlog['resourcetype']]
 			: _('Unknown resource'),
 		new CLink($auditlog['resourceid'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', $data['action'])
 				->setArgument('filter_resourceid', $auditlog['resourceid'])
 				->setArgument('filter_resourcetype', $auditlog['resourcetype'])
@@ -134,7 +134,7 @@ foreach ($data['auditlogs'] as $auditlog) {
 			? $data['actions'][$auditlog['action']]
 			: _('Unknown action'),
 		new CLink($auditlog['recordsetid'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', $data['action'])
 				->setArgument('filter_recordsetid', $auditlog['recordsetid'])
 				->setArgument('filter_set', 1)

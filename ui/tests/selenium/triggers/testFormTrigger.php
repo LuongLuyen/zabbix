@@ -278,7 +278,7 @@ class testFormTrigger extends CLegacyWebTest {
 	 */
 	public function testFormTrigger_CheckLayout($data) {
 		if (isset($data['template'])) {
-			$this->zbxTestLogin('zabbix.php?action=template.list');
+			$this->zbxTestLogin('sdnet.php?action=template.list');
 			$form = $this->query('name:zbx_filter')->asForm()->waitUntilReady()->one();
 			$this->filterEntriesAndOpenTriggers($data['template'], $form);
 		}
@@ -1340,7 +1340,7 @@ class testFormTrigger extends CLegacyWebTest {
 	 * @dataProvider getLongExpressionData
 	 */
 	public function testFormTrigger_LongExpression($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&context=host&filter_hostids[0]='.
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&context=host&filter_hostids[0]='.
 				self::$long_key_hostid
 		);
 		$this->page->waitUntilReady();

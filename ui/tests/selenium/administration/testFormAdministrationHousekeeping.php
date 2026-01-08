@@ -21,7 +21,7 @@ require_once __DIR__.'/../common/testFormAdministrationGeneral.php';
  */
 class testFormAdministrationHousekeeping extends testFormAdministrationGeneral {
 
-	public $config_link = 'zabbix.php?action=housekeeping.edit';
+	public $config_link = 'sdnet.php?action=housekeeping.edit';
 	public $form_selector = 'id:housekeeping-form';
 
 	public $default_values = [

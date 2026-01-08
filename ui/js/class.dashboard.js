@@ -433,7 +433,7 @@ class CDashboard {
 	}
 
 	_promiseCheckConfiguration() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'dashboard.config.hash');
 
@@ -1043,7 +1043,7 @@ class CDashboard {
 			});
 		}
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'dashboard.widgets.validate');
 
@@ -1411,7 +1411,7 @@ class CDashboard {
 		properties.template = this._data.templateid !== null ? 1 : undefined;
 		properties.name = properties.name.trim();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'dashboard.properties.check');
 
@@ -1489,7 +1489,7 @@ class CDashboard {
 	_promiseApplyDashboardPageProperties(properties, data) {
 		properties.name = properties.name.trim();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'dashboard.page.properties.check');
 

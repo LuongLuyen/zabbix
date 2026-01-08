@@ -172,8 +172,8 @@ class testItemTypeSelection extends CWebTest {
 	 */
 	public function checkItemTypeSelection($data, $prototype = false) {
 		$link = ($prototype)
-			? 'zabbix.php?action=item.prototype.list&parent_discoveryid='.self::LLDID.'&context=host'
-			: 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.self::HOSTID;
+			? 'sdnet.php?action=item.prototype.list&parent_discoveryid='.self::LLDID.'&context=host'
+			: 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.self::HOSTID;
 
 		$this->page->login()->open($link)->waitUntilReady();
 		$this->query('button:'.($prototype ? 'Create item prototype' : 'Create item'))->one()->click();

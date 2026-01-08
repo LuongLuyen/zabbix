@@ -87,7 +87,7 @@ window.maintenance_timeperiod_edit = new class {
 	submit() {
 		const fields = getFormFields(this._form);
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'maintenance.timeperiod.check');
 
 		this._post(curl.getUrl(), fields, (response) => {

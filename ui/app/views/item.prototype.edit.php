@@ -165,7 +165,7 @@ $tabs = (new CTabView(['id' => $tabsid]))
 		TAB_INDICATOR_PREPROCESSING
 	);
 
-$return_url = (new CUrl('zabbix.php'))
+$return_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'item.prototype.list')
 	->setArgument('parent_discoveryid', $item['parent_discoveryid'])
 	->setArgument('context', $item['context'])

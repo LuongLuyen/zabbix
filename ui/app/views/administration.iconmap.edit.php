@@ -41,7 +41,7 @@ $csrf_token = CCsrfTokenHelper::get('iconmap');
 $form = (new CForm())
 	->addItem((new CVar(CSRF_TOKEN_NAME, $csrf_token))->removeId())
 	->setId('iconmap')
-	->setAction((new CUrl('zabbix.php'))
+	->setAction((new CUrl('sdnet.php'))
 		->setArgument('action', ($data['iconmapid'] != 0) ? 'iconmap.update' : 'iconmap.create')
 		->getUrl()
 	)
@@ -133,13 +133,13 @@ if ($data['iconmapid'] != 0) {
 		new CSubmit('update', _('Update')),
 		[
 			(new CSimpleButton(_('Clone')))->setId('clone'),
-			(new CRedirectButton(_('Delete'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Delete'), (new CUrl('sdnet.php'))
 					->setArgument('action', 'iconmap.delete')
 					->setArgument('iconmapid', $data['iconmapid'])
 					->setArgument(CSRF_TOKEN_NAME, $csrf_token),
 				_('Delete icon map?')
 			))->setId('delete'),
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'iconmap.list')
 			))->setId('cancel')
 		]
@@ -149,7 +149,7 @@ else {
 	$tab->setFooter(makeFormFooter(
 		new CSubmit('add', _('Add')),
 		[
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'iconmap.list')
 			))->setId('cancel')
 		]

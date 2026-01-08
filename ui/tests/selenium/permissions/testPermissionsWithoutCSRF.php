@@ -108,7 +108,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM hstgrp',
-					'link' => 'zabbix.php?action=popup&popup=hostgroup.edit'
+					'link' => 'sdnet.php?action=popup&popup=hostgroup.edit'
 				]
 			],
 			// #3 Host group update.
@@ -116,28 +116,28 @@ class testPermissionsWithoutCSRF extends CWebTest {
 				[
 					'replace' => true,
 					'db' => 'SELECT * FROM hstgrp',
-					'link' => 'zabbix.php?action=popup&popup=hostgroup.edit&groupid={groupid}'
+					'link' => 'sdnet.php?action=popup&popup=hostgroup.edit&groupid={groupid}'
 				]
 			],
 			// #4 Template group create.
 			[
 				[
 					'db' => 'SELECT * FROM hstgrp',
-					'link' => 'zabbix.php?action=popup&popup=templategroup.edit'
+					'link' => 'sdnet.php?action=popup&popup=templategroup.edit'
 				]
 			],
 			// #5 Template group update.
 			[
 				[
 					'db' => 'SELECT * FROM hstgrp',
-					'link' => 'zabbix.php?action=popup&popup=templategroup.edit&groupid=14'
+					'link' => 'sdnet.php?action=popup&popup=templategroup.edit&groupid=14'
 				]
 			],
 			// #6 Template create.
 			[
 				[
 					'db' => 'SELECT * FROM hosts',
-					'link' => 'zabbix.php?action=template.list',
+					'link' => 'sdnet.php?action=template.list',
 					'overlay' => 'create',
 					'fields' => [
 						'id:template_name' => 'CSRF validation template create',
@@ -149,7 +149,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM hosts',
-					'link' => 'zabbix.php?action=template.list',
+					'link' => 'sdnet.php?action=template.list',
 					'overlay' => 'update',
 					'fields' => [
 						'id:template_name' => 'CSRF validation template update',
@@ -161,7 +161,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM hosts',
-					'link' => 'zabbix.php?action=host.list',
+					'link' => 'sdnet.php?action=host.list',
 					'overlay' => 'create_host',
 					'fields' => [
 						'id:host' => 'CSRF validation host create',
@@ -173,7 +173,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM hosts',
-					'link' => 'zabbix.php?action=popup&popup=host.edit&hostid=99062',
+					'link' => 'sdnet.php?action=popup&popup=host.edit&hostid=99062',
 					'fields' => [
 						'id:host' => 'CSRF validation host update',
 						'xpath://div[@id="groups_"]/..' => 'Zabbix servers'
@@ -185,7 +185,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 				[
 					'replace' => true,
 					'db' => 'SELECT * FROM items',
-					'link' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids[0]={hostid}&context=host',
+					'link' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids[0]={hostid}&context=host',
 					'overlay' => 'item_update'
 				]
 			],
@@ -194,7 +194,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 				[
 					'replace' => true,
 					'db' => 'SELECT * FROM items',
-					'link' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids[0]={hostid}&context=host',
+					'link' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids[0]={hostid}&context=host',
 					'overlay' => 'create',
 					'fields' => [
 						'id:name' => 'CSRF validation item create',
@@ -207,7 +207,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 				[
 					'replace' => true,
 					'db' => 'SELECT * FROM triggers',
-					'link' => 'zabbix.php?action=trigger.list&filter_set=1&context=host&filter_hostids[0]={hostid}',
+					'link' => 'sdnet.php?action=trigger.list&filter_set=1&context=host&filter_hostids[0]={hostid}',
 					'overlay' => 'trigger_update'
 				]
 			],
@@ -216,7 +216,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 				[
 					'replace' => true,
 					'db' => 'SELECT * FROM triggers',
-					'link' => 'zabbix.php?action=trigger.list&filter_set=1&context=host&filter_hostids[0]={hostid}',
+					'link' => 'sdnet.php?action=trigger.list&filter_set=1&context=host&filter_hostids[0]={hostid}',
 					'overlay' => 'create',
 					'fields' => [
 						'id:name' => 'CSRF test name',
@@ -228,7 +228,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM graphs',
-					'link' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D=700008&context=host',
+					'link' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D=700008&context=host',
 					'overlay' => 'update'
 				]
 			],
@@ -237,7 +237,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 				[
 					'replace' => true,
 					'db' => 'SELECT * FROM graphs',
-					'link' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D={hostid}&context=host',
+					'link' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D={hostid}&context=host',
 					'overlay' => 'create'
 				]
 			],
@@ -277,7 +277,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM maintenances',
-					'link' => 'zabbix.php?action=maintenance.list',
+					'link' => 'sdnet.php?action=maintenance.list',
 					'overlay' => 'create'
 				]
 			],
@@ -285,7 +285,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM maintenances',
-					'link' => 'zabbix.php?action=maintenance.list',
+					'link' => 'sdnet.php?action=maintenance.list',
 					'overlay' => 'update'
 				]
 			],
@@ -293,7 +293,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM actions',
-					'link' => 'zabbix.php?action=action.list&eventsource=0',
+					'link' => 'sdnet.php?action=action.list&eventsource=0',
 					'overlay' => 'create'
 				]
 			],
@@ -301,7 +301,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM actions',
-					'link' => 'zabbix.php?action=action.list&eventsource=3',
+					'link' => 'sdnet.php?action=action.list&eventsource=3',
 					'overlay' => 'update'
 				]
 			],
@@ -309,7 +309,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM correlation',
-					'link' => 'zabbix.php?action=correlation.list',
+					'link' => 'sdnet.php?action=correlation.list',
 					'overlay' => 'create'
 				]
 			],
@@ -317,7 +317,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM correlation',
-					'link' => 'zabbix.php?action=correlation.list',
+					'link' => 'sdnet.php?action=correlation.list',
 					'overlay' => 'update'
 				]
 			],
@@ -325,7 +325,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM drules',
-					'link' => 'zabbix.php?action=discovery.list',
+					'link' => 'sdnet.php?action=discovery.list',
 					'overlay' => 'create'
 				]
 			],
@@ -333,7 +333,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM drules',
-					'link' => 'zabbix.php?action=discovery.list',
+					'link' => 'sdnet.php?action=discovery.list',
 					'overlay' => 'update'
 				]
 			],
@@ -341,7 +341,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM settings',
-					'link' => 'zabbix.php?action=gui.edit',
+					'link' => 'sdnet.php?action=gui.edit',
 					'return_button' => true
 				]
 			],
@@ -349,7 +349,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM autoreg_host',
-					'link' => 'zabbix.php?action=autoreg.edit',
+					'link' => 'sdnet.php?action=autoreg.edit',
 					'return_button' => true
 				]
 			],
@@ -357,7 +357,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM housekeeper',
-					'link' => 'zabbix.php?action=housekeeping.edit',
+					'link' => 'sdnet.php?action=housekeeping.edit',
 					'return_button' => true
 				]
 			],
@@ -365,7 +365,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM images',
-					'link' => 'zabbix.php?action=image.edit&imageid=1',
+					'link' => 'sdnet.php?action=image.edit&imageid=1',
 					'return_button' => true
 				]
 			],
@@ -373,7 +373,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM images',
-					'link' => 'zabbix.php?action=image.edit&imagetype=1',
+					'link' => 'sdnet.php?action=image.edit&imagetype=1',
 					'return_button' => true
 				]
 			],
@@ -381,7 +381,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM icon_map',
-					'link' => 'zabbix.php?action=iconmap.edit&iconmapid=101',
+					'link' => 'sdnet.php?action=iconmap.edit&iconmapid=101',
 					'return_button' => true
 				]
 			],
@@ -389,7 +389,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM icon_map',
-					'link' => 'zabbix.php?action=iconmap.edit',
+					'link' => 'sdnet.php?action=iconmap.edit',
 					'return_button' => true
 				]
 			],
@@ -397,7 +397,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM regexps',
-					'link' => 'zabbix.php?action=regex.edit&regexid=2',
+					'link' => 'sdnet.php?action=regex.edit&regexid=2',
 					'return_button' => true
 				]
 			],
@@ -405,7 +405,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM regexps',
-					'link' => 'zabbix.php?action=regex.edit',
+					'link' => 'sdnet.php?action=regex.edit',
 					'return_button' => true
 				]
 			],
@@ -413,7 +413,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM globalmacro',
-					'link' => 'zabbix.php?action=macros.edit',
+					'link' => 'sdnet.php?action=macros.edit',
 					'return_button' => true
 				]
 			],
@@ -421,7 +421,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM settings',
-					'link' => 'zabbix.php?action=trigdisplay.edit',
+					'link' => 'sdnet.php?action=trigdisplay.edit',
 					'return_button' => true
 				]
 			],
@@ -429,7 +429,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM token',
-					'link' => 'zabbix.php?action=token.list',
+					'link' => 'sdnet.php?action=token.list',
 					'overlay' => 'create'
 				]
 			],
@@ -437,7 +437,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM token',
-					'link' => 'zabbix.php?action=token.list',
+					'link' => 'sdnet.php?action=token.list',
 					'overlay' => 'update'
 				]
 			],
@@ -445,7 +445,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM settings',
-					'link' => 'zabbix.php?action=miscconfig.edit',
+					'link' => 'sdnet.php?action=miscconfig.edit',
 					'return_button' => true
 				]
 			],
@@ -453,7 +453,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM hosts',
-					'link' => 'zabbix.php?action=proxy.list',
+					'link' => 'sdnet.php?action=proxy.list',
 					'overlay' => 'update'
 				]
 			],
@@ -461,7 +461,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM hosts',
-					'link' => 'zabbix.php?action=proxy.list',
+					'link' => 'sdnet.php?action=proxy.list',
 					'overlay' => 'create'
 				]
 			],
@@ -469,7 +469,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM settings',
-					'link' => 'zabbix.php?action=authentication.edit',
+					'link' => 'sdnet.php?action=authentication.edit',
 					'return_button' => true
 				]
 			],
@@ -477,7 +477,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM users_groups',
-					'link' => 'zabbix.php?action=usergroup.edit&usrgrpid=7',
+					'link' => 'sdnet.php?action=usergroup.edit&usrgrpid=7',
 					'return_button' => true
 				]
 			],
@@ -485,7 +485,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM users_groups',
-					'link' => 'zabbix.php?action=usergroup.edit',
+					'link' => 'sdnet.php?action=usergroup.edit',
 					'return_button' => true
 				]
 			],
@@ -493,7 +493,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM users',
-					'link' => 'zabbix.php?action=user.edit&userid=1',
+					'link' => 'sdnet.php?action=user.edit&userid=1',
 					'return_button' => true
 				]
 			],
@@ -501,7 +501,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM users',
-					'link' => 'zabbix.php?action=user.edit',
+					'link' => 'sdnet.php?action=user.edit',
 					'return_button' => true
 				]
 			],
@@ -509,7 +509,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM media',
-					'link' => 'zabbix.php?action=mediatype.list',
+					'link' => 'sdnet.php?action=mediatype.list',
 					'overlay' => 'update'
 				]
 			],
@@ -517,7 +517,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM media',
-					'link' => 'zabbix.php?action=mediatype.list',
+					'link' => 'sdnet.php?action=mediatype.list',
 					'overlay' => 'create'
 				]
 			],
@@ -525,7 +525,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM scripts',
-					'link' => 'zabbix.php?action=script.list',
+					'link' => 'sdnet.php?action=script.list',
 					'overlay' => 'update'
 				]
 			],
@@ -533,7 +533,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM scripts',
-					'link' => 'zabbix.php?action=script.list',
+					'link' => 'sdnet.php?action=script.list',
 					'overlay' => 'create'
 				]
 			],
@@ -541,7 +541,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM profiles',
-					'link' => 'zabbix.php?action=userprofile.edit',
+					'link' => 'sdnet.php?action=userprofile.edit',
 					'return_button' => true
 				]
 			],
@@ -549,7 +549,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM role',
-					'link' => 'zabbix.php?action=userrole.edit&roleid=2',
+					'link' => 'sdnet.php?action=userrole.edit&roleid=2',
 					'return_button' => true
 				]
 			],
@@ -557,7 +557,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM role',
-					'link' => 'zabbix.php?action=userrole.edit',
+					'link' => 'sdnet.php?action=userrole.edit',
 					'return_button' => true
 				]
 			],
@@ -565,7 +565,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM token',
-					'link' => 'zabbix.php?action=user.token.list',
+					'link' => 'sdnet.php?action=user.token.list',
 					'overlay' => 'create'
 				]
 			],
@@ -573,7 +573,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM token',
-					'link' => 'zabbix.php?action=user.token.list',
+					'link' => 'sdnet.php?action=user.token.list',
 					'overlay' => 'update'
 				]
 			],
@@ -581,7 +581,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM report',
-					'link' => 'zabbix.php?action=scheduledreport.edit',
+					'link' => 'sdnet.php?action=scheduledreport.edit',
 					'return_button' => true
 				]
 			],
@@ -589,7 +589,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM report',
-					'link' => 'zabbix.php?action=scheduledreport.edit&reportid=3',
+					'link' => 'sdnet.php?action=scheduledreport.edit&reportid=3',
 					'return_button' => true
 				]
 			],
@@ -597,7 +597,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM connector',
-					'link' => 'zabbix.php?action=connector.list',
+					'link' => 'sdnet.php?action=connector.list',
 					'overlay' => 'create'
 				]
 			],
@@ -605,7 +605,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM connector',
-					'link' => 'zabbix.php?action=connector.list',
+					'link' => 'sdnet.php?action=connector.list',
 					'overlay' => 'update'
 				]
 			],
@@ -613,7 +613,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM problem, events, acknowledges',
-					'link' => 'zabbix.php?&action=problem.view&filter_set=1',
+					'link' => 'sdnet.php?&action=problem.view&filter_set=1',
 					'overlay' => 'problem'
 				]
 			],
@@ -621,7 +621,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM services',
-					'link' => 'zabbix.php?action=service.list.edit',
+					'link' => 'sdnet.php?action=service.list.edit',
 					'overlay' => 'create'
 				]
 			],
@@ -629,7 +629,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM services',
-					'link' => 'zabbix.php?action=service.list.edit',
+					'link' => 'sdnet.php?action=service.list.edit',
 					'overlay' => 'service'
 				]
 			],
@@ -637,7 +637,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM sla',
-					'link' => 'zabbix.php?action=sla.list',
+					'link' => 'sdnet.php?action=sla.list',
 					'overlay' => 'create'
 				]
 			],
@@ -645,7 +645,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM sla',
-					'link' => 'zabbix.php?action=sla.list',
+					'link' => 'sdnet.php?action=sla.list',
 					'overlay' => 'update'
 				]
 			],
@@ -653,7 +653,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM settings',
-					'link' => 'zabbix.php?action=geomaps.edit',
+					'link' => 'sdnet.php?action=geomaps.edit',
 					'return_button' => true
 				]
 			],
@@ -661,7 +661,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM module',
-					'link' => 'zabbix.php?action=module.list',
+					'link' => 'sdnet.php?action=module.list',
 					'overlay' => 'update'
 				]
 			],
@@ -669,7 +669,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM module',
-					'link' => 'zabbix.php?action=audit.settings.edit',
+					'link' => 'sdnet.php?action=audit.settings.edit',
 					'return_button' => true
 				]
 			],
@@ -677,7 +677,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM settings',
-					'link' => 'zabbix.php?action=timeouts.edit',
+					'link' => 'sdnet.php?action=timeouts.edit',
 					'return_button' => true
 				]
 			]
@@ -775,9 +775,9 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'token' => true,
-					'token_url' => 'zabbix.php?action=macros.edit',
+					'token_url' => 'sdnet.php?action=macros.edit',
 					'db' => 'SELECT * FROM globalmacro',
-					'link' => 'zabbix.php?macros%5B0%5D%5Bmacro%5D=&macros%5B0%5D%5Bvalue%5D=&macros%5B0%5D%5Btype%5D=0'.
+					'link' => 'sdnet.php?macros%5B0%5D%5Bmacro%5D=&macros%5B0%5D%5Bvalue%5D=&macros%5B0%5D%5Btype%5D=0'.
 						'&macros%5B0%5D%5Bdescription%5D=&update=Update&_csrf_token=',
 					'error' => [
 						'message' => 'Page not found',
@@ -789,7 +789,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM report',
-					'link' => 'zabbix.php?form_refresh=1&reportid=4&old_dashboardid=1&userid=95'.
+					'link' => 'sdnet.php?form_refresh=1&reportid=4&old_dashboardid=1&userid=95'.
 						'&name=Report+for+delete&dashboardid=1&period=0&cycle=0&hours=00&minutes=00&weekdays%5B1%5D=1'.
 						'&weekdays%5B2%5D=2&weekdays%5B4%5D=4&weekdays%5B8%5D=8&weekdays%5B16%5D=16&weekdays%5B32%5D=32'.
 						'&weekdays%5B64%5D=64&active_since=&active_till=&subject=subject+for+report+delete+test'.
@@ -811,7 +811,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM role',
-					'link' => 'zabbix.php?form_refresh=1&_csrf_token=&roleid=2&name=Admin+role&type=2&ui_monitoring_dashboard=1'.
+					'link' => 'sdnet.php?form_refresh=1&_csrf_token=&roleid=2&name=Admin+role&type=2&ui_monitoring_dashboard=1'.
 						'&ui_monitoring_problems=1&ui_monitoring_hosts=1&ui_monitoring_latest_data=1&ui_monitoring_maps=1'.
 						'&ui_monitoring_discovery=1&ui_services_services=1&ui_services_sla=1&ui_services_sla_report=1'.
 						'&ui_inventory_overview=1&ui_inventory_hosts=1&ui_reports_system_info=0&ui_reports_scheduled_reports=1'.
@@ -843,7 +843,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 			[
 				[
 					'db' => 'SELECT * FROM settings',
-					'link' => 'zabbix.php?_csrf_token=12345abcd&tls_accept=1&tls_in_none=1&tls_psk_identity=&tls_psk='.
+					'link' => 'sdnet.php?_csrf_token=12345abcd&tls_accept=1&tls_in_none=1&tls_psk_identity=&tls_psk='.
 							'&action=autoreg.update',
 					'error' => self::ACCESS_DENIED,
 					'return_button' => true
@@ -887,7 +887,7 @@ class testPermissionsWithoutCSRF extends CWebTest {
 		if (CTestArrayHelper::get($data, 'return_button')) {
 			$this->query('button', $return_button)->one()->waitUntilClickable()->click();
 			$this->page->waitUntilReady();
-			$this->assertStringContainsString('zabbix.php?action=dashboard', $this->page->getCurrentUrl());
+			$this->assertStringContainsString('sdnet.php?action=dashboard', $this->page->getCurrentUrl());
 		}
 		else {
 			$this->assertFalse($this->query('button', $return_button)->exists());

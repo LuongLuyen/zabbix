@@ -28,7 +28,7 @@ $form = (new CForm())
 	->addItem((new CVar(CSRF_TOKEN_NAME, CCsrfTokenHelper::get('audit')))->removeId())
 	->setId('audit-settings')
 	->setAction(
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'audit.settings.update')
 			->getUrl()
 	)

@@ -54,7 +54,7 @@ else {
 			? $data['filter']['hide_empty_groups']
 			: 0;
 
-		$group_url = (new CUrl('zabbix.php'))
+		$group_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'problem.view')
 			->setArgument('filter_set', '1')
 			->setArgument('show', TRIGGERS_OPTION_RECENT_PROBLEM)
