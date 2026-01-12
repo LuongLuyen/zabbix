@@ -120,7 +120,7 @@ class CControllerMacrosUpdate extends CController {
 		}
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'macros.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'macros.edit')
 		);
 
 		if ($result) {

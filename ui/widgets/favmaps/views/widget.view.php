@@ -26,7 +26,7 @@ $table = (new CTableInfo())->setNoDataMessage(_('No maps added.'));
 foreach ($data['maps'] as $map) {
 	$table->addRow([
 		$data['allowed_ui_maps']
-			? new CLink($map['label'], (new CUrl('zabbix.php'))
+			? new CLink($map['label'], (new CUrl('sdnet.php'))
 				->setArgument('action', 'map.view')
 				->setArgument('sysmapid', $map['sysmapid'])
 			)

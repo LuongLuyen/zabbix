@@ -48,7 +48,7 @@ class testPageTemplates extends CLegacyWebTest {
 	}
 
 	public function testPageTemplates_CheckLayout() {
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->zbxTestCheckTitle('Configuration of templates');
 		$this->zbxTestCheckHeader('Templates');
 		$table = $this->query('class:list-table')->asTable()->one();
@@ -94,7 +94,7 @@ class testPageTemplates extends CLegacyWebTest {
 		$sqlTriggers = "select triggerid,expression,description,url,status,value,priority,comments,error,templateid,type,state,flags from triggers order by triggerid";
 		$oldHashTriggers = CDBHelper::getHash($sqlTriggers);
 
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->query('button:Reset')->one()->click();
 
 		// Filter necessary Template name.
@@ -118,7 +118,7 @@ class testPageTemplates extends CLegacyWebTest {
 	}
 
 	public function testPageTemplates_FilterTemplateByName() {
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$table = $this->getTable();
 		$filter = $this->query('name:zbx_filter')->asForm()->one();
 		$filter->getField('Template groups')->select('Templates/SAN');
@@ -130,7 +130,7 @@ class testPageTemplates extends CLegacyWebTest {
 	}
 
 	public function testPageTemplates_FilterByLinkedTemplate() {
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->query('button:Reset')->one()->click();
 		$filter = $this->query('name:zbx_filter')->asForm()->one();
 		$filter->getField('Linked templates')->fill([
@@ -145,7 +145,7 @@ class testPageTemplates extends CLegacyWebTest {
 	}
 
 	public function testPageTemplates_FilterNone() {
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$filter = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->getTable();
 		$filter->fill([
@@ -162,7 +162,7 @@ class testPageTemplates extends CLegacyWebTest {
 	}
 
 	public function testPageTemplates_FilterReset() {
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->query('button:Reset')->one()->click();
 		$this->zbxTestTextNotPresent('Displaying 0 of 0 found');
 	}
@@ -401,7 +401,7 @@ class testPageTemplates extends CLegacyWebTest {
 	 * @dataProvider getFilterByTagsData
 	 */
 	public function testPageTemplates_FilterByTags($data) {
-		$this->page->login()->open('zabbix.php?action=template.list&filter_name=template+for+tags&filter_evaltype=0&filter_tags%5B0%5D%5Btag%5D='.
+		$this->page->login()->open('sdnet.php?action=template.list&filter_name=template+for+tags&filter_evaltype=0&filter_tags%5B0%5D%5Btag%5D='.
 				'&filter_tags%5B0%5D%5Boperator%5D=0&filter_tags%5B0%5D%5Bvalue%5D=&filter_set=1');
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 		$table = $this->getTable();
@@ -442,7 +442,7 @@ class testPageTemplates extends CLegacyWebTest {
 		$template = 'Template for web scenario testing';
 		$hosts = ['Simple form test host'];
 
-		$this->page->login()->open('zabbix.php?action=template.list&page=4');
+		$this->page->login()->open('sdnet.php?action=template.list&page=4');
 
 		// Click on Hosts link in Template row.
 		$table = $this->query('class:list-table')->asTable()->one();

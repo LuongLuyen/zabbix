@@ -70,7 +70,7 @@ class CControllerTemplateDashboardList extends CController {
 		$page_num = getRequest('page', 1);
 		CPagerHelper::savePage('template.dashboard.list', $page_num);
 		$paging = CPagerHelper::paginate($page_num, $dashboards, $sort_order,
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', $this->getAction())
 				->setArgument('templateid', $this->getInput('templateid'))
 		);

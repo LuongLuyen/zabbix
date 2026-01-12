@@ -62,7 +62,7 @@
 		});
 
 		$form.find('#clone').click(function() {
-			var url = new Curl('zabbix.php?action=iconmap.edit');
+			var url = new Curl('sdnet.php?action=iconmap.edit');
 
 			$form.serializeArray().forEach(function(field) {
 				if (field.name !== 'iconmapid') {

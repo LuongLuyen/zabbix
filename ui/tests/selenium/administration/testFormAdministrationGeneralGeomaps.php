@@ -82,7 +82,7 @@ class testFormAdministrationGeneralGeomaps extends CWebTest {
 	 * @dataProvider getLayoutData
 	 */
 	public function testFormAdministrationGeneralGeomaps_Layout($data) {
-		$this->page->login()->open('zabbix.php?action=geomaps.edit');
+		$this->page->login()->open('sdnet.php?action=geomaps.edit');
 		$form = $this->query('id:geomaps-form')->asForm()->one();
 
 		$form->fill(['Tile provider' => $data['Tile provider']]);
@@ -343,7 +343,7 @@ class testFormAdministrationGeneralGeomaps extends CWebTest {
 			$old_hash = CDBHelper::getHash($this->sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=geomaps.edit');
+		$this->page->login()->open('sdnet.php?action=geomaps.edit');
 		$form = $this->query('id:geomaps-form')->waitUntilReady()->asForm()->one();
 		$form->fill($data['fields']);
 		$form->submit();
@@ -359,7 +359,7 @@ class testFormAdministrationGeneralGeomaps extends CWebTest {
 			$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
 			// Check values in frontend form.
-			$this->page->login()->open('zabbix.php?action=geomaps.edit');
+			$this->page->login()->open('sdnet.php?action=geomaps.edit');
 			$form->invalidate();
 
 			// Remove leading and trailing spaces from data for assertion.

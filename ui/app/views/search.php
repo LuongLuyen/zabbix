@@ -42,7 +42,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 	$interface = reset($host['interfaces']);
 	$visible_name = make_decoration($host['name'], $data['search']);
 
-	$host_url = (new CUrl('zabbix.php'))
+	$host_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'host.edit')
 		->setArgument('hostid', $hostid)
@@ -65,7 +65,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$latest_data_link = $data['allowed_ui_latest_data']
 		? new CLink(_('Latest data'),
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'latest.view')
 				->setArgument('hostids[]', $hostid)
 				->setArgument('filter_set', '1')
@@ -76,7 +76,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$problems_link = $data['allowed_ui_problems']
 		? new CLink(_('Problems'),
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'problem.view')
 				->setArgument('hostids', [$hostid])
 				->setArgument('filter_set', '1')
@@ -85,7 +85,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$charts_link = $data['allowed_ui_hosts']
 		? new CLink(_('Graphs'),
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'charts.view')
 				->setArgument('filter_hostids', (array) $hostid)
 				->setArgument('filter_set', '1')
@@ -94,7 +94,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$dashboards_link = $data['allowed_ui_hosts']
 		? new CLink(_('Dashboards'),
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'host.dashboard.view')
 				->setArgument('hostid', $hostid)
 		)
@@ -102,7 +102,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$web_link = $data['allowed_ui_hosts']
 		? new CLink(_('Web'),
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'web.view')
 				->setArgument('filter_hostids[]', $hostid)
 				->setArgument('filter_set', '1')
@@ -111,7 +111,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$item_count = CViewHelper::showNum($host['items']);
 	$items_link = ($host['editable'] && $data['allowed_ui_conf_hosts'])
-		? [new CLink(_('Items'), (new CUrl('zabbix.php'))
+		? [new CLink(_('Items'), (new CUrl('sdnet.php'))
 			->setArgument('action', 'item.list')
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$hostid])
@@ -123,7 +123,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$trigger_count = CViewHelper::showNum($host['triggers']);
 	$triggers_link = ($host['editable'] && $data['allowed_ui_conf_hosts'])
-		? [new CLink(_('Triggers'), (new CUrl('zabbix.php'))
+		? [new CLink(_('Triggers'), (new CUrl('sdnet.php'))
 			->setArgument('action', 'trigger.list')
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$hostid])
@@ -133,7 +133,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$graph_count = CViewHelper::showNum($host['graphs']);
 	$graphs_link = ($host['editable'] && $data['allowed_ui_conf_hosts'])
-		? [new CLink(_('Graphs'), (new CUrl('zabbix.php'))
+		? [new CLink(_('Graphs'), (new CUrl('sdnet.php'))
 			->setArgument('action', 'graph.list')
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$hostid])
@@ -203,7 +203,7 @@ $table = (new CTableInfo())
 
 foreach ($data['host_groups'] as $groupid => $group) {
 	$caption = make_decoration($group['name'], $data['search']);
-	$group_url = (new CUrl('zabbix.php'))
+	$group_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'hostgroup.edit')
 		->setArgument('groupid', $groupid)
@@ -217,7 +217,7 @@ foreach ($data['host_groups'] as $groupid => $group) {
 
 	if ($data['admin']) {
 		$hosts_link = ($group['editable'] && $data['allowed_ui_conf_hosts'] && $group['hosts'])
-			? [new CLink(_('Hosts'), (new CUrl('zabbix.php'))
+			? [new CLink(_('Hosts'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'host.list')
 				->setArgument('filter_set', '1')
 				->setArgument('filter_groups', [$groupid])
@@ -229,7 +229,7 @@ foreach ($data['host_groups'] as $groupid => $group) {
 
 	$latest_data_link = $data['allowed_ui_latest_data']
 		? new CLink(_('Latest data'),
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'latest.view')
 				->setArgument('groupids[]', $groupid)
 				->setArgument('filter_set', '1')
@@ -243,7 +243,7 @@ foreach ($data['host_groups'] as $groupid => $group) {
 		$latest_data_link,
 		$data['allowed_ui_problems']
 			? new CLink(_('Problems'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'problem.view')
 					->setArgument('groupids', [$groupid])
 					->setArgument('filter_set', '1')
@@ -251,7 +251,7 @@ foreach ($data['host_groups'] as $groupid => $group) {
 			: _('Problems'),
 		$data['allowed_ui_hosts']
 			? new CLink(_('Web'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'web.view')
 					->setArgument('filter_groupids[]', $groupid)
 					->setArgument('filter_set', '1')
@@ -291,7 +291,7 @@ if ($data['admin']) {
 		$discovery_count = CViewHelper::showNum($template['discoveryRules']);
 		$httptest_count = CViewHelper::showNum($template['httpTests']);
 
-		$template_url = (new CUrl('zabbix.php'))
+		$template_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'template.edit')
 			->setArgument('templateid', $templateid)
@@ -302,7 +302,7 @@ if ($data['admin']) {
 			: [new CSpan($visible_name)];
 
 		$items_link = ($template['editable'] && $data['allowed_ui_conf_templates'])
-			? [new CLink(_('Items'), (new CUrl('zabbix.php'))
+			? [new CLink(_('Items'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'item.list')
 				->setArgument('filter_set', '1')
 				->setArgument('filter_hostids', [$templateid])
@@ -313,7 +313,7 @@ if ($data['admin']) {
 		$items_link = (new CCol($items_link))->addClass(ZBX_STYLE_TABLE_LEFT_BORDER);
 
 		$triggers_link = ($template['editable'] && $data['allowed_ui_conf_templates'])
-			? [new CLink(_('Triggers'), (new CUrl('zabbix.php'))
+			? [new CLink(_('Triggers'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'trigger.list')
 				->setArgument('filter_set', '1')
 				->setArgument('filter_hostids', [$templateid])
@@ -322,7 +322,7 @@ if ($data['admin']) {
 			: _('Triggers');
 
 		$graphs_link = ($template['editable'] && $data['allowed_ui_conf_templates'])
-			? [new CLink(_('Graphs'), (new CUrl('zabbix.php'))
+			? [new CLink(_('Graphs'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'graph.list')
 				->setArgument('filter_set', '1')
 				->setArgument('filter_hostids', [$templateid])
@@ -333,7 +333,7 @@ if ($data['admin']) {
 		$dashboards_link = ($template['editable'] && $data['allowed_ui_conf_templates'])
 			? [
 				new CLink(_('Dashboards'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'template.dashboard.list')
 						->setArgument('templateid', $templateid)
 				),
@@ -393,7 +393,7 @@ $table = (new CTableInfo())
 
 foreach ($data['template_groups'] as $groupid => $group) {
 	$caption = make_decoration($group['name'], $data['search']);
-	$templategroup_url = (new CUrl('zabbix.php'))
+	$templategroup_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'templategroup.edit')
 		->setArgument('groupid', $groupid)
@@ -407,7 +407,7 @@ foreach ($data['template_groups'] as $groupid => $group) {
 
 	if ($data['admin']) {
 		$templates_link = ($group['editable'] && $data['allowed_ui_conf_templates'] && $group['templates'])
-			? [new CLink(_('Templates'), (new CUrl('zabbix.php'))
+			? [new CLink(_('Templates'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'template.list')
 				->setArgument('filter_set', '1')
 				->setArgument('filter_groups', [$groupid])

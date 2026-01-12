@@ -298,7 +298,7 @@ class testPageMaintenance extends CWebTest {
 	 */
 	public function testPageMaintenance_Layout($data) {
 		$maintenances = CDBHelper::getCount(self::MAINTENANCE_SQL);
-		$this->page->login()->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 		$this->page->assertTitle('Configuration of maintenance periods');
 		$this->page->assertHeader('Maintenance periods');
 
@@ -320,8 +320,8 @@ class testPageMaintenance extends CWebTest {
 		foreach ([false, true] as $state) {
 			$filter->expand($state);
 			// Leave the page and reopen the previous page to make sure the filter state is still saved.
-			$this->page->open('zabbix.php?action=host.list')->waitUntilReady();
-			$this->page->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+			$this->page->open('sdnet.php?action=host.list')->waitUntilReady();
+			$this->page->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 			$this->assertTrue($filter->isExpanded($state));
 		}
 
@@ -503,7 +503,7 @@ class testPageMaintenance extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageMaintenance_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=maintenance.list&sort=name&sortorder=ASC');
+		$this->page->login()->open('sdnet.php?action=maintenance.list&sort=name&sortorder=ASC');
 		$form = CFilterElement::find()->one()->getForm();
 
 		// Fill filter fields if such present in data provider.
@@ -522,7 +522,7 @@ class testPageMaintenance extends CWebTest {
 	}
 
 	public function testPageMaintenance_Sort() {
-		$this->page->login()->open('zabbix.php?action=maintenance.list&sortorder=DESC');
+		$this->page->login()->open('sdnet.php?action=maintenance.list&sortorder=DESC');
 		$table = $this->getTable();
 
 		foreach (['Name', 'Active since', 'Active till'] as $column) {
@@ -578,7 +578,7 @@ class testPageMaintenance extends CWebTest {
 	 * @dataProvider getDeleteData
 	 */
 	public function testPageMaintenance_Delete($data) {
-		$this->page->login()->open('zabbix.php?action=maintenance.list');
+		$this->page->login()->open('sdnet.php?action=maintenance.list');
 		// Maintenance count that will be selected before delete action.
 		$count_names = count(CTestArrayHelper::get($data, 'name', []));
 		$this->selectTableRows(CTestArrayHelper::get($data, 'name'));
@@ -602,7 +602,7 @@ class testPageMaintenance extends CWebTest {
 		// Maintenance count that will be selected before delete action.
 		$maintenance_count = ($maintenances === []) ? CDBHelper::getCount(self::MAINTENANCE_SQL) : count($maintenances);
 
-		$this->page->login()->open('zabbix.php?action=maintenance.list');
+		$this->page->login()->open('sdnet.php?action=maintenance.list');
 		$this->selectTableRows($maintenances);
 		$this->query('button:Delete')->one()->waitUntilClickable()->click();
 		$this->assertEquals('Delete selected maintenance period'.(($maintenance_count > 1) ? 's?' : '?'),

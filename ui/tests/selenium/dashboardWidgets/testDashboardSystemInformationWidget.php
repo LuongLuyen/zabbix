@@ -25,7 +25,7 @@ require_once __DIR__.'/../common/testSystemInformation.php';
  */
 class testDashboardSystemInformationWidget extends testSystemInformation {
 
-	const URL = 'zabbix.php?action=dashboard.view&dashboardid=';
+	const URL = 'sdnet.php?action=dashboard.view&dashboardid=';
 
 	public static $dashboardid;				// Dashboard for checking widget content with enabled and disabled HA cluster.
 	public static $widgets_dashboardid;		// Dashboard for checking creation and update of system information widgets.

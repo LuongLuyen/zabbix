@@ -130,7 +130,7 @@ class testFormEventCorrelation extends CWebTest {
 	 * Test the layout and basic functionality of the form.
 	 */
 	public function testFormEventCorrelation_Layout() {
-		$this->page->login()->open('zabbix.php?action=correlation.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=correlation.list')->waitUntilReady();
 
 		// Open 'New event correlation' modal.
 		$this->query('button:Create event correlation')->one()->click();
@@ -1041,7 +1041,7 @@ class testFormEventCorrelation extends CWebTest {
 	 * Test cloning of an Event Correlation.
 	 */
 	public function testFormEventCorrelation_Clone() {
-		$this->page->login()->open('zabbix.php?action=correlation.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=correlation.list')->waitUntilReady();
 		$this->query('link:Event correlation for clone')->one()->click();
 
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
@@ -1076,7 +1076,7 @@ class testFormEventCorrelation extends CWebTest {
 	 * Test deletion of an Event Correlation.
 	 */
 	public function testFormEventCorrelation_Delete() {
-		$this->page->login()->open('zabbix.php?action=correlation.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=correlation.list')->waitUntilReady();
 		$table = $this->query('class:list-table')->asTable()->one();
 		$row_count_before = $table->getRows()->count();
 
@@ -1156,7 +1156,7 @@ class testFormEventCorrelation extends CWebTest {
 		}
 
 		// Login and open Correlation list.
-		$this->page->login()->open('zabbix.php?action=correlation.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=correlation.list')->waitUntilReady();
 
 		// Open the correct Correlation form.
 		$locator = $update ? 'link:'.self::$update_correlation_initial['name'] : 'button:Create event correlation';
@@ -1297,7 +1297,7 @@ class testFormEventCorrelation extends CWebTest {
 	protected function checkCancelAction($action) {
 		$old_hash = CDBHelper::getHash(self::HASH_SQL);
 
-		$this->page->login()->open('zabbix.php?action=correlation.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=correlation.list')->waitUntilReady();
 		$button_selector = ($action === 'create')
 			? 'button:Create event correlation'
 			: 'link:Event correlation for cancel';

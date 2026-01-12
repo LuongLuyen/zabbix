@@ -157,7 +157,7 @@ class CControllerGraphList extends CController {
 		CPagerHelper::savePage('graph.list', $page_num);
 
 		$paging = CPagerHelper::paginate($page_num, $data['graphs'], $sort_order,
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'graph.list')
 				->setArgument('context', $context)
 		);

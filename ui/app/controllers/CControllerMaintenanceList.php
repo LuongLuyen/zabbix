@@ -133,7 +133,7 @@ class CControllerMaintenanceList extends CController {
 		$page_num = $this->getInput('page', 1);
 		CPagerHelper::savePage('maintenance.list', $page_num);
 		$data['paging'] = CPagerHelper::paginate($page_num, $data['maintenances'], $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', 'maintenance.list')
+			(new CUrl('sdnet.php'))->setArgument('action', 'maintenance.list')
 		);
 
 		$response = new CControllerResponseData($data);

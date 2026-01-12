@@ -39,7 +39,7 @@
 			this.refresh_interval = refresh_interval;
 			this.applied_filter_groupids = applied_filter_groupids;
 
-			const url = new Curl('zabbix.php');
+			const url = new Curl('sdnet.php');
 			url.setArgument('action', 'host.view.refresh');
 			this.refresh_simple_url = url.getUrl();
 

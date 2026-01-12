@@ -50,7 +50,7 @@ class CControllerUsergroupMassUpdate extends CController {
 		$result = (bool) API::UserGroup()->update($user_groups);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.list')
 				->setArgument('page', CPagerHelper::loadPage('usergroup.list', null))
 		);

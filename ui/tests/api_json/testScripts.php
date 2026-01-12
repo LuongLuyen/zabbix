@@ -830,7 +830,7 @@ class testScripts extends CAPITest {
 				'name' => 'API test script.get URL',
 				'type' => ZBX_SCRIPT_TYPE_URL,
 				'scope' => ZBX_SCRIPT_SCOPE_HOST,
-				'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+				'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 				'new_window' => ZBX_SCRIPT_URL_NEW_WINDOW_NO,
 				'confirmation' => 'Confirmation macros: {$HOST_MACRO}, {$GLOBAL_MACRO}, {$DOESNOTEXIST}'
 			],
@@ -1148,7 +1148,7 @@ class testScripts extends CAPITest {
 				'name' => 'API test script.getScriptsByHosts - URL',
 				'type' => ZBX_SCRIPT_TYPE_URL,
 				'scope' => ZBX_SCRIPT_SCOPE_HOST,
-				'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+				'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 				'confirmation' => 'Confirmation macros: {$HOST_MACRO}, {$HOST_MACRO_OTHER}, {$GLOBAL_MACRO},'.
 					' {$DOESNOTEXIST}, {HOST.ID}, {HOST.HOST}, {HOST.NAME}, {HOST.CONN}, {HOST.DNS}, {HOST.PORT},'.
 					' {HOST.NAME1}, {HOST.NAME2}, {EVENT.ID}, {EVENT.NAME}, {EVENT.NSEVERITY}, {EVENT.SEVERITY}'
@@ -1198,7 +1198,7 @@ class testScripts extends CAPITest {
 				'name' => 'API test script.getScriptsByHosts - URL with manual input',
 				'type' => ZBX_SCRIPT_TYPE_URL,
 				'scope' => ZBX_SCRIPT_SCOPE_HOST,
-				'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+				'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 				'host_access' => PERM_READ_WRITE,
 				'confirmation' => 'Confirmation macros: {$HOST_MACRO}, {$DOESNOTEXIST}, {HOST.HOST}, {MANUALINPUT}',
 				'manualinput' => ZBX_SCRIPT_MANUALINPUT_ENABLED,
@@ -1212,7 +1212,7 @@ class testScripts extends CAPITest {
 				'name' => 'API test script.getScriptsByEvents - URL',
 				'type' => ZBX_SCRIPT_TYPE_URL,
 				'scope' => ZBX_SCRIPT_SCOPE_EVENT,
-				'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+				'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 				'confirmation' => 'Confirmation macros: {$HOST_MACRO}, {$HOST_MACRO_OTHER}, {$GLOBAL_MACRO},'.
 					' {$DOESNOTEXIST}, {HOST.ID}, {HOST.HOST}, {HOST.NAME}, {HOST.CONN}, {HOST.DNS}, {HOST.PORT},'.
 					' {HOST.NAME1}, {HOST.NAME2}, {EVENT.ID}, {EVENT.NAME}, {EVENT.NSEVERITY}, {EVENT.SEVERITY}'
@@ -1270,7 +1270,7 @@ class testScripts extends CAPITest {
 				'name' => 'API test script.getScriptsByEvents - URL with manual input',
 				'type' => ZBX_SCRIPT_TYPE_URL,
 				'scope' => ZBX_SCRIPT_SCOPE_EVENT,
-				'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+				'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 				'host_access' => PERM_READ_WRITE,
 				'confirmation' => 'Confirmation macros: {$HOST_MACRO}, {$DOESNOTEXIST}, {HOST.HOST}, {MANUALINPUT}',
 				'manualinput' => ZBX_SCRIPT_MANUALINPUT_ENABLED,
@@ -4628,19 +4628,19 @@ class testScripts extends CAPITest {
 				'expected_results' => [
 					[
 						'name' => 'API test script.get URL',
-						'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}'
+						'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}'
 					],
 					[
 						'name' => 'API test script.getScriptsByHosts - URL',
-						'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}'
+						'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}'
 					],
 					[
 						'name' => 'API test script.getScriptsByHosts - URL with manual input',
-						'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}'
+						'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}'
 					],
 					[
 						'name' => 'API test script.getScriptsByEvents - URL',
-						'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}'
+						'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}'
 					],
 					[
 						'name' => 'API test script.getScriptsByEvents - URL cause',
@@ -4648,7 +4648,7 @@ class testScripts extends CAPITest {
 					],
 					[
 						'name' => 'API test script.getScriptsByEvents - URL with manual input',
-						'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}'
+						'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}'
 					]
 				],
 				'expected_error' => null
@@ -8273,7 +8273,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',
@@ -8420,7 +8420,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+							'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_ENABLED,
 							'manualinput_prompt' => 'Prompt text with {$DOESNOTEXIST}, {HOST.HOST} and {MANUALINPUT} macros',
@@ -8792,7 +8792,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',
@@ -8909,7 +8909,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+							'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_ENABLED,
 							'manualinput_prompt' => 'Prompt text with {$DOESNOTEXIST}, {HOST.HOST} and {MANUALINPUT} macros',
@@ -9248,7 +9248,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',
@@ -9364,7 +9364,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+							'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_ENABLED,
 							'manualinput_prompt' => 'Prompt text with {$DOESNOTEXIST}, {HOST.HOST} and {MANUALINPUT} macros',
@@ -9933,7 +9933,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',
@@ -10269,7 +10269,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',
@@ -10447,7 +10447,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+							'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_ENABLED,
 							'manualinput_prompt' => 'Prompt text with {$DOESNOTEXIST}, {HOST.HOST} and {MANUALINPUT} macros',
@@ -10981,7 +10981,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',
@@ -11130,7 +11130,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+							'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_ENABLED,
 							'manualinput_prompt' => 'Prompt text with {$DOESNOTEXIST}, {HOST.HOST} and {MANUALINPUT} macros',
@@ -11586,7 +11586,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',
@@ -11733,7 +11733,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action={MANUALINPUT}',
+							'url' => 'http://zabbix/ui/sdnet.php?action={MANUALINPUT}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_ENABLED,
 							'manualinput_prompt' => 'Prompt text with {$DOESNOTEXIST}, {HOST.HOST} and {MANUALINPUT} macros',
@@ -12478,7 +12478,7 @@ class testScripts extends CAPITest {
 							'publickey' => '',
 							'privatekey' => '',
 							'menu_path' => '',
-							'url' => 'http://zabbix/ui/zabbix.php?action=host.edit&hostid={HOST.ID}',
+							'url' => 'http://zabbix/ui/sdnet.php?action=host.edit&hostid={HOST.ID}',
 							'new_window' => (string) ZBX_SCRIPT_URL_NEW_WINDOW_YES,
 							'manualinput' => (string) ZBX_SCRIPT_MANUALINPUT_DISABLED,
 							'manualinput_prompt' => '',

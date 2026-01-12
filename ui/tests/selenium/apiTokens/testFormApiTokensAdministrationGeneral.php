@@ -25,7 +25,7 @@ require_once __DIR__.'/../../include/helpers/CDataHelper.php';
  */
 class testFormApiTokensAdministrationGeneral extends testFormApiTokens {
 
-	public $url = 'zabbix.php?action=token.list';
+	public $url = 'sdnet.php?action=token.list';
 
 	/**
 	 * Function creates the given API tokens in the test branch.

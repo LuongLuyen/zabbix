@@ -42,7 +42,7 @@ class testPageHostGroups extends testPageGroups {
 		];
 	}
 
-	protected $link = 'zabbix.php?action=hostgroup.list';
+	protected $link = 'sdnet.php?action=hostgroup.list';
 	protected $object = 'host';
 	const DISCOVERED_HOST = 'Discovered host from prototype 1';
 	const GROUP = 'Group with two disabled hosts testPageHostGroup';

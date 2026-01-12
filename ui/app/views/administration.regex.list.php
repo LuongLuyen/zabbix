@@ -30,7 +30,7 @@ $html_page = (new CHtmlPage())
 		(new CTag('nav', true,
 			(new CList())
 				->addItem(new CRedirectButton(_('New regular expression'),
-					(new CUrl('zabbix.php'))->setArgument('action', 'regex.edit')
+					(new CUrl('sdnet.php'))->setArgument('action', 'regex.edit')
 				))
 		))->setAttribute('aria-label', _('Content controls'))
 	);
@@ -63,7 +63,7 @@ foreach($data['regexs'] as $regexid => $regex) {
 		new CCheckBox('regexids['.$regexid.']', $regexid),
 		(new CCol(
 			new CLink($regex['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'regex.edit')
 					->setArgument('regexid', $regexid)
 			),

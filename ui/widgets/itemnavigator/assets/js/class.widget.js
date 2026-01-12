@@ -211,7 +211,7 @@ class CWidgetItemNavigator extends CWidget {
 	 * @param {string}  widgetid         Widget ID.
 	 */
 	#updateProfiles(is_open, group_identifier, widgetid) {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'widget.navigation.tree.toggle');
 

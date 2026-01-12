@@ -183,7 +183,7 @@ class testExecuteNow extends CWebTest {
 	 */
 	public function testExecuteNow_LatestDataPage($data) {
 		// Login and select host group for testing.
-		$this->page->login()->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$table = $this->query('xpath://table['.CXPathHelper::fromClass('list-table fixed').']')->asTable()->one();
 		$filter_form = $this->query('name:zbx_filter')->asForm()->one();
 		$filter_form->fill(['Host groups' => 'HG-for-executenow']);
@@ -248,7 +248,7 @@ class testExecuteNow extends CWebTest {
 	 */
 	public function testExecuteNow_ContextMenu($data) {
 		// Login and select host group for testing.
-		$this->page->login()->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$table = $this->query('xpath://table['.CXPathHelper::fromClass('list-table fixed').']')->asTable()->waitUntilVisible()->one();
 		$filter_form = $this->query('name:zbx_filter')->asForm()->one();
 		$filter_form->fill(['Host groups' => 'HG-for-executenow']);
@@ -387,7 +387,7 @@ class testExecuteNow extends CWebTest {
 	 */
 	public function testExecuteNow_ItemsList($data) {
 		$hostid = CDataHelper::get('ExecuteNowAction.hostids.Host for execute now permissions');
-		$this->page->login()->open('zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host')->waitUntilReady();
 		$table = $this->query('xpath://form[@name="item_list"]//table')->asTable()->one()->waitUntilPresent();
 		$this->selectItemsAndExecuteNow($data, $table);
 	}
@@ -447,7 +447,7 @@ class testExecuteNow extends CWebTest {
 	 */
 	public function testExecuteNow_ItemPage($data) {
 		$hostid = CDataHelper::get('ExecuteNowAction.hostids.Host for execute now permissions');
-		$this->page->login()->open('zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host')->waitUntilReady();
 		$table = $this->query('xpath://form[@name="item_list"]//table')->asTable()->one()->waitUntilPresent();
 		$this->openItemAndExecuteNow($data, $table);
 

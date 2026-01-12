@@ -100,7 +100,7 @@ class testDashboardProblemHostsWidget extends testWidgets {
 	}
 
 	public function testDashboardProblemHostsWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dialog = $dashboard->edit()->addWidget();
 		$form = $dialog->asForm();
@@ -493,7 +493,7 @@ class testDashboardProblemHostsWidget extends testWidgets {
 	 * @param boolean    $update    true if update scenario, false if create
 	 */
 	protected function checkWidgetForm($data, $update = false) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -656,7 +656,7 @@ class testDashboardProblemHostsWidget extends testWidgets {
 	 */
 	protected function checkNoChanges($cancel = false, $create = false, $save_dashboard = true) {
 		$old_hash = CDBHelper::getHash(self::SQL);
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -724,7 +724,7 @@ class testDashboardProblemHostsWidget extends testWidgets {
 	}
 
 	public function testDashboardProblemHostsWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$this->assertTrue($dashboard->edit()->getWidget(self::DELETE_WIDGET)->isEditable());
 		$dashboard->deleteWidget(self::DELETE_WIDGET);

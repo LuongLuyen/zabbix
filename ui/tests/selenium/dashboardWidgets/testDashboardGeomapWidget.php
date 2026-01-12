@@ -135,7 +135,7 @@ class testDashboardGeomapWidget extends testWidgets {
 	}
 
 	public function testDashboardGeomapWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$form = CDashboardElement::find()->one()->edit()->addWidget()->asForm();
 
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
@@ -412,7 +412,7 @@ class testDashboardGeomapWidget extends testWidgets {
 			$old_hash = CDBHelper::getHash($this->sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -563,7 +563,7 @@ class testDashboardGeomapWidget extends testWidgets {
 	private function checkNoChanges($cancel = false, $create = false, $save_dashboard = true) {
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -638,7 +638,7 @@ class testDashboardGeomapWidget extends testWidgets {
 	public function testDashboardGeomapWidget_Delete() {
 		$name = 'Geomap for delete';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$this->assertTrue($dashboard->edit()->getWidget($name)->isEditable());
 		$dashboard->deleteWidget($name);

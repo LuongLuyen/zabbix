@@ -215,7 +215,7 @@ class testPageMaps extends CWebTest {
 			$this->assertEquals('sysmap.php?sysmapid='.$id, $row->getColumn('Actions')->query('link:Edit')->one()
 					->getAttribute('href')
 			);
-			$this->assertEquals('zabbix.php?action=map.view&sysmapid='.$id, $row->getColumn('Name')
+			$this->assertEquals('sdnet.php?action=map.view&sysmapid='.$id, $row->getColumn('Name')
 					->query('link', $no_spaces)->one()->getAttribute('href')
 			);
 		}

@@ -102,7 +102,7 @@ $form = (new CForm())
 	->setId('geomaps-form')
 	->setName('geomaps-form')
 	->setAction(
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'geomaps.update')
 			->getUrl()
 	)

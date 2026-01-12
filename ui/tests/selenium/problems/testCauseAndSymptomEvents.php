@@ -173,7 +173,7 @@ class testCauseAndSymptomEvents extends CWebTest {
 	 * This test checks only elements and table data that are related to 'cause and symptom' events.
 	 */
 	public function testCauseAndSymptomEvents_Layout() {
-		$this->page->login()->open('zabbix.php?action=problem.view&hostids[]='.
+		$this->page->login()->open('sdnet.php?action=problem.view&hostids[]='.
 				self::$hostsids['hostids']['Host for Cause and Symptom check']
 		);
 
@@ -215,7 +215,7 @@ class testCauseAndSymptomEvents extends CWebTest {
 		$this->assertEquals('Cause', $event_table->findRow('Name', 'Rank')->getColumn('Value')->getText());
 
 		// Check collapsed and expanded state via clicking on corresponded buttons.
-		$this->page->open('zabbix.php?action=problem.view&hostids[]='.
+		$this->page->open('sdnet.php?action=problem.view&hostids[]='.
 				self::$hostsids['hostids']['Host for Cause and Symptom check']
 		);
 		$this->isCollapsed($cause, $symptom, true);
@@ -332,7 +332,7 @@ class testCauseAndSymptomEvents extends CWebTest {
 	 * @dataProvider getContextMenuData
 	 */
 	public function testCauseAndSymptomEvents_ContextMenu($data) {
-		$this->page->login()->open('zabbix.php?action=problem.view&groupids[]='.self::$groupids['Group for Cause and Symptom check']);
+		$this->page->login()->open('sdnet.php?action=problem.view&groupids[]='.self::$groupids['Group for Cause and Symptom check']);
 
 		if (array_key_exists('linked_events', $data)) {
 			$this->query('class:list-table')->asTable()->waitUntilPresent()->one()->query(self::EXPAND_XPATH)->one()->click();
@@ -424,7 +424,7 @@ class testCauseAndSymptomEvents extends CWebTest {
 	 * @dataProvider getConvertData
 	 */
 	public function testCauseAndSymptomEvents_UpdateProblem($data) {
-		$this->page->login()->open('zabbix.php?action=problem.view&hostids[]='.
+		$this->page->login()->open('sdnet.php?action=problem.view&hostids[]='.
 				self::$hostsids['hostids']['Host for Cause and Symptom update']
 		);
 		$table = $this->getTable();
@@ -599,14 +599,14 @@ class testCauseAndSymptomEvents extends CWebTest {
 	 * @onBefore prepareTriggersStatus
 	 */
 	public function testCauseAndSymptomEvents_FilterResults($data) {
-		$this->page->login()->open('zabbix.php?action=problem.view&filter_reset=1&sort=clock&sortorder=ASC');
+		$this->page->login()->open('sdnet.php?action=problem.view&filter_reset=1&sort=clock&sortorder=ASC');
 
 		// Check headers when Cause and Symptoms problems present in table and 'Show timeline' = true (default state).
 		$this->assertEquals(['', '', '', 'Time', '', '', 'Severity', 'Recovery time', 'Status', 'Info', 'Host', 'Problem',
 				'Duration', 'Update', 'Actions', 'Tags'], $this->getTable()->getHeadersText()
 		);
 
-		$this->page->open('zabbix.php?action=problem.view&hostids[]='.
+		$this->page->open('sdnet.php?action=problem.view&hostids[]='.
 				self::$hostsids['hostids']['Host for Cause and Symptom check']
 		);
 		$table = $this->getTable();

@@ -795,13 +795,13 @@ class testFormUserRoles extends CWebTest {
 	 * @dataProvider getCreateData
 	 */
 	public function testFormUserRoles_Create($data) {
-		$this->page->login()->open('zabbix.php?action=userrole.edit');
+		$this->page->login()->open('sdnet.php?action=userrole.edit');
 		$this->checkRoleAction($data, 'create');
 	}
 
 	public function testFormUserRoles_Layout() {
 		$roles = ['User', 'Admin', 'Super admin'];
-		$this->page->login()->open('zabbix.php?action=userrole.edit&roleid=1');
+		$this->page->login()->open('sdnet.php?action=userrole.edit&roleid=1');
 		$this->page->assertTitle('Configuration of user roles');
 		$this->page->assertHeader('User roles');
 		$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
@@ -818,7 +818,7 @@ class testFormUserRoles extends CWebTest {
 				->filter(new CElementFilter(CElementFilter::CLICKABLE))->count());
 
 		// New role check with screenshots.
-		$this->page->open('zabbix.php?action=userrole.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=userrole.edit')->waitUntilReady();
 		$this->page->removeFocus();
 
 		$screenshot_area = $this->query('id:user_role_tab')->one();
@@ -839,7 +839,7 @@ class testFormUserRoles extends CWebTest {
 		}
 
 		// Screen for the existing super admin role.
-		$this->page->open('zabbix.php?action=userrole.edit&roleid=3');
+		$this->page->open('sdnet.php?action=userrole.edit&roleid=3');
 		$this->assertScreenshotExcept($screenshot_area, ['query' => 'xpath://input[@id="name"]']);
 		foreach (['Clone' => true, 'Cancel' => true, 'Update' => false, 'Delete' => false] as $button => $clickable) {
 			$this->assertEquals($clickable, $this->query('button', $button)->one()->isClickable());
@@ -987,7 +987,7 @@ class testFormUserRoles extends CWebTest {
 	 * @dataProvider getApiListData
 	 */
 	public function testFormUserRoles_ApiList($data) {
-		$this->page->login()->open('zabbix.php?action=userrole.edit');
+		$this->page->login()->open('sdnet.php?action=userrole.edit');
 		$selector = 'xpath://div[@id="api_methods_"]/following::button[text()="Select"]';
 		$form = $this->query('id:userrole-form')->waitUntilPresent()->asGridForm()->one();
 		$form->fill($data['fields']);
@@ -1015,7 +1015,7 @@ class testFormUserRoles extends CWebTest {
 
 	public function testFormUserRoles_SimpleUpdate() {
 		$hash_before = CDBHelper::getHash(self::ROLE_SQL);
-		$this->page->login()->open('zabbix.php?action=userrole.list');
+		$this->page->login()->open('sdnet.php?action=userrole.list');
 		$this->query('link', 'Admin role')->one()->click();
 		$this->query('button:Update')->one()->click();
 		$this->assertMessage(TEST_GOOD, 'User role updated');
@@ -1281,12 +1281,12 @@ class testFormUserRoles extends CWebTest {
 	 */
 	public function testFormUserRoles_Update($data) {
 		$id = (array_key_exists('to_user', $data)) ? self::$delete_roleid : self::$roleid;
-		$this->page->login()->open('zabbix.php?action=userrole.edit&roleid='.$id);
+		$this->page->login()->open('sdnet.php?action=userrole.edit&roleid='.$id);
 		$this->checkRoleAction($data, 'update');
 	}
 
 	public function testFormUserRoles_Clone() {
-		$this->page->login()->open('zabbix.php?action=userrole.edit&roleid=2');
+		$this->page->login()->open('sdnet.php?action=userrole.edit&roleid=2');
 		$form = $this->query('id:userrole-form')->waitUntilReady()->asForm()->one();
 		$values = $form->getFields()->asValues();
 		$role_name = $values['Name'];
@@ -1312,7 +1312,7 @@ class testFormUserRoles extends CWebTest {
 	}
 
 	public function testFormUserRoles_Delete() {
-		$this->page->login()->open('zabbix.php?action=userrole.list');
+		$this->page->login()->open('sdnet.php?action=userrole.list');
 		foreach (['Admin role', 'role_for_delete'] as $role) {
 			if ($role === 'Admin role') {
 				$hash_before = CDBHelper::getHash(self::ROLE_SQL);
@@ -1335,7 +1335,7 @@ class testFormUserRoles extends CWebTest {
 	public function testFormUserRoles_Cancellation() {
 		foreach(['userrole.edit', 'userrole.edit&roleid=2'] as $link) {
 			$hash_before = CDBHelper::getHash(self::ROLE_SQL);
-			$this->page->login()->open('zabbix.php?action='.$link);
+			$this->page->login()->open('sdnet.php?action='.$link);
 			$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 			$form->fill(['Name' => 'cancellation_name_user']);
 			$this->query('button:Cancel')->one()->click();
@@ -1348,7 +1348,7 @@ class testFormUserRoles extends CWebTest {
 	 */
 	public function testFormUserRoles_SuperAdmin() {
 		$this->page->userLogin('super_role_check', 'test5678');
-		$this->page->open('zabbix.php?action=userrole.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=userrole.list')->waitUntilReady();
 		$this->query('link:super_role')->one()->click();
 		$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 		$this->assertEquals('User cannot change the user type of own role.',
@@ -1365,7 +1365,7 @@ class testFormUserRoles extends CWebTest {
 
 		foreach ([true, false] as $enable_modules) {
 			$modules = ['4th Module', '5th Module'];
-			$this->page->open('zabbix.php?action=userrole.edit&roleid=2')->waitUntilReady();
+			$this->page->open('sdnet.php?action=userrole.edit&roleid=2')->waitUntilReady();
 			$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 
 			if ($enable_modules === true) {
@@ -1375,7 +1375,7 @@ class testFormUserRoles extends CWebTest {
 					);
 				}
 
-				$this->page->open('zabbix.php?action=module.list')->waitUntilReady();
+				$this->page->open('sdnet.php?action=module.list')->waitUntilReady();
 				$this->query('button:Scan directory')->one()->click();
 				$this->page->waitUntilReady();
 				CMessageElement::find()->one()->close();
@@ -1419,7 +1419,7 @@ class testFormUserRoles extends CWebTest {
 		];
 
 		$this->page->login();
-		$this->page->open('zabbix.php?action=userrole.edit&roleid=2')->waitUntilReady();
+		$this->page->open('sdnet.php?action=userrole.edit&roleid=2')->waitUntilReady();
 		$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 
 		foreach (['Read-write' => '[1]', 'Read-only' => '[2]'] as $field => $i) {
@@ -1573,11 +1573,11 @@ class testFormUserRoles extends CWebTest {
 			if ($action === 'create') {
 				$created_roleid = CDBHelper::getValue('SELECT roleid FROM role WHERE name='.zbx_dbstr(trim($data['fields']['Name'])));
 				$this->assertNotEquals(null, $created_roleid);
-				$this->page->open('zabbix.php?action=userrole.edit&roleid='.$created_roleid);
+				$this->page->open('sdnet.php?action=userrole.edit&roleid='.$created_roleid);
 			}
 			else {
 				$id = (array_key_exists('to_user', $data)) ? self::$delete_roleid : self::$roleid;
-				$this->page->login()->open('zabbix.php?action=userrole.edit&roleid='.$id);
+				$this->page->login()->open('sdnet.php?action=userrole.edit&roleid='.$id);
 			}
 
 			$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();

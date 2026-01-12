@@ -104,7 +104,7 @@ class CControllerServiceListEditRefresh extends CControllerServiceListGeneral {
 
 		$db_serviceids = self::getServiceIds($filter, $filter['filter_set']);
 
-		$paging_curl = (new CUrl('zabbix.php'))
+		$paging_curl = (new CUrl('sdnet.php'))
 			->setArgument('action', 'service.list.edit')
 			->setArgument('path', $path ?: null)
 			->setArgument('serviceid', $this->service !== null ? $this->service['serviceid'] : null);

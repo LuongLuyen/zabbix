@@ -368,7 +368,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 	}
 
 	public function testDashboardItemHistoryWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dialog = $dashboard->edit()->addWidget();
 		$this->assertEquals('Add widget', $dialog->getTitle());
@@ -1935,7 +1935,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 	public function testDashboardItemHistoryWidget_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->getWidget(self::$update_widget)->edit()->submit();
 		$dashboard->save();
@@ -1966,7 +1966,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 		}
 
 		$data['fields']['Name'] = CTestArrayHelper::get($data, 'fields.Name', 'Item history widget '.microtime());
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -2196,7 +2196,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 		$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -2263,7 +2263,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 	}
 
 	public function testDashboardItemHistoryWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::DELETE_WIDGET);
 		$dashboard->deleteWidget(self::DELETE_WIDGET);
@@ -2687,7 +2687,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 			CDataHelper::addItemData($params['itemid'], $params['values'], $params['time']);
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_data)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_data)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->waitUntilReady();
 		$this->assertTableData($data['initial_data']);
@@ -2738,7 +2738,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 	 * Test function for assuring that all items are available in Item History widget.
 	 */
 	public function testDashboardItemHistoryWidget_CheckAvailableItems() {
-		$this->checkAvailableItems('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid,
+		$this->checkAvailableItems('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid,
 				'Item history'
 		);
 	}
@@ -2748,7 +2748,7 @@ class testDashboardItemHistoryWidget extends testWidgets {
 	 * set to the bottom position, and that it is in the top position when "New values" is set to "Top".
 	 */
 	public function testDashboardItemHistoryWidget_CheckScrollbarPosition() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_data)
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_data)
 				->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard->getWidget(self::SCROLLING_WIDGET);

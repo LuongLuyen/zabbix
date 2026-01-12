@@ -26,7 +26,7 @@ $this->includeJsFile('reports.toptriggers.list.js.php');
 $filter = (new CFilter())
 	->addVar('action', 'toptriggers.list')
 	->setResetUrl(
-		(new CUrl('zabbix.php'))->setArgument('action', 'toptriggers.list')
+		(new CUrl('sdnet.php'))->setArgument('action', 'toptriggers.list')
 	)
 	->setProfile($data['filter']['timeline']['profileIdx'])
 	->setActiveTab($data['filter']['active_tab'])
@@ -131,7 +131,7 @@ foreach ($data['triggers'] as $triggerid => $trigger) {
 		(new CLinkAction($trigger['description']))->setMenuPopup(
 			CMenuPopupHelper::getTrigger([
 				'triggerid' => $trigger['triggerid'],
-				'backurl' => (new CUrl('zabbix.php'))
+				'backurl' => (new CUrl('sdnet.php'))
 					->setArgument('action', 'toptriggers.list')
 					->getUrl()
 			])

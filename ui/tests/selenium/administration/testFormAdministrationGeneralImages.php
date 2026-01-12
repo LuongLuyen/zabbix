@@ -24,7 +24,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralImages_CheckLayout() {
 
-		$this->zbxTestLogin('zabbix.php?action=gui.edit');
+		$this->zbxTestLogin('sdnet.php?action=gui.edit');
 		$this->query('id:page-title-general')->asPopupButton()->one()->select('Images');
 
 		$this->zbxTestCheckTitle('Configuration of images');
@@ -45,7 +45,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralImages_AddImage() {
 
-		$this->zbxTestLogin('zabbix.php?action=image.list');
+		$this->zbxTestLogin('sdnet.php?action=image.list');
 		$this->zbxTestClickButtonText('Create icon');
 
 		$this->zbxTestAssertElementPresentId('name');
@@ -66,7 +66,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 		$sqlIcons = 'SELECT * FROM images WHERE imagetype=1';
 		$oldHashIcons=CDBHelper::getHash($sqlIcons);
 
-		$this->zbxTestLogin('zabbix.php?action=image.list');
+		$this->zbxTestLogin('sdnet.php?action=image.list');
 		$this->zbxTestClickLinkText($this->icon_image_name);
 		$this->zbxTestInputTypeWait('name', $this->icon_image_name2);
 		$this->zbxTestInputTypeWait('image', PHPUNIT_BASEDIR.'/ui/tests/images/image.png');
@@ -79,7 +79,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralImages_UpdateImage() {
 
-		$this->zbxTestLogin('zabbix.php?action=image.list');
+		$this->zbxTestLogin('sdnet.php?action=image.list');
 		$this->zbxTestClickLinkText($this->icon_image_name);
 		$this->zbxTestInputTypeOverwrite('name', $this->icon_image_name2);
 		$this->zbxTestInputType('image', PHPUNIT_BASEDIR.'/ui/tests/images/image.png');
@@ -93,7 +93,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralImages_DeleteImage() {
 
-		$this->zbxTestLogin('zabbix.php?action=image.list');
+		$this->zbxTestLogin('sdnet.php?action=image.list');
 		$this->zbxTestClickLinkTextWait($this->icon_image_name2);
 		$this->zbxTestClickButtonText('Delete');
 		$this->zbxTestAcceptAlert();
@@ -107,7 +107,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralImages_AddBgImage() {
 
-		$this->zbxTestLogin('zabbix.php?action=image.list');
+		$this->zbxTestLogin('sdnet.php?action=image.list');
 		$this->zbxTestDropdownSelectWait('imagetype', 'Background');
 		$this->zbxTestClickButtonText('Create background');
 		$this->zbxTestInputType('name', $this->bg_image_name);
@@ -122,7 +122,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralImages_UpdateBgImage() {
 
-		$this->zbxTestLogin('zabbix.php?action=image.list');
+		$this->zbxTestLogin('sdnet.php?action=image.list');
 		$this->zbxTestDropdownSelectWait('imagetype', 'Background');
 		$this->zbxTestTextPresent('Type');
 		$this->zbxTestWaitUntilElementVisible(WebdriverBy::xpath("//div[@class='cell']"));
@@ -139,7 +139,7 @@ class testFormAdministrationGeneralImages extends CLegacyWebTest {
 
 	public function testFormAdministrationGeneralImages_DeleteBgImage() {
 
-		$this->zbxTestLogin('zabbix.php?action=image.list');
+		$this->zbxTestLogin('sdnet.php?action=image.list');
 		$this->zbxTestDropdownSelectWait('imagetype', 'Background');
 		$this->zbxTestClickLinkTextWait($this->bg_image_name2);
 		$this->zbxTestClickButtonText('Delete');

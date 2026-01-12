@@ -151,7 +151,7 @@ class testUsersPasswordComplexity extends CWebTest {
 			$old_hash = CDBHelper::getHash('SELECT * FROM settings');
 		}
 
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$form = $this->query('id:authentication-form')->asForm()->one();
 		$form->fill($data['fields']);
 		$form->submit();
@@ -973,7 +973,7 @@ class testUsersPasswordComplexity extends CWebTest {
 		}
 
 		$this->page->userLogin('Admin', $admin_password);
-		$this->page->open('zabbix.php?action=authentication.edit');
+		$this->page->open('sdnet.php?action=authentication.edit');
 		$auth_form = $this->query('id:authentication-form')->asForm()->waitUntilPresent()->one();
 		$auth_form->fill($data['auth_fields']);
 		$auth_form->submit();
@@ -989,16 +989,16 @@ class testUsersPasswordComplexity extends CWebTest {
 					$this->page->userLogin('update-user', $user_password);
 				}
 
-				$this->page->open('zabbix.php?action=userprofile.edit');
+				$this->page->open('sdnet.php?action=userprofile.edit');
 				$this->clickChangePassword();
 			}
 			else {
-				$this->page->open('zabbix.php?action=user.edit&userid='.$userid);
+				$this->page->open('sdnet.php?action=user.edit&userid='.$userid);
 				$this->clickChangePassword();
 			}
 		}
 		else {
-			$this->page->open('zabbix.php?action=user.edit');
+			$this->page->open('sdnet.php?action=user.edit');
 		}
 
 		// Check user password creation accordingly to complexity settings.

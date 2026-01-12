@@ -112,7 +112,7 @@ foreach ($this->data['hostPrototypes'] as $hostPrototype) {
 
 			if ($data['allowed_ui_conf_templates']
 					&& array_key_exists($template['templateid'], $data['writable_templates'])) {
-				$template_url = (new CUrl('zabbix.php'))
+				$template_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'template.edit')
 					->setArgument('templateid', $template['templateid'])
@@ -132,7 +132,7 @@ foreach ($this->data['hostPrototypes'] as $hostPrototype) {
 
 				$caption[] = ' (';
 				foreach ($linkedTemplates as $tpl) {
-					$tpl_url = (new CUrl('zabbix.php'))
+					$tpl_url = (new CUrl('sdnet.php'))
 						->setArgument('action', 'popup')
 						->setArgument('popup', 'template.edit')
 						->setArgument('templateid', $tpl['templateid'])

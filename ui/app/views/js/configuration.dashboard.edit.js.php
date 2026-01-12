@@ -131,7 +131,7 @@
 
 			const request_data = ZABBIX.Dashboard.save();
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'template.dashboard.update');
 			curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('template')) ?>);
@@ -193,7 +193,7 @@
 		cancelEditing() {
 			this.disableNavigationWarning();
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'template.dashboard.list');
 			curl.setArgument('templateid', this.dashboard.templateid);
@@ -221,7 +221,7 @@
 				},
 				callback: ({data, event}) => {
 					if (data.submit.success?.action === 'delete') {
-						const url = new URL('zabbix.php', location.href);
+						const url = new URL('sdnet.php', location.href);
 
 						url.searchParams.set('action', 'template.list');
 

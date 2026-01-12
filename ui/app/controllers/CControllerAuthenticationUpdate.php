@@ -27,7 +27,7 @@ class CControllerAuthenticationUpdate extends CController {
 
 	protected function init() {
 		$this->response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'authentication.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'authentication.edit')
 		);
 	}
 

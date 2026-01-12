@@ -36,7 +36,7 @@ else {
 	foreach ($data['drules'] as $drule) {
 		$table->addRow([
 			$data['allowed_ui_discovery']
-				? new CLink($drule['name'], (new CUrl('zabbix.php'))
+				? new CLink($drule['name'], (new CUrl('sdnet.php'))
 					->setArgument('action', 'discovery.view')
 					->setArgument('filter_set', 1)
 					->setArgument('filter_druleids', [$drule['druleid']])

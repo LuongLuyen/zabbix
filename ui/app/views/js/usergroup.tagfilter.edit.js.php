@@ -116,7 +116,7 @@ window.tag_filter_edit = new class {
 	}
 
 	submit() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'usergroup.tagfilter.check');
 

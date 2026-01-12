@@ -36,7 +36,7 @@ class testPageUserGroups extends CLegacyWebTest {
 	}
 
 	public function testPageUserGroups_CheckLayout() {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 		$this->zbxTestCheckHeader('User groups');
 
@@ -69,7 +69,7 @@ class testPageUserGroups extends CLegacyWebTest {
 		$sqlHashUsersGroups = "select * from users_groups where usrgrpid=$usrgrpid order by id";
 		$oldHashUsersGroups = CDBHelper::getHash($sqlHashUsersGroups);
 
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 		$this->zbxTestClickLinkText($name);
 		$this->zbxTestClickWait('update');
@@ -94,7 +94,7 @@ class testPageUserGroups extends CLegacyWebTest {
 		$sqlHashGroups = "select * from usrgrp where usrgrpid<>$usrgrpid order by usrgrpid";
 		$oldHashGroups = CDBHelper::getHash($sqlHashGroups);
 
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 
 		$this->zbxTestCheckboxSelect('usrgrpids_'.$usrgrpid);
@@ -130,7 +130,7 @@ class testPageUserGroups extends CLegacyWebTest {
 		$sqlHashGroups = "select * from usrgrp where usrgrpid<>$usrgrpid order by usrgrpid";
 		$oldHashGroups = CDBHelper::getHash($sqlHashGroups);
 
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 
 		$this->zbxTestCheckboxSelect('usrgrpids_'.$usrgrpid);
@@ -156,7 +156,7 @@ class testPageUserGroups extends CLegacyWebTest {
 		$sqlHashGroups = "select * from usrgrp where usrgrpid<>$usrgrpid order by usrgrpid";
 		$oldHashGroups = CDBHelper::getHash($sqlHashGroups);
 
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 
 		$this->zbxTestCheckboxSelect('usrgrpids_'.$usrgrpid);
@@ -182,7 +182,7 @@ class testPageUserGroups extends CLegacyWebTest {
 		$sqlHashGroups = "select * from usrgrp where usrgrpid<>$usrgrpid order by usrgrpid";
 		$oldHashGroups = CDBHelper::getHash($sqlHashGroups);
 
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestCheckTitle('Configuration of user groups');
 
 		$this->zbxTestCheckboxSelect('usrgrpids_'.$usrgrpid);
@@ -199,7 +199,7 @@ class testPageUserGroups extends CLegacyWebTest {
 	}
 
 	public function testPageUserGroups_FilterByName() {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$table = $this->getTable();
 		$this->zbxTestInputTypeOverwrite('filter_name', 'Zabbix administrators');
 		$this->zbxTestClickButtonText('Apply');
@@ -210,7 +210,7 @@ class testPageUserGroups extends CLegacyWebTest {
 	}
 
 	public function testPageUserGroups_FilterNone() {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$table = $this->getTable();
 		$this->zbxTestInputTypeOverwrite('filter_name', '1928379128ksdhksdjfh');
 		$this->zbxTestClickButtonText('Apply');
@@ -224,7 +224,7 @@ class testPageUserGroups extends CLegacyWebTest {
 	}
 
 	public function testPageUserGroups_FilterByStatus() {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$table = $this->getTable();
 		$this->zbxTestInputTypeOverwrite('filter_name', 'Zabbix administrators');
 		$this->zbxTestClickXpathWait("//label[@for='filter_user_status_1']");
@@ -235,7 +235,7 @@ class testPageUserGroups extends CLegacyWebTest {
 	}
 
 	public function testPageUserGroups_FilterReset() {
-		$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+		$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 		$this->zbxTestClickButtonText('Reset');
 		$table = $this->getTable();
 		$this->zbxTestClickButtonText('Apply');

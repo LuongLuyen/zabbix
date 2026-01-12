@@ -2393,7 +2393,7 @@ class testUsers extends CAPITest {
 					'refresh' => 90,
 					'theme' => 'dark-theme',
 					'rows_per_page' => 25,
-					'url' => 'zabbix.php?action=userprofile.edit'
+					'url' => 'sdnet.php?action=userprofile.edit'
 				],
 				'expected_error' => null
 			]

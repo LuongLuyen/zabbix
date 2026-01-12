@@ -26,7 +26,7 @@ if ($data['uncheck']) {
 $this->includeJsFile('administration.token.list.js.php');
 
 $filter = (new CFilter())
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'token.list'))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'token.list'))
 	->addVar('action', 'token.list')
 	->setProfile($data['profileIdx'])
 	->setActiveTab($data['active_tab'])
@@ -117,33 +117,33 @@ $token_table = (new CTableInfo())
 				->onClick("checkAll('".$token_form->getName()."', 'all_tokens', 'tokenids');")
 		))->addClass(ZBX_STYLE_CELL_WIDTH),
 		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'token.list')
 				->getUrl()
 		),
 		make_sorting_header(_('User'), 'user', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'token.list')
 				->getUrl()
 		),
 		make_sorting_header(_('Expires at'), 'expires_at', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'token.list')
 				->getUrl()
 		),
 		_('Created at'),
 		make_sorting_header(_('Created by user'), 'creator', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'token.list')
 				->getUrl()
 		),
 		make_sorting_header(_('Last accessed at'), 'lastaccess', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'token.list')
 				->getUrl()
 		),
 		make_sorting_header(_('Status'), 'status', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'token.list')
 				->getUrl()
 		)
@@ -153,7 +153,7 @@ $token_table = (new CTableInfo())
 $csrf_token = CCsrfTokenHelper::get('token');
 
 foreach ($data['tokens'] as $token) {
-	$token_url = (new CUrl('zabbix.php'))
+	$token_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'token.edit')
 		->setArgument('tokenid', $token['tokenid'])
@@ -173,7 +173,7 @@ foreach ($data['tokens'] as $token) {
 		$token['creator'] === null ? italic(_('Unknown')) : $token['creator'],
 		zbx_date2str(DATE_TIME_FORMAT_SECONDS, $token['lastaccess']),
 		($token['status'] == ZBX_AUTH_TOKEN_ENABLED)
-			? (new CLink(_('Enabled'), (new CUrl('zabbix.php'))
+			? (new CLink(_('Enabled'), (new CUrl('sdnet.php'))
 					->setArgument('action_src', 'token.list')
 					->setArgument('action', 'token.disable')
 					->setArgument('tokenids', (array) $token['tokenid'])
@@ -182,7 +182,7 @@ foreach ($data['tokens'] as $token) {
 				->addCsrfToken($csrf_token)
 				->addClass(ZBX_STYLE_LINK_ACTION)
 				->addClass(ZBX_STYLE_GREEN)
-			: (new CLink(_('Disabled'), (new CUrl('zabbix.php'))
+			: (new CLink(_('Disabled'), (new CUrl('sdnet.php'))
 					->setArgument('action_src', 'token.list')
 					->setArgument('action', 'token.enable')
 					->setArgument('tokenids', (array) $token['tokenid'])

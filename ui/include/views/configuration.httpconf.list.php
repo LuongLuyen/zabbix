@@ -184,7 +184,7 @@ foreach ($http_tests as $httpTestId => $httpTest) {
 		}
 	}
 
-	$host_url = (new CUrl('zabbix.php'))
+	$host_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', $data['context'] === 'host' ? 'host.edit' : 'template.edit')
 		->setArgument($data['context'] === 'host' ? 'hostid' : 'templateid', $httpTest['hostid'])

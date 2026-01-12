@@ -26,7 +26,7 @@ require_once __DIR__.'/../../include/helpers/CDataHelper.php';
  */
 class testFormPreprocessingItem extends testFormPreprocessing {
 
-	public $link = 'zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::HOSTID;
+	public $link = 'sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::HOSTID;
 	public $button = 'Create item';
 	public $success_message = 'Item added';
 	public $fail_message = 'Cannot add item';
@@ -118,7 +118,7 @@ class testFormPreprocessingItem extends testFormPreprocessing {
 		$original_hostid = 15001;							// "Template inheritance test host"
 		$target_hostname = 'Simple form test host';
 
-		$this->page->login()->open('zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.$original_hostid);
+		$this->page->login()->open('sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.$original_hostid);
 		$table = $this->query('xpath://form[@name="item_list"]/table')->asTable()->one();
 		$table->findRow('Key', $item_key)->select();
 		$this->query('button:Copy')->one()->click();
@@ -132,7 +132,7 @@ class testFormPreprocessingItem extends testFormPreprocessing {
 		$this->assertMessage(TEST_GOOD, 'Item copied');
 
 		// Open original item form and get steps text.
-		$this->page->open('zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.$original_hostid);
+		$this->page->open('sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.$original_hostid);
 		$this->query('link', $item_name)->one()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$form = $dialog->asForm();
@@ -140,7 +140,7 @@ class testFormPreprocessingItem extends testFormPreprocessing {
 		$original_steps = $this->listPreprocessingSteps();
 		$dialog->close();
 		// Open copied item form, get steps text and compare to original.
-		$this->page->open('zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::HOSTID);
+		$this->page->open('sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::HOSTID);
 		$this->query('link', $item_name)->one()->click();
 		$form->invalidate();
 		$this->assertEquals($item_name, $form->getField('Name')->getValue());
@@ -174,12 +174,12 @@ class testFormPreprocessingItem extends testFormPreprocessing {
 	 * @backup profiles
 	 */
 	public function testFormPreprocessingItem_CloneItem() {
-		$link = 'zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::HOSTID;
+		$link = 'sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::HOSTID;
 		$this->checkCloneItem($link, 'Item');
 	}
 
 	public function testFormPreprocessingItem_CloneTemplatedItem() {
-		$link = 'zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::INHERITANCE_HOSTID;
+		$link = 'sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::INHERITANCE_HOSTID;
 		$this->checkCloneItem($link, 'Item', $templated = true);
 	}
 
@@ -194,8 +194,8 @@ class testFormPreprocessingItem extends testFormPreprocessing {
 	 * @dataProvider getItemInheritancePreprocessing
 	 */
 	public function testFormPreprocessingItem_PreprocessingInheritanceFromTemplate($data) {
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&context=template&filter_hostids[0]='.self::INHERITANCE_TEMPLATEID;
-		$host_link = 'zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::INHERITANCE_HOSTID;
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&context=template&filter_hostids[0]='.self::INHERITANCE_TEMPLATEID;
+		$host_link = 'sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids[0]='.self::INHERITANCE_HOSTID;
 
 		$this->checkPreprocessingInheritance($data, $host_link);
 	}

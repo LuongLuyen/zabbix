@@ -101,7 +101,7 @@ class CControllerHostView extends CControllerHost {
 		$filter = $filter_tabs[$profile->selected];
 		$filter = self::sanitizeFilter($filter);
 
-		$refresh_curl = new CUrl('zabbix.php');
+		$refresh_curl = new CUrl('sdnet.php');
 		$filter['action'] = 'host.view.refresh';
 		array_map([$refresh_curl, 'setArgument'], array_keys($filter), $filter);
 

@@ -88,7 +88,7 @@ class CControllerTemplateGroupList extends CController {
 		$page_num = $this->getInput('page', 1);
 		CPagerHelper::savePage('templategroup.list', $page_num);
 		$data['paging'] = CPagerHelper::paginate($page_num, $groups, $sort_order,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		$groupids = array_column($groups, 'groupid');

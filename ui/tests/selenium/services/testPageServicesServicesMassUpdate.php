@@ -459,7 +459,7 @@ class testPageServicesServicesMassUpdate extends CWebTest {
 			$old_hash = CDBHelper::getHash(self::$service_sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$this->selectTableRows($data['names']);
 		$this->query('button:Mass update')->one()->click();
 
@@ -527,7 +527,7 @@ class testPageServicesServicesMassUpdate extends CWebTest {
 	public function testPageServicesServicesMassUpdate_Cancel() {
 		$old_hash = CDBHelper::getHash(self::$service_sql);
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 
 		$services  = [
 			'Service with problem',

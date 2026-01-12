@@ -72,10 +72,10 @@ class testPageHostGraph extends CLegacyWebTest {
 		$this->page->waitUntilReady();
 		$breadcrumbs = [
 			self::HOST_LIST_PAGE => 'All hosts',
-			'zabbix.php?action=popup&popup=host.edit&hostid='.$hostid => $host_name,
-			'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Items',
-			'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Triggers',
-			'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Graphs',
+			'sdnet.php?action=popup&popup=host.edit&hostid='.$hostid => $host_name,
+			'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Items',
+			'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Triggers',
+			'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Graphs',
 			'host_discovery.php?filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Discovery rules',
 			'httpconf.php?filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host' => 'Web scenarios'
 		];
@@ -110,7 +110,7 @@ class testPageHostGraph extends CLegacyWebTest {
 
 			// Check name value.
 			$this->assertEquals($graph['name'],
-					$element->query('xpath:.//a[@href="zabbix.php?action=popup&popup=graph.edit&graphid='.
+					$element->query('xpath:.//a[@href="sdnet.php?action=popup&popup=graph.edit&graphid='.
 					$graph['graphid'].'&context=host"]')->one()->getText()
 			);
 
@@ -742,7 +742,7 @@ class testPageHostGraph extends CLegacyWebTest {
 
 		if (array_key_exists('graph', $data)) {
 			foreach ($data['graph'] as $graph) {
-				$this->assertTrue($this->query('xpath://a[contains(@href,"zabbix.php?action=popup&popup=graph.edit")]'.
+				$this->assertTrue($this->query('xpath://a[contains(@href,"sdnet.php?action=popup&popup=graph.edit")]'.
 						'[text()="'.$graph.'"]')->one()->isVisible()
 				);
 			}
@@ -755,7 +755,7 @@ class testPageHostGraph extends CLegacyWebTest {
 	private function openPageHostGraphs($host, $context) {
 		$hostid = ($host !== 'all') ? CDBHelper::getValue('SELECT hostid FROM hosts where host='.zbx_dbstr($host)) : 0;
 
-		$this->zbxTestLogin('zabbix.php?action=graph.list&filter_hostids%5B%5D='.$hostid.'&filter_set=1&context='.$context);
+		$this->zbxTestLogin('sdnet.php?action=graph.list&filter_hostids%5B%5D='.$hostid.'&filter_set=1&context='.$context);
 
 		return $hostid;
 	}

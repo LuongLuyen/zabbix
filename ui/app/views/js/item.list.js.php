@@ -124,14 +124,14 @@
 		}
 
 		executeNow(target, data) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'item.execute');
 			this.#post(curl, data);
 		}
 
 		#enable(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'item.enable');
 
 			if (target !== null) {
@@ -143,7 +143,7 @@
 		}
 
 		#disable(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'item.disable');
 
 			if (target !== null) {
@@ -155,14 +155,14 @@
 		}
 
 		#execute(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'item.execute');
 
 			this.#confirmAction(curl, parameters, target);
 		}
 
 		#clear(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'item.clear');
 
 			this.#confirmAction(curl, parameters, target);
@@ -191,7 +191,7 @@
 		}
 
 		#delete(target, parameters) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'item.delete');
 
 			this.#confirmAction(curl, parameters, target);
@@ -252,7 +252,7 @@
 
 					// If host or template was deleted while being in item list, redirect to item list.
 					if (descriptor.action !== 'item.delete' && data.submit.success?.action === 'delete') {
-						const url = new URL('zabbix.php', location.href);
+						const url = new URL('sdnet.php', location.href);
 
 						url.searchParams.set('action', 'item.list');
 						url.searchParams.set('context', this.context);
@@ -285,7 +285,7 @@
 
 				if (response.success.action === 'delete' && response.action !== 'item.delete') {
 					// Items template or host were removed, redirect to list of items.
-					let list_url = new Curl('zabbix.php');
+					let list_url = new Curl('sdnet.php');
 
 					list_url.setArgument('action', 'item.list');
 					list_url.setArgument('context', this.context);

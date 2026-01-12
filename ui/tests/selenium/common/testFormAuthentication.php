@@ -37,7 +37,7 @@ class testFormAuthentication extends CWebTest {
 	 * @param string    $auth_type           LDAP, SAML or MFA
 	 */
 	protected function openFormAndCheckBasics($auth_type) {
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$form = $this->query('id:authentication-form')->asForm()->one();
 		$form->selectTab($auth_type.' settings');
 		$this->page->assertHeader('Authentication');

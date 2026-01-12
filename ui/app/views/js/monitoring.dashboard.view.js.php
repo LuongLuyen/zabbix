@@ -265,7 +265,7 @@
 				request_data.clone = '1';
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'dashboard.update');
 			curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('dashboard')) ?>);
@@ -289,7 +289,7 @@
 
 					this.#disableNavigationWarning();
 
-					const curl = new Curl('zabbix.php');
+					const curl = new Curl('sdnet.php');
 
 					curl.setArgument('action', 'dashboard.view');
 					curl.setArgument('dashboardid', response.dashboardid);
@@ -340,7 +340,7 @@
 		#cancelEditing() {
 			this.#disableNavigationWarning();
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'dashboard.view');
 
@@ -364,7 +364,7 @@
 		}
 
 		#updateHistory({add_new})  {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'dashboard.view');
 			curl.setArgument('dashboardid', this.#dashboard.dashboardid);
@@ -631,7 +631,7 @@
 		};
 
 		executeNow(target, data) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'item.execute');
 

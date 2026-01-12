@@ -287,7 +287,7 @@
 	function updateTimeSelector(widget, data) {
 		widget._schedulePreloader();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'timeselector.calc');
 

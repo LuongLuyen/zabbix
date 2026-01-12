@@ -64,7 +64,7 @@ window.service_status_rule_edit_popup = new class {
 	submit() {
 		this.overlay.setLoading();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'service.statusrule.validate');
 

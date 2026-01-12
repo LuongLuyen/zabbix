@@ -22,7 +22,7 @@ require_once __DIR__.'/../common/testFormAdministrationGeneral.php';
 class testFormAdministrationAuditLog extends testFormAdministrationGeneral {
 
 	public $form_selector = 'id:audit-settings';
-	public $config_link = 'zabbix.php?action=audit.settings.edit';
+	public $config_link = 'sdnet.php?action=audit.settings.edit';
 	public $default_values = [
 		'Enable audit logging' => true,
 		'Log system actions' => true,
@@ -58,7 +58,7 @@ class testFormAdministrationAuditLog extends testFormAdministrationGeneral {
 	 * Additional checkups are made and committed within the function.
 	 */
 	public function testFormAdministrationAuditLog_CheckLayout() {
-		$this->page->login()->open('zabbix.php?action=audit.settings.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=audit.settings.edit')->waitUntilReady();
 		$form = $this->query('id:audit-settings')->waitUntilPresent()->asForm()->one();
 		$form->checkValue($this->default_values);
 

@@ -108,7 +108,7 @@ class CControllerUserroleCreate extends CControllerUserroleEditGeneral {
 			switch ($result) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'userrole.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'userrole.edit')
 					);
 					$response->setFormData($this->getInputAll());
 					CMessageHelper::setErrorTitle(_('Cannot create user role'));
@@ -147,7 +147,7 @@ class CControllerUserroleCreate extends CControllerUserroleEditGeneral {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'userrole.list')
 					->setArgument('page', CPagerHelper::loadPage('userrole.list', null))
 			);
@@ -156,7 +156,7 @@ class CControllerUserroleCreate extends CControllerUserroleEditGeneral {
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))->setArgument('action', 'userrole.edit')
+				(new CUrl('sdnet.php'))->setArgument('action', 'userrole.edit')
 			);
 			CMessageHelper::setErrorTitle(_('Cannot create user role'));
 			$response->setFormData($this->getInputAll());

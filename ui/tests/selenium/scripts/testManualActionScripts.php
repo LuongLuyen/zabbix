@@ -95,7 +95,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Host url with {MANUALINPUT} macro, confirmation message and input type - string',
 						'Scope' => 'Manual host action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Advanced configuration' => true,
 						'Enable user input' => true,
 						'Input prompt' => 'Enter host id',
@@ -111,10 +111,10 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -126,7 +126,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Event url with {MANUALINPUT} macro, confirmation message and input type - string',
 						'Scope' => 'Manual event action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Advanced configuration' => true,
 						'Enable user input' => true,
 						'Input prompt' => 'Enter host id',
@@ -142,8 +142,8 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -155,7 +155,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Event url with without confirmation message',
 						'Scope' => 'Manual event action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Advanced configuration' => true,
 						'Enable user input' => true,
 						'Input prompt' => 'Enter host id',
@@ -170,8 +170,8 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -183,7 +183,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Host url with {MANUALINPUT} macro and without confirmation message',
 						'Scope' => 'Manual host action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Advanced configuration' => true,
 						'Enable user input' => true,
 						'Input prompt' => 'Enter host id',
@@ -198,10 +198,10 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -233,10 +233,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -268,8 +268,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -302,10 +302,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -338,8 +338,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -365,10 +365,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -394,8 +394,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -420,8 +420,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -446,10 +446,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: \b[1-9]\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -475,10 +475,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: [A-Za-z].',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -505,10 +505,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: [A-Za-z].',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -534,8 +534,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: [A-Za-z].',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -562,8 +562,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: [A-Za-z].',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -591,10 +591,10 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -623,10 +623,10 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -654,8 +654,8 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -684,8 +684,8 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'\b([1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])\b.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -713,10 +713,10 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -745,10 +745,10 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -776,8 +776,8 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -806,8 +806,8 @@ class testManualActionScripts extends CWebTest {
 					'error_message' => 'Incorrect value for field "manualinput": input does not match the provided pattern: '.
 							'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$.',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -819,7 +819,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Host url without confirmation message and with input type - string',
 						'Scope' => 'Manual host action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -833,10 +833,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter host id',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -848,7 +848,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Host url without confirmation message and with input type - dropdown',
 						'Scope' => 'Manual host action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -861,10 +861,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose host id',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -876,7 +876,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Event url without confirmation message and with input type - string',
 						'Scope' => 'Manual event action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -890,8 +890,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter host id',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -903,7 +903,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Event url without confirmation message and with input type - dropdown',
 						'Scope' => 'Manual event action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -916,8 +916,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose host id',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -929,7 +929,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Host url with confirmation message and with input type - string',
 						'Scope' => 'Manual host action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -945,10 +945,10 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Confirm selected host?',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -960,7 +960,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Host url with confirmation message and with input type - dropdown',
 						'Scope' => 'Manual host action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -975,10 +975,10 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Confirm selected host?',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -990,7 +990,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Event url with confirmation message and with input type - string',
 						'Scope' => 'Manual event action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -1006,8 +1006,8 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Confirm selected host?',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1019,7 +1019,7 @@ class testManualActionScripts extends CWebTest {
 						'Name' => 'Event url with confirmation message and with input type - dropdown',
 						'Scope' => 'Manual event action',
 						'Type' => 'URL',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={MANUALINPUT}',
 						'Open in a new window' => false,
 						'Advanced configuration' => true,
 						'Enable user input' => true,
@@ -1034,8 +1034,8 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Confirm selected host?',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1066,10 +1066,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter value for parameter A',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1100,10 +1100,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter value for parameter A',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1134,8 +1134,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter value for parameter A',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1166,8 +1166,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter value for parameter A',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1200,10 +1200,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Parameter A will contain value => 9. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1236,10 +1236,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Parameter A will contain value => B. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1272,8 +1272,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Parameter A will contain value => 7. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1306,8 +1306,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Parameter A will contain value => D. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1333,10 +1333,10 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Confirm 6.4 as supported version?',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1362,10 +1362,10 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Ping count: 2',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1389,10 +1389,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter 🚩A host for scripts check🚩 ping count',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1416,10 +1416,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose supported version',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1443,8 +1443,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose supported version',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1468,8 +1468,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter 🚩A host for scripts check🚩 ping count',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1495,8 +1495,8 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Selected version is Zabbix 6.4.11, proceed?',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1522,8 +1522,8 @@ class testManualActionScripts extends CWebTest {
 					'confirmation' => 'Confirm 7.0 as supported version?',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1548,10 +1548,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter hostname',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1576,10 +1576,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose hostname',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1604,8 +1604,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter hostname',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1630,8 +1630,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose hostname',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1658,10 +1658,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Hostname is TestHost',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1688,10 +1688,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Hostname is AnyHost',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1718,8 +1718,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Hostname is TestHost',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1746,8 +1746,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Hostname is TestZabbix',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1773,10 +1773,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter port',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1801,10 +1801,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose port',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1830,8 +1830,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Enter port',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1856,8 +1856,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose port',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1885,10 +1885,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Selected port:9000. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1915,10 +1915,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Selected port:23. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1946,8 +1946,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Selected port:10051. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -1974,8 +1974,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Selected port:10050. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2001,10 +2001,10 @@ class testManualActionScripts extends CWebTest {
 							'one digit, one special character and minimum eight in length',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2028,10 +2028,10 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose particular sensor',
 					'host' => self::HOST,
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2057,8 +2057,8 @@ class testManualActionScripts extends CWebTest {
 							'one digit, one special character and minimum eight in length',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2082,8 +2082,8 @@ class testManualActionScripts extends CWebTest {
 					'prompt' => 'Choose particular sensor',
 					'event' => 'Attention: script execution is needed',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2111,10 +2111,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Are you sure?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2140,10 +2140,10 @@ class testManualActionScripts extends CWebTest {
 					'host' => self::HOST,
 					'confirmation' => 'Selected sensor:BB +1.05V PCH. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Hosts' => 'zabbix.php?action=host.view',
-						'Latest data' => 'zabbix.php?action=latest.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Hosts' => 'sdnet.php?action=host.view',
+						'Latest data' => 'sdnet.php?action=latest.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2171,8 +2171,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Are you sure?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			],
@@ -2198,8 +2198,8 @@ class testManualActionScripts extends CWebTest {
 					'event' => 'Attention: script execution is needed',
 					'confirmation' => 'Selected sensor:BB +1.05V PCH. Proceed?',
 					'urls' => [
-						'Problems' => 'zabbix.php?action=problem.view',
-						'Global view' => 'zabbix.php?action=dashboard.view&dashboardid=1'
+						'Problems' => 'sdnet.php?action=problem.view',
+						'Global view' => 'sdnet.php?action=dashboard.view&dashboardid=1'
 					]
 				]
 			]
@@ -2210,7 +2210,7 @@ class testManualActionScripts extends CWebTest {
 	 * @dataProvider getManualInputData
 	 */
 	public function testManualActionScripts_ManualUserInput($data) {
-		$this->page->login()->open('zabbix.php?action=script.list');
+		$this->page->login()->open('sdnet.php?action=script.list');
 		$this->query('button:Create script')->waitUntilClickable()->one()->click();
 		$modal = COverlayDialogElement::find()->one()->waitUntilReady();
 		$form = $modal->asForm();

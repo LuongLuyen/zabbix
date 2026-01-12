@@ -17,6 +17,6 @@
 class CControllerResponseFatal extends CControllerResponse {
 
 	public function __construct() {
-		$this->location = 'zabbix.php?action=system.warning';
+		$this->location = 'sdnet.php?action=system.warning';
 	}
 }

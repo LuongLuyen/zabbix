@@ -792,7 +792,7 @@ class CScreenProblem extends CScreenBase {
 	public function get() {
 		$this->dataId = 'problem';
 
-		$url = (new CUrl('zabbix.php'))->setArgument('action', 'problem.view');
+		$url = (new CUrl('sdnet.php'))->setArgument('action', 'problem.view');
 		$args = [
 			'sort' => $this->data['sort'],
 			'sortorder' => $this->data['sortorder']
@@ -975,7 +975,7 @@ class CScreenProblem extends CScreenBase {
 			: $this->data['filter']['show_opdata'];
 
 		if ($this->data['action'] === 'problem.view' || $this->data['action'] === 'problem.view.refresh') {
-			$form = (new CForm('post', 'zabbix.php'))
+			$form = (new CForm('post', 'sdnet.php'))
 				->setId('problem_form')
 				->setName('problem');
 
@@ -1458,7 +1458,7 @@ class CScreenProblem extends CScreenBase {
 				->addClass(ZBX_STYLE_WORDBREAK)
 				->setMenuPopup(CMenuPopupHelper::getTrigger([
 					'triggerid' => $trigger['triggerid'],
-					'backurl' => (new CUrl('zabbix.php'))
+					'backurl' => (new CUrl('sdnet.php'))
 						->setArgument('action', 'problem.view')
 						->getUrl(),
 					'eventid' => $problem['eventid'],
@@ -1642,7 +1642,7 @@ class CScreenProblem extends CScreenBase {
 				);
 			}
 
-			$problem_update_url = (new CUrl('zabbix.php'))
+			$problem_update_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'acknowledge.edit')
 				->setArgument('eventids[]', $problem['eventid'])

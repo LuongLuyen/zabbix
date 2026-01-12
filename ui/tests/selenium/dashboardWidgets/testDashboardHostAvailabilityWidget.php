@@ -284,7 +284,7 @@ class testDashboardHostAvailabilityWidget extends testWidgets {
 	 * @dataProvider getCreateWidgetData
 	 */
 	public function testDashboardHostAvailabilityWidget_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -491,7 +491,7 @@ class testDashboardHostAvailabilityWidget extends testWidgets {
 	 * @dataProvider getUpdateWidgetData
 	 */
 	public function testDashboardHostAvailabilityWidget_Update($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$form = $dashboard->getWidget('Reference HA widget')->edit();
 
@@ -520,7 +520,7 @@ class testDashboardHostAvailabilityWidget extends testWidgets {
 		$initial_values = CDBHelper::getHash(self::SQL);
 
 		// Open a dashboard widget and then save it without applying any changes
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$form = $dashboard->getWidget('Reference HA widget')->edit();
 		$form->submit();
@@ -574,7 +574,7 @@ class testDashboardHostAvailabilityWidget extends testWidgets {
 	public function testDashboardHostAvailabilityWidget_Cancel($data) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 
 		// Start updating or creating a widget.
@@ -629,7 +629,7 @@ class testDashboardHostAvailabilityWidget extends testWidgets {
 	public function testDashboardHostAvailabilityWidget_Delete() {
 		$name = 'Reference HA widget to delete';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget($name);
 		$dashboard->deleteWidget($name);

@@ -25,7 +25,7 @@ window.templategroup_edit_popup = new class {
 		this.form = this.overlay.$dialogue.$body[0].querySelector('form');
 		this.footer = this.overlay.$dialogue.$footer[0];
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'templategroup.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 	}
@@ -36,7 +36,7 @@ window.templategroup_edit_popup = new class {
 
 		this.overlay.setLoading();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', this.groupid !== null ? 'templategroup.update' : 'templategroup.create');
 
 		this._post(curl.getUrl(), fields, (response) => {
@@ -56,7 +56,7 @@ window.templategroup_edit_popup = new class {
 	}
 
 	delete() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'templategroup.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('templategroup')) ?>);
 

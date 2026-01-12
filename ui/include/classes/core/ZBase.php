@@ -177,7 +177,7 @@ class ZBase {
 		switch ($mode) {
 			case self::EXEC_MODE_DEFAULT:
 				$file = basename($_SERVER['SCRIPT_NAME']);
-				$action_name = ($file === 'zabbix.php') ? getRequest('action', '') : $file;
+				$action_name = ($file === 'sdnet.php') ? getRequest('action', '') : $file;
 
 				if ($action_name === 'notifications.get') {
 					CWebUser::disableSessionExtension();
@@ -206,7 +206,7 @@ class ZBase {
 						['type' => 'error', 'messages' => $errors]
 					)));
 
-					redirect('zabbix.php?action=system.warning');
+					redirect('sdnet.php?action=system.warning');
 				}
 
 				$router->setAction($action_name);
@@ -400,7 +400,7 @@ class ZBase {
 
 		if (defined('ZBX_DENY_GUI_ACCESS')) {
 			if (!isset($ZBX_GUI_ACCESS_IP_RANGE) || !in_array(CWebUser::getIp(), $ZBX_GUI_ACCESS_IP_RANGE)) {
-				throw new Exception($ZBX_GUI_ACCESS_MESSAGE ?? 'Zabbix is under maintenance.');
+				throw new Exception($ZBX_GUI_ACCESS_MESSAGE ?? 'SDNet is under maintenance.');
 			}
 		}
 	}

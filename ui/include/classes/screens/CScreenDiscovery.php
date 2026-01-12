@@ -114,7 +114,7 @@ class CScreenDiscovery extends CScreenBase {
 
 		$header = [
 			make_sorting_header(_('Discovered device'), 'ip', $sort_field, $sort_order,
-				'zabbix.php?action=discovery.view'
+				'sdnet.php?action=discovery.view'
 			),
 			_('Monitored host'),
 			_('Uptime').'/'._('Downtime')

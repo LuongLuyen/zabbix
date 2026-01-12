@@ -345,7 +345,7 @@ class testFormMapProperties extends CWebTest {
 		// Check link to mappings.
 		$mappings_url = $form->query('link:show icon mappings')->one();
 		$this->assertTrue($mappings_url->isClickable());
-		$this->assertEquals('zabbix.php?action=iconmap.list', $mappings_url->getAttribute('href'));
+		$this->assertEquals('sdnet.php?action=iconmap.list', $mappings_url->getAttribute('href'));
 		$mappings_url->click();
 		$this->page->switchBrowserWindow(1)->assertHeader('Icon mapping');
 		$this->page->switchBrowserWindow(0);

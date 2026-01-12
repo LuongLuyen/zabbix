@@ -979,7 +979,7 @@ class testFormAdministrationMediaTypeMessageTemplates extends CWebTest {
 	 * @return COverlayDialogElement
 	 */
 	private function openMediaTypeTemplates($media_type, $media_type_fields = null) {
-		$this->page->login()->open('zabbix.php?action=mediatype.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=mediatype.list')->waitUntilReady();
 		$this->query(($media_type === 'new') ? 'button:Create media type' : 'link:'.$media_type)->one()
 				->WaitUntilClickable()->click();
 		$overlay = COverlayDialogElement::find()->one()->waitUntilReady();

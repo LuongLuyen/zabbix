@@ -251,7 +251,7 @@ try
 		clickElement(browser2, "xpath", "//button[@id='label-type']");
 		clickElement(browser2, "xpath", "//li[@value='url']");
 		el = findElementStrict(browser2, "xpath", "//input[@id='url']");
-		el.sendKeys(parameters.url + "zabbix.php?action=queue.overview");
+		el.sendKeys(parameters.url + "sdnet.php?action=queue.overview");
 
 		clickElement(browser2, "xpath", "//button[@class='js-button-submit']");
 

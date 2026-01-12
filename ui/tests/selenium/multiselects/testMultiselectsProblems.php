@@ -60,7 +60,7 @@ class testMultiselectsProblems extends testMultiselectDialogs {
 	 * @dataProvider getCheckDialogsData
 	 */
 	public function testMultiselectsProblems_CheckDialogs($data) {
-		$this->page->login()->open('zabbix.php?action=problem.view');
+		$this->page->login()->open('sdnet.php?action=problem.view');
 		$filter_form = $this->query('name:zbx_filter')->asForm()->one();
 		$multiselects = [
 			['Host groups' => ['title' => 'Host groups']],
@@ -240,7 +240,7 @@ class testMultiselectsProblems extends testMultiselectDialogs {
 	public function testMultiselectsProblems_TriggerDialogs($data) {
 		CMultiselectElement::setDefaultFillMode(CMultiselectElement::MODE_SELECT);
 
-		$this->page->login()->open('zabbix.php?action=problem.view')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=problem.view')->waitUntilReady();
 		$filter_form = CFilterElement::find()->one()->getForm();
 		$trigger_overlay = $filter_form->getField('Triggers')->edit();
 		$this->assertEquals('Triggers', $trigger_overlay->getTitle());

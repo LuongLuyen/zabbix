@@ -111,7 +111,7 @@ class testFormTemplate extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testFormTemplate_Create($data) {
-		$this->page->login()->open('zabbix.php?action=template.list&filter_rst=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=template.list&filter_rst=1')->waitUntilReady();
 		$filter = $this->query('name:zbx_filter')->asForm()->one();
 		$filter->getField('Template groups')->select('Templates');
 		$filter->submit();
@@ -187,7 +187,7 @@ class testFormTemplate extends CLegacyWebTest {
 		}
 
 		if (isset($data['formCheck'])) {
-			$this->zbxTestLogin('zabbix.php?action=template.list');
+			$this->zbxTestLogin('sdnet.php?action=template.list');
 
 			$name = CTestArrayHelper::get($data, 'visible_name', $data['name']);
 			$this->filterAndOpenTemplate($name);
@@ -220,7 +220,7 @@ class testFormTemplate extends CLegacyWebTest {
 	public function testFormTemplate_UpdateTemplateName() {
 		$new_template_name = 'Changed template name';
 
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->filterAndOpenTemplate($this->template_edit_name);
 		$this->zbxTestInputTypeOverwrite('template_name', $new_template_name);
 		$this->clickModalFooterButton('Update');
@@ -232,7 +232,7 @@ class testFormTemplate extends CLegacyWebTest {
 	public function testFormTemplate_CloneTemplate() {
 		$cloned_template_name = 'Cloned template';
 
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->filterAndOpenTemplate($this->template_clone);
 
 		$this->clickModalFooterButton('Clone');
@@ -253,7 +253,7 @@ class testFormTemplate extends CLegacyWebTest {
 	public function testFormTemplate_Delete() {
 		$template = CDBHelper::getRow("select hostid from hosts where host like '".$this->template."'");
 
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->filterAndOpenTemplate($this->template);
 		$this->clickModalFooterButton('Delete');
 		$this->zbxTestAcceptAlert();
@@ -265,7 +265,7 @@ class testFormTemplate extends CLegacyWebTest {
 
 	public function testFormTemplate_DeleteAndClearTemplate() {
 		$template = CDBHelper::getRow("select hostid from hosts where host like '".$this->template_full_delete."'");
-		$this->zbxTestLogin('zabbix.php?action=template.list');
+		$this->zbxTestLogin('sdnet.php?action=template.list');
 		$this->filterAndOpenTemplate($this->template_full_delete);
 		$this->clickModalFooterButton('Delete and clear');
 		$this->zbxTestAcceptAlert();

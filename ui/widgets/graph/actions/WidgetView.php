@@ -431,7 +431,7 @@ class WidgetView extends CControllerDashboardWidgetView {
 				: true;
 
 			if ($has_host_graph && $this->checkAccess(CRoleHelper::UI_MONITORING_HOSTS)) {
-				return (new CUrl('zabbix.php'))
+				return (new CUrl('sdnet.php'))
 					->setArgument('action', 'charts.view')
 					->setArgument('filter_hostids', [$graph['hosts'][0]['hostid']])
 					->setArgument('filter_name', $graph['name'])

@@ -4542,19 +4542,19 @@ class CApiInputValidatorTest extends TestCase {
 			],
 			[
 				['type' => API_URL],
-				'zabbix.php?action=dashboard.view',
+				'sdnet.php?action=dashboard.view',
 				'/1/url',
-				'zabbix.php?action=dashboard.view'
+				'sdnet.php?action=dashboard.view'
 			],
 			[
 				['type' => API_URL, 'length' => 10],
-				'zabbix.php',
+				'sdnet.php',
 				'/1/url',
-				'zabbix.php'
+				'sdnet.php'
 			],
 			[
 				['type' => API_URL, 'length' => 8],
-				'zabbix.php',
+				'sdnet.php',
 				'/1/url',
 				'Invalid parameter "/1/url": value is too long.'
 			],

@@ -27,7 +27,7 @@ $form = (new CForm())
 	->addItem((new CVar(CSRF_TOKEN_NAME, CCsrfTokenHelper::get('host')))->removeId())
 	->setId($data['form_name'])
 	->setName($data['form_name'])
-	->setAction((new CUrl('zabbix.php'))
+	->setAction((new CUrl('sdnet.php'))
 		->setArgument('action', $data['form_action'])
 		->getUrl()
 	)
@@ -115,7 +115,7 @@ if ($data['host']['parentTemplates']) {
 	foreach ($data['host']['parentTemplates'] as $template) {
 		if ($data['user']['can_edit_templates']
 				&& array_key_exists($template['templateid'], $data['editable_templates'])) {
-			$template_url = (new CUrl('zabbix.php'))
+			$template_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'template.edit')
 				->setArgument('templateid', $template['templateid'])
@@ -339,7 +339,7 @@ $host_tab
 $proxy_name = null;
 
 if ($data['host']['assigned_proxyid'] != 0) {
-	$proxy_url = (new CUrl('zabbix.php'))
+	$proxy_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'proxy.edit')
 		->setArgument('proxyid', $data['host']['assigned_proxyid'])
@@ -592,7 +592,7 @@ foreach ($data['inventory_fields'] as $inventory_no => $inventory_field) {
 	if (array_key_exists($inventory_no, $data['inventory_items'])) {
 		$item_name = $data['inventory_items'][$inventory_no]['name'];
 
-		$item_url = (new CUrl('zabbix.php'))
+		$item_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'item.edit')
 			->setArgument('context', 'host')

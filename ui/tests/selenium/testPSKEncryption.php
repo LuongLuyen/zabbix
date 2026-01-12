@@ -153,7 +153,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'existing_host_identity',
@@ -166,7 +166,7 @@ class testPSKEncryption extends CWebTest {
 			'Host identity, host PSK' => [
 				[
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'existing_host_identity',
@@ -178,7 +178,7 @@ class testPSKEncryption extends CWebTest {
 			'New identity, host PSK' => [
 				[
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'new_changed_host_identity',
@@ -191,7 +191,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'existing_proxy_identity',
@@ -204,7 +204,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy identity, proxy PSK' => [
 				[
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'existing_proxy_identity',
@@ -216,7 +216,7 @@ class testPSKEncryption extends CWebTest {
 			'New identity, proxy PSK' => [
 				[
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'new_changed_proxy_identity',
@@ -228,7 +228,7 @@ class testPSKEncryption extends CWebTest {
 			'New identity, new PSK' => [
 				[
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'unique_autoregistration_identity',
@@ -255,7 +255,7 @@ class testPSKEncryption extends CWebTest {
 			'Same autoregistration identity, new PSK' => [
 				[
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'autoregistration_identity',
@@ -266,7 +266,7 @@ class testPSKEncryption extends CWebTest {
 			'New identity, old autoregistration PSK' => [
 				[
 					'object' => 'configuration',
-					'url' => 'zabbix.php?action=autoreg.edit',
+					'url' => 'sdnet.php?action=autoreg.edit',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'new_autoregistration_identity',
@@ -277,7 +277,7 @@ class testPSKEncryption extends CWebTest {
 			'Same host identity, new PSK' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'same_host_identity',
@@ -288,7 +288,7 @@ class testPSKEncryption extends CWebTest {
 			'New identity, same host PSK' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'psk_fields' => [
 						'id:tls_in_psk' => true,
 						'PSK identity' => 'new_host_identity',
@@ -299,7 +299,7 @@ class testPSKEncryption extends CWebTest {
 			'Same proxy identity, new PSK' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with the same host identity and PSK',
 						'Proxy mode' => 'Passive'
@@ -314,7 +314,7 @@ class testPSKEncryption extends CWebTest {
 			'New identity, same proxy PSK' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with the same host identity and PSK',
 						'Proxy mode' => 'Passive'
@@ -346,7 +346,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with same other host identity and different PSK',
 						'Host groups' => 'Zabbix servers'
@@ -363,7 +363,7 @@ class testPSKEncryption extends CWebTest {
 			'Host: Identity and PSK same as on other host' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with same host identity and PSK',
 						'Host groups' => 'Zabbix servers'
@@ -378,7 +378,7 @@ class testPSKEncryption extends CWebTest {
 			'Host: PSK as on other host but different identity' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with different host identity and same PSK',
 						'Host groups' => 'Zabbix servers'
@@ -394,7 +394,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with same proxy identity and different PSK',
 						'Host groups' => 'Zabbix servers'
@@ -411,7 +411,7 @@ class testPSKEncryption extends CWebTest {
 			'Host: Identity and PSK as on proxy' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with same proxy identity and same PSK',
 						'Host groups' => 'Zabbix servers'
@@ -426,7 +426,7 @@ class testPSKEncryption extends CWebTest {
 			'Host: PSK as on proxy but different identity' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with different proxy identity and same PSK',
 						'Host groups' => 'Zabbix servers'
@@ -442,7 +442,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with same autoregistration identity and different PSK',
 						'Host groups' => 'Zabbix servers'
@@ -459,7 +459,7 @@ class testPSKEncryption extends CWebTest {
 			'Host: Identity and PSK as in autoregistration config' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with same autoregistration identity and same PSK',
 						'Host groups' => 'Zabbix servers'
@@ -474,7 +474,7 @@ class testPSKEncryption extends CWebTest {
 			'Host: PSK as in autoregistration but different identity' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with different autoregistration identity and same PSK',
 						'Host groups' => 'Zabbix servers'
@@ -489,7 +489,7 @@ class testPSKEncryption extends CWebTest {
 			'Host: New unique identity and PSK' => [
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'fields' => [
 						'Host name' => 'Host with unique identity and PSK',
 						'Host groups' => 'Zabbix servers'
@@ -505,7 +505,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with same host identity and different PSK',
 						'Proxy mode' => 'Active'
@@ -522,7 +522,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy: PSK and identity as on host' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with same host identity and same PSK',
 						'Proxy mode' => 'Passive'
@@ -537,7 +537,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy: PSK as on host but different identity' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with different host identity and same PSK',
 						'Proxy mode' => 'Active'
@@ -553,7 +553,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with same other proxy identity and different PSK',
 						'Proxy mode' => 'Passive'
@@ -570,7 +570,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy: PSK and identity as on other proxy' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with same other proxy identity and same PSK',
 						'Proxy mode' => 'Active'
@@ -585,7 +585,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy: PSK as on other proxy but different identity' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with different identity and same PSK',
 						'Proxy mode' => 'Passive'
@@ -601,7 +601,7 @@ class testPSKEncryption extends CWebTest {
 				[
 					'expected' => TEST_BAD,
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with same autoregistration identity and different PSK',
 						'Proxy mode' => 'Active'
@@ -618,7 +618,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy: identity and PSK as in autoregistration config' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with same autoregistration identity and same PSK',
 						'Proxy mode' => 'Passive'
@@ -633,7 +633,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy: PSK as in autoregistration but different identity' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with different autoregistration identity and same PSK',
 						'Proxy mode' => 'Active'
@@ -648,7 +648,7 @@ class testPSKEncryption extends CWebTest {
 			'Proxy: new unique identity and PSK' => [
 				[
 					'object' => 'proxy',
-					'url' => 'zabbix.php?action=proxy.list',
+					'url' => 'sdnet.php?action=proxy.list',
 					'fields' => [
 						'Proxy name' => 'Proxy with Unique identity and PSK',
 						'Proxy mode' => 'Passive'
@@ -909,7 +909,7 @@ class testPSKEncryption extends CWebTest {
 			$old_hash = CDBHelper::getHash($db_query);
 		}
 
-		$this->page->login()->open('zabbix.php?action=host.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=host.list')->waitUntilReady();
 		$table = $this->query('xpath://table[@class="list-table"]')->asTable()->one();
 		$table->findRows('Name', $data['hosts'])->select();
 

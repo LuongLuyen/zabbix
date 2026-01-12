@@ -719,7 +719,7 @@ class CWidgetNavTree extends CWidget {
 	}
 
 	#itemEditDialog(id, parent, depth, trigger_element) {
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 		const item_edit = id != 0;
 
 		url.setArgument('action', 'widget.navtree.item.edit');
@@ -755,7 +755,7 @@ class CWidgetNavTree extends CWidget {
 							action: (overlay) => {
 								const form = document.forms['widget_item_form'];
 								const form_inputs = form.elements;
-								const url = new Curl('zabbix.php');
+								const url = new Curl('sdnet.php');
 
 								url.setArgument('action', 'widget.navtree.item.update');
 

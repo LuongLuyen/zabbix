@@ -251,7 +251,7 @@
 
 			tag_filter_form_field.classList.add('is-loading');
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			curl.setArgument('action', 'usergroup.tagfilter.list');
 			curl.setArgument('type', <?= PAGE_TYPE_TEXT_RETURN_JSON ?>);

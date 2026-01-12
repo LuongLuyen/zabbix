@@ -49,7 +49,7 @@ class testTimeoutsTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsTemplates_CheckItemsMacros() {
-		$link = 'zabbix.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
+		$link = 'sdnet.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
 		$this->checkGlobal('global_macros', $link, 'Create item');
 	}
 
@@ -59,12 +59,12 @@ class testTimeoutsTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsTemplates_CheckPrototypeMacros() {
-		$link = 'zabbix.php?action=item.prototype.list&context=template&parent_discoveryid='.self::$template_druleid;
+		$link = 'sdnet.php?action=item.prototype.list&context=template&parent_discoveryid='.self::$template_druleid;
 		$this->checkGlobal('global_macros', $link, 'Create item prototype');
 	}
 
 	public function testTimeoutsTemplates_CheckItemsCustom() {
-		$link = 'zabbix.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D='.self::$templateid;
+		$link = 'sdnet.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D='.self::$templateid;
 		$this->checkGlobal('global_custom', $link, 'Create item');
 	}
 
@@ -74,12 +74,12 @@ class testTimeoutsTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsTemplates_CheckPrototypeCustom() {
-		$link = 'zabbix.php?action=item.prototype.list&context=template&parent_discoveryid='.self::$template_druleid;
+		$link = 'sdnet.php?action=item.prototype.list&context=template&parent_discoveryid='.self::$template_druleid;
 		$this->checkGlobal('global_custom', $link, 'Create item prototype');
 	}
 
 	public function testTimeoutsTemplates_CheckItemsDefault() {
-		$link = 'zabbix.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D='.self::$templateid;
+		$link = 'sdnet.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D='.self::$templateid;
 		$this->checkGlobal('global_default', $link, 'Create item');
 	}
 
@@ -89,7 +89,7 @@ class testTimeoutsTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsTemplates_CheckPrototypeDefault() {
-		$link = 'zabbix.php?action=item.prototype.list&context=template&parent_discoveryid='.self::$template_druleid;
+		$link = 'sdnet.php?action=item.prototype.list&context=template&parent_discoveryid='.self::$template_druleid;
 		$this->checkGlobal('global_default', $link, 'Create item prototype');
 	}
 }

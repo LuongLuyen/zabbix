@@ -494,7 +494,7 @@ class testFormAdministrationProxies extends CWebTest {
 	 * @dataProvider getLayoutData
 	 */
 	public function testFormAdministrationProxies_Layout($data) {
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->query('button:Create proxy')->one()->waitUntilClickable()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$this->assertEquals('New proxy', $dialog->getTitle());
@@ -1995,7 +1995,7 @@ class testFormAdministrationProxies extends CWebTest {
 			$old_hash = CDBHelper::getHash($this->sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 
 		if ($update) {
 			$this->query('link', self::$update_proxy)->one()->waitUntilClickable()->click();
@@ -2154,7 +2154,7 @@ class testFormAdministrationProxies extends CWebTest {
 	 */
 	public function testFormAdministrationProxies_RefreshConfiguration($data) {
 		$old_hash = CDBHelper::getHash($this->sql);
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->query('link', $data['proxy'])->one()->waitUntilClickable()->click();
 
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -2184,7 +2184,7 @@ class testFormAdministrationProxies extends CWebTest {
 	 * @dataProvider getActivePassiveProxyData
 	 */
 	public function testFormAdministrationProxies_Clone($data) {
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->query('link', $data['proxy'])->one()->waitUntilClickable()->click();
 
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -2254,7 +2254,7 @@ class testFormAdministrationProxies extends CWebTest {
 	 */
 	public function testFormAdministrationProxies_SimpleUpdate($data) {
 		$old_hash = CDBHelper::getHash($this->sql);
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->query('link', $data['proxy'])->one()->waitUntilClickable()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$dialog->query('button:Update')->waitUntilClickable()->one()->click();
@@ -2326,7 +2326,7 @@ class testFormAdministrationProxies extends CWebTest {
 			]
 		];
 
-		$this->page->login()->open('zabbix.php?action=proxy.list');
+		$this->page->login()->open('sdnet.php?action=proxy.list');
 
 		if ($data['action'] === 'Create') {
 			$this->query('button:Create proxy')->one()->waitUntilClickable()->click();
@@ -2392,7 +2392,7 @@ class testFormAdministrationProxies extends CWebTest {
 			$old_hash = CDBHelper::getHash($this->sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->query('link', $data['proxy'])->one()->waitUntilClickable()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
 		$dialog->query('button:Delete')->waitUntilClickable()->one()->click();

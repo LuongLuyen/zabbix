@@ -2087,7 +2087,7 @@ class testFormHost extends CWebTest {
 		if ($data['action'] === 'Clone') {
 			$form_type->invalidate();
 			$id = CDBHelper::getValue('SELECT hostid FROM hosts WHERE host='.zbx_dbstr(self::TEST_FORM_HOST));
-			$expected_url = PHPUNIT_URL.'zabbix.php?action=popup&popup=host.edit&hostid='.$id;
+			$expected_url = PHPUNIT_URL.'sdnet.php?action=popup&popup=host.edit&hostid='.$id;
 
 			$this->assertEquals($expected_url, $this->page->getCurrentUrl());
 			$this->assertFalse($form_type->query("xpath:.//ul[".CXPathHelper::fromClass('filter-breadcrumb')."]")

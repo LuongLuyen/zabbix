@@ -42,7 +42,7 @@ class CControllerUsergroupDelete extends CController {
 		$deleted = count($usrgrpids);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.list')
 				->setArgument('page', CPagerHelper::loadPage('usergroup.list', null))
 		);

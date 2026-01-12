@@ -23,7 +23,7 @@ $this->includeJsFile('sla.list.js.php');
 
 $filter = (new CFilter())
 	->addVar('action', 'sla.list')
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'sla.list'))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'sla.list'))
 	->setProfile('web.sla.list.filter')
 	->setActiveTab($data['active_tab'])
 	->addFilterTab(_('Filter'), [
@@ -65,7 +65,7 @@ $form = (new CForm())
 	->setId('sla-list')
 	->setName('sla_list');
 
-$view_url = (new CUrl('zabbix.php'))
+$view_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'sla.list')
 	->getUrl();
 
@@ -113,7 +113,7 @@ foreach ($data['slas'] as $slaid => $sla) {
 	if ($data['has_access'][CRoleHelper::UI_SERVICES_SLA_REPORT]) {
 		$sla_report_tag = $sla['status'] == ZBX_SLA_STATUS_ENABLED
 			? new CLink(_('SLA report'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'slareport.list')
 					->setArgument('filter_slaid', $slaid)
 					->setArgument('filter_set', 1)
@@ -124,7 +124,7 @@ foreach ($data['slas'] as $slaid => $sla) {
 		$sla_report_tag = null;
 	}
 
-	$sla_url = (new CUrl('zabbix.php'))
+	$sla_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'sla.edit')
 		->setArgument('slaid', $slaid)

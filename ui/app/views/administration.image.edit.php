@@ -27,7 +27,7 @@ $html_page = (new CHtmlPage())
 
 $csrf_token = CCsrfTokenHelper::get('image');
 
-$form = (new CForm('post', (new CUrl('zabbix.php'))
+$form = (new CForm('post', (new CUrl('sdnet.php'))
 	->setArgument('action', ($data['imageid'] == 0) ? 'image.create' : 'image.update')
 	->getUrl(), 'multipart/form-data')
 )
@@ -75,14 +75,14 @@ if ($data['imageid'] != 0) {
 	$tab_view->setFooter(makeFormFooter(
 		new CSubmit('update', _('Update')),
 		[
-			(new CRedirectButton(_('Delete'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Delete'), (new CUrl('sdnet.php'))
 					->setArgument('action', 'image.delete')
 					->setArgument('imageid', $data['imageid'])
 					->setArgument('imagetype', $data['imagetype'])
 					->setArgument(CSRF_TOKEN_NAME, $csrf_token),
 				_('Delete selected image?')
 			))->setId('delete'),
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'image.list')
 				->setArgument('imagetype', $data['imagetype'])
 			))->setId('cancel')
@@ -93,7 +93,7 @@ else {
 	$tab_view->setFooter(makeFormFooter(
 		new CSubmit(null, _('Add')),
 		[
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'image.list')
 				->setArgument('imagetype', $data['imagetype'])
 			))->setId('cancel')

@@ -100,7 +100,7 @@ class testPageNetworkDiscovery extends CWebTest {
 	 * Function which checks layout of Network Discovery page.
 	 */
 	public function testPageNetworkDiscovery_Layout() {
-		$this->page->login()->open('zabbix.php?action=discovery.list&sort=name&sortorder=DESC');
+		$this->page->login()->open('sdnet.php?action=discovery.list&sort=name&sortorder=DESC');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 
@@ -178,7 +178,7 @@ class testPageNetworkDiscovery extends CWebTest {
 	 * Function which checks sorting by Name column.
 	 */
 	public function testPageNetworkDiscovery_CheckSorting() {
-		$this->page->login()->open('zabbix.php?action=discovery.list&sort=name&sortorder=ASC')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=discovery.list&sort=name&sortorder=ASC')->waitUntilReady();
 		$table = $this->query('class:list-table')->asTable()->one();
 		$column_values = $this->getTableColumnData('Name');
 
@@ -344,7 +344,7 @@ class testPageNetworkDiscovery extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageNetworkDiscovery_CheckFilter($data) {
-		$this->page->login()->open('zabbix.php?action=discovery.list&sort=name&sortorder=DESC');
+		$this->page->login()->open('sdnet.php?action=discovery.list&sort=name&sortorder=DESC');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$form->fill(CTestArrayHelper::get($data, 'filter'));
@@ -360,7 +360,7 @@ class testPageNetworkDiscovery extends CWebTest {
 	 * Check Network Discovery pages reset buttons functionality.
 	 */
 	public function testPageNetworkDiscovery_ResetButton() {
-		$this->page->login()->open('zabbix.php?action=discovery.list&sort=name&sortorder=DESC&filter_rst=1');
+		$this->page->login()->open('sdnet.php?action=discovery.list&sort=name&sortorder=DESC&filter_rst=1');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$table = $this->query('class:list-table')->asTable()->one();
 
@@ -608,7 +608,7 @@ class testPageNetworkDiscovery extends CWebTest {
 	public function testPageNetworkDiscovery_Actions($data) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 		// Added &filter_rst=1 in case testPageNetworkDiscovery_ResetButton test fails midway.
-		$this->page->login()->open('zabbix.php?action=discovery.list&sort=name&sortorder=DESC&filter_rst=1');
+		$this->page->login()->open('sdnet.php?action=discovery.list&sort=name&sortorder=DESC&filter_rst=1');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$count = CDBHelper::getCount(self::SQL);
 

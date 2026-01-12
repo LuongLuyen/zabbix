@@ -98,7 +98,7 @@ function stepWelcome(): CTemplateTag {
 					(new CDiv([
 						new CTag('h1', true, _('Welcome to the Host Wizard')),
 						new CTag('p', true,
-							_('The Host Wizard will help you set up your monitoring target (device, application, service, etc.) in Zabbix.')
+							_('The Host Wizard will help you set up your monitoring target (device, application, service, etc.) in SDNet.')
 						),
 						new CTag('p', true, _('You can always access Host Wizard from Data collection > Hosts.'))
 					]))
@@ -165,9 +165,9 @@ function stepSelectTemplate($old_template_count): array {
 								new CLabel([
 									_('Data collection'),
 									helpHint([
-										[bold(_('Agent-based')), ' - ', _('Data is collected by Zabbix agent, a lightweight software `component installed on your monitoring target.')],
+										[bold(_('Agent-based')), ' - ', _('Data is collected by SDNet agent, a lightweight software `component installed on your monitoring target.')],
 										BR(),
-										[bold(_('Agentless')), ' - ', _('Data is collected by Zabbix server or proxy using standard protocols (e.g., SNMP, ICMP) or remote access methods (e.g., SSH).')]
+										[bold(_('Agentless')), ' - ', _('Data is collected by SDNet server or proxy using standard protocols (e.g., SNMP, ICMP) or remote access methods (e.g., SSH).')]
 									])
 								]),
 								(new CRadioButtonList('data_collection'))
@@ -180,9 +180,9 @@ function stepSelectTemplate($old_template_count): array {
 								new CLabel([
 									_('Agent mode'),
 									helpHint([
-										[bold(_('Active')), ' - ', _('Zabbix agent initiates connections to Zabbix server or proxy to send data. Recommended for monitoring targets behind a firewall.')],
+										[bold(_('Active')), ' - ', _('SDNet agent initiates connections to SDNet server or proxy to send data. Recommended for monitoring targets behind a firewall.')],
 										BR(),
-										[bold(_('Passive')), ' - ', _('Zabbix server or proxy initiates connections to Zabbix agent to request data. Recommended for networks without a firewall or with open firewall ports.')]
+										[bold(_('Passive')), ' - ', _('SDNet server or proxy initiates connections to SDNet agent to request data. Recommended for networks without a firewall or with open firewall ports.')]
 									])
 								]),
 								(new CRadioButtonList('agent_mode'))
@@ -298,7 +298,7 @@ function stepCreateHost($form): CTemplateTag {
 					(new CDiv([
 						new CTag('h1', true, _('Create or select a host')),
 						new CTag('p', true,
-							_s('The template you selected (%1$s) must be linked to a host - an entity in Zabbix that represents your monitoring target.', '#{template_name}')
+							_s('The template you selected (%1$s) must be linked to a host - an entity in SDNet that represents your monitoring target.', '#{template_name}')
 						),
 						new CTag('p', true,
 							_('Hosts are organized into host groups for easier management and access control.')
@@ -389,11 +389,11 @@ function stepInstallAgent($agent_script_data): array {
 				(new CSection())
 					->addItem(
 						(new CDiv([
-							new CTag('h1', true, _('Install Zabbix agent')),
+							new CTag('h1', true, _('Install SDNet agent')),
 							new CTag('p', true,
-								_s('The template you selected (%1$s) requires Zabbix agent to be installed and running on your monitoring target.', '#{template_name}')
+								_s('The template you selected (%1$s) requires SDNet agent to be installed and running on your monitoring target.', '#{template_name}')
 							),
-							new CTag('p', true, _('Skip OS selection if you already have Zabbix agent installed.'))
+							new CTag('p', true, _('Skip OS selection if you already have SDNet agent installed.'))
 						]))
 							->addClass(ZBX_STYLE_GRID_COLUMN_FIRST)
 							->addClass(ZBX_STYLE_FORMATED_TEXT)
@@ -406,12 +406,12 @@ function stepInstallAgent($agent_script_data): array {
 						(new CList([
 							(new CListItem([
 								(new CDiv([
-									(new CTag('h6', true, [_('Verify Zabbix server, proxy, or cluster address')]))
+									(new CTag('h6', true, [_('Verify SDNet server, proxy, or cluster address')]))
 										->addClass(ZBX_STYLE_ORDERED_LIST_COUNTER),
 									(new CFormField([
 										new CTextBox('agent_script_server_host'),
 										(new CDiv(
-											_('Enter the IP/DNS address and port of your Zabbix server, proxy, or cluster configuration.')
+											_('Enter the IP/DNS address and port of your SDNet server, proxy, or cluster configuration.')
 										))->addClass(ZBX_STYLE_FORM_FIELDS_HINT)
 									]))->addClass('js-agent-script-server-host-input')
 								]))->addClass(ZBX_STYLE_GRID_COLUMN_FIRST),
@@ -421,12 +421,12 @@ function stepInstallAgent($agent_script_data): array {
 										'192.0.2.0:10051, [2001:db8::]:10051, zbx1.local:10051;zbx2.local:10051'
 									),
 									new CTag('p', true,
-										_('Zabbix agent must be able to connect to the specified address or list of addresses.')
+										_('SDNet agent must be able to connect to the specified address or list of addresses.')
 									),
 									new CTag('h5', true, _('Use:')),
 									new CList([
 										_('Colon to separate IP/DNS address from port'),
-										_('Comma to separate multiple Zabbix servers, proxies, or clusters'),
+										_('Comma to separate multiple SDNet servers, proxies, or clusters'),
 										_('Semicolon to separate clusters (one or more server addresses)'),
 										_('Brackets to specify IPv6 addresses')
 									])
@@ -445,7 +445,7 @@ function stepInstallAgent($agent_script_data): array {
 									(new CDiv([
 										(new CDiv(
 											new CTag('p', true,
-												_('Communication between Zabbix agent and server/proxy is secured with the pre-shared key (PSK) encryption method.')
+												_('Communication between SDNet agent and server/proxy is secured with the pre-shared key (PSK) encryption method.')
 											)
 										))->addClass(ZBX_STYLE_FORMATED_TEXT),
 										(new CDiv(
@@ -467,7 +467,7 @@ function stepInstallAgent($agent_script_data): array {
 											DB::getFieldLength('hosts', 'tls_psk_identity')
 										))->setAriaRequired(),
 										(new CDiv(
-											_('Enter a unique name that Zabbix components will use to recognize the pre-shared key.')
+											_('Enter a unique name that SDNet components will use to recognize the pre-shared key.')
 										))->addClass(ZBX_STYLE_FORM_FIELDS_HINT),
 										(new CDiv(
 											_('Avoid including sensitive data.')
@@ -552,7 +552,7 @@ function stepInstallAgent($agent_script_data): array {
 			(new CListItem())
 				->addItem(
 					(new CTag('h6', true,
-						_('Set up Zabbix agent on your monitoring target by executing the following script [bash under root]:')
+						_('Set up SDNet agent on your monitoring target by executing the following script [bash under root]:')
 					))->addClass(ZBX_STYLE_ORDERED_LIST_COUNTER)
 				)
 				->addItem(
@@ -568,7 +568,7 @@ function stepInstallAgent($agent_script_data): array {
 			(new CListItem())
 				->addItem(
 					(new CTag('h6', true,
-						_('Set up Zabbix agent on your monitoring target by executing the following PowerShell script [with administrator permissions]:')
+						_('Set up SDNet agent on your monitoring target by executing the following PowerShell script [with administrator permissions]:')
 					))->addClass(ZBX_STYLE_ORDERED_LIST_COUNTER)
 				)
 				->addItem(
@@ -587,7 +587,7 @@ function stepInstallAgent($agent_script_data): array {
 			(new CListItem())
 				->addItem(
 					(new CTag('h6', true,
-						_('Install Zabbix agent and its plugins on your monitoring target by following the installation instructions below.')
+						_('Install SDNet agent and its plugins on your monitoring target by following the installation instructions below.')
 					))->addClass(ZBX_STYLE_ORDERED_LIST_COUNTER)
 				)
 				->addItem(
@@ -610,7 +610,7 @@ function stepInstallAgent($agent_script_data): array {
 			(new CListItem())
 				->addItem(
 					(new CTag('h6', true,
-						_('Install Zabbix agent and its plugins on your monitoring target by following the installation instructions below.')
+						_('Install SDNet agent and its plugins on your monitoring target by following the installation instructions below.')
 					))->addClass(ZBX_STYLE_ORDERED_LIST_COUNTER)
 				)
 				->addItem(
@@ -684,7 +684,7 @@ function stepAddHostInterface(): array {
 							))->setAriaRequired()
 						]),
 						(new CDiv(
-							_('Enter the IP/DNS address and port of the Zabbix agent installed on your monitoring target.')
+							_('Enter the IP/DNS address and port of the SDNet agent installed on your monitoring target.')
 						))
 							->addClass(ZBX_STYLE_FORM_FIELDS_HINT)
 							->addClass(ZBX_STYLE_GRID_COLUMN_FULL)
@@ -886,9 +886,9 @@ function stepAddHostInterface(): array {
 				)
 				->addItem(
 					(new CDiv([
-						new CTag('h4', true, _('Enable IPMI checks on Zabbix server')),
+						new CTag('h4', true, _('Enable IPMI checks on SDNet server')),
 						new CTag('p', true,
-							_('In the Zabbix server configuration file (zabbix_server.conf), set the StartIPMIPollers parameter to a non-zero value.')
+							_('In the SDNet server configuration file (zabbix_server.conf), set the StartIPMIPollers parameter to a non-zero value.')
 						),
 						new CTag('p', true, [
 							_('For more details, see'),
@@ -936,9 +936,9 @@ function stepAddHostInterface(): array {
 					(new CDiv([
 						new CTag('h4', true, _('Enable remote JMX monitoring')),
 						new CTag('p', true, [
-							_('1. Install Java Gateway on the same machine running Zabbix server by following the instructions in'),
+							_('1. Install Java Gateway on the same machine running SDNet server by following the instructions in'),
 							' ',
-							(new CLink(_('Zabbix documentation'), CDocHelper::getUrl(CDocHelper::ITEM_TYPES_JMX_AGENT)))
+							(new CLink(_('SDNet documentation'), CDocHelper::getUrl(CDocHelper::ITEM_TYPES_JMX_AGENT)))
 								->setTarget('_blank')
 						]),
 						new CTag('p', true,

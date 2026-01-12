@@ -59,7 +59,7 @@ if (getRequest('search', '') === '') {
 	$search_icon->setAttribute('disabled', '');
 }
 
-$search = (new CForm('get', 'zabbix.php'))
+$search = (new CForm('get', 'sdnet.php'))
 	->addClass(ZBX_STYLE_FORM_SEARCH)
 	->setAttribute('role', 'search')
 	->addItem([

@@ -153,7 +153,7 @@ class CControllerLatestView extends CControllerLatest {
 		$mandatory_filter_set = self::isMandatoryFilterFieldSet($filter);
 		$subfilter_set = self::isSubfilterSet($filter);
 
-		$refresh_curl = new CUrl('zabbix.php');
+		$refresh_curl = new CUrl('sdnet.php');
 		$refresh_curl_params = ['action' => 'latest.view.refresh'] + $filter;
 		array_map([$refresh_curl, 'setArgument'], array_keys($refresh_curl_params), $refresh_curl_params);
 
@@ -180,7 +180,7 @@ class CControllerLatestView extends CControllerLatest {
 			$subfilters['state'] = [];
 		}
 
-		$view_url = (new CUrl('zabbix.php'))->setArgument('action', 'latest.view');
+		$view_url = (new CUrl('sdnet.php'))->setArgument('action', 'latest.view');
 		$paging_arguments = array_filter(array_intersect_key($filter, self::FILTER_FIELDS_DEFAULT));
 		array_map([$view_url, 'setArgument'], array_keys($paging_arguments), $paging_arguments);
 		$paging = CPagerHelper::paginate($this->getInput('page', 1), $prepared_data['items'], ZBX_SORT_UP, $view_url);

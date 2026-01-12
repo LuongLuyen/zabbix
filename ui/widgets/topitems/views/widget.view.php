@@ -222,7 +222,7 @@ function makeTableCellViewFormattedValue(array $cell, array $data): CSpan {
 			CMenuPopupHelper::getItem([
 				'itemid' => $itemid,
 				'context' => 'host',
-				'backurl' => (new CUrl('zabbix.php'))
+				'backurl' => (new CUrl('sdnet.php'))
 					->setArgument('action', 'dashboard.view')
 					->getUrl()
 			])

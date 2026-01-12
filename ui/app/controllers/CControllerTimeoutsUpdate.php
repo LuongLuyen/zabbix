@@ -42,7 +42,7 @@ class CControllerTimeoutsUpdate extends CController {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'timeouts.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'timeouts.edit')
 					);
 
 					$response->setFormData($this->getInputAll());
@@ -87,7 +87,7 @@ class CControllerTimeoutsUpdate extends CController {
 		$result = API::Settings()->update($settings);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'timeouts.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'timeouts.edit')
 		);
 
 		if ($result) {

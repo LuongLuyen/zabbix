@@ -141,7 +141,7 @@ class testPageConnectors extends CWebTest {
 		];
 		$connectors_count = count($connectors_data);
 
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 		$this->page->assertHeader('Connectors');
 		$this->page->assertTitle('Connectors');
 
@@ -402,7 +402,7 @@ class testPageConnectors extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function  testPageConnectors_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$table = $this->getTable();
 
@@ -461,7 +461,7 @@ class testPageConnectors extends CWebTest {
 	 * @dataProvider getSortData
 	 */
 	public function testPageConnectors_Sort($data) {
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$header = $table->query('link', $data['sort_field'])->one();
 
@@ -519,7 +519,7 @@ class testPageConnectors extends CWebTest {
 			$data['name'] = [$data['name']];
 		}
 
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 
 		// Connectors count that will be selected before Enable/Disable/Delete action.
 		$selected_count = array_key_exists('name', $data) ? count($data['name']) : CDBHelper::getCount(self::$connector_sql);
@@ -599,7 +599,7 @@ class testPageConnectors extends CWebTest {
 	 * @dataProvider getStatusData
 	 */
 	public function testPageConnectors_ChangeStatus($data) {
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 
 		// Connectors count that will be enabled or disabled via button.
 		if (!is_array(CTestArrayHelper::get($data, 'name', []))) {
@@ -664,7 +664,7 @@ class testPageConnectors extends CWebTest {
 	private function deleteAction($names = []) {
 		$plural = (count($names) === 1) ? '' : 's';
 		$all = CDBHelper::getCount(self::$connector_sql);
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 
 		// Delete Connector(s).
 		$this->selectTableRows($names);

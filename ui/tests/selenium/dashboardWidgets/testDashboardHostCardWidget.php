@@ -737,7 +737,7 @@ class testDashboardHostCardWidget extends testWidgets {
 	}
 
 	public function testDashboardHostCardWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating HostCard widgets'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$form = $dashboard->edit()->addWidget()->asForm();
@@ -1006,7 +1006,7 @@ class testDashboardHostCardWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardHostCardWidget_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating HostCard widgets'])->waitUntilReady();
 
 		// Get hash if expected is TEST_BAD.
@@ -1030,7 +1030,7 @@ class testDashboardHostCardWidget extends testWidgets {
 		// Hash before simple update.
 		self::$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for HostCard widget update'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit()->getWidget('Host card')->edit()->submit();
@@ -1050,7 +1050,7 @@ class testDashboardHostCardWidget extends testWidgets {
 	 * @dataProvider getCreateData
 	 */
 	public function testDashboardHostCardWidget_Update($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for HostCard widget update'])->waitUntilReady();
 
 		// Get hash if expected is TEST_BAD.
@@ -1072,7 +1072,7 @@ class testDashboardHostCardWidget extends testWidgets {
 	 */
 	public function testDashboardHostCardWidget_Delete() {
 		$widget_name = 'DeleteHostCardWidget';
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for deleting HostCard widget'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->waitUntilReady()->edit();
 		$widget = $dashboard->getWidget($widget_name);
@@ -1141,18 +1141,18 @@ class testDashboardHostCardWidget extends testWidgets {
 					],
 					'Context menu' => [
 						'VIEW' => [
-							'Dashboards' => 'zabbix.php?action=host.dashboard.view&hostid={hostid}',
-							'Problems' => 'zabbix.php?action=problem.view&hostids%5B%5D={hostid}&filter_set=1',
-							'Latest data' => 'zabbix.php?action=latest.view&hostids%5B%5D={hostid}&filter_set=1',
-							'Graphs' => 'zabbix.php?action=charts.view&filter_hostids%5B%5D={hostid}&filter_set=1',
-							'Web' => 'zabbix.php?action=web.view&filter_hostids%5B%5D={hostid}&filter_set=1',
+							'Dashboards' => 'sdnet.php?action=host.dashboard.view&hostid={hostid}',
+							'Problems' => 'sdnet.php?action=problem.view&hostids%5B%5D={hostid}&filter_set=1',
+							'Latest data' => 'sdnet.php?action=latest.view&hostids%5B%5D={hostid}&filter_set=1',
+							'Graphs' => 'sdnet.php?action=charts.view&filter_hostids%5B%5D={hostid}&filter_set=1',
+							'Web' => 'sdnet.php?action=web.view&filter_hostids%5B%5D={hostid}&filter_set=1',
 							'Inventory' => 'hostinventories.php?hostid={hostid}'
 						],
 						'CONFIGURATION' => [
-							'Host' => 'zabbix.php?action=popup&popup=host.edit&hostid={hostid}',
-							'Items' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
-							'Triggers' => 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
-							'Graphs' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
+							'Host' => 'sdnet.php?action=popup&popup=host.edit&hostid={hostid}',
+							'Items' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
+							'Triggers' => 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
+							'Graphs' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
 							'Discovery' => 'host_discovery.php?filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
 							'Web' => 'httpconf.php?filter_set=1&filter_hostids%5B%5D={hostid}&context=host'
 						],
@@ -1214,17 +1214,17 @@ class testDashboardHostCardWidget extends testWidgets {
 					'Context menu' => [
 						'VIEW' => [
 							'Dashboards' => 'menu-popup-item disabled',
-							'Problems' => 'zabbix.php?action=problem.view&hostids%5B%5D={hostid}&filter_set=1',
-							'Latest data' => 'zabbix.php?action=latest.view&hostids%5B%5D={hostid}&filter_set=1',
+							'Problems' => 'sdnet.php?action=problem.view&hostids%5B%5D={hostid}&filter_set=1',
+							'Latest data' => 'sdnet.php?action=latest.view&hostids%5B%5D={hostid}&filter_set=1',
 							'Graphs' => 'menu-popup-item disabled',
 							'Web' => 'menu-popup-item disabled',
 							'Inventory' => 'hostinventories.php?hostid={hostid}'
 						],
 						'CONFIGURATION' => [
-							'Host' => 'zabbix.php?action=popup&popup=host.edit&hostid={hostid}',
-							'Items' => 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
-							'Triggers' => 'zabbix.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
-							'Graphs' => 'zabbix.php?action=graph.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
+							'Host' => 'sdnet.php?action=popup&popup=host.edit&hostid={hostid}',
+							'Items' => 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
+							'Triggers' => 'sdnet.php?action=trigger.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
+							'Graphs' => 'sdnet.php?action=graph.list&filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
 							'Discovery' => 'host_discovery.php?filter_set=1&filter_hostids%5B%5D={hostid}&context=host',
 							'Web' => 'httpconf.php?filter_set=1&filter_hostids%5B%5D={hostid}&context=host'
 						],
@@ -1283,7 +1283,7 @@ class testDashboardHostCardWidget extends testWidgets {
 	 * @dataProvider getDisplayData
 	 */
 	public function testDashboardHostCardWidget_Display($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for HostCard widget display check'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard::find()->one()->getWidget($data['Header']);
@@ -1479,7 +1479,7 @@ class testDashboardHostCardWidget extends testWidgets {
 					'inactive' => true,
 					'header' => 'Problems',
 					'title' => 'Problems',
-					'url' => 'zabbix.php?show=1&name=&acknowledgement_status=0&inventory%5B0%5D%5Bfield%5D=type'.
+					'url' => 'sdnet.php?show=1&name=&acknowledgement_status=0&inventory%5B0%5D%5Bfield%5D=type'.
 							'&inventory%5B0%5D%5Bvalue%5D=&evaltype=0&tags%5B0%5D%5Btag%5D=&tags%5B0%5D%5Boperator%5D=0'.
 							'&tags%5B0%5D%5Bvalue%5D=&show_tags=3&tag_name_format=0&tag_priority=&show_opdata=0'.
 							'&show_timeline=1&filter_name=&filter_show_counter=0&filter_custom_time=0&sort=clock'.
@@ -1504,7 +1504,7 @@ class testDashboardHostCardWidget extends testWidgets {
 					'link'   => 'Dashboards',
 					'header' => 'Host dashboards',
 					'title'  => 'Dashboards',
-					'url' => 'zabbix.php?action=host.dashboard.view&hostid={hostid}'
+					'url' => 'sdnet.php?action=host.dashboard.view&hostid={hostid}'
 				]
 			],
 			// #3.
@@ -1514,7 +1514,7 @@ class testDashboardHostCardWidget extends testWidgets {
 					'link'   => 'Latest data',
 					'header' => 'Latest data',
 					'title'  => 'Latest data',
-					'url' => 'zabbix.php?name=&evaltype=0&tags%5B0%5D%5Btag%5D='.
+					'url' => 'sdnet.php?name=&evaltype=0&tags%5B0%5D%5Btag%5D='.
 							'&tags%5B0%5D%5Boperator%5D=0&tags%5B0%5D%5Bvalue%5D=&show_tags=3'.
 							'&tag_name_format=0&tag_priority=&state=-1&filter_name=&filter_show_counter=0'.
 							'&filter_custom_time=0&sort=name&sortorder=ASC&show_details=0&action=latest.view'.
@@ -1528,7 +1528,7 @@ class testDashboardHostCardWidget extends testWidgets {
 					'link'   => 'Graphs',
 					'header' => 'Graphs',
 					'title'  => 'Custom graphs',
-					'url' => 'zabbix.php?action=charts.view&filter_hostids%5B0%5D={hostid}&filter_show=1&filter_set=1'
+					'url' => 'sdnet.php?action=charts.view&filter_hostids%5B0%5D={hostid}&filter_show=1&filter_set=1'
 				]
 			],
 			// #5.
@@ -1538,7 +1538,7 @@ class testDashboardHostCardWidget extends testWidgets {
 					'link'   => 'Web',
 					'header' => 'Web monitoring',
 					'title'  => 'Web monitoring',
-					'url' => 'zabbix.php?action=web.view&filter_hostids%5B0%5D={hostid}&filter_set=1'
+					'url' => 'sdnet.php?action=web.view&filter_hostids%5B0%5D={hostid}&filter_set=1'
 				]
 			]
 		];
@@ -1550,7 +1550,7 @@ class testDashboardHostCardWidget extends testWidgets {
 	 * @dataProvider getLinkData
 	 */
 	public function testDashboardHostCardWidget_CheckLinks($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for HostCard widget display check'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 
@@ -1632,7 +1632,7 @@ class testDashboardHostCardWidget extends testWidgets {
 		self::$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for canceling HostCard widget']
 		);
 		$dashboard = CDashboardElement::find()->one()->edit();
@@ -1720,7 +1720,7 @@ class testDashboardHostCardWidget extends testWidgets {
 	 * @dataProvider getWidgetName
 	 */
 	public function testDashboardHostCardWidget_Screenshots($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for HostCard widget display check'])->waitUntilReady();
 		$this->assertScreenshot(CDashboardElement::find()->one()->getWidget($data['Name']), 'hostcard_'.$data['Name']);
 	}

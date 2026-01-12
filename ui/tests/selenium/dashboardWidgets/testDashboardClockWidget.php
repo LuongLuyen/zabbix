@@ -194,7 +194,7 @@ class testDashboardClockWidget extends testWidgets {
 	 * Check clock widgets layout.
 	 */
 	public function testDashboardClockWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating clock widgets']);
 		$dialog = CDashboardElement::find()->one()->edit()->addWidget();
 		$form = $dialog->asForm();
@@ -353,7 +353,7 @@ class testDashboardClockWidget extends testWidgets {
 	 * the widget name.
 	 */
 	public function testDashboardClockWidget_CheckClockWidgetsName() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating clock widgets']);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->getWidget('LayoutClock')->edit()->fill(['Name' => '']);
@@ -809,7 +809,7 @@ class testDashboardClockWidget extends testWidgets {
 			?  self::$dashboardid['Dashboard for updating clock widgets']
 			:  self::$dashboardid['Dashboard for creating clock widgets'];
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.$linkid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.$linkid);
 		$dashboard = CDashboardElement::find()->one()->waitUntilVisible();
 
 		if (array_key_exists('second_page', $data) && $update === false) {
@@ -966,7 +966,7 @@ class testDashboardClockWidget extends testWidgets {
 	private function checkNoChanges($cancel = false, $create = false, $save_dashboard = true) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating clock widgets']);
 
 		$dashboard = CDashboardElement::find()->one();
@@ -1036,7 +1036,7 @@ class testDashboardClockWidget extends testWidgets {
 	 * Check clock widgets deletion.
 	 */
 	public function testDashboardClockWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for creating clock widgets']);
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard->edit()->getWidget('DeleteClock');
@@ -1060,7 +1060,7 @@ class testDashboardClockWidget extends testWidgets {
 	 * Check if binary items are not available for Clock widget.
 	 */
 	public function testDashboardClockWidget_CheckAvailableItems() {
-		$url = 'zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid['Dashboard for updating clock widgets'];
+		$url = 'sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid['Dashboard for updating clock widgets'];
 		$this->checkAvailableItems($url, 'Clock');
 	}
 }

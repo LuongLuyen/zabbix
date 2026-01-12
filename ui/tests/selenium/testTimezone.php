@@ -38,7 +38,7 @@ class testTimezone extends CWebTest {
 	public function testTimezone_Gui() {
 		$this->page->userLogin('Admin', 'zabbix');
 		$this->setTimezone('System', 'gui');
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 		$etc_time = $this->getProblemTime('4_trigger_Average');
 
 		// UTC -3 hours.
@@ -46,7 +46,7 @@ class testTimezone extends CWebTest {
 		date_modify($etc_time,'-3 hours');
 
 		// Return to problem page and check time.
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 		$utc_time = $this->getProblemTime('4_trigger_Average');
 		$this->assertEquals($etc_time, $utc_time);
 	}
@@ -94,7 +94,7 @@ class testTimezone extends CWebTest {
 		// Set system timezone.
 		$this->page->userLogin('Admin', 'zabbix');
 		$this->setTimezone('System', 'gui');
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 		$system_time = $this->getProblemTime('4_trigger_Average');
 		$this->page->logout();
 
@@ -104,7 +104,7 @@ class testTimezone extends CWebTest {
 		date_modify($system_time, $data['time_diff']);
 
 		// User timezone check.
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 		$user_time = $this->getProblemTime('4_trigger_Average');
 		$this->assertEquals($system_time, $user_time);
 		$this->assertEquals($data['timezone_db'], CDBHelper::getValue('SELECT timezone FROM users WHERE username='.zbx_dbstr('test-timezone')));
@@ -186,9 +186,9 @@ class testTimezone extends CWebTest {
 	public function testTimezone_CreateUsers($data) {
 		$this->page->userLogin('Admin', 'zabbix');
 		$this->setTimezone('System', 'gui');
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 		$system_time = $this->getProblemTime('4_trigger_Average');
-		$this->page->open('zabbix.php?action=user.edit');
+		$this->page->open('sdnet.php?action=user.edit');
 		$form = $this->query('name:user_form')->asForm()->waitUntilVisible()->one();
 		if (CTestArrayHelper::get($data, 'fields.Time zone')) {
 			$data['fields']['Time zone'] = CDateTimeHelper::getTimeZoneFormat($data['fields']['Time zone']);
@@ -200,13 +200,13 @@ class testTimezone extends CWebTest {
 		$this->assertMessage(TEST_GOOD, 'User added');
 		$this->page->logout();
 		$this->page->userLogin($data['fields']['Username'], $data['fields']['Password']);
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 
 		// Expected time after timezone change.
 		date_modify($system_time, $data['time_diff']);
 
 		// Actual time after timezone change.
-		$this->page->open('zabbix.php?action=problem.view');
+		$this->page->open('sdnet.php?action=problem.view');
 		$user_time = $this->getProblemTime('4_trigger_Average');
 		$this->assertEquals($system_time, $user_time);
 		$this->assertEquals($data['timezone_db'], CDBHelper::getValue('SELECT timezone FROM users WHERE username='.
@@ -221,7 +221,7 @@ class testTimezone extends CWebTest {
 	public function testTimezone_TimeSelector() {
 		$this->page->userLogin('Admin', 'zabbix');
 		$this->setTimezone('Atlantic/Cape_Verde', 'userprofile');
-		$this->page->open('zabbix.php?action=actionlog.list&from=now-1h&to=now&filter_messages=&filter_set=1')->waitUntilReady();
+		$this->page->open('sdnet.php?action=actionlog.list&from=now-1h&to=now&filter_messages=&filter_set=1')->waitUntilReady();
 		$filter = CFilterElement::find()->one();
 		$filter->selectTab('Last 1 hour');
 
@@ -263,7 +263,7 @@ class testTimezone extends CWebTest {
 			$message = 'User updated';
 		}
 
-		$this->page->open('zabbix.php?action='.$page.'.edit');
+		$this->page->open('sdnet.php?action='.$page.'.edit');
 		$form = $this->query('xpath://form[@aria-labelledby="page-title-general"]')->one()->asForm();
 		$timezone = CDateTimeHelper::getTimeZoneFormat($timezone);
 		$form->fill([$field_name => $timezone]);

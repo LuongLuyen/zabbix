@@ -580,14 +580,14 @@ function makeItemTemplatePrefix($itemid, array $parent_templates, $flag, bool $p
 		}
 		else {
 			if ($flag & ZBX_FLAG_DISCOVERY_PROTOTYPE) {
-				$url = (new CUrl('zabbix.php'))
+				$url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'item.prototype.list')
 					->setArgument('parent_discoveryid', $parent_templates['links'][$itemid]['lld_ruleid'])
 					->setArgument('context', 'template');
 			}
 			// ZBX_FLAG_DISCOVERY_NORMAL
 			else {
-				$url = (new CUrl('zabbix.php'))
+				$url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'item.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$template['hostid']])
@@ -643,7 +643,7 @@ function makeItemTemplatesHtml($itemid, array $parent_templates, $flag, bool $pr
 			}
 			else {
 				if ($flag == ZBX_FLAG_DISCOVERY_PROTOTYPE) {
-					$url = (new CUrl('zabbix.php'))
+					$url = (new CUrl('sdnet.php'))
 						->setArgument('action', 'popup')
 						->setArgument('popup', 'item.prototype.edit')
 						->setArgument('context', 'template')
@@ -652,7 +652,7 @@ function makeItemTemplatesHtml($itemid, array $parent_templates, $flag, bool $pr
 				}
 				// ZBX_FLAG_DISCOVERY_NORMAL
 				else {
-					$url = (new CUrl('zabbix.php'))
+					$url = (new CUrl('sdnet.php'))
 						->setArgument('action', 'popup')
 						->setArgument('popup', 'item.edit')
 						->setArgument('context', 'template')

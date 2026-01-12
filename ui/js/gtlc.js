@@ -17,7 +17,7 @@
 jQuery(function($) {
 	var $container = $('.filter-space').first(),
 		xhr = null,
-		endpoint = new Curl('zabbix.php'),
+		endpoint = new Curl('sdnet.php'),
 		element = {
 			from: $container.find('[id=from]'),
 			to: $container.find('[id=to]'),
@@ -549,7 +549,7 @@ jQuery(function($) {
 	}
 
 	function calcTimeSelector(data) {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'timeselector.calc');
 

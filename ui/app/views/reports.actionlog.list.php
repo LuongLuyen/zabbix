@@ -34,7 +34,7 @@ foreach ($data['statuses'] as $value => $label) {
 }
 
 $filter = (new CFilter())
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', $data['action']))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', $data['action']))
 	->setProfile($data['timeline']['profileIdx'])
 	->addVar('action', $data['action'])
 	->addTimeSelector($data['timeline']['from'], $data['timeline']['to'], true, 'web.actionlog.filter')

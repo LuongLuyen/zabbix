@@ -26,7 +26,7 @@ window.action_edit_popup = new class {
 		this.actionid = actionid;
 		this.eventsource = eventsource;
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'action.list');
 		return_url.searchParams.set('eventsource', this.eventsource);
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
@@ -68,7 +68,7 @@ window.action_edit_popup = new class {
 
 		const fields = getFormFields(this.form);
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'popup.action.operations.list');
 		curl.setArgument('type', <?= PAGE_TYPE_TEXT_RETURN_JSON ?>);
 
@@ -378,7 +378,7 @@ window.action_edit_popup = new class {
 			fields.esc_period = fields.esc_period.trim();
 		}
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', this.actionid !== 0 ? 'action.update' : 'action.create');
 
 		this._post(curl.getUrl(), fields);
@@ -452,7 +452,7 @@ window.action_edit_popup = new class {
 	}
 
 	delete() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'action.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('action')) ?>);
 

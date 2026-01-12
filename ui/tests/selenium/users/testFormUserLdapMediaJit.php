@@ -165,7 +165,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 		];
 
 		$this->page->userLogin(PHPUNIT_LDAP_USERNAME, PHPUNIT_LDAP_USER_PASSWORD);
-		$this->page->open('zabbix.php?action=userprofile.notification.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=userprofile.notification.edit')->waitUntilReady();
 
 		// Check that the informative message about JIT provisioning is present.
 		$this->assertMessage('Warning', null, 'This user is IdP provisioned. Manual changes for provisioned fields'.
@@ -430,7 +430,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 
 		// Log in as the LDAP provisioned user.
 		$this->page->userLogin(PHPUNIT_LDAP_USERNAME, PHPUNIT_LDAP_USER_PASSWORD);
-		$this->page->open('zabbix.php?action=userprofile.notification.edit');
+		$this->page->open('sdnet.php?action=userprofile.notification.edit');
 
 		// Close the warning message, to not affect further message check.
 		$this->query('class:btn-overlay-close')->one()->click();
@@ -461,13 +461,13 @@ class testFormUserLdapMediaJit extends CWebTest {
 			$this->page->logout();
 
 			// Log in as the Super admin and provision the LDAP user.
-			$this->page->login()->open('zabbix.php?action=user.list');
+			$this->page->login()->open('sdnet.php?action=user.list');
 			$this->provisionLdapUser();
 			$this->page->logout();
 
 			// Log in as the provisioned user, to check that changed fields are not affected by the provisioning.
 			$this->page->userLogin(PHPUNIT_LDAP_USERNAME, PHPUNIT_LDAP_USER_PASSWORD);
-			$this->page->open('zabbix.php?action=userprofile.notification.edit');
+			$this->page->open('sdnet.php?action=userprofile.notification.edit');
 			$this->checkMediaConfiguration($data, $data['media'], PHPUNIT_LDAP_USERNAME,
 					'check_configuration', 'id:userprofile-notification-form'
 			);
@@ -499,7 +499,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 		];
 
 		$this->page->userLogin(PHPUNIT_LDAP_USERNAME, PHPUNIT_LDAP_USER_PASSWORD);
-		$this->page->open('zabbix.php?action=userprofile.notification.edit');
+		$this->page->open('sdnet.php?action=userprofile.notification.edit');
 
 		$form = $this->query('id:userprofile-notification-form')->waitUntilVisible()->asForm()->one();
 
@@ -514,18 +514,18 @@ class testFormUserLdapMediaJit extends CWebTest {
 		$this->assertMessage(TEST_GOOD, 'User updated');
 
 		// Check the media type that was added.
-		$this->page->open('zabbix.php?action=userprofile.notification.edit');
+		$this->page->open('sdnet.php?action=userprofile.notification.edit');
 		$this->checkMediaConfiguration($data, $data['fields']['Type'], $data['fields']['Send to']);
 		$this->page->logout();
 
 		// Provision LDAP user.
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$this->provisionLdapUser();
 		$this->page->logout();
 
 		// Log in as LDAP user and check that added media is still present.
 		$this->page->userLogin(PHPUNIT_LDAP_USERNAME, PHPUNIT_LDAP_USER_PASSWORD);
-		$this->page->open('zabbix.php?action=userprofile.notification.edit');
+		$this->page->open('sdnet.php?action=userprofile.notification.edit');
 		$this->checkMediaConfiguration($data, $data['fields']['Type'], $data['fields']['Send to']);
 
 		// Check that media can be removed by LDAP provisioned user.
@@ -537,7 +537,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 		$this->assertMessage(TEST_GOOD, 'User updated');
 
 		// Check that media is no longer present in the list.
-		$this->page->open('zabbix.php?action=userprofile.notification.edit');
+		$this->page->open('sdnet.php?action=userprofile.notification.edit');
 		$this->assertFalse($form->getField('Media')->asTable()->findRow('Type', $data['fields']['Type'])->isPresent());
 	}
 	*/
@@ -916,7 +916,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 		$this->page->waitUntilReady();
 
 		// Check that no changes are present until user is provisioned.
-		$this->page->open('zabbix.php?action=user.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=user.list')->waitUntilReady();
 		$this->query('link:'.PHPUNIT_LDAP_USERNAME)->one()->click();
 		$this->assertEquals(self::$provisioned_media_count, $this->getUserMediaTable()->getRows()->count());
 
@@ -927,10 +927,10 @@ class testFormUserLdapMediaJit extends CWebTest {
 		}
 
 		// Provision the LDAP user.
-		$this->page->open('zabbix.php?action=user.list');
+		$this->page->open('sdnet.php?action=user.list');
 		$this->provisionLdapUser();
 
-		$this->page->open('zabbix.php?action=user.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=user.list')->waitUntilReady();
 		$this->query('link:'.PHPUNIT_LDAP_USERNAME)->one()->click();
 		$user_media_table = $this->getUserMediaTable();
 
@@ -1258,7 +1258,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 
 		// Log in as LDAP user to check that media mapping was processed correctly.
 		$this->page->userLogin(PHPUNIT_LDAP_USERNAME, PHPUNIT_LDAP_USER_PASSWORD);
-		$this->page->open('zabbix.php?action=userprofile.notification.edit');
+		$this->page->open('sdnet.php?action=userprofile.notification.edit');
 
 		if ($data['provisioned'] === true) {
 			$this->checkMediaConfiguration($data['expected'], $data['mapping']['Media type'], PHPUNIT_LDAP_USERNAME,
@@ -1277,14 +1277,14 @@ class testFormUserLdapMediaJit extends CWebTest {
 		$this->page->userLogin(PHPUNIT_LDAP_USERNAME, PHPUNIT_LDAP_USER_PASSWORD);
 
 		// Check that media type for deletion is present in user configuration.
-		$this->page->open('zabbix.php?action=userprofile.notification.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=userprofile.notification.edit')->waitUntilReady();
 		$this->assertTrue($this->query('id:userprofile-notification-form')->asTable()->one()
 				->findRow('Type', self::DELETE_MEDIA, true)->isPresent()
 		);
 		$this->page->logout();
 
 		// Delete media type that is used in LDAP media mapping.
-		$this->page->login()->open('zabbix.php?action=mediatype.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=mediatype.list')->waitUntilReady();
 		$table = $this->getTable();
 		$table->findRows('Name', self::DELETE_MEDIA)->select();
 		$this->query('button:Delete')->one()->click();
@@ -1292,7 +1292,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 		$this->assertMessage(TEST_GOOD, 'Media type deleted');
 
 		// Check that media type is removed from LDAP user.
-		$this->page->open('zabbix.php?action=user.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=user.list')->waitUntilReady();
 		$this->query('link:'.PHPUNIT_LDAP_USERNAME)->one()->click();
 		$this->assertFalse($this->getUserMediaTable()->findRow('Type', self::DELETE_MEDIA, true)->isPresent());
 	}
@@ -1314,7 +1314,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 		$this->page->waitUntilReady();
 
 		// Check that media is not present for LDAP provisioned user.
-		$this->page->open('zabbix.php?action=user.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=user.list')->waitUntilReady();
 		$this->query('link:'.PHPUNIT_LDAP_USERNAME)->waitUntilClickable()->one()->click();
 		$user_media_table = $this->getUserMediaTable();
 		$this->assertFalse($user_media_table->findRow('Type', 'MS Teams Workflow', true)->isPresent());
@@ -1383,7 +1383,7 @@ class testFormUserLdapMediaJit extends CWebTest {
 	 * @return CFormElement
 	 */
 	protected function openLdapForm() {
-		$this->page->login()->open('zabbix.php?action=authentication.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=authentication.edit')->waitUntilReady();
 		$form = $this->query('id:authentication-form')->waitUntilVisible()->asForm()->one();
 		$form->selectTab('LDAP settings');
 

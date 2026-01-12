@@ -459,14 +459,14 @@ class testFormMacrosDiscoveredHost extends testFormMacros {
 	 * @dataProvider getSecretMacrosLayoutData
 	 */
 	public function testFormMacrosDiscoveredHost_CheckSecretMacrosLayout($data) {
-		$this->checkSecretMacrosLayout($data, 'zabbix.php?action=host.view', 'hosts', self::$hosts[2]['name'], true);
+		$this->checkSecretMacrosLayout($data, 'sdnet.php?action=host.view', 'hosts', self::$hosts[2]['name'], true);
 	}
 
 	/**
 	 * @dataProvider getCreateSecretMacrosData
 	 */
 	public function testFormMacrosDiscoveredHost_CreateSecretMacros($data) {
-		$this->createSecretMacros($data, 'zabbix.php?action=host.view', 'hosts', self::$hosts[3]['name']);
+		$this->createSecretMacros($data, 'sdnet.php?action=host.view', 'hosts', self::$hosts[3]['name']);
 	}
 
 	/**
@@ -475,7 +475,7 @@ class testFormMacrosDiscoveredHost extends testFormMacros {
 	 * @backupOnce hosts
 	 */
 	public function testFormMacrosDiscoveredHost_RevertSecretMacroChanges($data) {
-		$this->revertSecretMacroChanges($data, 'zabbix.php?action=host.view', 'hosts', self::$hosts[4]['name'], true);
+		$this->revertSecretMacroChanges($data, 'sdnet.php?action=host.view', 'hosts', self::$hosts[4]['name'], true);
 	}
 
 	public function getUpdateSecretMacrosData() {
@@ -542,14 +542,14 @@ class testFormMacrosDiscoveredHost extends testFormMacros {
 	 * @dataProvider getUpdateSecretMacrosData
 	 */
 	public function testFormMacrosDiscoveredHost_UpdateSecretMacros($data) {
-		$this->updateSecretMacros($data, 'zabbix.php?action=host.view', 'hosts', self::$hosts[4]['name'], true);
+		$this->updateSecretMacros($data, 'sdnet.php?action=host.view', 'hosts', self::$hosts[4]['name'], true);
 	}
 
 	/**
 	 * Check Vault macros validation.
 	 */
 	public function testFormMacrosDiscoveredHost_CheckVaultValidation() {
-		$this->checkVaultValidation('zabbix.php?action=host.view', 'hosts', self::$hosts[5]['name'], true);
+		$this->checkVaultValidation('sdnet.php?action=host.view', 'hosts', self::$hosts[5]['name'], true);
 	}
 
 	/**
@@ -557,7 +557,7 @@ class testFormMacrosDiscoveredHost extends testFormMacros {
 	 */
 	public function testFormMacrosDiscoveredHost_CreateVaultMacros($data) {
 		$host = ($data['vault'] === 'Hashicorp') ? self::$hosts[7]['name'] : self::$hosts[6]['name'];
-		$this->createVaultMacros($data, 'zabbix.php?action=host.view', 'hosts', $host);
+		$this->createVaultMacros($data, 'sdnet.php?action=host.view', 'hosts', $host);
 	}
 
 	public function getUpdateVaultMacrosDiscoveredData() {
@@ -592,14 +592,14 @@ class testFormMacrosDiscoveredHost extends testFormMacros {
 	 * @dataProvider getUpdateVaultMacrosCommonData
 	 */
 	public function testFormMacrosDiscoveredHost_UpdateVaultMacros($data) {
-		$this->updateVaultMacros($data, 'zabbix.php?action=host.view', 'hosts', self::$hosts[2]['name']);
+		$this->updateVaultMacros($data, 'sdnet.php?action=host.view', 'hosts', self::$hosts[2]['name']);
 	}
 
 	/**
 	 * Check discovered host macros which are inherited from both host and prototype.
 	 */
 	public function testFormMacrosDiscoveredHost_CheckInheritedMacros() {
-		$this->page->login()->open('zabbix.php?action=host.view&filter_selected=0&filter_reset=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=host.view&filter_selected=0&filter_reset=1')->waitUntilReady();
 		$this->query('link', self::$hosts[8]['name'])->asPopupButton()->one()->select('Host');
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		$form->selectTab('Macros');

@@ -25,7 +25,7 @@ window.maintenance_edit = new class {
 		this._form = this._overlay.$dialogue.$body[0].querySelector('form');
 		this._allowed_edit = allowed_edit;
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'maintenance.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -177,7 +177,7 @@ window.maintenance_edit = new class {
 			[CSRF_TOKEN_NAME]: <?= json_encode(CCsrfTokenHelper::get('maintenance')) ?>
 		};
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'maintenance.delete');
 
 		this._post(curl.getUrl(), post_data, (response) => {
@@ -204,7 +204,7 @@ window.maintenance_edit = new class {
 			}
 		}
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', this._maintenanceid !== null ? 'maintenance.update' : 'maintenance.create');
 
 		this._post(curl.getUrl(), fields, (response) => {

@@ -94,7 +94,7 @@ class CControllerServiceListEdit extends CControllerServiceListGeneral {
 			? $breadcrumbs[count($breadcrumbs) - 2]['curl']->getUrl()
 			: $breadcrumbs[0]['curl']->getUrl();
 
-		$reset_curl = (new CUrl('zabbix.php'))
+		$reset_curl = (new CUrl('sdnet.php'))
 			->setArgument('action', 'service.list.edit')
 			->setArgument('path', $path ?: null)
 			->setArgument('serviceid', $this->service !== null ? $this->service['serviceid'] : null);

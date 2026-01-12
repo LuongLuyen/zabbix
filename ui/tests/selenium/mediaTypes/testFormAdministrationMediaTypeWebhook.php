@@ -477,7 +477,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 	public function testFormAdministrationMediaTypeWebhook_Validate($data) {
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$button = CTestArrayHelper::get($data, 'update', false) ? 'link:Validation webhook' : 'button:Create media type';
 		$this->query($button)->one()->waitUntilClickable()->click();
 		$overlay = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -692,7 +692,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 	public function testFormAdministrationMediaTypeWebhook_CreateUpdate($data) {
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$button = CTestArrayHelper::get($data, 'update', false) ? 'link:Reference webhook' : 'button:Create media type';
 		$this->query($button)->one()->WaitUntilClickable()->click();
 		$overlay = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -733,7 +733,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 	public function testFormAdministrationMediaTypeWebhook_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$this->query('link:Reference webhook')->one()->WaitUntilClickable()->click();
 		COverlayDialogElement::find()->one()->waitUntilReady()->asForm()->submit();
 		COverlayDialogElement::ensureNotPresent();
@@ -753,7 +753,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 		$old_hash = CDBHelper::getHash($mediatype_sql.'\'Reference webhook\' ORDER BY mtp.name');
 
 		// Clone the reference media type.
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$this->query('link:Reference webhook')->one()->WaitUntilClickable()->click();
 		$form = COverlayDialogElement::find()->one()->waitUntilReady()->asForm()->waitUntilVisible();
 		$this->query('button:Clone')->one()->click();
@@ -800,7 +800,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 		];
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$button = ($data === 'create') ? 'button:Create media type' : 'link:Reference webhook';
 		$this->query($button)->one()->WaitUntilClickable()->click();
 		if ($data === 'clone') {
@@ -818,7 +818,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 
 	public function testFormAdministrationMediaTypeWebhook_Delete() {
 		$name = 'Webhook to delete';
-		$this->page->login()->open('zabbix.php?action=mediatype.list');
+		$this->page->login()->open('sdnet.php?action=mediatype.list');
 		$this->query('link', $name)->one()->waitUntilClickable()->click();
 		$overlay = COverlayDialogElement::find()->one()->waitUntilReady();
 		$overlay->query('button:Delete')->one()->waitUntilClickable()->click();
@@ -857,7 +857,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 	 */
 	private function checkMediaTypeFields($data) {
 		CDBHelper::getValue('SELECT mediatypeid FROM media_type WHERE name='.zbx_dbstr($data['fields']['Name']));
-		$this->page->open('zabbix.php?action=mediatype.list');
+		$this->page->open('sdnet.php?action=mediatype.list');
 		$this->query('link', $data['fields']['Name'])->one()->WaitUntilClickable()->click();
 		$overlay = COverlayDialogElement::find()->one()->waitUntilReady();
 		$form = $overlay->query('id:media-type-form')->asForm()->waitUntilVisible()->one();

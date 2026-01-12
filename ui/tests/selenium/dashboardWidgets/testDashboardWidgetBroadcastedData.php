@@ -360,7 +360,7 @@ class testDashboardWidgetBroadcastedData extends testWidgetCommunication {
 	 * @dataProvider getFeedbackPageData
 	 */
 	public function testDashboardWidgetBroadcastedData_CheckFeedback($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid']);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid']);
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$dashboard->selectPage('Feedback check page');
 
@@ -499,7 +499,7 @@ class testDashboardWidgetBroadcastedData extends testWidgetCommunication {
 	public function testDashboardWidgetBroadcastedData_WidgetLoading($data) {
 		$entityids = self::$entityids[self::ENTITY_DATA[$data['page']]['type']];
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid']);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid']);
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$dashboard->selectPage($data['page']);
 
@@ -648,7 +648,7 @@ class testDashboardWidgetBroadcastedData extends testWidgetCommunication {
 	 * @dataProvider getBroadcastData
 	 */
 	public function testDashboardWidgetBroadcastedData_CheckBroadcasting($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid']);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$entityids['dashboardid']);
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$dashboard->selectPage($data['page']);
 

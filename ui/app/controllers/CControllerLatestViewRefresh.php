@@ -78,7 +78,7 @@ class CControllerLatestViewRefresh extends CControllerLatestView {
 			}
 
 			$page = $this->getInput('page', 1);
-			$view_url = (new CUrl('zabbix.php'))->setArgument('action', 'latest.view');
+			$view_url = (new CUrl('sdnet.php'))->setArgument('action', 'latest.view');
 			$paging_arguments = array_filter(array_intersect_key($filter, self::FILTER_FIELDS_DEFAULT));
 			array_map([$view_url, 'setArgument'], array_keys($paging_arguments), $paging_arguments);
 			$paging = CPagerHelper::paginate($page, $prepared_data['items'], ZBX_SORT_UP, $view_url);

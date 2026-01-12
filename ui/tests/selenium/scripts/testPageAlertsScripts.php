@@ -248,7 +248,7 @@ class testPageAlertsScripts extends CWebTest {
 	public function testPageAlertsScripts_Layout($data) {
 		$scripts_count = count($data);
 
-		$this->page->login()->open('zabbix.php?action=script.list');
+		$this->page->login()->open('sdnet.php?action=script.list');
 		$this->page->assertTitle('Configuration of scripts');
 		$this->page->assertHeader('Scripts');
 
@@ -525,7 +525,7 @@ class testPageAlertsScripts extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageAlertsScripts_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=script.list');
+		$this->page->login()->open('sdnet.php?action=script.list');
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilVisible()->one();
 		$table = $this->getTable();
 
@@ -586,7 +586,7 @@ class testPageAlertsScripts extends CWebTest {
 	 * @dataProvider getSortData
 	 */
 	public function testPageAlertsScripts_Sort($data) {
-		$this->page->login()->open('zabbix.php?action=script.list');
+		$this->page->login()->open('sdnet.php?action=script.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$header = $table->query('link', $data['sort_field'])->one();
 
@@ -654,7 +654,7 @@ class testPageAlertsScripts extends CWebTest {
 			$old_hash = CDBHelper::getHash(self::$script_sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=script.list');
+		$this->page->login()->open('sdnet.php?action=script.list');
 
 		// Scripts count that will be selected before delete action.
 		$scripts_count = (array_key_exists('name', $data))
@@ -699,7 +699,7 @@ class testPageAlertsScripts extends CWebTest {
 	private function cancelDelete($scripts = []) {
 		$old_hash = CDBHelper::getHash(self::$script_sql);
 
-		$this->page->login()->open('zabbix.php?action=script.list');
+		$this->page->login()->open('sdnet.php?action=script.list');
 		$this->selectTableRows($scripts);
 
 		// Scripts count that will be selected before delete action.
@@ -718,7 +718,7 @@ class testPageAlertsScripts extends CWebTest {
 	 * Verify that there is possibility to open 'action' modal popup via link located in 'Used in actions' tab.
 	 */
 	public function testPageAlertsScripts_ActionLinks() {
-		$this->page->login()->open('zabbix.php?action=script.list');
+		$this->page->login()->open('sdnet.php?action=script.list');
 		$this->query('link', self::$custom_action)->one()->waitUntilClickable()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
 		$dialog->checkValue(['Name' => self::$custom_action]);

@@ -37,7 +37,7 @@ $html_page = (new CHtmlPage())
 			->addItem((new CSimpleButton(_('Import')))->setId('js-import'))
 	))->setAttribute('aria-label', _('Content controls')));
 
-$action_url = (new CUrl('zabbix.php'))->setArgument('action', $data['action']);
+$action_url = (new CUrl('sdnet.php'))->setArgument('action', $data['action']);
 
 $filter_tags_table = CTagFilterFieldHelper::getTagFilterField([
 	'evaltype' => $data['filter']['evaltype'],
@@ -146,7 +146,7 @@ $table = (new CTableInfo())
 	->setPageNavigation($data['paging']);
 
 foreach ($data['templates'] as $template) {
-	$template_url = (new CUrl('zabbix.php'))
+	$template_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'template.edit')
 		->setArgument('templateid', $template['templateid'])
@@ -172,7 +172,7 @@ foreach ($data['templates'] as $template) {
 		}
 
 		if (array_key_exists($parent_template['templateid'], $data['editable_templates'])) {
-			$linked_template_url = (new CUrl('zabbix.php'))
+			$linked_template_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'template.edit')
 				->setArgument('templateid', $parent_template['templateid'])
@@ -203,7 +203,7 @@ foreach ($data['templates'] as $template) {
 		}
 
 		if (array_key_exists($child_template['templateid'], $data['editable_templates'])) {
-			$linked_to_url = (new CUrl('zabbix.php'))
+			$linked_to_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'template.edit')
 				->setArgument('templateid', $child_template['templateid'])
@@ -225,7 +225,7 @@ foreach ($data['templates'] as $template) {
 		[
 			$data['allowed_ui_conf_hosts']
 				? new CLink(_('Hosts'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'host.list')
 						->setArgument('filter_set', '1')
 						->setArgument('filter_templates', [$template['templateid']])
@@ -235,7 +235,7 @@ foreach ($data['templates'] as $template) {
 		],
 		[
 			new CLink(_('Items'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'item.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$template['templateid']])
@@ -245,7 +245,7 @@ foreach ($data['templates'] as $template) {
 		],
 		[
 			new CLink(_('Triggers'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'trigger.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$template['templateid']])
@@ -255,7 +255,7 @@ foreach ($data['templates'] as $template) {
 		],
 		[
 			new CLink(_('Graphs'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'graph.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$template['templateid']])
@@ -265,7 +265,7 @@ foreach ($data['templates'] as $template) {
 		],
 		[
 			new CLink(_('Dashboards'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'template.dashboard.list')
 					->setArgument('templateid', $template['templateid'])
 					->setArgument('context', 'template')
@@ -303,7 +303,7 @@ $form->addItem([
 	new CActionButtonList('action', 'templates', [
 		'template.export' => [
 			'content' => new CButtonExport('export.templates',
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'templates.list')
 					->setArgument('page', ($data['page'] == 1) ? null : $data['page'])
 					->getUrl()

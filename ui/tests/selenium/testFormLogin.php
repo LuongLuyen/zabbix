@@ -167,9 +167,9 @@ class testFormLogin extends CWebTest {
 	 * sign in button and checking by views header, if correct url is opened.
 	 **/
 	public function testFormLogin_LoginWithRequest() {
-		foreach (['index.php?request=zabbix.php%3Faction%3Dhost.list', 'index.php?request=zabbix.php%3Faction%3Dproxy.list'] as $url) {
+		foreach (['index.php?request=sdnet.php%3Faction%3Dhost.list', 'index.php?request=sdnet.php%3Faction%3Dproxy.list'] as $url) {
 			$this->page->userLogin('Admin', 'zabbix', TEST_GOOD, $url);
-			$header = ($url === 'index.php?request=zabbix.php%3Faction%3Dhost.list') ? 'Hosts' : 'Proxies';
+			$header = ($url === 'index.php?request=sdnet.php%3Faction%3Dhost.list') ? 'Hosts' : 'Proxies';
 			$this->page->assertHeader($header);
 		}
 	}

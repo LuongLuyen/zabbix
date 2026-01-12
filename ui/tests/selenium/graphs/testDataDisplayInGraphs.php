@@ -5463,7 +5463,7 @@ class testDataDisplayInGraphs extends CWebTest {
 	 * @dataProvider getMonitoringGraphData
 	 */
 	public function testDataDisplayInGraphs_MonitoringHosts($data) {
-		$this->page->login()->open('zabbix.php?action=charts.view&filter_set=1&filter_hostids%5B0%5D='.self::$hostid)
+		$this->page->login()->open('sdnet.php?action=charts.view&filter_set=1&filter_hostids%5B0%5D='.self::$hostid)
 				->waitUntilReady();
 
 		// Open the time selector tab if it's not opened yet.
@@ -5639,7 +5639,7 @@ class testDataDisplayInGraphs extends CWebTest {
 	 * @dataProvider getDashboardWidgetData
 	 */
 	public function testDataDisplayInGraphs_DashboardWidgets($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 
 		// It's required to set time selector only for pages with classic graph widgets, SVG graphs have period set in config.
 		if (CTestArrayHelper::get($data, 'type')) {

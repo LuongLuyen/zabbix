@@ -35,12 +35,12 @@ $html_page = (new CHtmlPage())
 			->addItem((new CVar('action', 'user.list'))->removeId()),
 			(new CTag('nav', true,
 				(new CList())
-					->addItem(new CRedirectButton(_('Create user'), 'zabbix.php?action=user.edit'))
+					->addItem(new CRedirectButton(_('Create user'), 'sdnet.php?action=user.edit'))
 				))->setAttribute('aria-label', _('Content controls'))
 		]))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'user.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'user.list'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [
@@ -113,7 +113,7 @@ $form = (new CForm())
 	->setId('users');
 
 // create users table
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'user.list')
 	->getUrl();
 
@@ -164,7 +164,7 @@ foreach ($data['users'] as $user) {
 	}
 
 	$blocked = ($user['attempt_failed'] >= $data['config']['login_attempts'])
-		? (new CLink(_('Blocked'), 'zabbix.php?action=user.unblock&userids[]='.$userid))
+		? (new CLink(_('Blocked'), 'sdnet.php?action=user.unblock&userids[]='.$userid))
 			->addClass(ZBX_STYLE_LINK_ACTION)
 			->addClass(ZBX_STYLE_RED)
 			->addCsrfToken($csrf_token)
@@ -189,7 +189,7 @@ foreach ($data['users'] as $user) {
 		}
 
 		$group = $data['allowed_ui_user_groups']
-			? (new CLink($user_group['name'], (new CUrl('zabbix.php'))
+			? (new CLink($user_group['name'], (new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.edit')
 				->setArgument('usrgrpid', $user_group['usrgrpid'])
 				->getUrl()
@@ -208,7 +208,7 @@ foreach ($data['users'] as $user) {
 	$checkbox = new CCheckBox('userids['.$userid.']', $userid);
 	$info = $users_groups ? '' : makeWarningIcon(_('User does not have user groups.'));
 	$username = new CLink($user['username'],
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'user.edit')
 			->setArgument('userid', $userid)
 	);

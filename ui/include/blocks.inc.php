@@ -750,7 +750,7 @@ function makeProblemsPopup(array $problems, array $triggers, array $actions, arr
 			}
 		}
 
-		$problem_update_url = (new CUrl('zabbix.php'))
+		$problem_update_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'acknowledge.edit')
 			->setArgument('eventids[]', $problem['eventid'])

@@ -1411,7 +1411,7 @@ class C64XmlValidator extends CXmlValidatorGeneral {
 							'name' =>					['type' => XML_STRING | XML_REQUIRED],
 							'delay' =>					['type' => XML_STRING, 'default' => '1m'],
 							'attempts' =>				['type' => XML_STRING, 'default' => '1'],
-							'agent' =>					['type' => XML_STRING, 'default' => 'Zabbix'],
+							'agent' =>					['type' => XML_STRING, 'default' => 'SDNet'],
 							'http_proxy' =>				['type' => XML_STRING, 'default' => ''],
 							'variables' =>				['type' => XML_INDEXED_ARRAY, 'prefix' => 'variable', 'rules' => [
 								'variable' =>				['type' => XML_ARRAY, 'rules' => [
@@ -2435,7 +2435,7 @@ class C64XmlValidator extends CXmlValidatorGeneral {
 							'name' =>					['type' => XML_STRING | XML_REQUIRED],
 							'delay' =>					['type' => XML_STRING, 'default' => '1m'],
 							'attempts' =>				['type' => XML_STRING, 'default' => '1'],
-							'agent' =>					['type' => XML_STRING, 'default' => 'Zabbix'],
+							'agent' =>					['type' => XML_STRING, 'default' => 'SDNet'],
 							'http_proxy' =>				['type' => XML_STRING, 'default' => ''],
 							'variables' =>				['type' => XML_INDEXED_ARRAY, 'prefix' => 'variable', 'rules' => [
 								'variable' =>				['type' => XML_ARRAY, 'rules' => [

@@ -25,18 +25,18 @@ require_once __DIR__.'/../common/testFormGroups.php';
  */
 class testFormHostGroupSearchPage extends testFormGroups {
 
-	protected $link = 'zabbix.php?action=search&search=group';
+	protected $link = 'sdnet.php?action=search&search=group';
 	protected $object = 'host';
 	protected $search = 'true';
 	protected static $update_group = 'Group for Update test';
 
 	public function testFormHostGroupSearchPage_Layout() {
-		$this->link = 'zabbix.php?action=search&search=Zabbix+servers';
+		$this->link = 'sdnet.php?action=search&search=Zabbix+servers';
 		$this->layout('Zabbix servers');
 	}
 
 	public function testFormHostGroupSearchPage_DiscoveredLayout() {
-		$this->link = 'zabbix.php?action=search&search='.self::DISCOVERED_GROUP;
+		$this->link = 'sdnet.php?action=search&search='.self::DISCOVERED_GROUP;
 		$this->layout(self::DISCOVERED_GROUP, true);
 	}
 
@@ -91,7 +91,7 @@ class testFormHostGroupSearchPage extends testFormGroups {
 	 * @dataProvider getHostUpdateData
 	 */
 	public function testFormHostGroupSearchPage_Update($data) {
-		$this->link = 'zabbix.php?action=search&search=updat';
+		$this->link = 'sdnet.php?action=search&search=updat';
 		$this->checkForm($data, 'update');
 	}
 
@@ -99,7 +99,7 @@ class testFormHostGroupSearchPage extends testFormGroups {
 	 * Test group simple update without changing data.
 	 */
 	public function testFormHostGroupSearchPage_SimpleUpdate() {
-		$this->link = 'zabbix.php?action=search&search='.self::DISCOVERED_GROUP;
+		$this->link = 'sdnet.php?action=search&search='.self::DISCOVERED_GROUP;
 		$this->simpleUpdate(self::DISCOVERED_GROUP, true);
 	}
 
@@ -290,7 +290,7 @@ class testFormHostGroupSearchPage extends testFormGroups {
 	 * @dataProvider getSubgroupPermissionsData
 	 */
 	public function testFormHostGroupSearchPage_ApplyPermissionsToSubgroups($data) {
-		$this->link = 'zabbix.php?action=search&search=europe';
+		$this->link = 'sdnet.php?action=search&search=europe';
 		$this->checkSubgroupsPermissions($data);
 	}
 }

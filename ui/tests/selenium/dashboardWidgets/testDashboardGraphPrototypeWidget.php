@@ -338,7 +338,7 @@ class testDashboardGraphPrototypeWidget extends testWidgets {
 	public function testDashboardGraphPrototypeWidget_Delete() {
 		$name = 'Graph prototype widget for delete';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for Graph Prototype widget']
 		);
 		$dashboard = CDashboardElement::find()->one();
@@ -363,7 +363,7 @@ class testDashboardGraphPrototypeWidget extends testWidgets {
 	 * Test for comparing widgets form screenshot.
 	 */
 	public function testDashboardGraphPrototypeWidget_FormScreenshot() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for Sceenshoting Graph Prototype widgets']
 		);
 		$dashboard = CDashboardElement::find()->one();
@@ -454,7 +454,7 @@ class testDashboardGraphPrototypeWidget extends testWidgets {
 	 * @dataProvider getWidgetScreenshotData
 	 */
 	public function testDashboardGraphPrototypeWidget_GridScreenshots($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for Sceenshoting Graph Prototype widgets']
 		);
 		$dashboard = CDashboardElement::find()->one();
@@ -485,7 +485,7 @@ class testDashboardGraphPrototypeWidget extends testWidgets {
 	}
 
 	protected function checkGraphPrototypeWidget($data, $update = false) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for Graph Prototype widget']
 		);
 		$dashboard = CDashboardElement::find()->one();
@@ -593,7 +593,7 @@ class testDashboardGraphPrototypeWidget extends testWidgets {
 	 */
 	protected function checkDataUnchanged($action, $update = false, $changes = false) {
 		$initial_values = CDBHelper::getHash(self::SQL);
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for Graph Prototype widget']
 		);
 		$dashboard = CDashboardElement::find()->one();
@@ -648,7 +648,7 @@ class testDashboardGraphPrototypeWidget extends testWidgets {
 	 * Test function for assuring that binary items are not available in Graph prototype widget.
 	 */
 	public function testDashboardGraphPrototypeWidget_CheckAvailableItems() {
-		$url = 'zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid['Dashboard for Graph Prototype widget'];
+		$url = 'sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid['Dashboard for Graph Prototype widget'];
 		$this->checkAvailableItems($url, 'Graph prototype');
 	}
 }

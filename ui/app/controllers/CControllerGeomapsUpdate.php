@@ -33,7 +33,7 @@ class CControllerGeomapsUpdate extends CController {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'geomaps.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'geomaps.edit')
 					);
 					$response->setFormData($this->getInputAll());
 					CMessageHelper::setErrorTitle(_('Cannot update configuration'));
@@ -64,7 +64,7 @@ class CControllerGeomapsUpdate extends CController {
 		$result = API::Settings()->update($settings);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'geomaps.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'geomaps.edit')
 		);
 
 		if ($result) {

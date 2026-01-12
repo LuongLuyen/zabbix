@@ -68,7 +68,7 @@ foreach ($data['services'] as $serviceid => $service) {
 			}
 
 			$parents[] = (new CLink($parent['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'service.list.edit')
 					->setArgument('serviceid', $parent['serviceid'])
 			))->setAttribute('data-serviceid', $parent['serviceid']);
@@ -86,7 +86,7 @@ foreach ($data['services'] as $serviceid => $service) {
 
 		$root_cause[] = $data['can_monitor_problems'] && $problem_event['triggerid'] !== null
 			? new CLink($problem_event['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'problem.view')
 					->setArgument('filter_set', '1')
 					->setArgument('triggerids', [$problem_event['triggerid']])
@@ -94,7 +94,7 @@ foreach ($data['services'] as $serviceid => $service) {
 			: $problem_event['name'];
 	}
 
-	$service_url = (new CUrl('zabbix.php'))
+	$service_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'service.edit')
 		->setArgument('serviceid', $serviceid)
@@ -103,7 +103,7 @@ foreach ($data['services'] as $serviceid => $service) {
 	$table->addRow(new CRow(array_merge($row, [
 		(new CCol([
 			(new CLink($service['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'service.list.edit')
 					->setArgument('path', $path)
 					->setArgument('serviceid', $serviceid)

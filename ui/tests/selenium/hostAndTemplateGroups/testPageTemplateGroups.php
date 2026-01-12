@@ -42,7 +42,7 @@ class testPageTemplateGroups extends testPageGroups {
 		];
 	}
 
-	protected $link = 'zabbix.php?action=templategroup.list';
+	protected $link = 'sdnet.php?action=templategroup.list';
 	protected $object = 'template';
 	const GROUP1 = 'Group with one template testPageTemplateGroup';
 	const TEMPLATE1_1 = 'Template for testPageHostGroup';

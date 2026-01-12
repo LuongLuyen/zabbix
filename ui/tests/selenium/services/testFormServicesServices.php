@@ -56,7 +56,7 @@ class testFormServicesServices extends CWebTest {
 	 * Check Service create form layout.
 	 */
 	public function testFormServicesServices_Layout() {
-		$this->page->login()->open('zabbix.php?action=service.list');
+		$this->page->login()->open('sdnet.php?action=service.list');
 		$this->query('id:list_mode')->one()->asSegmentedRadio()->waitUntilVisible()->select('Edit');
 		$this->query('button:Create service')->waitUntilClickable()->one()->click();
 
@@ -773,7 +773,7 @@ class testFormServicesServices extends CWebTest {
 		}
 
 		// Open service form depending on create or update scenario.
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		if ($update) {
 			$table = $this->query('class:list-table')->asTable()->waitUntilVisible()->one();
 			$table->findRow('Name', self::$update_service, true)->query(self::EDIT_BUTTON_PATH)->waitUntilClickable()
@@ -965,7 +965,7 @@ class testFormServicesServices extends CWebTest {
 	 * @dataProvider getCloneData
 	 */
 	public function testFormServicesServices_Clone($data) {
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 
 		$table = $this->query('class:list-table')->asTable()->waitUntilVisible()->one();
 
@@ -1044,7 +1044,7 @@ class testFormServicesServices extends CWebTest {
 	public function testFormServicesServices_Cancel($data) {
 		$old_hash = CDBHelper::getHash(self::$service_sql);
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->asTable()->waitUntilVisible()->one();
 		$table->findRow('Name', 'Simple actions service', true)->query(self::EDIT_BUTTON_PATH)->waitUntilClickable()
 				->one()->click();
@@ -1091,7 +1091,7 @@ class testFormServicesServices extends CWebTest {
 	public function testFormServicesServices_SimpleUpdate($data) {
 		$old_hash = CDBHelper::getHash(self::$service_sql);
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->asTable()->waitUntilVisible()->one();
 		$table->findRow('Name', $data['name'], true)->query(self::EDIT_BUTTON_PATH)->waitUntilClickable()->one()->click();
 
@@ -1144,7 +1144,7 @@ class testFormServicesServices extends CWebTest {
 			$old_hash = CDBHelper::getHash(self::$service_sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->asTable()->one()->waitUntilReady();
 
 		if (CTestArrayHelper::get($data, 'circular', false)) {
@@ -1220,7 +1220,7 @@ class testFormServicesServices extends CWebTest {
 		$parent = 'Parent for deletion from row';
 		$child = 'Child 2';
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->asTable()->one()->waitUntilReady();
 		$table->findRow('Name', $parent, true)->query('link', $parent)->waitUntilClickable()->one()->click();
 
@@ -1259,7 +1259,7 @@ class testFormServicesServices extends CWebTest {
 		$parent = 'Parent for child deletion from row';
 		$child = 'Child 1';
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->asTable()->one()->waitUntilReady();
 		$table->findRow('Name', $parent, true)->query('link', $parent)->waitUntilClickable()->one()->click();
 		$this->page->waitUntilReady();
@@ -1285,7 +1285,7 @@ class testFormServicesServices extends CWebTest {
 	}
 
 	public function testFormServicesServices_DeleteService() {
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->asTable()->one()->waitUntilReady();
 		$table->findRow('Name', self::$delete_service)->query(self::EDIT_BUTTON_PATH)->waitUntilClickable()->one()->click();
 

@@ -98,7 +98,7 @@
 		}
 
 		#updateDiscover(target, graphid) {
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'graph.prototype.updatediscover');
 
 			this.#post(target, graphid, curl);
@@ -113,7 +113,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'graph.prototype.delete');
 
 			this.#post(target, graphids, curl);

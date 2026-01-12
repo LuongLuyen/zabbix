@@ -165,7 +165,7 @@ window.oauth_edit_popup = new class {
 
 	#validateFields(data) {
 		return new Promise((resolve, reject) => {
-			const action_url = new URL('zabbix.php', location.href);
+			const action_url = new URL('sdnet.php', location.href);
 
 			action_url.searchParams.set('action', 'oauth.check');
 

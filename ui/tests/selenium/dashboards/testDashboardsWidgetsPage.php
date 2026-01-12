@@ -58,7 +58,7 @@ class testDashboardsWidgetsPage extends CWebTest {
 	 */
 	public function testDashboardsWidgetsPage_checkUnchangedWidgetType() {
 		// Opening widget configuration form for new widget first time.
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=1');
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=1');
 		$dashboard = CDashboardElement::find()->one()->edit();
 		// Check that widget type isn't changed in frontend and in DB.
 		$this->checkLastSelectedWidgetType();
@@ -123,7 +123,7 @@ class testDashboardsWidgetsPage extends CWebTest {
 	 * Widget type should be inherited from the one that was selected last time.
 	 */
 	public function testDashboardsWidgetsPage_checkWidgetTypeRemembering() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=1');
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=1');
 		$dashboard = CDashboardElement::find()->one()->edit();
 		// Opening widget configuration form for new Clock widget.
 		$overlay = $dashboard->addWidget();
@@ -155,7 +155,7 @@ class testDashboardsWidgetsPage extends CWebTest {
 	 */
 	public function testDashboardsWidgetsPage_checkProblemHostsWidget() {
 		// Authorize user and open the page with the desired widget.
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 
 		// Find dashboard element.
 		$dashboard = CDashboardElement::find()->one();
@@ -200,7 +200,7 @@ class testDashboardsWidgetsPage extends CWebTest {
 	 * Create dashboard with clock widget.
 	 */
 	public function testDashboardsWidgetsPage_checkDashboardCreate() {
-		$this->page->login()->open('zabbix.php?action=dashboard.list');
+		$this->page->login()->open('sdnet.php?action=dashboard.list');
 
 		$this->query('button:Create dashboard')->one()->click();
 		$this->page->waitUntilReady();
@@ -260,7 +260,7 @@ class testDashboardsWidgetsPage extends CWebTest {
 	 * Edit widget.
 	 */
 	public function testDashboardsWidgetsPage_checkProblemWidgetEdit() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid=1');
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid=1');
 
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget('Problems by severity');

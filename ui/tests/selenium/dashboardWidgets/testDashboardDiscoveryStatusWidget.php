@@ -221,7 +221,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 	 * Check discovery status widget layout.
 	 */
 	public function testDashboardDiscoveryStatusWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for testing layout of discovery status widget']);
 		$dialog = CDashboardElement::find()->one()->edit()->addWidget();
 		$form = $dialog->asForm();
@@ -365,7 +365,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 
 	public function testDashboardDiscoveryStatusWidget_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::SQL);
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for testing actions with discovery status widget'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->getWidget(self::$update_widget)->edit()->submit();
@@ -376,7 +376,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 	}
 
 	public function testDashboardDiscoveryStatusWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for testing actions with discovery status widget'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::DELETE_WIDGET);
@@ -434,7 +434,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 		$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Cancel test';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for testing cancel button for discovery status widget'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -526,7 +526,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 	 * @dataProvider getWidgetTableData
 	 */
 	public function testDashboardDiscoveryStatusWidget_checkWidgetTableData($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for testing widgets table data']);
 		$dashboard = CDashboardElement::find()->one();
 		$widget_data = $dashboard->getWidget(self::DATA_WIDGET)->getContent()->asTable();
@@ -537,7 +537,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 
 		// Check links for the discovery rules.
 		foreach (self::$druleids as $name => $id) {
-			$this->assertEquals('zabbix.php?action=discovery.view&filter_set=1&filter_druleids%5B0%5D='.$id,
+			$this->assertEquals('sdnet.php?action=discovery.view&filter_set=1&filter_druleids%5B0%5D='.$id,
 					$widget_data->query('link', $name)->one()->getAttribute('href')
 			);
 		}
@@ -555,7 +555,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 		}
 		CDataHelper::call('drule.update', $drule_data);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for testing widgets table data']);
 		$dashboard = CDashboardElement::find()->one();
 		$widget_data = $dashboard->getWidget(self::DATA_WIDGET)->getContent()->asTable();
@@ -578,7 +578,7 @@ class testDashboardDiscoveryStatusWidget extends CWebTest {
 				? CTestArrayHelper::get($data, 'fields', $default_values)
 				: CTestArrayHelper::get($data, 'fields', []);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Dashboard for testing actions with discovery status widget']);
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();

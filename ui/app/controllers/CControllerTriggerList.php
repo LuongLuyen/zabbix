@@ -228,7 +228,7 @@ class CControllerTriggerList extends CController {
 
 		$page_num = $this->getInput('page', 1);
 		CPagerHelper::savePage('trigger.list', $page_num);
-		$paging = CPagerHelper::paginate($page_num, $prefetched_triggers, $sort_order, (new CUrl('zabbix.php'))
+		$paging = CPagerHelper::paginate($page_num, $prefetched_triggers, $sort_order, (new CUrl('sdnet.php'))
 			->setArgument('action', 'trigger.list')
 			->setArgument('context', $data['context'])
 		);

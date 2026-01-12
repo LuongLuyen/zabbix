@@ -72,7 +72,7 @@ class testPageUserRoles extends CWebTest {
 	 * Check layout in user roles list.
 	 */
 	public function testPageUserRoles_Layout() {
-		$this->page->login()->open('zabbix.php?action=userrole.list');
+		$this->page->login()->open('sdnet.php?action=userrole.list');
 		$this->page->assertTitle('Configuration of user roles');
 		$this->page->assertHeader('User roles');
 
@@ -297,7 +297,7 @@ class testPageUserRoles extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageUserRoles_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=userrole.list');
+		$this->page->login()->open('sdnet.php?action=userrole.list');
 		$table = $this->getTable();
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 		$form->fill(['Name' => $data['name']])->submit();
@@ -368,7 +368,7 @@ class testPageUserRoles extends CWebTest {
 			$hash_before = CDBHelper::getHash('SELECT * FROM role');
 		}
 
-		$this->page->login()->open('zabbix.php?action=userrole.list');
+		$this->page->login()->open('sdnet.php?action=userrole.list');
 		$this->query('button:Reset')->one()->click();
 		$before_delete = $this->getTableColumnData('Name');
 		$table = $this->query('class:list-table')->asTable()->one();

@@ -190,7 +190,7 @@ window.check_popup = new class {
 	}
 
 	submit() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		let fields = getFormFields(this.form);
 
 		for (const element of this.form.parentNode.children) {

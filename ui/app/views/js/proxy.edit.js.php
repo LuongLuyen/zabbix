@@ -29,7 +29,7 @@ window.proxy_edit_popup = new class {
 		this.form = this.overlay.$dialogue.$body[0].querySelector('form');
 		this.footer = this.overlay.$dialogue.$footer[0];
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'proxy.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -154,7 +154,7 @@ window.proxy_edit_popup = new class {
 	}
 
 	refreshConfig() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'proxy.config.refresh');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('proxy')) ?>);
 
@@ -182,7 +182,7 @@ window.proxy_edit_popup = new class {
 	}
 
 	delete() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'proxy.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('proxy')) ?>);
 
@@ -218,7 +218,7 @@ window.proxy_edit_popup = new class {
 			}
 		}
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', this.proxyid !== null ? 'proxy.update' : 'proxy.create');
 
 		this._post(curl.getUrl(), fields, (response) => {

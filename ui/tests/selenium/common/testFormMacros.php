@@ -551,14 +551,14 @@ abstract class testFormMacros extends CLegacyWebTest {
 
 		if ($update) {
 			if ($host_type === 'host') {
-				$this->page->login()->open('zabbix.php?action=host.view&filter_selected=0&filter_reset=1')->waitUntilReady();
+				$this->page->login()->open('sdnet.php?action=host.view&filter_selected=0&filter_reset=1')->waitUntilReady();
 				$column = $this->query('xpath://table[@class="list-table"]')->asTable()->one()->findRow('Name', $name)->getColumn('Name');
 				$column->query('link', $name)->asPopupButton()->one()->select('Host');
 				$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 			}
 			else if ($host_type === 'template') {
 				$this->page->login()
-						->open('zabbix.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+						->open('sdnet.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 				$this->query('link', $name)->one()->click();
 				$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 			}
@@ -575,12 +575,12 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 		else {
 			if ($host_type === 'host') {
-				$this->page->login()->open('zabbix.php?action=host.view&filter_selected=0&filter_reset=1')->waitUntilReady();
+				$this->page->login()->open('sdnet.php?action=host.view&filter_selected=0&filter_reset=1')->waitUntilReady();
 				$this->query('button:Create host')->one()->waitUntilClickable()->click();
 				$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
 			}
 			else if ($host_type === 'template') {
-				$this->page->login()->open('zabbix.php?action=template.list')->waitUntilReady();
+				$this->page->login()->open('sdnet.php?action=template.list')->waitUntilReady();
 				$this->query('button:Create template')->one()->click();
 				$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 			}
@@ -676,14 +676,14 @@ abstract class testFormMacros extends CLegacyWebTest {
 		$form_type = ($host_type === 'host prototype') ? 'hostPrototype' : $host_type.'s';
 
 		if ($host_type === 'host') {
-			$this->page->login()->open('zabbix.php?action=host.view')->waitUntilReady();
+			$this->page->login()->open('sdnet.php?action=host.view')->waitUntilReady();
 			$column = $this->query('xpath://table[@class="list-table"]')->asTable()->one()->findRow('Name', $name)->getColumn('Name');
 			$column->query('link', $name)->asPopupButton()->one()->select('Host');
 			$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		}
 		else if ($host_type === 'template') {
 			$this->page->login()
-					->open('zabbix.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+					->open('sdnet.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 			$this->query('link', $name)->one()->click();
 			$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		}
@@ -794,12 +794,12 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 		else {
 			if ($host_type === 'host') {
-				$this->page->login()->open('zabbix.php?action=host.view')->waitUntilReady();
+				$this->page->login()->open('sdnet.php?action=host.view')->waitUntilReady();
 				$this->query('button:Create host')->one()->waitUntilClickable()->click();
 				$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 			}
 			else if ($host_type === 'template') {
-				$this->page->login()->open('zabbix.php?action=template.list')->waitUntilReady();
+				$this->page->login()->open('sdnet.php?action=template.list')->waitUntilReady();
 				$this->query('button:Create template')->one()->click();
 				$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 			}
@@ -962,7 +962,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		$id = CDBHelper::getValue('SELECT hostid FROM hosts WHERE host='.zbx_dbstr($name));
 
 		if ($host_type === 'host') {
-			$this->page->login()->open('zabbix.php?action=host.view')->waitUntilReady();
+			$this->page->login()->open('sdnet.php?action=host.view')->waitUntilReady();
 			$column = $this->query('xpath://table[@class="list-table"]')->asTable()->one()->findRow('Name', $name)
 					->getColumn('Name');
 			$column->query('link', $name)->asPopupButton()->one()->select('Host');
@@ -970,7 +970,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 		else if ($host_type === 'template') {
 			$this->page->login()
-					->open('zabbix.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+					->open('sdnet.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 			$this->query('link', $name)->one()->click();
 			$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		}
@@ -1103,7 +1103,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 	protected function checkRemoveInheritedMacros($data, $host_type, $id, $is_prototype = false,
 			$lld_id = null, $name = null) {
 		if ($host_type === 'host') {
-			$this->page->login()->open('zabbix.php?action=host.view')->waitUntilReady();
+			$this->page->login()->open('sdnet.php?action=host.view')->waitUntilReady();
 			$column = $this->query('xpath://table[@class="list-table"]')->asTable()->one()->findRow('Name', $name)
 					->getColumn('Name');
 			$column->query('link', $name)->asPopupButton()->one()->select('Host');
@@ -1111,7 +1111,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 		else if ($host_type === 'template') {
 			$this->page->login()
-					->open('zabbix.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+					->open('sdnet.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 			$this->query('link', $name)->one()->click();
 			$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		}
@@ -1266,14 +1266,14 @@ abstract class testFormMacros extends CLegacyWebTest {
 		$this->assertMessage(TEST_GOOD);
 
 		if ($host_type === 'host') {
-			$this->page->open('zabbix.php?action=host.view')->waitUntilReady();
+			$this->page->open('sdnet.php?action=host.view')->waitUntilReady();
 			$column = $this->query('xpath://table[@class="list-table"]')->asTable()->one()->findRow('Name', $name)
 					->getColumn('Name');
 			$column->query('link', $name)->asPopupButton()->one()->select('Host');
 		}
 		else if ($host_type === 'template') {
 			$this->page->login()
-					->open('zabbix.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+					->open('sdnet.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 			$this->query('link', $name)->one()->click();
 			$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		}
@@ -1330,7 +1330,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		$id = CDBHelper::getValue('SELECT hostid FROM hosts WHERE host='.zbx_dbstr($name));
 
 		if ($host_type === 'host') {
-			$this->page->login()->open('zabbix.php?action=host.view')->waitUntilReady();
+			$this->page->login()->open('sdnet.php?action=host.view')->waitUntilReady();
 			$column = $this->query('xpath://table[@class="list-table"]')->asTable()->one()->findRow('Name', $name)
 					->getColumn('Name');
 			$column->query('link', $name)->asPopupButton()->one()->select('Host');
@@ -1338,7 +1338,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 		else if ($host_type === 'template') {
 			$this->page->login()
-					->open('zabbix.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+					->open('sdnet.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 			$this->query('link', $name)->one()->click();
 			$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		}
@@ -1884,7 +1884,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 		else if ($source === 'templates') {
 			$this->page->login()
-					->open('zabbix.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+					->open('sdnet.php?action=template.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 			$this->query('link', $name)->one()->click();
 			$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible()->selectTab('Macros');
 		}
@@ -2517,7 +2517,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 
 		$this->page->login();
 
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 
 		// Check in setting what Vault is enabled.
 		$setting_form = $this->query('name:otherForm')->asForm()->one();
@@ -2552,7 +2552,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 
 		// Change Vault in settings to correct one.
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$setting_form->fill(['Vault provider' => 'HashiCorp Vault'])->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
@@ -2612,14 +2612,14 @@ abstract class testFormMacros extends CLegacyWebTest {
 	 */
 	public function resolveSecretMacro($data, $hostid, $object = 'global') {
 		$url = $data['url'] === 'latest_data'
-			? 'zabbix.php?action=latest.view&hostids%5B%5D='.$hostid.'&show_details=1'
-			: 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+			? 'sdnet.php?action=latest.view&hostids%5B%5D='.$hostid.'&show_details=1'
+			: 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 
 		$this->checkItemFields($url, $data['name'], $data['key']);
 
 		if ($object === 'host') {
 			// Open host form in popup and change macro type to secret.
-			$form = $this->openMacrosTab('zabbix.php?action=host.view', 'hosts', false, 'Host with secret macros');
+			$form = $this->openMacrosTab('sdnet.php?action=host.view', 'hosts', false, 'Host with secret macros');
 			$this->getValueField($this->macro_resolve)->changeInputType(CInputGroupElement::TYPE_SECRET);
 
 			$form->submit();
@@ -2628,7 +2628,7 @@ abstract class testFormMacros extends CLegacyWebTest {
 		}
 		else {
 			// Change global macro type to secret.
-			$this->page->open('zabbix.php?action=macros.edit')->waitUntilReady();
+			$this->page->open('sdnet.php?action=macros.edit')->waitUntilReady();
 			$this->getValueField($this->macro_resolve)->changeInputType(CInputGroupElement::TYPE_SECRET);
 			$this->query('button:Update')->one()->click();
 			$this->assertMessage(TEST_GOOD, 'Macros updated');

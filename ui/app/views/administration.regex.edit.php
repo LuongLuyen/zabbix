@@ -25,7 +25,7 @@ $html_page = (new CHtmlPage())
 	->setTitleSubmenu(getAdministrationGeneralSubmenu())
 	->setDocUrl(CDocHelper::getUrl(CDocHelper::ADMINISTRATION_REGEX_EDIT));
 
-$action = (new CUrl('zabbix.php'))->setArgument('action', ($data['regexid'] == 0) ? 'regex.create' : 'regex.update');
+$action = (new CUrl('sdnet.php'))->setArgument('action', ($data['regexid'] == 0) ? 'regex.create' : 'regex.update');
 
 if ($data['regexid'] != 0) {
 	$action->setArgument('regexid', $data['regexid']);
@@ -148,13 +148,13 @@ if ($data['regexid'] != 0) {
 		[
 			(new CSimpleButton(_('Clone')))->setId('clone'),
 			(new CRedirectButton(_('Delete'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'regex.delete')
 						->setArgument('regexids', (array) $data['regexid'])
 						->setArgument(CSRF_TOKEN_NAME, $csrf_token),
 				_('Delete regular expression?')
 			))->setId('delete'),
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'regex.list')
 			))->setId('cancel')
 		]
@@ -164,7 +164,7 @@ else {
 	$reg_exp_view->setFooter(makeFormFooter(
 		new CSubmit('add', _('Add')),
 		[
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'regex.list')
 			))->setId('cancel')
 		]

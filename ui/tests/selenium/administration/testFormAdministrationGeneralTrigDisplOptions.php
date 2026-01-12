@@ -21,7 +21,7 @@ require_once __DIR__.'/../common/testFormAdministrationGeneral.php';
  */
 class testFormAdministrationGeneralTrigDisplOptions extends testFormAdministrationGeneral {
 
-	public $config_link = 'zabbix.php?action=trigdisplay.edit';
+	public $config_link = 'sdnet.php?action=trigdisplay.edit';
 	public $form_selector = 'xpath://form[contains(@action, "trigdisplay.update")]';
 
 	public $default_values = [

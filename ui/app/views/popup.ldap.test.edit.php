@@ -19,7 +19,7 @@
  * @var array $data
  */
 
-$form_action = (new CUrl('zabbix.php'))
+$form_action = (new CUrl('sdnet.php'))
 	->setArgument('action', 'popup.ldap.test.send')
 	->getUrl();
 

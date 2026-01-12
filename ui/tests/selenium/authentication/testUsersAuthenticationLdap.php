@@ -2976,13 +2976,13 @@ class testUsersAuthenticationLdap extends testFormAuthentication {
 
 		// Open existing User group and change it LDAP server.
 		$usrgrpid = CDataHelper::get('LoginUsers.usrgrpids.LDAP user group');
-		$this->page->open('zabbix.php?action=usergroup.edit&usrgrpid='.$usrgrpid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=usergroup.edit&usrgrpid='.$usrgrpid)->waitUntilReady();
 		$this->query('name:userdirectoryid')->asDropdown()->one()->fill($ldap_name);
 		$this->query('button:Update')->one()->click();
 		$this->assertMessage(TEST_GOOD, 'User group updated');
 
 		// Check that value in table is changed and display that there exists group with LDAP server.
-		$this->page->open('zabbix.php?action=authentication.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=authentication.edit')->waitUntilReady();
 		$form->selectTab('LDAP settings');
 		$this->assertEquals('1', $row->getColumn('User groups')->getText());
 		$this->assertFalse($this->query('xpath://button[text()="Remove"][1]')->one()->isEnabled());
@@ -3052,7 +3052,7 @@ class testUsersAuthenticationLdap extends testFormAuthentication {
 	 * @param array $data	  data provider to fill Authentication form
 	 */
 	private function openLdapForm($auth = 'Internal', $data = []) {
-		$this->page->login()->open('zabbix.php?action=authentication.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=authentication.edit')->waitUntilReady();
 		$form = $this->query('id:authentication-form')->asForm()->one();
 		$form->fill(['Default authentication' => $auth]);
 		if (array_key_exists('authentication', $data)) {

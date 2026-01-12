@@ -192,7 +192,7 @@ class testWidgets extends CWebTest {
 	 * @param array			$configuration    	widget parameter(s)
 	 */
 	public function setWidgetConfiguration($dashboardid, $widget_name, $configuration = []) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$form = $dashboard->getWidget($widget_name)->edit()->asForm();
 		$form->fill($configuration);

@@ -186,7 +186,7 @@ class testZBX6663 extends CLegacyWebTest {
 		}
 
 		if (isset($zbx_data['template'])) {
-			$this->zbxTestLogin('zabbix.php?action=template.list');
+			$this->zbxTestLogin('sdnet.php?action=template.list');
 			$this->query('button:Reset')->one()->click();
 			$form = $this->query('name:zbx_filter')->asForm()->waitUntilReady()->one();
 			$form->fill(['Name' => $zbx_data['template']]);

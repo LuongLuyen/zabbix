@@ -97,7 +97,7 @@
 
 		#delete(target, templateids, clear) {
 			let confirmation;
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 
 			if (clear) {
 				confirmation = templateids.length > 1

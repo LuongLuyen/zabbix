@@ -50,7 +50,7 @@ class CControllerScheduledReportDelete extends CController {
 		$result = API::Report()->delete($reportids);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'scheduledreport.list')
 				->setArgument('page', CPagerHelper::loadPage('scheduledreport.list', null))
 		);

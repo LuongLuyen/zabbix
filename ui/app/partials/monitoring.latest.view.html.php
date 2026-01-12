@@ -125,7 +125,7 @@ foreach ($data['items'] as $itemid => $item) {
 				CMenuPopupHelper::getItem([
 					'itemid' => $itemid,
 					'context' => 'host',
-					'backurl' => (new CUrl('zabbix.php'))
+					'backurl' => (new CUrl('sdnet.php'))
 						->setArgument('action', 'latest.view')
 						->setArgument('context','host')
 						->getUrl()

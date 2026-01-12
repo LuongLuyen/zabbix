@@ -88,7 +88,7 @@ class testPageTriggerDescription extends CWebTest {
 	 * @dataProvider getTriggerDescription
 	 */
 	public function testPageTriggerDescription_ProblemDescription($data) {
-		$this->page->login()->open('zabbix.php?action=problem.view');
+		$this->page->login()->open('sdnet.php?action=problem.view');
 
 		// Find rows from the data provider and check the description if such should exist.
 		$table = $this->query('class:list-table')->asTable()->one();

@@ -723,7 +723,7 @@ $edit_source_timeouts_link = null;
 
 if ($data['can_edit_source_timeouts']
 		&& (!$readonly || $data['custom_timeout'] == ZBX_ITEM_CUSTOM_TIMEOUT_DISABLED)) {
-	$proxy_url = (new CUrl('zabbix.php'))
+	$proxy_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'proxy.edit')
 		->setArgument('proxyid', $data['host']['proxyid'])
@@ -732,7 +732,7 @@ if ($data['can_edit_source_timeouts']
 	$edit_source_timeouts_link = $data['host']['proxyid']
 		? (new CLink(_('Timeouts'), $proxy_url))->addClass(ZBX_STYLE_LINK)
 		: (new CLink(_('Timeouts'),
-			(new CUrl('zabbix.php'))->setArgument('action', 'timeouts.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'timeouts.edit')
 		))
 			->addClass(ZBX_STYLE_LINK)
 			->setTarget('_blank');

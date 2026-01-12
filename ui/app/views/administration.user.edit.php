@@ -181,7 +181,7 @@ else {
 	}
 
 	$hint = !$change_password_enabled
-		? $hint = makeErrorIcon(_('Password can only be changed for users using the internal Zabbix authentication.'))
+		? $hint = makeErrorIcon(_('Password can only be changed for users using the internal SDNet authentication.'))
 		: null;
 
 	$user_form_list->addRow(_('Password'), [
@@ -601,7 +601,7 @@ if ($data['roleid']) {
 $tabs->addTab('permissionsTab', _('Permissions'), $permissions_form_list);
 
 // Append buttons to form.
-$cancel_button = (new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+$cancel_button = (new CRedirectButton(_('Cancel'), (new CUrl('sdnet.php'))
 	->setArgument('action', 'user.list')
 	->setArgument('page', CPagerHelper::loadPage('user.list', null))
 ))->setId('cancel');
@@ -610,7 +610,7 @@ if ($data['userid'] != 0) {
 	$tabs->setFooter(makeFormFooter(
 		(new CSubmitButton(_('Update'), 'action', 'user.update'))->setId('update'),
 		[
-			(new CRedirectButton(_('Delete'), (new CUrl('zabbix.php'))
+			(new CRedirectButton(_('Delete'), (new CUrl('sdnet.php'))
 				->setArgument('action', 'user.delete')
 				->setArgument('userids', [$data['userid']])
 				->setArgument(CSRF_TOKEN_NAME, $csrf_token),

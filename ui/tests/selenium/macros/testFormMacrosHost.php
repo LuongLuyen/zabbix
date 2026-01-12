@@ -250,7 +250,7 @@ class testFormMacrosHost extends testFormMacros {
 	 * @dataProvider getSecretMacrosLayoutData
 	 */
 	public function testFormMacrosHost_CheckSecretMacrosLayout($data) {
-		$this->checkSecretMacrosLayout($data, 'zabbix.php?action=host.view', 'hosts',
+		$this->checkSecretMacrosLayout($data, 'sdnet.php?action=host.view', 'hosts',
 				'Host for secret macros layout'
 		);
 	}
@@ -259,7 +259,7 @@ class testFormMacrosHost extends testFormMacros {
 	 * @dataProvider getCreateSecretMacrosData
 	 */
 	public function testFormMacrosHost_CreateSecretMacros($data) {
-		$this->createSecretMacros($data, 'zabbix.php?action=host.view', 'hosts',
+		$this->createSecretMacros($data, 'sdnet.php?action=host.view', 'hosts',
 				'Empty Host for creating secret macros'
 		);
 	}
@@ -268,7 +268,7 @@ class testFormMacrosHost extends testFormMacros {
 	 * @dataProvider getRevertSecretMacrosData
 	 */
 	public function testFormMacrosHost_RevertSecretMacroChanges($data) {
-		$this->revertSecretMacroChanges($data, 'zabbix.php?action=host.view', 'hosts',
+		$this->revertSecretMacroChanges($data, 'sdnet.php?action=host.view', 'hosts',
 				'Host with secret macros'
 		);
 	}
@@ -314,7 +314,7 @@ class testFormMacrosHost extends testFormMacros {
 	 * @dataProvider getUpdateSecretMacrosData
 	 */
 	public function testFormMacrosHost_UpdateSecretMacros($data) {
-		$this->updateSecretMacros($data, 'zabbix.php?action=host.view', 'hosts', 'Host with secret macros');
+		$this->updateSecretMacros($data, 'sdnet.php?action=host.view', 'hosts', 'Host with secret macros');
 	}
 
 	/**
@@ -331,7 +331,7 @@ class testFormMacrosHost extends testFormMacros {
 	 * Check Vault macros validation.
 	 */
 	public function testFormMacrosHost_CheckVaultValidation() {
-		$this->checkVaultValidation('zabbix.php?action=host.view', 'hosts', 'Host with vault macro');
+		$this->checkVaultValidation('sdnet.php?action=host.view', 'hosts', 'Host with vault macro');
 	}
 
 	/**
@@ -339,7 +339,7 @@ class testFormMacrosHost extends testFormMacros {
 	 */
 	public function testFormMacrosHost_CreateVaultMacros($data) {
 		$host = ($data['vault'] === 'Hashicorp') ? 'Host for creating Vault macros' : 'Empty host without macros';
-		$this->createVaultMacros($data, 'zabbix.php?action=host.view', 'hosts', $host);
+		$this->createVaultMacros($data, 'sdnet.php?action=host.view', 'hosts', $host);
 	}
 
 	/**
@@ -347,6 +347,6 @@ class testFormMacrosHost extends testFormMacros {
 	 * @dataProvider getUpdateVaultMacrosCommonData
 	 */
 	public function testFormMacrosHost_UpdateVaultMacros($data) {
-		$this->updateVaultMacros($data, 'zabbix.php?action=host.view', 'hosts', 'Host for updating Vault macros');
+		$this->updateVaultMacros($data, 'sdnet.php?action=host.view', 'hosts', 'Host for updating Vault macros');
 	}
 }

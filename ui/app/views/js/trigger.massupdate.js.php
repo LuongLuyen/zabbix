@@ -52,7 +52,7 @@
 	}
 
 	function constructTriggerUrl(triggerid, is_prototype) {
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 		url.setArgument('action', 'popup');
 		url.setArgument('popup', is_prototype ? 'trigger.prototype.edit' : 'trigger.edit');
 		url.setArgument('triggerid', triggerid);

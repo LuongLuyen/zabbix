@@ -124,7 +124,7 @@ function make_event_details(array $event, array $allowed) {
 			if ($correlations) {
 				if ($allowed['ui_correlation']) {
 					$correlation_name = (new CLink($correlations[0]['name'],
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'popup')
 							->setArgument('popup', 'correlation.edit')
 							->setArgument('correlationid', $correlations[0]['correlationid'])
@@ -436,7 +436,7 @@ function make_small_eventlist(array $startEvent, array $allowed) {
 		 */
 		addTriggerValueStyle($cell_status, $value, $value_clock, $is_acknowledged);
 
-		$problem_update_url = (new CUrl('zabbix.php'))
+		$problem_update_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'acknowledge.edit')
 			->setArgument('eventids[]', $event['eventid'])

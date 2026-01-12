@@ -274,7 +274,7 @@ class testFormTriggerPrototype extends CLegacyWebTest {
 	public function testFormTriggerPrototype_CheckLayout($data) {
 
 		if (isset($data['template'])) {
-			$this->zbxTestLogin('zabbix.php?action=template.list');
+			$this->zbxTestLogin('sdnet.php?action=template.list');
 			$form = $this->query('name:zbx_filter')->asForm()->waitUntilReady()->one();
 			$this->filterEntriesAndOpenDiscovery($data['template'], $form);
 			$discoveryRule = self::DISCOVERY_RULE_TEMPLATE;
@@ -1211,7 +1211,7 @@ class testFormTriggerPrototype extends CLegacyWebTest {
 	 * @dataProvider getLongExpressionData
 	 */
 	public function testFormTriggerPrototype_LongExpression($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.prototype.list&context=host&parent_discoveryid='.self::$long_key_ruleid);
+		$this->page->login()->open('sdnet.php?action=trigger.prototype.list&context=host&parent_discoveryid='.self::$long_key_ruleid);
 		$this->page->waitUntilReady();
 
 		// Open the correct form.

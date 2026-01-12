@@ -146,7 +146,7 @@ class testFormValueMappings extends CWebTest {
 		$this->page->waitUntilReady();
 		$this->assertMessage(TEST_GOOD);
 
-		$this->page->open('zabbix.php?action='.$source.'.list&filter_name=Clone Valuemap Test&filter_set=1')->waitUntilReady();
+		$this->page->open('sdnet.php?action='.$source.'.list&filter_name=Clone Valuemap Test&filter_set=1')->waitUntilReady();
 
 		$this->query('link', 'Clone Valuemap Test')->one()->click();
 		COverlayDialogElement::find()->asForm()->one()->waitUntilVisible()->selectTab('Value mapping');
@@ -1015,7 +1015,7 @@ class testFormValueMappings extends CWebTest {
 		// Get name of host or template for the filter and link.
 		$name = CDBHelper::getValue('SELECT host FROM hosts WHERE hostid='.zbx_dbstr($sourceid));
 
-		$this->page->open('zabbix.php?action='.$source.'.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
+		$this->page->open('sdnet.php?action='.$source.'.list&filter_name='.$name.'&filter_set=1')->waitUntilReady();
 		$this->query('link', $name)->one()->click();
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 
@@ -1146,7 +1146,7 @@ class testFormValueMappings extends CWebTest {
 		];
 
 		// Create a new host/template, populate the hosthgroup but leave the name empty.
-		$this->page->login()->open('zabbix.php?action='.$source.'.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action='.$source.'.list')->waitUntilReady();
 		$this->query('button:Create '.$source)->one()->click();
 
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
@@ -1190,7 +1190,7 @@ class testFormValueMappings extends CWebTest {
 	 * @param string $source		Entity (hosts or templates) for which the scenario is executed.
 	 */
 	public function checkMassValuemappingScreenshot($source) {
-		$this->page->login()->open(($source === 'hosts') ? 'zabbix.php?action=host.list' : 'zabbix.php?action=template.list')->waitUntilReady();
+		$this->page->login()->open(($source === 'hosts') ? 'sdnet.php?action=host.list' : 'sdnet.php?action=template.list')->waitUntilReady();
 		$this->selectTableRows();
 		$this->query('button:Mass update')->one()->click();
 		$update_form = COverlayDialogElement::find()->asForm()->one()->waitUntilReady();

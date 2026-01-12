@@ -461,7 +461,7 @@ class testPageLowLevelDiscoveryPrototypes extends testPagePrototypes {
 			],
 			'master_item' => [
 				'name' => self::MASTER_ITEM_NAME,
-				'url' => 'zabbix.php?action=popup&popup=item.prototype.edit&context='.$data['context'].'&parent_discoveryid='.
+				'url' => 'sdnet.php?action=popup&popup=item.prototype.edit&context='.$data['context'].'&parent_discoveryid='.
 						self::$ids['parent_lldid'][$data['context']].'&itemid='.self::$ids['master_item_id'][$data['context']],
 				'class' => 'teal'
 			],

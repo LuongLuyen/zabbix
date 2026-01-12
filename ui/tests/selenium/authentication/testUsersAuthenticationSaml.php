@@ -563,7 +563,7 @@ class testUsersAuthenticationSaml extends testFormAuthentication {
 
 	private function testSamlConfiguration($data) {
 		$old_hash = CDBHelper::getHash('SELECT * FROM settings');
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 
 		// Check that SAML settings are disabled by default and configure SAML authentication.
 		$this->configureSamlAuthentication($data);
@@ -613,7 +613,7 @@ class testUsersAuthenticationSaml extends testFormAuthentication {
 				'SP entity ID' => 'SP'
 			]
 		];
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 
 		$this->configureSamlAuthentication($settings);
 
@@ -624,7 +624,7 @@ class testUsersAuthenticationSaml extends testFormAuthentication {
 		$this->assertStringContainsString('index_sso.php', $link->getAttribute('href'));
 
 		// Login and disable SAML authentication.
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$form = $this->query('id:authentication-form')->asForm()->one();
 		$form->selectTab('SAML settings');
 		$form->getField('Enable SAML authentication')->uncheck();
@@ -670,7 +670,7 @@ class testUsersAuthenticationSaml extends testFormAuthentication {
 			[
 				[
 					'username' => 'admin-zabbix',
-					'url' => 'zabbix.php?action=service.list',
+					'url' => 'sdnet.php?action=service.list',
 					'header' => 'Services'
 				]
 			],
@@ -727,7 +727,7 @@ class testUsersAuthenticationSaml extends testFormAuthentication {
 	 * @dataProvider getAuthenticationDetails
 	 */
 	public function testUsersAuthenticationSaml_Authenticate($data) {
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$settings = [
 			'fields' => [
 				'IdP entity ID' => PHPUNIT_IDP_ENTITY_ID,

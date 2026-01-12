@@ -31,7 +31,7 @@ window.template_edit_popup = new class {
 		this.macros_templateids = null;
 		this.show_inherited_macros = false;
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'template.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -251,7 +251,7 @@ window.template_edit_popup = new class {
 	}
 
 	delete(clear = false) {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'template.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('template')) ?>);
@@ -274,7 +274,7 @@ window.template_edit_popup = new class {
 
 		this.overlay.setLoading();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', this.templateid === null ? 'template.create' : 'template.update');
 

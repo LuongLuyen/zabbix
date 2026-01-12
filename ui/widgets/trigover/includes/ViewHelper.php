@@ -67,7 +67,7 @@ class ViewHelper {
 
 		$column->setMenuPopup(CMenuPopupHelper::getTrigger([
 			'triggerid' => $trigger['triggerid'],
-			'backurl' => (new CUrl('zabbix.php'))
+			'backurl' => (new CUrl('sdnet.php'))
 				->setArgument('action', 'dashboard.view')
 				->getUrl(),
 			'eventid' => $eventid,

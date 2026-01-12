@@ -45,7 +45,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 	}
 
 	public function testUsersAuthenticationHttp_Layout() {
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$form = $this->query('id:authentication-form')->asForm()->one();
 		$form->selectTab('HTTP settings');
 
@@ -107,7 +107,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 					'password' => 'zabbix',
 					'pages' => [
 						[
-							'page' => 'zabbix.php?action=dashboard.view',
+							'page' => 'sdnet.php?action=dashboard.view',
 							'action' => self::LOGIN_GUEST,
 							'target' => 'Global view'
 						],
@@ -129,7 +129,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 						],
 						// Couldn't open GUI page due access.
 						[
-							'page' => 'zabbix.php?action=gui.edit',
+							'page' => 'sdnet.php?action=gui.edit',
 							'error' => 'Access denied'
 						],
 						// Login after logout.
@@ -157,7 +157,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 					],
 					'pages' => [
 						[
-							'page' => 'zabbix.php?action=dashboard.view',
+							'page' => 'sdnet.php?action=dashboard.view',
 							'action' => self::LOGIN_GUEST,
 							'target' => 'Global view'
 						],
@@ -178,7 +178,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 						],
 						// Couldn't open GUI page due access.
 						[
-							'page' => 'zabbix.php?action=gui.edit',
+							'page' => 'sdnet.php?action=gui.edit',
 							'error' => 'Access denied'
 						],
 						// Login after logout.
@@ -209,7 +209,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 					],
 					'pages' => [
 						[
-							'page' => 'zabbix.php?action=dashboard.view',
+							'page' => 'sdnet.php?action=dashboard.view',
 							'action' => self::LOGIN_GUEST,
 							'target' => 'Global view'
 						],
@@ -244,7 +244,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 						],
 						// Couldn't open GUI page due access.
 						[
-							'page' => 'zabbix.php?action=gui.edit',
+							'page' => 'sdnet.php?action=gui.edit',
 							'error' => 'Access denied'
 						]
 					],
@@ -301,7 +301,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 						],
 						// Redirect to HTTP login form and user is signed on GUI page.
 						[
-							'page' => 'zabbix.php?action=gui.edit',
+							'page' => 'sdnet.php?action=gui.edit',
 							'action' => self::LOGIN_HTTP,
 							'target' => 'GUI'
 						]
@@ -369,7 +369,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 							'target' => 'Global view'
 						],
 						[
-							'page' => 'zabbix.php?action=user.list',
+							'page' => 'sdnet.php?action=user.list',
 							'error' => 'Access denied',
 							'no_login' => true
 						],
@@ -425,7 +425,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 							'target' => 'Global view'
 						],
 						[
-							'page' => 'zabbix.php?action=user.list',
+							'page' => 'sdnet.php?action=user.list',
 							'error' => 'Access denied',
 							'no_login' => true
 						],
@@ -436,7 +436,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 //							'target' => 'hosts'
 //						],
 						[
-							'page' => 'zabbix.php?action=dashboard.view',
+							'page' => 'sdnet.php?action=dashboard.view',
 							'action' => self::LOGIN_HTTP,
 							'target' => 'Global view'
 						],
@@ -662,7 +662,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 		sleep((int) ini_get('opcache.revalidate_freq') + 1);
 
 		// Open authentication configuration form and verify that the HTTP settings tab is/isn't present.
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$form = $this->query('id:authentication-form')->asForm()->one();
 		$this->assertEquals($data['tabs'], $form->getTabs());
 	}
@@ -701,7 +701,7 @@ class testUsersAuthenticationHttp extends CLegacyWebTest {
 	 * @param array $data	data array for HTTP settings setup.
 	 */
 	private function setHttpConfiguration($data) {
-		$this->page->login()->open('zabbix.php?action=authentication.edit');
+		$this->page->login()->open('sdnet.php?action=authentication.edit');
 		$this->assertEquals('Authentication', $this->query('tag:h1')->one()->getText());
 		$this->page->assertTitle('Configuration of authentication');
 

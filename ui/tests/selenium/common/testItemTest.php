@@ -93,8 +93,8 @@ class testItemTest extends CWebTest {
 		}
 		else {
 			$create_link = ($items === null)
-				? 'zabbix.php?action=item.prototype.list&context='.$context.'&parent_discoveryid='.$id
-				: 'zabbix.php?action=item.list&context='.$context.'&filter_set=1&filter_hostids[0]='.$id;
+				? 'sdnet.php?action=item.prototype.list&context='.$context.'&parent_discoveryid='.$id
+				: 'sdnet.php?action=item.list&context='.$context.'&filter_set=1&filter_hostids[0]='.$id;
 		}
 
 		$this->page->login()->open($create_link);
@@ -760,8 +760,8 @@ class testItemTest extends CWebTest {
 	public function checkTestItem($data, $is_host, $id, $items = null, $lld = false) {
 		$context = ($is_host === true) ? 'host' : 'template';
 		$create_link = ($items === null)
-			? 'zabbix.php?action=item.prototype.list&context='.$context.'&parent_discoveryid='.$id
-			: 'zabbix.php?action=item.list&context='.$context.'&filter_set=1&filter_hostids[0]='.$id;
+			? 'sdnet.php?action=item.prototype.list&context='.$context.'&parent_discoveryid='.$id
+			: 'sdnet.php?action=item.list&context='.$context.'&filter_set=1&filter_hostids[0]='.$id;
 
 		if (!$is_host && $data['fields']['Type'] === 'IPMI agent') {
 			return;

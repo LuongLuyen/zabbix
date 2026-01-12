@@ -40,7 +40,7 @@ else {
 		->setHeadingColumn(0);
 
 	$url_group = $data['allowed_ui_problems']
-		? (new CUrl('zabbix.php'))
+		? (new CUrl('sdnet.php'))
 			->setArgument('action', 'problem.view')
 			->setArgument('filter_set', '1')
 			->setArgument('show', TRIGGERS_OPTION_RECENT_PROBLEM)
@@ -52,7 +52,7 @@ else {
 			)
 		: null;
 	$url_host = $data['allowed_ui_problems']
-		? (new CUrl('zabbix.php'))
+		? (new CUrl('sdnet.php'))
 			->setArgument('action', 'problem.view')
 			->setArgument('filter_set', '1')
 			->setArgument('show', TRIGGERS_OPTION_RECENT_PROBLEM)

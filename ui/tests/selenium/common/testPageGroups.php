@@ -98,7 +98,7 @@ class testPageGroups extends CWebTest {
 		foreach ([false, true] as $state) {
 			$filter->expand($state);
 			// Leave the page and reopen the previous page to make sure the filter state is still saved.
-			$this->page->open('zabbix.php?action=report.status')->waitUntilReady();
+			$this->page->open('sdnet.php?action=report.status')->waitUntilReady();
 			$this->page->open($this->link)->waitUntilReady();
 			$this->assertTrue($filter->isExpanded($state));
 		}
@@ -161,7 +161,7 @@ class testPageGroups extends CWebTest {
 		$row->getColumn(ucfirst($this->object).'s')->query('link', $links['host_template'])->one()->click();
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
 
-		$this->assertStringContainsString('zabbix.php?action=popup&popup='.$this->object.'.edit&'.$this->object.
+		$this->assertStringContainsString('sdnet.php?action=popup&popup='.$this->object.'.edit&'.$this->object.
 				'id='.$id, $this->page->getCurrentUrl()
 		);
 
@@ -174,8 +174,8 @@ class testPageGroups extends CWebTest {
 		$group_id = CDBHelper::getValue('SELECT groupid FROM hstgrp WHERE name='.zbx_dbstr($links['name']));
 		$row->getColumn('Count')->query('link', $links['count'])->one()->click();
 		$this->assertStringContainsString((($this->object === 'host')
-			? 'zabbix.php?action=host.list&'
-			: 'zabbix.php?action=template.list&').'filter_set=1&filter_groups%5B0%5D='.$group_id, $this->page->getCurrentUrl()
+			? 'sdnet.php?action=host.list&'
+			: 'sdnet.php?action=template.list&').'filter_set=1&filter_groups%5B0%5D='.$group_id, $this->page->getCurrentUrl()
 		);
 		$this->page->assertHeader(ucfirst($this->object).'s');
 		CFilterElement::find()->one()->getForm()->checkValue([ucfirst($this->object).' groups' => $links['name']]);

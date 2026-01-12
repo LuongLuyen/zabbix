@@ -35,7 +35,7 @@ window.host_edit_popup = {
 		this.macros_templateids = null;
 		this.show_inherited_macros = false;
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'host.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -560,7 +560,7 @@ window.host_edit_popup = {
 	delete(hostid) {
 		this.removePopupMessages();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'host.massdelete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('host')) ?>);
 

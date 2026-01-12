@@ -28,7 +28,7 @@
 				(new CSpan())->addItem(
 					new CLink(
 						_('Availability report'),
-						(new CUrl('zabbix.php'))->setArgument('action', 'availabilityreport.list')
+						(new CUrl('sdnet.php'))->setArgument('action', 'availabilityreport.list')
 					)
 				),
 				(new CSpan())->addItem($data['host_name']),

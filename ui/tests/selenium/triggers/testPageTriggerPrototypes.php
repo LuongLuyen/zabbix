@@ -26,7 +26,7 @@ class testPageTriggerPrototypes extends testPagePrototypes {
 	public $source = 'trigger';
 	public $tag = 'a3 Trigger prototype monitored not discovered_{#KEY}';
 
-	protected $link = 'zabbix.php?action=trigger.prototype.list&context=host&sort=description&sortorder=ASC&';
+	protected $link = 'sdnet.php?action=trigger.prototype.list&context=host&sort=description&sortorder=ASC&';
 	protected static $prototype_triggerids;
 	protected static $host_druleids;
 
@@ -142,7 +142,7 @@ class testPageTriggerPrototypes extends testPagePrototypes {
 	 * @dataProvider getTriggerPrototypesSortingData
 	 */
 	public function testPageTriggerPrototypes_Sorting($data) {
-		$this->page->login()->open('zabbix.php?action=trigger.prototype.list&context=host&sort='.$data['sort'].'&sortorder=ASC&'.
+		$this->page->login()->open('sdnet.php?action=trigger.prototype.list&context=host&sort='.$data['sort'].'&sortorder=ASC&'.
 				'parent_discoveryid='.self::$host_druleids)->waitUntilReady();
 		$this->executeSorting($data);
 	}

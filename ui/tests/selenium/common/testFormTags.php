@@ -885,7 +885,7 @@ class testFormTags extends CWebTest {
 				break;
 
 			case 'template':
-				$this->page->open('zabbix.php?action=template.list&filter_name='.$data['name'].'&filter_set=1')
+				$this->page->open('sdnet.php?action=template.list&filter_name='.$data['name'].'&filter_set=1')
 					->waitUntilReady();
 				$this->query('link', $data['name'])->one()->click();
 				$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
@@ -993,7 +993,7 @@ class testFormTags extends CWebTest {
 		$this->page->waitUntilReady();
 		$this->assertMessage(TEST_GOOD, $parent.' added');
 
-		$this->page->open('zabbix.php?action='.(($parent === 'Host') ? 'host.list' : 'template.list'));
+		$this->page->open('sdnet.php?action='.(($parent === 'Host') ? 'host.list' : 'template.list'));
 		$this->page->waitUntilReady();
 		$this->query('button:Reset')->one()->click();
 		$form = $this->query('name:zbx_filter')->asForm()->waitUntilReady()->one();
@@ -1090,7 +1090,7 @@ class testFormTags extends CWebTest {
 		if ($target_type !== 'Host group') {
 			$this->page->open(($target_type === 'Host')
 				? self::HOST_LIST_PAGE
-				: 'zabbix.php?action=template.list')->waitUntilReady();
+				: 'sdnet.php?action=template.list')->waitUntilReady();
 
 			$this->query('button:Reset')->one()->click();
 			$filter = $this->query('name:zbx_filter')->asForm()->waitUntilReady()->one();

@@ -23,7 +23,7 @@ $this->includeJsFile('slareport.list.js.php');
 
 $filter = (new CFilter())
 	->addVar('action', 'slareport.list')
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'slareport.list'))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'slareport.list'))
 	->setProfile('web.slareport.list.filter')
 	->setActiveTab($data['active_tab'])
 	->addFilterTab(_('Filter'), [
@@ -102,7 +102,7 @@ if ($data['sla'] === null || $data['has_errors']) {
 elseif ($data['service'] === null) {
 	$header = [
 		make_sorting_header(_('Service'), 'name', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'slareport.list')
 				->getUrl()
 		)->addStyle('width: 15%;'),
@@ -124,7 +124,7 @@ elseif ($data['service'] === null) {
 			(new CCol($data['has_access'][CRoleHelper::ACTIONS_MANAGE_SLA]
 				? new CLink(
 					$service['name'],
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'slareport.list')
 						->setArgument('filter_slaid', $data['sla']['slaid'])
 						->setArgument('filter_serviceid', $serviceid)

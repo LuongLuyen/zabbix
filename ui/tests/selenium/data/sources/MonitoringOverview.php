@@ -341,7 +341,7 @@ class MonitoringOverview {
 				'script' => 'return 0;',
 				'show_event_menu' => ZBX_EVENT_MENU_SHOW,
 				'event_menu_name' => 'Webhook url for all',
-				'event_menu_url' => 'zabbix.php?action=mediatype.edit&mediatypeid=101',
+				'event_menu_url' => 'sdnet.php?action=mediatype.edit&mediatypeid=101',
 				'description' => 'Webhook media type for URL test'
 			]
 		]);

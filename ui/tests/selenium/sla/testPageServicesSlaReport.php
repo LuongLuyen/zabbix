@@ -26,7 +26,7 @@ require_once __DIR__.'/../common/testSlaReport.php';
 class testPageServicesSlaReport extends testSlaReport {
 
 	public function testPageServicesSlaReport_GeneralLayout() {
-		$this->page->login()->open('zabbix.php?action=slareport.list');
+		$this->page->login()->open('sdnet.php?action=slareport.list');
 		$this->page->assertHeader('SLA report');
 
 		$this->page->assertTitle('SLA report');
@@ -1397,7 +1397,7 @@ class testPageServicesSlaReport extends testSlaReport {
 	 * @param array $filter_data	SLA report parameters.
 	 */
 	public function openSlaReport($filter_data) {
-		$this->page->login()->open('zabbix.php?action=slareport.list');
+		$this->page->login()->open('sdnet.php?action=slareport.list');
 		$filter_form = $this->query('name:zbx_filter')->asForm()->one();
 
 		// Expand filter if it is collapsed.

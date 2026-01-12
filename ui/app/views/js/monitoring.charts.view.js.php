@@ -283,7 +283,7 @@
 	 * @param {Node}   wrapper   Dom node in respect to which resize must be done.
 	 */
 	function ChartList($el, timeline, config, wrapper) {
-		this.curl = new Curl('zabbix.php');
+		this.curl = new Curl('sdnet.php');
 		this.curl.setArgument('action', 'charts.view.json');
 
 		this.$el = $el;

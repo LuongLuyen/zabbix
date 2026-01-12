@@ -50,7 +50,7 @@ class CControllerScheduledReportUpdate extends CController {
 			switch ($result) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'scheduledreport.edit')
 							->setArgument('reportid', $this->getInput('reportid'))
 					);
@@ -134,7 +134,7 @@ class CControllerScheduledReportUpdate extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'scheduledreport.list')
 					->setArgument('page', CPagerHelper::loadPage('scheduledreport.list', null))
 			);
@@ -143,7 +143,7 @@ class CControllerScheduledReportUpdate extends CController {
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'scheduledreport.edit')
 					->setArgument('reportid', $this->getInput('reportid'))
 			);

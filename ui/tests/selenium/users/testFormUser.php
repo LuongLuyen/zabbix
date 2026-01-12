@@ -192,7 +192,7 @@ class testFormUser extends CWebTest {
 	 * @dataProvider getLayoutData
 	 */
 	public function testFormUser_Layout($data) {
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$user = CTestArrayHelper::get($data, 'user', 'new');
 
 		if ($user === 'new') {
@@ -902,7 +902,7 @@ class testFormUser extends CWebTest {
 	public function testFormUser_Create($data) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=user.edit');
+		$this->page->login()->open('sdnet.php?action=user.edit');
 		$form = $this->query('name:user_form')->asForm()->waitUntilVisible()->one();
 		$form->fill($data['fields']);
 
@@ -942,7 +942,7 @@ class testFormUser extends CWebTest {
 	 */
 	private function assertFormFields($data) {
 		$userid = CDBHelper::getValue('SELECT userid FROM users WHERE username='.zbx_dbstr($data['fields']['Username']));
-		$this->page->open('zabbix.php?action=user.edit&userid='.$userid);
+		$this->page->open('sdnet.php?action=user.edit&userid='.$userid);
 		$form_update = $this->query('name:user_form')->asForm()->waitUntilVisible()->one();
 
 		// Verify that fields are updated.
@@ -1433,7 +1433,7 @@ class testFormUser extends CWebTest {
 			$old_hash = CDBHelper::getHash(self::SQL);
 		}
 
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$this->query('link', $update_user)->waitUntilVisible()->one()->click();
 
 		// Update user parameters.
@@ -1507,7 +1507,7 @@ class testFormUser extends CWebTest {
 		$sql_hash = 'SELECT * FROM users ORDER BY userid';
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$this->query('link', 'test-user')->waitUntilVisible()->one()->click();
 
 		$form = $this->query('name:user_form')->asForm()->waitUntilVisible()->one();
@@ -1550,7 +1550,7 @@ class testFormUser extends CWebTest {
 	 */
 	public function testFormUser_PasswordUpdate($data) {
 		$update_user = CTestArrayHelper::get($data, 'username', 'Admin');
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$this->query('link', $update_user)->waitUntilVisible()->one()->click();
 		$form_update = $this->query('name:user_form')->asForm()->waitUntilVisible()->one();
 		$form_update->query('button:Change password')->one()->click();
@@ -1655,7 +1655,7 @@ class testFormUser extends CWebTest {
 			$username = $data['fields']['Username'];
 		}
 
-		$this->page->login()->open('zabbix.php?action=user.list');
+		$this->page->login()->open('sdnet.php?action=user.list');
 		$this->query('link', $username)->one()->click();
 		$userid = CDBHelper::getValue('SELECT userid FROM users WHERE username='.zbx_dbstr($username));
 
@@ -1687,7 +1687,7 @@ class testFormUser extends CWebTest {
 	 * Check that user can't delete oneself.
 	 */
 	public function testFormUser_SelfDeletion() {
-		$this->page->login()->open('zabbix.php?action=user.edit&userid=1');
+		$this->page->login()->open('sdnet.php?action=user.edit&userid=1');
 		$this->assertTrue($this->query('button:Delete')->waitUntilVisible()->one()->isEnabled(false));
 	}
 
@@ -1700,18 +1700,18 @@ class testFormUser extends CWebTest {
 		];
 		$sql_users = 'SELECT * FROM users ORDER BY userid';
 		$user_hash = CDBHelper::getHash($sql_users);
-		$this->page->login()->open('zabbix.php?action=user.edit');
+		$this->page->login()->open('sdnet.php?action=user.edit');
 
 		// Check cancellation when creating users.
 		$form_create = $this->query('name:user_form')->asForm()->waitUntilVisible()->one();
 		$form_create->fill($data);
 		$this->query('button:Cancel')->one()->click();
 		$cancel_url = $this->page->getCurrentURL();
-		$this->assertStringContainsString('zabbix.php?action=user.list', $cancel_url);
+		$this->assertStringContainsString('sdnet.php?action=user.list', $cancel_url);
 		$this->assertEquals($user_hash, CDBHelper::getHash($sql_users));
 
 		// Check Cancellation when updating users.
-		$this->page->open('zabbix.php?action=user.edit&userid=1');
+		$this->page->open('sdnet.php?action=user.edit&userid=1');
 		$this->query('id:name')->one()->fill('Boris');
 		$this->query('button:Cancel')->one()->click();
 		$this->assertEquals($user_hash, CDBHelper::getHash($sql_users));

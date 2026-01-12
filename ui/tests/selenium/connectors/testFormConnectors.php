@@ -105,7 +105,7 @@ class testFormConnectors extends CWebTest {
 			'Bearer' => ['Bearer token']
 		];
 
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 
 		// Check title for create/update form.
 		$this->query('link', self::DEFAULT_CONNECTOR)->one()->click();
@@ -1093,7 +1093,7 @@ class testFormConnectors extends CWebTest {
 	public function testFormConnectors_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::CONNECTOR_SQL);
 
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 		$this->query('link', self::$update_connector)->waitUntilClickable()->one()->click();
 		COverlayDialogElement::find()->waitUntilReady()->one()->asForm()->submit();
 
@@ -1118,7 +1118,7 @@ class testFormConnectors extends CWebTest {
 			$old_hash = CDBHelper::getHash(self::CONNECTOR_SQL);
 		}
 
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 
 		if ($update) {
 			$this->query('link', self::$update_connector)->waitUntilClickable()->one()->click();
@@ -1237,7 +1237,7 @@ class testFormConnectors extends CWebTest {
 	public function testFormConnectors_CancelAction($data) {
 		$old_hash = CDBHelper::getHash(self::CONNECTOR_SQL);
 
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 		$this->query(($data['action'] === 'Create') ? 'button:Create connector' : 'link:'.$data['name'])->one()->click();
 
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
@@ -1290,7 +1290,7 @@ class testFormConnectors extends CWebTest {
 	 * Function for checking connector cloning.
 	 */
 	public function testFormConnectors_Clone($data) {
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 		$this->query('link', $data['Name'])->one()->click();
 
 		$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
@@ -1323,7 +1323,7 @@ class testFormConnectors extends CWebTest {
 	}
 
 	public function testFormConnectors_Delete() {
-		$this->page->login()->open('zabbix.php?action=connector.list');
+		$this->page->login()->open('sdnet.php?action=connector.list');
 		$this->query('link', self::DELETE_CONNECTOR)->waitUntilClickable()->one()->click();
 
 		// Click on the Delete button in the opened Connector configuration dialog.
@@ -1347,7 +1347,7 @@ class testFormConnectors extends CWebTest {
 			'mailto://zabbix.com', 'tel://zabbix.com', 'ssh://zabbix.com'
 		];
 
-		$this->page->login()->open('zabbix.php?action=connector.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=connector.list')->waitUntilReady();
 		$this->query('link', self::DEFAULT_CONNECTOR)->waitUntilClickable()->one()->click();
 
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
@@ -1359,23 +1359,23 @@ class testFormConnectors extends CWebTest {
 		$this->assertUriScheme($form, $invalid_schemes, TEST_BAD);
 
 		// Change valid URI schemes on "Other configuration parameters" page.
-		$this->page->open('zabbix.php?action=miscconfig.edit');
+		$this->page->open('sdnet.php?action=miscconfig.edit');
 		$config_form = $this->query('name:otherForm')->asForm()->waitUntilVisible()->one();
 		$config_form->fill(['id:validate_uri_schemes' => true, 'id:uri_valid_schemes' => 'dns,message']);
 		$config_form->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
-		$this->page->open('zabbix.php?action=connector.list');
+		$this->page->open('sdnet.php?action=connector.list');
 		$this->assertUriScheme($form, $default_valid_schemes, TEST_BAD);
 		$this->assertUriScheme($form, $invalid_schemes);
 
 		// Disable URI scheme validation.
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$config_form->fill(['id:validate_uri_schemes' => false]);
 		$config_form->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
-		$this->page->open('zabbix.php?action=connector.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=connector.list')->waitUntilReady();
 		$this->assertUriScheme($form, array_merge($default_valid_schemes, $invalid_schemes));
 	}
 

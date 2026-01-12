@@ -408,7 +408,7 @@ Overlay.prototype.unsetLoading = function() {
  * @return {jQuery.XHR}
  */
 Overlay.prototype.load = function(action, options) {
-	var url = new Curl('zabbix.php');
+	var url = new Curl('sdnet.php');
 	url.setArgument('action', action);
 
 	// Properties 'action' and 'options' are stored to enable popup reload. This may be done outside the class.

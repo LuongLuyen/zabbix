@@ -57,7 +57,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$problems = $data['allowed_ui_problems']
 		? new CLink('',
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'problem.view')
 				->setArgument('severities', $data['filter']['severities'])
 				->setArgument('hostids', [$host['hostid']])
@@ -115,7 +115,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 		[
 			$data['allowed_ui_latest_data']
 				? new CLink(_('Latest data'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'latest.view')
 						->setArgument('hostids', [$host['hostid']])
 						->setArgument('filter_set', '1')
@@ -127,7 +127,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 		$host['graphs']
 			? [
 				new CLink(_('Graphs'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'charts.view')
 						->setArgument('filter_hostids', (array) $host['hostid'])
 						->setArgument('filter_show', GRAPH_FILTER_HOST)
@@ -139,7 +139,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 		$host['dashboards']
 			? [
 				new CLink(_('Dashboards'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'host.dashboard.view')
 						->setArgument('hostid', $host['hostid'])
 				),
@@ -149,7 +149,7 @@ foreach ($data['hosts'] as $hostid => $host) {
 		$host['httpTests']
 			? [
 				new CLink(_('Web'),
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'web.view')
 						->setArgument('filter_set', '1')
 						->setArgument('filter_hostids', (array) $host['hostid'])

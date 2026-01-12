@@ -116,7 +116,7 @@ class CControllerTriggerPrototypeList extends CController {
 
 		$page_num = $this->getInput('page', 1);
 		CPagerHelper::savePage('trigger.prototype.list', $page_num);
-		$data['paging'] = CPagerHelper::paginate($page_num, $data['triggers'], $sort_order, (new CUrl('zabbix.php'))
+		$data['paging'] = CPagerHelper::paginate($page_num, $data['triggers'], $sort_order, (new CUrl('sdnet.php'))
 			->setArgument('action', 'trigger.prototype.list')
 			->setArgument('parent_discoveryid', $data['parent_discoveryid'])
 			->setArgument('context', $data['context'])

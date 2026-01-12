@@ -35,7 +35,7 @@ class HostMacrosManager {
 	}
 
 	load(show_inherited_macros, templateids) {
-		const url = new Curl('zabbix.php');
+		const url = new Curl('sdnet.php');
 		url.setArgument('action', 'hostmacros.list');
 
 		const post_data = {

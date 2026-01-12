@@ -708,7 +708,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	}
 
 	public function testDashboardsTemplatedDashboardForm_Layout() {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.list&templateid='.self::$update_templateid);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.list&templateid='.self::$update_templateid);
 		$this->query('button:Create dashboard')->one()->click();
 		$this->checkDialogue('Dashboard properties');
 		// TODO: added updateViewport due to unstable test on Jenkins, scroll appears for 0.5 seconds
@@ -2371,7 +2371,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	 * @dataProvider getWidgetDefaultLayoutData
 	 */
 	public function testDashboardsTemplatedDashboardForm_WidgetDefaultLayout($data) {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.list&templateid='.self::$update_templateid);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.list&templateid='.self::$update_templateid);
 		$this->query('button:Create dashboard')->one()->click();
 		COverlayDialogElement::find()->one()->waitUntilReady()->close();
 
@@ -2773,7 +2773,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	 * @dataProvider getDashboardPropertiesData
 	 */
 	public function testDashboardsTemplatedDashboardForm_DashboardPropertiesCreate($data) {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.list&templateid='.self::$update_templateid);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.list&templateid='.self::$update_templateid);
 		$this->query('button:Create dashboard')->one()->click();
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 
@@ -2792,7 +2792,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	 * @dataProvider getDashboardPropertiesData
 	 */
 	public function testDashboardsTemplatedDashboardForm_DashboardPropertiesUpdate($data) {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_with_widgets);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_with_widgets);
 		$this->query('id:dashboard-config')->one()->waitUntilClickable()->click();
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 
@@ -2809,7 +2809,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	public function testDashboardsTemplatedDashboardForm_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash(self::WIDGET_SQL);
 
-		$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_with_widgets);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_with_widgets);
 		$this->query('button:Save changes')->one()->waitUntilClickable()->click();
 
 		$this->assertMessage(TEST_GOOD, 'Dashboard updated');
@@ -2827,7 +2827,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 			'Start slideshow automatically' => false
 		];
 
-		$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_with_widgets);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_with_widgets);
 		$this->query('id:dashboard-config')->one()->waitUntilClickable()->click();
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		$form->fill($fields);
@@ -4709,12 +4709,12 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	 */
 	public function testDashboardsTemplatedDashboardForm_CreateWidget($data) {
 		try {
-			$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$empty_dashboardid);
+			$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$empty_dashboardid);
 		}
 		catch (UnexpectedAlertOpenException $e) {
 			// Sometimes previous test leaves dashboard edit page open.
 			$this->page->acceptAlert();
-			$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$empty_dashboardid);
+			$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$empty_dashboardid);
 		}
 
 		if (CTestArrayHelper::get($data, 'page')) {
@@ -4742,7 +4742,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	 * @dataProvider getWidgetData
 	 */
 	public function testDashboardsTemplatedDashboardForm_UpdateWidget($data) {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_for_update);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.edit&dashboardid='.self::$dashboardid_for_update);
 		CDashboardElement::find()->one()->getWidget(self::$previous_widget_name)->edit();
 
 		// Update widget configuration and save filled in data for further validation.
@@ -4876,7 +4876,7 @@ class testDashboardsTemplatedDashboardForm extends CWebTest {
 	 * @onBefore prepareHostLinkageToTemplateData
 	 */
 	public function testDashboardsTemplatedDashboardForm_ViewDashboardOnHost() {
-		$this->page->login()->open('zabbix.php?action=host.dashboard.view&hostid='.self::$hostid_for_template);
+		$this->page->login()->open('sdnet.php?action=host.dashboard.view&hostid='.self::$hostid_for_template);
 		$this->query('xpath://span[text()="Dashboard with all widgets"]')->one()->waitUntilVisible()->click();
 		$this->page->waitUntilReady();
 

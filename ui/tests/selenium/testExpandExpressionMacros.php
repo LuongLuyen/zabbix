@@ -183,7 +183,7 @@ class testExpandExpressionMacros extends CWebTest {
 	 * @dataProvider getGraphData
 	 */
 	public function testExpandExpressionMacros_Graph($data) {
-		$this->page->login()->open('zabbix.php?action=host.view&groupids%5B%5D='.self::$data['hostgroupid'])
+		$this->page->login()->open('sdnet.php?action=host.view&groupids%5B%5D='.self::$data['hostgroupid'])
 				->waitUntilReady();
 		$table = $this->query('xpath://form[@name="host_view"]/table[@class="list-table"]')->asTable()
 				->waitUntilReady()->one();
@@ -277,7 +277,7 @@ class testExpandExpressionMacros extends CWebTest {
 	 */
 	public function testExpandExpressionMacros_Map() {
 		// Open map in view mode.
-		$this->page->login()->open('zabbix.php?action=map.view&sysmapid='.self::$data['mapid'])->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=map.view&sysmapid='.self::$data['mapid'])->waitUntilReady();
 		$map_image = $this->query('xpath://div[@id="flickerfreescreen_mapimg"]/div/*[name()="svg"]')
 				->waitUntilPresent()->one();
 		$covered_region = [

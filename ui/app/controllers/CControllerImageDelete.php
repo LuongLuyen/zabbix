@@ -51,7 +51,7 @@ class CControllerImageDelete extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'image.list')
 					->setArgument('imagetype', $this->getInput('imagetype'))
 			);
@@ -59,7 +59,7 @@ class CControllerImageDelete extends CController {
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'image.edit')
 					->setArgument('imageid', $this->getInput('imageid'))
 			);

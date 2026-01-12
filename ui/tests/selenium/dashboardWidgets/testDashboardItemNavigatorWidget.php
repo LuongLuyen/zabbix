@@ -167,7 +167,7 @@ class testDashboardItemNavigatorWidget extends testWidgets {
 	}
 
 	public function testDashboardItemNavigatorWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dialog = $dashboard->edit()->addWidget();
@@ -804,7 +804,7 @@ class testDashboardItemNavigatorWidget extends testWidgets {
 			? ''
 			: CTestArrayHelper::get($data, 'fields.Name', 'Item navigator '.microtime());
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DASHBOARD_FOR_WIDGET_CREATE])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -926,7 +926,7 @@ class testDashboardItemNavigatorWidget extends testWidgets {
 		$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -993,7 +993,7 @@ class testDashboardItemNavigatorWidget extends testWidgets {
 	}
 
 	public function testDashboardItemNavigatorWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::DELETE_WIDGET);
@@ -1026,7 +1026,7 @@ class testDashboardItemNavigatorWidget extends testWidgets {
 	 * Test function for assuring that all types of items are available in Item navigator widget.
 	 */
 	public function testDashboardItemNavigatorWidget_CheckAvailableItems() {
-		$this->checkAvailableItems('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid[self::DEFAULT_DASHBOARD],
+		$this->checkAvailableItems('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid[self::DEFAULT_DASHBOARD],
 				'Item navigator'
 		);
 	}

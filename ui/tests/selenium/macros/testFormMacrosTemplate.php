@@ -283,7 +283,7 @@ class testFormMacrosTemplate extends testFormMacros {
 	 * @dataProvider getCreateSecretMacrosData
 	 */
 	public function testFormMacrosTemplate_CreateSecretMacros($data) {
-		$this->createSecretMacros($data, 'zabbix.php?action=template.list&filter_name='.
+		$this->createSecretMacros($data, 'sdnet.php?action=template.list&filter_name='.
 				'Empty Template for creating secret macros&filter_set=1',
 				'templates', 'Empty Template for creating secret macros'
 		);
@@ -293,7 +293,7 @@ class testFormMacrosTemplate extends testFormMacros {
 	 * @dataProvider getRevertSecretMacrosData
 	 */
 	public function testFormMacrosTemplate_RevertSecretMacroChanges($data) {
-		$this->revertSecretMacroChanges($data, 'zabbix.php?action=template.list&filter_name='.
+		$this->revertSecretMacroChanges($data, 'sdnet.php?action=template.list&filter_name='.
 				'Template with secret macros&filter_set=1',
 				'templates', 'Template with secret macros'
 		);
@@ -340,7 +340,7 @@ class testFormMacrosTemplate extends testFormMacros {
 	 * @dataProvider getUpdateSecretMacrosData
 	 */
 	public function testFormMacrosTemplate_UpdateSecretMacros($data) {
-		$this->updateSecretMacros($data, 'zabbix.php?action=template.list&filter_name=Template with secret macros&filter_set=1',
+		$this->updateSecretMacros($data, 'sdnet.php?action=template.list&filter_name=Template with secret macros&filter_set=1',
 				'templates', 'Template with secret macros'
 		);
 	}
@@ -349,7 +349,7 @@ class testFormMacrosTemplate extends testFormMacros {
 	 * Check Vault macros validation.
 	 */
 	public function testFormMacrosTemplate_CheckVaultValidation() {
-		$this->checkVaultValidation('zabbix.php?action=template.list&filter_name=Template with vault macro&filter_set=1',
+		$this->checkVaultValidation('sdnet.php?action=template.list&filter_name=Template with vault macro&filter_set=1',
 			'templates', 'Template with vault macro'
 		);
 	}
@@ -359,7 +359,7 @@ class testFormMacrosTemplate extends testFormMacros {
 	 */
 	public function testFormMacrosTemplate_CreateVaultMacros($data) {
 		$template_name = ($data['vault'] === 'Hashicorp') ? 'Template for creating Vault macros' : 'Empty Template without macros';
-		$this->createVaultMacros($data, 'zabbix.php?action=template.list&filter_name='.$template_name.'&filter_set=1',
+		$this->createVaultMacros($data, 'sdnet.php?action=template.list&filter_name='.$template_name.'&filter_set=1',
 				'templates', $template_name
 		);
 	}
@@ -369,7 +369,7 @@ class testFormMacrosTemplate extends testFormMacros {
 	 * @dataProvider getUpdateVaultMacrosCommonData
 	 */
 	public function testFormMacrosTemplate_UpdateVaultMacros($data) {
-		$this->updateVaultMacros($data, 'zabbix.php?action=template.list&filter_name='.
+		$this->updateVaultMacros($data, 'sdnet.php?action=template.list&filter_name='.
 				'Template for updating Vault macros&filter_set=1',
 				'templates', 'Template for updating Vault macros'
 		);

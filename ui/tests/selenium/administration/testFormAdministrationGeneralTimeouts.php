@@ -22,7 +22,7 @@ require_once __DIR__.'/../common/testFormAdministrationGeneral.php';
 class testFormAdministrationGeneralTimeouts extends testFormAdministrationGeneral {
 
 	public $form_selector = 'id:timeouts-form';
-	public $config_link = 'zabbix.php?action=timeouts.edit';
+	public $config_link = 'sdnet.php?action=timeouts.edit';
 	public $default_values = [
 		'Zabbix agent' => '3s',
 		'Simple check' => '3s',

@@ -197,7 +197,7 @@ class testDashboardHostNavigatorWidget extends testWidgets {
 	}
 
 	public function testDashboardHostNavigatorWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dialog = $dashboard->edit()->addWidget();
@@ -751,7 +751,7 @@ class testDashboardHostNavigatorWidget extends testWidgets {
 			? ''
 			: CTestArrayHelper::get($data, 'fields.Name', 'Host navigator '.microtime());
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DASHBOARD_FOR_WIDGET_CREATE])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -869,7 +869,7 @@ class testDashboardHostNavigatorWidget extends testWidgets {
 		$old_hash = CDBHelper::getHash(self::SQL);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -931,7 +931,7 @@ class testDashboardHostNavigatorWidget extends testWidgets {
 	}
 
 	public function testDashboardHostNavigatorWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::DELETE_WIDGET);

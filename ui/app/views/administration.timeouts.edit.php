@@ -26,7 +26,7 @@ $form = (new CForm())
 	->setId('timeouts-form')
 	->setName('timeouts_form')
 	->setAction(
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'timeouts.update')
 			->getUrl()
 	)

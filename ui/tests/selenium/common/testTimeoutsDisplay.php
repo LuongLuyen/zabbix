@@ -158,7 +158,7 @@ class testTimeoutsDisplay extends CWebTest {
 	 * @param array $values    timeouts values to fill
 	 */
 	protected function fillGlobalTimeouts($values) {
-		$this->page->login()->open('zabbix.php?action=timeouts.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=timeouts.edit')->waitUntilReady();
 		$form = $this->query('id:timeouts-form')->waitUntilVisible()->asForm()->one();
 
 		// Check values in form. If they are the same, we can skip and don't update them.
@@ -192,7 +192,7 @@ class testTimeoutsDisplay extends CWebTest {
 	 * @param array $values    timeouts values to fill
 	 */
 	protected function fillProxyTimeouts($values) {
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->query('name:proxy_list')->asTable()->one()->query('link:Proxy assigned to host')->one()->click();
 		$form = COverlayDialogElement::find()->waitUntilReady()->asForm()->one();
 		$form->selectTab('Timeouts');

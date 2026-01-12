@@ -23,7 +23,7 @@ $parents = [];
 
 while ($parent = array_shift($data['service']['parents'])) {
 	$parents[] = (new CLink($parent['name'],
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'service.list')
 			->setArgument('serviceid', $parent['serviceid'])
 	))->setAttribute('data-serviceid', $parent['serviceid']);
@@ -43,7 +43,7 @@ if (array_key_exists('slas', $data)) {
 	foreach ($data['slas'] as $sla) {
 		$sla_html = [
 			new CLink($sla['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'slareport.list')
 					->setArgument('filter_slaid', $sla['slaid'])
 					->setArgument('filter_set', 1)
@@ -85,7 +85,7 @@ if (array_key_exists('slas', $data)) {
 	}
 }
 
-$service_url = (new CUrl('zabbix.php'))
+$service_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'popup')
 	->setArgument('popup', 'service.edit')
 	->setArgument('serviceid', $data['service']['serviceid'])

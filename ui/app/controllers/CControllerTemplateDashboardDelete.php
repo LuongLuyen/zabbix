@@ -43,7 +43,7 @@ class CControllerTemplateDashboardDelete extends CController {
 		$deleted = count($dashboardids);
 
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'template.dashboard.list')
 				->setArgument('templateid', $this->getInput('templateid'))
 				->setArgument('page', CPagerHelper::loadPage('template.dashboard.list', null))

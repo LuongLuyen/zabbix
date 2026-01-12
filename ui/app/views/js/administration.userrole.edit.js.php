@@ -266,7 +266,7 @@
 
 			cloneClick() {
 				if (view.readonly) {
-					const url = new Curl('zabbix.php');
+					const url = new Curl('sdnet.php');
 					url.setArgument('action', 'userrole.edit');
 					url.setArgument('super_admin_role_clone', 1);
 

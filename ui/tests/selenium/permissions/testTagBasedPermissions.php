@@ -33,7 +33,7 @@ class testTagBasedPermissions extends CLegacyWebTest {
 		];
 	}
 
-	const URL = 'zabbix.php?action=problem.view';
+	const URL = 'sdnet.php?action=problem.view';
 	const USER = 'Tag-user';
 	const PASSWORD = 'Zabbix_Test_123';
 	const TRIGGER_HOST = 'Host for tag permissions';
@@ -307,7 +307,7 @@ class testTagBasedPermissions extends CLegacyWebTest {
 	 */
 	public function setTagFilter($user_groups) {
 		foreach ($user_groups as $group_name => $hostgroups) {
-			$this->zbxTestLogin('zabbix.php?action=usergroup.list');
+			$this->zbxTestLogin('sdnet.php?action=usergroup.list');
 
 			if (empty($hostgroups)) {
 				break;
@@ -454,7 +454,7 @@ class testTagBasedPermissions extends CLegacyWebTest {
 		$this->setTagFilter($data['user_groups']);
 
 		// Go to Dashboard and check user name
-		$this->zbxTestOpen('zabbix.php?action=dashboard.view');
+		$this->zbxTestOpen('sdnet.php?action=dashboard.view');
 		$this->zbxTestAssertAttribute("//a[@class='zi-user-settings']", 'title', self::USER);
 
 		// Check tag filter in Problem widget
@@ -565,7 +565,7 @@ class testTagBasedPermissions extends CLegacyWebTest {
 		$countTriggers = count($data['trigger_names']);
 
 		// Go to Dashboard and check user name
-		$this->zbxTestOpen('zabbix.php?action=dashboard.view');
+		$this->zbxTestOpen('sdnet.php?action=dashboard.view');
 		$this->zbxTestAssertAttribute("//a[@class='zi-user-settings']", 'title', self::USER);
 
 		// Check tag filter in Problem widget
@@ -669,7 +669,7 @@ class testTagBasedPermissions extends CLegacyWebTest {
 		$countTriggers = count($data['trigger_names']);
 
 		// Go to Dashboard and check user name
-		$this->zbxTestOpen('zabbix.php?action=dashboard.view');
+		$this->zbxTestOpen('sdnet.php?action=dashboard.view');
 		$this->zbxTestAssertAttribute("//a[@class='zi-user-settings']", 'title', self::USER);
 
 		// Check tag filter in Problem widget

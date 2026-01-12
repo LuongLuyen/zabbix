@@ -49,7 +49,7 @@ class testPageReportsAudit extends CWebTest {
 	 * Check audit page layout.
 	 */
 	public function testPageReportsAudit_Layout() {
-		$this->page->login()->open('zabbix.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
 
 		// If the time selector is not visible - enable it.
 		if ($this->query('xpath://li[@aria-labelledby="ui-id-1" and @aria-selected="false"]')->exists()) {
@@ -248,7 +248,7 @@ class testPageReportsAudit extends CWebTest {
 	public function testPageReportsAudit_DisabledEnabled() {
 		$this->page->login();
 		foreach ([false, true] as $status) {
-			$this->page->open('zabbix.php?action=audit.settings.edit')->waitUntilReady();
+			$this->page->open('sdnet.php?action=audit.settings.edit')->waitUntilReady();
 
 			// Disable audit.
 			$settings_form = $this->query('id:audit-settings')->asForm()->one();
@@ -256,7 +256,7 @@ class testPageReportsAudit extends CWebTest {
 			$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
 			// Save audit data from table in UI and database.
-			$this->page->open('zabbix.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
+			$this->page->open('sdnet.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
 			$table = $this->query('class:list-table')->asTable()->one();
 			$audit_values = $table->getRow(0)->getText();
 			$hash = CDBHelper::getHash('SELECT * FROM auditlog');
@@ -564,7 +564,7 @@ class testPageReportsAudit extends CWebTest {
 			$data['fields']['Resource ID'] = CDataHelper::get('DynamicItemWidgets.itemids.Dynamic widgets H3I1');
 		}
 
-		$this->page->login()->open('zabbix.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$form->query('button:Reset')->one()->click();
 		$table = $this->query('class:list-table')->asTable()->one();
@@ -650,7 +650,7 @@ class testPageReportsAudit extends CWebTest {
 	 * @depends testPageReportsAudit_CheckFilter
 	 */
 	public function testPageReportsAudit_CheckClickableTable($data) {
-		$this->page->login()->open('zabbix.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=auditlog.list&filter_rst=1')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 		$table = $this->query('class:list-table')->asTable()->one();
 		$form->query('button:Reset')->one()->click();
@@ -675,7 +675,7 @@ class testPageReportsAudit extends CWebTest {
 	 * @param array $actions			action name as key and audit details as value.
 	 */
 	private function checkAuditValues($resource_name, $resourceid, $actions) {
-		$this->page->login()->open('zabbix.php?action=auditlog.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=auditlog.list')->waitUntilReady();
 
 		// If the filter is not visible - enable it.
 		if ($this->query('xpath://li[@aria-labelledby="ui-id-2" and @aria-selected="false"]')->exists()) {

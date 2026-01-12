@@ -47,13 +47,13 @@ class CControllerIconMapDelete extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))->setArgument('action', 'iconmap.list')
+				(new CUrl('sdnet.php'))->setArgument('action', 'iconmap.list')
 			);
 			CMessageHelper::setSuccessTitle(_('Icon map deleted'));
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'iconmap.edit')
 					->setArgument('iconmapid', $this->getInput('iconmapid'))
 			);

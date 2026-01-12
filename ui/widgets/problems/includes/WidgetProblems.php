@@ -340,7 +340,7 @@ class WidgetProblems extends CTableInfo {
 				(new CLinkAction($problem['name']))
 					->setMenuPopup(CMenuPopupHelper::getTrigger([
 						'triggerid' => $trigger['triggerid'],
-						'backurl' => (new CUrl('zabbix.php'))
+						'backurl' => (new CUrl('sdnet.php'))
 							->setArgument('action', 'dashboard.view')
 							->getUrl(),
 						'eventid' => $problem['eventid'],
@@ -464,7 +464,7 @@ class WidgetProblems extends CTableInfo {
 				);
 			}
 
-			$problem_update_url = (new CUrl('zabbix.php'))
+			$problem_update_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'acknowledge.edit')
 				->setArgument('eventids[]', $problem['eventid'])

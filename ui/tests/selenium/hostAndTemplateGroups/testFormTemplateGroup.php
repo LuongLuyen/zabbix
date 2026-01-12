@@ -25,7 +25,7 @@ require_once __DIR__.'/../common/testFormGroups.php';
  */
 class testFormTemplateGroup extends testFormGroups {
 
-	protected $link = 'zabbix.php?action=templategroup.list';
+	protected $link = 'sdnet.php?action=templategroup.list';
 	protected $object = 'template';
 	protected static $update_group = 'Group for Update test';
 

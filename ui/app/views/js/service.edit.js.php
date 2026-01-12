@@ -29,7 +29,7 @@ window.service_edit_popup = new class {
 		this.form = this.overlay.$dialogue.$body[0].querySelector('form');
 		this.footer = this.overlay.$dialogue.$footer[0];
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'service.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -433,7 +433,7 @@ window.service_edit_popup = new class {
 	delete() {
 		this.overlay.setLoading();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'service.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('service')) ?>);
 
@@ -470,7 +470,7 @@ window.service_edit_popup = new class {
 
 		this.overlay.setLoading();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', this.serviceid !== null ? 'service.update' : 'service.create');
 
 		this.#post(curl.getUrl(), fields, (response) => {

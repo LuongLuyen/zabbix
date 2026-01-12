@@ -56,7 +56,7 @@ class testInheritanceGraphPrototype extends CLegacyWebTest {
 		$sqlGraphs = 'SELECT * FROM graphs ORDER BY graphid';
 		$oldHashGraphs = CDBHelper::getHash($sqlGraphs);
 
-		$this->zbxTestLogin('zabbix.php?action=popup&popup=graph.prototype.edit&context=host&parent_discoveryid='.
+		$this->zbxTestLogin('sdnet.php?action=popup&popup=graph.prototype.edit&context=host&parent_discoveryid='.
 				$data['lldruleid'].'&graphid='.$data['graphid']);
 		$this->zbxTestCheckTitle('Graph prototype edit');
 
@@ -102,7 +102,7 @@ class testInheritanceGraphPrototype extends CLegacyWebTest {
 	 * @dataProvider create
 	 */
 	public function testInheritanceGraphPrototype_SimpleCreate($data) {
-		$this->zbxTestLogin('zabbix.php?action=popup&popup=graph.prototype.edit&context=template&parent_discoveryid='.
+		$this->zbxTestLogin('sdnet.php?action=popup&popup=graph.prototype.edit&context=template&parent_discoveryid='.
 				$this->discoveryRuleId
 		);
 		$dialog = COverlayDialogElement::find()->waitUntilReady()->one();

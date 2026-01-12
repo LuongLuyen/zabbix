@@ -39,7 +39,7 @@ class CWidgetEditValidator {
 		// Keep signal of current abort controller.
 		const signal = this.#abort_controller.signal;
 
-		const url = new URL('zabbix.php', location.href);
+		const url = new URL('sdnet.php', location.href);
 
 		url.searchParams.set('action', 'dashboard.widget.check');
 

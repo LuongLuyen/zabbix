@@ -92,7 +92,7 @@ class testPageServicesServices extends CWebTest {
 	}
 
 	public function testPageServicesServices_LayoutView() {
-		$this->page->login()->open('zabbix.php?action=service.list');
+		$this->page->login()->open('sdnet.php?action=service.list');
 		$this->page->assertTitle('Services');
 		$this->page->assertHeader('Services');
 
@@ -141,7 +141,7 @@ class testPageServicesServices extends CWebTest {
 	}
 
 	public function testPageServicesServices_LayoutEdit() {
-		$this->page->login()->open('zabbix.php?action=service.list');
+		$this->page->login()->open('sdnet.php?action=service.list');
 		$this->query('id:list_mode')->asSegmentedRadio()->one()->waitUntilClickable()->select('Edit');
 		$this->page->waitUntilReady();
 
@@ -619,8 +619,8 @@ class testPageServicesServices extends CWebTest {
 	 * @param boolean    $edit      true if is edit scenario, false otherwise
 	 */
 	private function checkFiltering($data, $edit = false) {
-		$this->page->login()->open(($edit === false) ? 'zabbix.php?action=service.list' :
-				'zabbix.php?action=service.list.edit'
+		$this->page->login()->open(($edit === false) ? 'sdnet.php?action=service.list' :
+				'sdnet.php?action=service.list.edit'
 		);
 		$filter_form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 
@@ -681,7 +681,7 @@ class testPageServicesServices extends CWebTest {
 	}
 
 	public function testPageServicesServices_ResetButton() {
-		$this->page->login()->open('zabbix.php?action=service.list');
+		$this->page->login()->open('sdnet.php?action=service.list');
 
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 		$form = $this->query('name:zbx_filter')->asForm()->one();
@@ -716,7 +716,7 @@ class testPageServicesServices extends CWebTest {
 		$parent = 'Service with problem';
 		$child_name = 'Added child for Server with problem';
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->asTable()->waitUntilVisible()->one();
 
 		$before_rows_count = $table->getRows()->count();
@@ -763,7 +763,7 @@ class testPageServicesServices extends CWebTest {
 		$sql = 'SELECT * FROM services ORDER BY serviceid';
 		$old_hash = CDBHelper::getHash($sql);
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 
 		if ($mass) {
@@ -789,7 +789,7 @@ class testPageServicesServices extends CWebTest {
 	public function testPageServicesServices_SimpleServiceDeleteFromRow() {
 		$name = 'Service for delete';
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 
 		$before_rows_count = $table->getRows()->count();
@@ -814,7 +814,7 @@ class testPageServicesServices extends CWebTest {
 		$parent = 'Parent for child deletion from row';
 		$name = 'Child 1';
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 
 		// Open parent service info.
@@ -844,7 +844,7 @@ class testPageServicesServices extends CWebTest {
 		$name = 'Parent for deletion from row';
 		$child = 'Child 2';
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 
 		$before_rows_count = $table->getRows()->count();
@@ -887,7 +887,7 @@ class testPageServicesServices extends CWebTest {
 			'Service for delete 2'
 		];
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 		$before_rows_count = $table->getRows()->count();
 		$this->assertTableStats($before_rows_count);
@@ -920,7 +920,7 @@ class testPageServicesServices extends CWebTest {
 		];
 		$remained = 'Clone child 3';
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 
 		// Open parent service info.
@@ -958,7 +958,7 @@ class testPageServicesServices extends CWebTest {
 		$parent = 'Test order';
 		$children = ['1' => 2, '2' => 3, '3' => 1];
 
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 		$table = $this->query('class:list-table')->waitUntilVisible()->asTable()->one();
 		$table->findRow('Name', $parent, true)->query('link', $parent)->waitUntilClickable()->one()->click();
 		$this->assertTableDataColumn(['1', '2', '3']);
@@ -1502,7 +1502,7 @@ class testPageServicesServices extends CWebTest {
 	 * @dataProvider getRootCauseData
 	 */
 	public function testPageServicesServices_RootCause($data) {
-		$this->page->login()->open('zabbix.php?action=service.list.edit');
+		$this->page->login()->open('sdnet.php?action=service.list.edit');
 
 		$table = $this->query(self::TABLE_SELECTOR)->asTable()->one();
 		$row = $table->findRow('Name', self::ROOTCAUSE_PARENT, true);

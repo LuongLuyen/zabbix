@@ -111,7 +111,7 @@ window.mfa_edit = new class {
 
 		const fields = this.#getFormFields();
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 		curl.setArgument('action', 'mfa.check');
 
 		this.#post(curl.getUrl(), fields);

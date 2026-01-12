@@ -26,8 +26,8 @@ class testFormTagsDiscoveredHost extends testFormTags {
 	public $update_name = 'Discovered host from prototype 1';
 	public $clone_name = 'Discovered host from prototype 11';
 	public $remove_name = 'Discovered host from prototype 1';
-	public $link = 'zabbix.php?action=host.list';
-	public $saved_link = 'zabbix.php?action=popup&popup=host.edit&hostid=';
+	public $link = 'sdnet.php?action=host.list';
+	public $saved_link = 'sdnet.php?action=popup&popup=host.edit&hostid=';
 
 	/**
 	 * Test update of Discovered Host with tags.

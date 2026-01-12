@@ -597,7 +597,7 @@ class testDashboardProblemsBySeverityWidget extends testWidgets {
 	 * @dataProvider getCreateWidgetData
 	 */
 	public function testDashboardProblemsBySeverityWidget_Create($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
@@ -1374,7 +1374,7 @@ class testDashboardProblemsBySeverityWidget extends testWidgets {
 	 * @dataProvider getUpdateWidgetData
 	 */
 	public function testDashboardProblemsBySeverityWidget_Update($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid['Problems by severity update dashboard'])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
@@ -1412,7 +1412,7 @@ class testDashboardProblemsBySeverityWidget extends testWidgets {
 		$initial_values = CDBHelper::getHash(self::SQL);
 
 		// Open a dashboard widget and then save it without applying any changes
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
@@ -1468,7 +1468,7 @@ class testDashboardProblemsBySeverityWidget extends testWidgets {
 	public function testDashboardProblemsBySeverityWidget_Cancel($data) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 
@@ -1523,7 +1523,7 @@ class testDashboardProblemsBySeverityWidget extends testWidgets {
 
 	public function testDashboardProblemsBySeverityWidget_Delete() {
 		foreach (['Reference PBS widget to delete', 'Totals reference PBS widget to delete'] as $name) {
-			$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+			$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 					self::$dashboardid[self::DEFAULT_DASHBOARD])->waitUntilReady();
 			$dashboard = CDashboardElement::find()->one()->edit();
 			$dashboard->deleteWidget($name);

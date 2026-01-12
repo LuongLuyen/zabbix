@@ -174,7 +174,7 @@ class CControllerAvailabilityReportList extends CController {
 
 		// pager
 		$page = $this->getInput('page', 1);
-		$view_url = (new CUrl('zabbix.php'))->setArgument('action', 'availabilityreport.list');
+		$view_url = (new CUrl('sdnet.php'))->setArgument('action', 'availabilityreport.list');
 		CPagerHelper::savePage('availabilityreport.list', $page);
 
 		$data += [

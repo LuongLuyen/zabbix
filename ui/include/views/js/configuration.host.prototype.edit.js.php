@@ -198,7 +198,7 @@
 						...data.action_parameters
 					}).toString();
 
-					const standalone_url = new URL(`zabbix.php?${standalone_url_params}`, location.href);
+					const standalone_url = new URL(`sdnet.php?${standalone_url_params}`, location.href);
 
 					location.href = standalone_url.href;
 				}

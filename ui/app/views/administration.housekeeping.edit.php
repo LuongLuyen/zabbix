@@ -27,7 +27,7 @@ $html_page = (new CHtmlPage())
 $form = (new CForm())
 	->addItem((new CVar(CSRF_TOKEN_NAME, CCsrfTokenHelper::get('housekeeping')))->removeId())
 	->setId('housekeeping-form')
-	->setAction((new CUrl('zabbix.php'))
+	->setAction((new CUrl('sdnet.php'))
 		->setArgument('action', 'housekeeping.update')
 		->getUrl()
 	)
@@ -240,7 +240,7 @@ if (CWebUser::checkAccess(CRoleHelper::UI_ADMINISTRATION_AUDIT_LOG)) {
 		->addRow((new CTag('h4', true, _('Audit log')))->addClass('input-section-header'))
 		->addRow(
 			new CLink(_('Audit settings'),
-			(new CUrl('zabbix.php'))->setArgument('action', 'audit.settings.edit'))
+			(new CUrl('sdnet.php'))->setArgument('action', 'audit.settings.edit'))
 		);
 }
 

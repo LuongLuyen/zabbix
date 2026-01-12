@@ -111,7 +111,7 @@ class testDashboardSlaReportWidget extends testSlaReport {
 	}
 
 	public function testDashboardSlaReportWidget_ConfigurationFormLayout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 
 		// Add a widget.
 		$dialog = CDashboardElement::find()->one()->edit()->addWidget();
@@ -378,7 +378,7 @@ class testDashboardSlaReportWidget extends testSlaReport {
 	public function testDashboardSlaReportWidget_SimpleUpdate() {
 		$initial_values = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
 
@@ -433,7 +433,7 @@ class testDashboardSlaReportWidget extends testSlaReport {
 		$old_hash = CDBHelper::getHash($this->sql);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -490,7 +490,7 @@ class testDashboardSlaReportWidget extends testSlaReport {
 	}
 
 	public function testDashboardSlaReportWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::$delete_widget);
 		$dashboard->deleteWidget(self::$delete_widget);
@@ -514,7 +514,7 @@ class testDashboardSlaReportWidget extends testSlaReport {
 	private function executeAction($data, $action = 'create') {
 		$data['fields']['Name'] = 'SLA report '.microtime();
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
 
@@ -2233,7 +2233,7 @@ class testDashboardSlaReportWidget extends testSlaReport {
 			$expected_periods = $data['expected_periods'];
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid);
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->edit();
 

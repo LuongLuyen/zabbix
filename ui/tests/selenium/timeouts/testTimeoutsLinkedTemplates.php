@@ -381,7 +381,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckTemplateItemsMacros() {
-		$link = 'zabbix.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
+		$link = 'sdnet.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
 		$this->checkGlobal('global_macros', $link, 'name:item_list', false, true);
 	}
 
@@ -396,7 +396,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckTemplateItemsCustom() {
-		$link = 'zabbix.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
+		$link = 'sdnet.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
 		$this->checkGlobal('global_custom', $link, 'name:item_list', false, true);
 	}
 
@@ -411,7 +411,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckTemplateItemsDefault() {
-		$link = 'zabbix.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
+		$link = 'sdnet.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.self::$templateid;
 		$this->checkGlobal('global_default', $link, 'name:item_list', false, true);
 	}
 
@@ -426,7 +426,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckHostItemsMacros() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for linked timeout check'];
 		$this->checkGlobal('global_macros', $link, 'name:item_list', false, true);
 	}
@@ -444,7 +444,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckHostItemsCustom() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for linked timeout check'];
 		$this->checkGlobal('global_custom', $link, 'name:item_list', false, true);
 	}
@@ -462,7 +462,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckHostItemsDefault() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for linked timeout check'];
 		$this->checkGlobal('global_default', $link, 'name:item_list', false, true);
 	}
@@ -480,7 +480,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckProxyHostItemsMacros() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for linked timeout check with proxy'];
 		$this->checkGlobal('proxy_macros', $link, 'name:item_list', true, true);
 	}
@@ -498,7 +498,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckProxyHostItemsCustom() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for linked timeout check with proxy'];
 		$this->checkGlobal('proxy_custom', $link, 'name:item_list', true, true);
 	}
@@ -516,7 +516,7 @@ class testTimeoutsLinkedTemplates extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsLinkedTemplates_CheckProxyHostItemsDefault() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for linked timeout check with proxy'];
 		$this->checkGlobal('global_default', $link, 'name:item_list', true, true);
 	}

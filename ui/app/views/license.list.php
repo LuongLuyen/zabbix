@@ -7,12 +7,12 @@
 $form = new CForm();
 $form->setName('license_list');
 
-$view_url = (new CUrl('zabbix.php'))
+$view_url = (new CUrl('sdnet.php'))
     ->setArgument('action', 'license.list')
     ->getUrl();
 
 
-// $add_url = (new CUrl('zabbix.php'))
+// $add_url = (new CUrl('sdnet.php'))
 //     ->setArgument('action', 'license.create') 
 //     ->getUrl();
 // $add_link = (new CLink(_('Add License'), $add_url))
@@ -35,14 +35,14 @@ $table->setHeader([
 $table->setPageNavigation($data['paging']);
 
 foreach ($data['licenses'] as $license) {
-    // $edit_url = (new CUrl('zabbix.php'))
+    // $edit_url = (new CUrl('sdnet.php'))
     //     ->setArgument('action', 'license.edit')
     //     ->setArgument('lsid', $license['lsid'])
     //     ->getUrl();
     // $edit_link = new CLink(_('Edit'), $edit_url);
     // $edit_link->addClass(ZBX_STYLE_BTN_ALT);
 
-    // $delete_url = (new CUrl('zabbix.php'))
+    // $delete_url = (new CUrl('sdnet.php'))
     //     ->setArgument('action', 'license.delete')
     //     ->setArgument('lsid', $license['lsid'])
     //     ->getUrl();

@@ -81,7 +81,7 @@ else {
 	];
 }
 
-$return_url = (new CUrl('zabbix.php'))
+$return_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'graph.list')
 	->setArgument('context', $data['context'])
 	->getUrl();

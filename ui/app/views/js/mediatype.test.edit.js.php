@@ -35,7 +35,7 @@ window.mediatype_test_edit_popup = new class {
 
 	submit() {
 		const fields = getFormFields(this.form);
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'mediatype.test.send');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('mediatype')) ?>);

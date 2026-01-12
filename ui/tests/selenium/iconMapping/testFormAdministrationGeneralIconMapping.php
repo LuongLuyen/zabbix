@@ -120,7 +120,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 	 * Test validate icon mapping creation.
 	 */
 	public function testFormAdministrationGeneralIconMapping_CreateValidation($data) {
-		$this->zbxTestLogin('zabbix.php?action=iconmap.edit');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.edit');
 
 		if (array_key_exists('name', $data)) {
 			$this->zbxTestInputTypeWait('iconmap_name', $data['name']);
@@ -229,7 +229,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 	 * Test creation of icon mapping.
 	 */
 	public function testFormAdministrationGeneralIconMapping_Create($data) {
-		$this->zbxTestLogin('zabbix.php?action=iconmap.edit');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.edit');
 
 		$this->zbxTestInputTypeWait('iconmap_name', $data['name']);
 
@@ -304,7 +304,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 		$sql_hash = 'SELECT * FROM icon_map ORDER BY iconmapid';
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.edit');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.edit');
 		$this->zbxTestInputTypeWait('iconmap_name', 'CancelCreation');
 		$this->zbxTestInputTypeWait('iconmap_mappings_new0_expression', 'CancelCreation');
 		$this->zbxTestClick('cancel');
@@ -327,7 +327,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 		$sql_expression_hash = 'SELECT * FROM icon_mapping ORDER BY iconmappingid';
 		$old_expression = CDBHelper::getHash($sql_expression_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 
 		foreach (CDBHelper::getAll('SELECT name FROM icon_map') as $iconmap) {
 			$this->zbxTestClickLinkText($iconmap['name']);
@@ -416,7 +416,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 				.' ON icon_map.iconmapid = icon_mapping.iconmapid WHERE icon_map.name = '.zbx_dbstr($update_icon);
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 		$this->zbxTestClickLinkTextWait($update_icon);
 		$this->zbxTestWaitForPageToLoad();
 
@@ -513,7 +513,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 	 * Test updating of icon mapping.
 	 */
 	public function testFormAdministrationGeneralIconMapping_Update($data) {
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 		$this->zbxTestClickLinkTextWait($data['old_name']);
 		$this->zbxTestWaitForPageToLoad();
 
@@ -584,7 +584,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 		$sql_hash = 'SELECT * FROM icon_map ORDER BY iconmapid';
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 
 		foreach (CDBHelper::getAll('SELECT name FROM icon_map LIMIT 1') as $iconmap) {
 			$this->zbxTestClickLinkText($iconmap['name']);
@@ -669,7 +669,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 				.' ON icon_map.iconmapid = icon_mapping.iconmapid WHERE icon_map.name = '.zbx_dbstr($name);
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 		$this->zbxTestClickLinkTextWait($name);
 		$this->zbxTestClickWait('clone');
 		$this->zbxTestWaitForPageToLoad();
@@ -769,7 +769,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 	 * Test cloning of icon mapping.
 	 */
 	public function testFormAdministrationGeneralIconMapping_Clone($data) {
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 		$this->zbxTestClickLinkTextWait($data['old_name']);
 		$this->zbxTestClickWait('clone');
 		$this->query('button:Update')->waitUntilNotVisible();
@@ -820,7 +820,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 		$sql_hash = 'SELECT * FROM icon_map ORDER BY iconmapid';
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 
 		foreach (CDBHelper::getAll('SELECT name FROM icon_map LIMIT 2') as $iconmap) {
 			$this->zbxTestClickLinkText($iconmap['name']);
@@ -844,7 +844,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 	public function testFormAdministrationGeneralIconMapping_Delete() {
 		$name = 'Icon mapping to check delete functionality';
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 		$this->zbxTestClickLinkTextWait($name);
 		$this->zbxTestClickAndAcceptAlert('delete');
 
@@ -865,7 +865,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 		$sql_hash = 'SELECT * FROM icon_map ORDER BY iconmapid';
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 		$this->zbxTestClickLinkTextWait($name);
 		$this->zbxTestClickWait('delete');
 		$this->zbxTestDismissAlert();
@@ -886,7 +886,7 @@ class testFormAdministrationGeneralIconMapping extends CLegacyWebTest {
 		$sql_hash = 'SELECT * FROM icon_map WHERE name='.zbx_dbstr($name).' ORDER BY iconmapid';
 		$old_hash = CDBHelper::getHash($sql_hash);
 
-		$this->zbxTestLogin('zabbix.php?action=iconmap.list');
+		$this->zbxTestLogin('sdnet.php?action=iconmap.list');
 		$this->zbxTestClickLinkTextWait($name);
 		$this->zbxTestClickAndAcceptAlert('delete');
 

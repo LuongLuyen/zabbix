@@ -38,7 +38,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_Create($data) {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.'.$this->host);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->checkTagsCreate($data, 'item');
 	}
 
@@ -49,7 +49,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_Update($data) {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.'.$this->host);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->checkTagsUpdate($data, 'item');
 	}
 
@@ -58,7 +58,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_Clone() {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.Host with tags for cloning');
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->executeCloning('item');
 	}
 
@@ -68,7 +68,7 @@ class testFormTagsItem extends testFormTags {
 	public function testFormTagsItem_HostClone() {
 		$this->host = 'Host with tags for cloning';
 		$hostid = CDataHelper::get('EntitiesTags.hostids.'.$this->host);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->executeCloningByParent('item', 'Host');
 	}
 
@@ -77,7 +77,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_TemplateClone() {
 		$templateid = CDataHelper::get('EntitiesTags.templateids.'.$this->template);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$templateid.'&context=template';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$templateid.'&context=template';
 		$this->clone_name = 'Template item with tags for cloning';
 		$this->executeCloningByParent('item', 'Template');
 	}
@@ -87,7 +87,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_CopyToHost() {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.Host with tags for cloning');
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->executeCopy('item', 'Host', 'Empty host');
 	}
 
@@ -96,7 +96,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_CopyToHostGroup() {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.Host with tags for cloning');
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->executeCopy('item', 'Host group', 'Group to copy graph');
 	}
 
@@ -105,7 +105,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_CopyToTemplate() {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.Host with tags for cloning');
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->executeCopy('item', 'Template', 'Empty template');
 	}
 
@@ -116,7 +116,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_InheritedHostTags($data) {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.'.$this->host);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->checkInheritedTags($data, 'item', 'Host');
 	}
 
@@ -127,7 +127,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_InheritedTemplateTags($data) {
 		$templateid = CDataHelper::get('EntitiesTags.templateids.'.$this->template);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$templateid.'&context=template';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$templateid.'&context=template';
 		$this->checkInheritedTags($data, 'item', 'Template');
 	}
 
@@ -139,8 +139,8 @@ class testFormTagsItem extends testFormTags {
 	public function testFormTagsItem_InheritedElementTags($data) {
 		$templateid = CDataHelper::get('EntitiesTags.templateids.'.$this->template);
 		$hostid = CDataHelper::get('EntitiesTags.hostids.'.$this->host);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.$templateid;
-		$host_link = 'zabbix.php?action=item.list&filter_set=1&context=host&filter_hostids%5B0%5D='.$hostid;
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&context=template&filter_hostids%5B0%5D='.$templateid;
+		$host_link = 'sdnet.php?action=item.list&filter_set=1&context=host&filter_hostids%5B0%5D='.$hostid;
 
 		$this->checkInheritedElementTags($data, 'item', $host_link);
 	}
@@ -150,7 +150,7 @@ class testFormTagsItem extends testFormTags {
 	 */
 	public function testFormTagsItem_RemoveTags() {
 		$hostid = CDataHelper::get('EntitiesTags.hostids.'.$this->host);
-		$this->link = 'zabbix.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
+		$this->link = 'sdnet.php?action=item.list&filter_set=1&filter_hostids%5B0%5D='.$hostid.'&context=host';
 		$this->clearTags('item');
 	}
 }

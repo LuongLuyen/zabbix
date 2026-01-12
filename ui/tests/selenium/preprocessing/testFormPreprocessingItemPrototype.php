@@ -28,7 +28,7 @@ require_once __DIR__.'/../../include/helpers/CDataHelper.php';
  */
 class testFormPreprocessingItemPrototype extends testFormPreprocessing {
 
-	public $link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.self::DISCOVERY_RULEID;
+	public $link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.self::DISCOVERY_RULEID;
 	public $button = 'Create item prototype';
 	public $success_message = 'Item prototype added';
 	public $fail_message = 'Cannot add item prototype';
@@ -130,12 +130,12 @@ class testFormPreprocessingItemPrototype extends testFormPreprocessing {
 	 * @onBefore prepareCloneItemPrototypePreprocessing
 	 */
 	public function testFormPreprocessingItemPrototype_CloneItemPrototype() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.self::CLONE_RULEID;
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.self::CLONE_RULEID;
 		$this->checkCloneItem($link, 'Item prototype');
 	}
 
 	public function testFormPreprocessingItemPrototype_CloneTemplatedItemPrototype() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.self::HOST_INHERITANCE_RULEID;
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.self::HOST_INHERITANCE_RULEID;
 		$this->checkCloneItem($link, 'Item prototype', $templated = true);
 	}
 
@@ -150,8 +150,8 @@ class testFormPreprocessingItemPrototype extends testFormPreprocessing {
 	 * @dataProvider getItemInheritancePreprocessing
 	 */
 	public function testFormPreprocessingItemPrototype_PreprocessingInheritanceFromTemplate($data) {
-		$this->link = 'zabbix.php?action=item.prototype.list&context=template&parent_discoveryid='.self::TEMPL_INHERITANCE_RULEID;
-		$host_link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.self::HOST_INHERITANCE_RULEID;
+		$this->link = 'sdnet.php?action=item.prototype.list&context=template&parent_discoveryid='.self::TEMPL_INHERITANCE_RULEID;
+		$host_link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.self::HOST_INHERITANCE_RULEID;
 
 		$this->checkPreprocessingInheritance($data, $host_link);
 	}

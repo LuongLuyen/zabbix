@@ -29,7 +29,7 @@ window.update_problem_popup = new class {
 		document.getElementById('unsuppress_problem').addEventListener('change', () => this._update());
 		document.getElementById('close_problem').addEventListener('change', () => this._update());
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'problem.view');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 	}
@@ -84,7 +84,7 @@ window.update_problem_popup = new class {
 	 */
 	submitAcknowledge(overlay) {
 		var $form = overlay.$dialogue.find('form'),
-			url = new Curl('zabbix.php'),
+			url = new Curl('sdnet.php'),
 			form_data;
 
 		$form.trimValues(['#message', '#suppress_until_problem']);

@@ -38,7 +38,7 @@ $web_layout_mode = $this->getLayoutMode();
 		))->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'web.view'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'web.view'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFormItem((new CVar('action', 'web.view'))->removeId())

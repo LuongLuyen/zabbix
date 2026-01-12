@@ -53,7 +53,7 @@ $html_page = (new CHtmlPage())
 		))->setAttribute('aria-label', _('Content controls'))
 	);
 
-$action_url = (new CUrl('zabbix.php'))->setArgument('action', $data['action']);
+$action_url = (new CUrl('sdnet.php'))->setArgument('action', $data['action']);
 
 $filter = (new CFilter())
 	->setResetUrl($action_url)
@@ -282,7 +282,7 @@ foreach ($data['hosts'] as $host) {
 		$description[] = NAME_DELIMITER;
 	}
 
-	$host_url = (new CUrl('zabbix.php'))
+	$host_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'host.edit')
 		->setArgument('hostid', $host['hostid'])
@@ -337,7 +337,7 @@ foreach ($data['hosts'] as $host) {
 
 		if (array_key_exists($template['templateid'], $data['writable_templates'])
 				&& $data['user']['can_edit_templates']) {
-			$template_url = (new CUrl('zabbix.php'))
+			$template_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'template.edit')
 				->setArgument('templateid', $template['templateid'])
@@ -365,7 +365,7 @@ foreach ($data['hosts'] as $host) {
 			foreach ($parent_templates as $parent_template) {
 				if (array_key_exists($parent_template['templateid'], $data['writable_templates'])
 						&& $data['user']['can_edit_templates']) {
-					$parent_template_url = (new CUrl('zabbix.php'))
+					$parent_template_url = (new CUrl('sdnet.php'))
 						->setArgument('action', 'popup')
 						->setArgument('popup', 'template.edit')
 						->setArgument('templateid', $parent_template['templateid'])
@@ -457,7 +457,7 @@ foreach ($data['hosts'] as $host) {
 	$monitored_by = null;
 
 	if ($show_monitored_by) {
-		$proxy_url = (new CUrl('zabbix.php'))
+		$proxy_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'proxy.edit');
 
@@ -469,7 +469,7 @@ foreach ($data['hosts'] as $host) {
 				: $data['proxies'][$host['proxyid']]['name'];
 		}
 		elseif ($host['monitored_by'] == ZBX_MONITORED_BY_PROXY_GROUP) {
-			$proxy_group_url = (new CUrl('zabbix.php'))
+			$proxy_group_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'proxygroup.edit')
 				->setArgument('proxy_groupid', $host['proxy_groupid'])
@@ -507,7 +507,7 @@ foreach ($data['hosts'] as $host) {
 		(new CCol($description))->addClass(ZBX_STYLE_NOWRAP),
 		[
 			new CLink(_('Items'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'item.list')
 					->setArgument('context', 'host')
 					->setArgument('filter_set', '1')
@@ -517,7 +517,7 @@ foreach ($data['hosts'] as $host) {
 		],
 		[
 			new CLink(_('Triggers'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'trigger.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$host['hostid']])
@@ -527,7 +527,7 @@ foreach ($data['hosts'] as $host) {
 		],
 		[
 			new CLink(_('Graphs'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'graph.list')
 					->setArgument('filter_set', '1')
 					->setArgument('filter_hostids', [$host['hostid']])
@@ -567,13 +567,13 @@ foreach ($data['hosts'] as $host) {
 	]);
 }
 
-$status_toggle_url = (new CUrl('zabbix.php'))
+$status_toggle_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'popup.massupdate.host')
 	->setArgument(CSRF_TOKEN_NAME, $csrf_token)
 	->setArgument('visible[status]', 1)
 	->setArgument('update', 1)
 	->setArgument('backurl',
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'host.list')
 			->setArgument('page', CPagerHelper::loadPage('host.list', null))
 			->getUrl()

@@ -30,12 +30,12 @@ $html_page = (new CHtmlPage())
 		(new CTag('nav', true,
 			(new CList())
 				->addItem(new CRedirectButton(_('Create user role'),
-					(new CUrl('zabbix.php'))->setArgument('action', 'userrole.edit')
+					(new CUrl('sdnet.php'))->setArgument('action', 'userrole.edit')
 				))
 		))->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'userrole.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'userrole.list'))
 		->addVar('action', 'userrole.list')
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
@@ -58,7 +58,7 @@ $table = (new CTableInfo())
 			'checkAll(\'%s\',\'all_roles\',\'roleids\');', $form->getName()
 		))))->addClass(ZBX_STYLE_CELL_WIDTH),
 		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'userrole.list')
 				->getUrl()
 		),
@@ -80,7 +80,7 @@ foreach ($data['roles'] as $role) {
 		);
 
 		$user = $data['allowed_ui_users']
-			? (new CLink(getUserFullname($user), (new CUrl('zabbix.php'))
+			? (new CLink(getUserFullname($user), (new CUrl('sdnet.php'))
 				->setArgument('action', 'user.edit')
 				->setArgument('userid', $user['userid'])
 				->getUrl()
@@ -95,7 +95,7 @@ foreach ($data['roles'] as $role) {
 		$users[] = [' ', HELLIP()];
 	}
 
-	$name = new CLink($role['name'], (new CUrl('zabbix.php'))
+	$name = new CLink($role['name'], (new CUrl('sdnet.php'))
 		->setArgument('action', 'userrole.edit')
 		->setArgument('roleid', $role['roleid'])
 		->getUrl()
@@ -106,7 +106,7 @@ foreach ($data['roles'] as $role) {
 		(new CCol($name))->addClass(ZBX_STYLE_NOWRAP),
 		[
 			$data['allowed_ui_users']
-				? new CLink(_('Users'), (new CUrl('zabbix.php'))
+				? new CLink(_('Users'), (new CUrl('sdnet.php'))
 					->setArgument('action', 'user.list')
 					->setArgument('filter_roles[]', $role['roleid'])
 					->setArgument('filter_set', 1)

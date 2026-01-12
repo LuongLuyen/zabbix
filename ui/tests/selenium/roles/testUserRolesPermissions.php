@@ -290,7 +290,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Edit map'
 					],
 					'list_link' => 'sysmaps.php',
-					'action_link' => 'zabbix.php?action=map.view&sysmapid=1',
+					'action_link' => 'sdnet.php?action=map.view&sysmapid=1',
 					'action' => 'Create and edit maps',
 					'check_links' => ['sysmap.php?sysmapid=1', 'sysmaps.php?form=Create+map']
 				]
@@ -306,10 +306,10 @@ class testUserRolesPermissions extends CWebTest {
 					'form_button' => [
 						'Edit dashboard'
 					],
-					'list_link' => 'zabbix.php?action=dashboard.list',
-					'action_link' => 'zabbix.php?action=dashboard.view&dashboardid=',
+					'list_link' => 'sdnet.php?action=dashboard.list',
+					'action_link' => 'sdnet.php?action=dashboard.view&dashboardid=',
 					'action' => 'Create and edit dashboards',
-					'check_links' => ['zabbix.php?action=dashboard.view&new=1']
+					'check_links' => ['sdnet.php?action=dashboard.view&new=1']
 				]
 			],
 			// Manage scheduled reports.
@@ -329,10 +329,10 @@ class testUserRolesPermissions extends CWebTest {
 						'Delete',
 						'Cancel'
 					],
-					'list_link' => 'zabbix.php?action=scheduledreport.list',
-					'action_link' => 'zabbix.php?action=scheduledreport.edit&reportid=',
+					'list_link' => 'sdnet.php?action=scheduledreport.list',
+					'action_link' => 'sdnet.php?action=scheduledreport.edit&reportid=',
 					'action' => 'Manage scheduled reports',
-					'check_links' => ['zabbix.php?action=scheduledreport.edit']
+					'check_links' => ['sdnet.php?action=scheduledreport.edit']
 				]
 			]
 		];
@@ -383,7 +383,7 @@ class testUserRolesPermissions extends CWebTest {
 		$this->page->userLogin('user_for_role', 'zabbixzabbix');
 
 		foreach ([true, false] as $action_status) {
-			$this->page->open('zabbix.php?action=maintenance.list')->waitUntilReady();
+			$this->page->open('sdnet.php?action=maintenance.list')->waitUntilReady();
 			$this->assertTrue($this->query('button', 'Create maintenance period')->one()->isEnabled($action_status));
 
 			$table = $this->query('class:list-table')->asTable()->waitUntilVisible()->one();
@@ -464,7 +464,7 @@ class testUserRolesPermissions extends CWebTest {
 		$this->page->userLogin('user_for_role', 'zabbixzabbix');
 
 		foreach ([true, false] as $action_status) {
-			$this->page->open('zabbix.php?action=problem.view')->waitUntilReady();
+			$this->page->open('sdnet.php?action=problem.view')->waitUntilReady();
 			$row = $this->query('class:list-table')->asTable()->one()->findRow('Problem', 'Test trigger with tag');
 			$row->getColumn('Update')->query('link:Update')->waitUntilClickable()->one()->click();
 			$dialog = COverlayDialogElement::find()->waitUntilReady()->one();
@@ -473,7 +473,7 @@ class testUserRolesPermissions extends CWebTest {
 
 			// Check that problem actions works after they were turned on.
 			if ($action_status === false) {
-				$this->page->open('zabbix.php?action=problem.view')->waitUntilReady();
+				$this->page->open('sdnet.php?action=problem.view')->waitUntilReady();
 				$row->getColumn('Update')->query('link:Update')->waitUntilCLickable()->one()->click();
 				COverlayDialogElement::find()->waitUntilReady()->one();
 
@@ -529,7 +529,7 @@ class testUserRolesPermissions extends CWebTest {
 	public function testUserRolesPermissions_ChangeProblemRanking($data) {
 		$this->page->userLogin('problem_ranking', 'zabbixzabbix');
 		$this->changeRoleRule(['Change problem ranking' => $data['state']], self::$super_roleid2);
-		$this->page->open('zabbix.php?action=problem.view&name=Problem trap>150 [Cause]');
+		$this->page->open('sdnet.php?action=problem.view&name=Problem trap>150 [Cause]');
 
 		// Check context menu 'Mark as cause' & 'Mark selected as symptoms' options accessibility.
 		$table = $this->getTable();
@@ -580,13 +580,13 @@ class testUserRolesPermissions extends CWebTest {
 
 		foreach ([true, false] as $action_status) {
 			// Problem page.
-			$this->page->open('zabbix.php?action=problem.view')->waitUntilReady();
+			$this->page->open('sdnet.php?action=problem.view')->waitUntilReady();
 			$problem_row = $this->query('class:list-table')->asTable()->one()->findRow('Problem', $problem);
 			$this->assertEquals($action_status, $problem_row->getColumn('Update')->query('xpath:.//*[text()="Update"]')
 					->one()->isAttributePresent('href'));
 
 			// Problem widget in dashboard.
-			$this->page->open('zabbix.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
+			$this->page->open('sdnet.php?action=dashboard.view&dashboardid=1')->waitUntilReady();
 			$table = CDashboardElement::find()->one()->getWidget('Current problems')->query('class:list-table')->asTable()->one();
 			$this->assertEquals($action_status, $table->findRow('Problem • Severity', $problem)->getColumn('Update')
 					->query('xpath:.//*[text()="Update"]')->one()->isAttributePresent('href'));
@@ -610,21 +610,21 @@ class testUserRolesPermissions extends CWebTest {
 			// Monitoring problems page.
 			[
 				[
-					'link' => 'zabbix.php?action=problem.view',
+					'link' => 'sdnet.php?action=problem.view',
 					'selector' => 'xpath:(//a[@class="link-action wordbreak" and text()="ЗАББИКС Сервер"])[1]'
 				]
 			],
 			// Dashboard problem widget.
 			[
 				[
-					'link' => 'zabbix.php?action=dashboard.view&dashboardid=1',
+					'link' => 'sdnet.php?action=dashboard.view&dashboardid=1',
 					'selector' => 'link:ЗАББИКС Сервер'
 				]
 			],
 			// Monitoring hosts page.
 			[
 				[
-					'link' => 'zabbix.php?action=host.view',
+					'link' => 'sdnet.php?action=host.view',
 					'selector' => 'link:3_Host_to_check_Monitoring_Overview'
 				]
 			],
@@ -638,7 +638,7 @@ class testUserRolesPermissions extends CWebTest {
 			// Monitoring maps page.
 			[
 				[
-					'link' => 'zabbix.php?action=map.view&sysmapid=1',
+					'link' => 'sdnet.php?action=map.view&sysmapid=1',
 					'selector' => 'xpath://*[name()="g"][@class="map-elements"]/*[name()="image"]'
 				]
 			]
@@ -717,7 +717,7 @@ class testUserRolesPermissions extends CWebTest {
 			'Module 5 menu'
 		];
 		$this->page->userLogin('user_for_role', 'zabbixzabbix');
-		$this->page->open('zabbix.php?action=module.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=module.list')->waitUntilReady();
 		$this->query('button:Scan directory')->one()->click();
 		$this->assertMessage(TEST_GOOD, 'Modules updated');
 		CMessageElement::find()->one()->close();
@@ -780,7 +780,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Action log',
 						'Notifications'
 					],
-					'link' => ['zabbix.php?action=availabilityreport.list']
+					'link' => ['sdnet.php?action=availabilityreport.list']
 				]
 			],
 			[
@@ -795,7 +795,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Action log',
 						'Notifications'
 					],
-					'link' => ['zabbix.php?action=report.status']
+					'link' => ['sdnet.php?action=report.status']
 				]
 			],
 			[
@@ -810,7 +810,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Action log',
 						'Notifications'
 					],
-					'link' => ['zabbix.php?action=availabilityreport.list']
+					'link' => ['sdnet.php?action=availabilityreport.list']
 				]
 			],
 			[
@@ -825,7 +825,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Action log',
 						'Notifications'
 					],
-					'link' => ['zabbix.php?action=toptriggers.list']
+					'link' => ['sdnet.php?action=toptriggers.list']
 				]
 			],
 			[
@@ -840,7 +840,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Action log',
 						'Notifications'
 					],
-					'link' => ['zabbix.php?action=auditlog.list']
+					'link' => ['sdnet.php?action=auditlog.list']
 				]
 			],
 			[
@@ -855,7 +855,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Audit log',
 						'Notifications'
 					],
-					'link' => ['zabbix.php?action=actionlog.list']
+					'link' => ['sdnet.php?action=actionlog.list']
 				]
 			],
 			[
@@ -885,7 +885,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Event correlation',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=templategroup.list']
+					'link' => ['sdnet.php?action=templategroup.list']
 				]
 			],
 			[
@@ -900,7 +900,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Event correlation',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=hostgroup.list']
+					'link' => ['sdnet.php?action=hostgroup.list']
 				]
 			],
 			[
@@ -915,7 +915,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Event correlation',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=template.list']
+					'link' => ['sdnet.php?action=template.list']
 				]
 			],
 			[
@@ -930,7 +930,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Event correlation',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=host.list']
+					'link' => ['sdnet.php?action=host.list']
 				]
 			],
 			[
@@ -945,7 +945,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Event correlation',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=maintenance.list']
+					'link' => ['sdnet.php?action=maintenance.list']
 				]
 			],
 			[
@@ -960,7 +960,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Maintenance',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=correlation.list']
+					'link' => ['sdnet.php?action=correlation.list']
 				]
 			],
 			[
@@ -975,7 +975,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Maintenance',
 						'Event correlation'
 					],
-					'link' => ['zabbix.php?action=discovery.list']
+					'link' => ['sdnet.php?action=discovery.list']
 				]
 			],
 			[
@@ -991,7 +991,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Media types',
 						'Scripts'
 					],
-					'link' => ['zabbix.php?action=action.list&eventsource=0']
+					'link' => ['sdnet.php?action=action.list&eventsource=0']
 				]
 			],
 			[
@@ -1007,7 +1007,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Media types',
 						'Scripts'
 					],
-					'link' => ['zabbix.php?action=action.list&eventsource=4']
+					'link' => ['sdnet.php?action=action.list&eventsource=4']
 				]
 			],
 			[
@@ -1023,7 +1023,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Media types',
 						'Scripts'
 					],
-					'link' => ['zabbix.php?action=action.list&eventsource=1']
+					'link' => ['sdnet.php?action=action.list&eventsource=1']
 				]
 			],
 			[
@@ -1039,7 +1039,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Media types',
 						'Scripts'
 					],
-					'link' => ['zabbix.php?action=action.list&eventsource=2']
+					'link' => ['sdnet.php?action=action.list&eventsource=2']
 				]
 			],
 			[
@@ -1055,7 +1055,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Media types',
 						'Scripts'
 					],
-					'link' => ['zabbix.php?action=action.list&eventsource=3']
+					'link' => ['sdnet.php?action=action.list&eventsource=3']
 				]
 			],
 			[
@@ -1067,11 +1067,11 @@ class testUserRolesPermissions extends CWebTest {
 						'Scripts'
 					],
 					'link' => [
-						'zabbix.php?action=action.list&eventsource=0',
-						'zabbix.php?action=action.list&eventsource=1',
-						'zabbix.php?action=action.list&eventsource=2',
-						'zabbix.php?action=action.list&eventsource=3',
-						'zabbix.php?action=action.list&eventsource=4'
+						'sdnet.php?action=action.list&eventsource=0',
+						'sdnet.php?action=action.list&eventsource=1',
+						'sdnet.php?action=action.list&eventsource=2',
+						'sdnet.php?action=action.list&eventsource=3',
+						'sdnet.php?action=action.list&eventsource=4'
 					]
 				]
 			],
@@ -1087,7 +1087,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Internal actions',
 						'Scripts'
 					],
-					'link' => ['zabbix.php?action=mediatype.list']
+					'link' => ['sdnet.php?action=mediatype.list']
 				]
 			],
 			[
@@ -1102,7 +1102,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Internal actions',
 						'Media types'
 					],
-					'link' => ['zabbix.php?action=script.list']
+					'link' => ['sdnet.php?action=script.list']
 				]
 			],
 			[
@@ -1115,7 +1115,7 @@ class testUserRolesPermissions extends CWebTest {
 						'API tokens',
 						'Authentication'
 					],
-					'link' => ['zabbix.php?action=usergroup.list']
+					'link' => ['sdnet.php?action=usergroup.list']
 				]
 			],
 			[
@@ -1129,7 +1129,7 @@ class testUserRolesPermissions extends CWebTest {
 						'API tokens',
 						'Authentication'
 					],
-					'link' => ['zabbix.php?action=userrole.list']
+					'link' => ['sdnet.php?action=userrole.list']
 				]
 			],
 			[
@@ -1142,7 +1142,7 @@ class testUserRolesPermissions extends CWebTest {
 						'API tokens',
 						'Authentication'
 					],
-					'link' => ['zabbix.php?action=user.list']
+					'link' => ['sdnet.php?action=user.list']
 				]
 			],
 			[
@@ -1155,7 +1155,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Users',
 						'Authentication'
 					],
-					'link' => ['zabbix.php?action=token.list']
+					'link' => ['sdnet.php?action=token.list']
 				]
 			],
 			[
@@ -1168,7 +1168,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Users',
 						'API tokens'
 					],
-					'link' => ['zabbix.php?action=authentication.edit']
+					'link' => ['sdnet.php?action=authentication.edit']
 				]
 			],
 			[
@@ -1183,15 +1183,15 @@ class testUserRolesPermissions extends CWebTest {
 						'Queue'
 					],
 					'link' => [
-						'zabbix.php?action=gui.edit',
-						'zabbix.php?action=autoreg.edit',
-						'zabbix.php?action=image.list',
-						'zabbix.php?action=iconmap.list',
-						'zabbix.php?action=regex.list',
-						'zabbix.php?action=trigdisplay.edit',
-						'zabbix.php?action=geomaps.edit',
-						'zabbix.php?action=module.list',
-						'zabbix.php?action=miscconfig.edit'
+						'sdnet.php?action=gui.edit',
+						'sdnet.php?action=autoreg.edit',
+						'sdnet.php?action=image.list',
+						'sdnet.php?action=iconmap.list',
+						'sdnet.php?action=regex.list',
+						'sdnet.php?action=trigdisplay.edit',
+						'sdnet.php?action=geomaps.edit',
+						'sdnet.php?action=module.list',
+						'sdnet.php?action=miscconfig.edit'
 					]
 				]
 			],
@@ -1206,7 +1206,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Macros',
 						'Queue'
 					],
-					'link' => ['zabbix.php?action=audit.settings.edit']
+					'link' => ['sdnet.php?action=audit.settings.edit']
 				]
 			],
 			[
@@ -1220,7 +1220,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Macros',
 						'Queue'
 					],
-					'link' => ['zabbix.php?action=housekeeping.edit']
+					'link' => ['sdnet.php?action=housekeeping.edit']
 				]
 			],
 			[
@@ -1234,7 +1234,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Macros',
 						'Queue'
 					],
-					'link' => ['zabbix.php?action=proxy.list']
+					'link' => ['sdnet.php?action=proxy.list']
 				]
 			],
 			[
@@ -1248,7 +1248,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Proxies',
 						'Queue'
 					],
-					'link' => ['zabbix.php?action=macros.edit']
+					'link' => ['sdnet.php?action=macros.edit']
 				]
 			],
 			[
@@ -1263,9 +1263,9 @@ class testUserRolesPermissions extends CWebTest {
 						'Macros'
 					],
 					'link' => [
-						'zabbix.php?action=queue.overview',
-						'zabbix.php?action=queue.overview.proxy',
-						'zabbix.php?action=queue.details'
+						'sdnet.php?action=queue.overview',
+						'sdnet.php?action=queue.overview.proxy',
+						'sdnet.php?action=queue.details'
 					]
 				]
 			],
@@ -1279,7 +1279,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Maps',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=problem.view']
+					'link' => ['sdnet.php?action=problem.view']
 				]
 			],
 			[
@@ -1292,7 +1292,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Maps',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=host.view']
+					'link' => ['sdnet.php?action=host.view']
 				]
 			],
 			[
@@ -1305,7 +1305,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Maps',
 						'Discovery'
 					],
-					'link' => ['zabbix.php?action=latest.view']
+					'link' => ['sdnet.php?action=latest.view']
 				]
 			],
 			[
@@ -1331,7 +1331,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Latest data',
 						'Maps'
 					],
-					'link' => ['zabbix.php?action=discovery.view']
+					'link' => ['sdnet.php?action=discovery.view']
 				]
 			],
 			[
@@ -1342,7 +1342,7 @@ class testUserRolesPermissions extends CWebTest {
 						'SLA',
 						'SLA report'
 					],
-					'link' => ['zabbix.php?action=service.list']
+					'link' => ['sdnet.php?action=service.list']
 				]
 			],
 			[
@@ -1353,7 +1353,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Services',
 						'SLA report'
 					],
-					'link' => ['zabbix.php?action=sla.list']
+					'link' => ['sdnet.php?action=sla.list']
 				]
 			],
 			[
@@ -1364,7 +1364,7 @@ class testUserRolesPermissions extends CWebTest {
 						'Services',
 						'SLA'
 					],
-					'link' => ['zabbix.php?action=slareport.list']
+					'link' => ['sdnet.php?action=slareport.list']
 				]
 			]
 		];
@@ -1417,16 +1417,16 @@ class testUserRolesPermissions extends CWebTest {
 				}
 				else {
 					$this->changeRoleRule([$data['section'] => $data['displayed_ui']]);
-					$this->page->open('zabbix.php?action=dashboard.view')->waitUntilReady();
+					$this->page->open('sdnet.php?action=dashboard.view')->waitUntilReady();
 				}
 
 				if (array_key_exists('actions', $data)) {
 					$this->changeRoleRule([$data['section'] => $data['displayed_ui']]);
-					$this->page->open('zabbix.php?action=action.list'.(($data['page'] === 'Trigger actions') ?
+					$this->page->open('sdnet.php?action=action.list'.(($data['page'] === 'Trigger actions') ?
 							'&eventsource=1' : '&eventsource=0'))->waitUntilReady();
 					$popup_menu = $this->query('id:page-title-general')->asPopupButton()->one()->getMenu();
 					$this->assertNotContains($data['page'], $popup_menu->getItems()->asText());
-					$this->page->open('zabbix.php?action=dashboard.view')->waitUntilReady();
+					$this->page->open('sdnet.php?action=dashboard.view')->waitUntilReady();
 				}
 			}
 			else {
@@ -1450,10 +1450,10 @@ class testUserRolesPermissions extends CWebTest {
 	 */
 	public function testUserRolesPermissions_ManageApiToken() {
 		$this->page->userLogin('user_for_role', 'zabbixzabbix');
-		$this->page->open('zabbix.php?action=user.token.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=user.token.list')->waitUntilReady();
 		$this->assertEquals('TEST_SERVER_NAME: API tokens', $this->page->getTitle());
 		$this->changeRoleRule(['Manage API tokens' => false]);
-		$this->checkLinks(['zabbix.php?action=user.token.list']);
+		$this->checkLinks(['sdnet.php?action=user.token.list']);
 		$this->page->logout();
 	}
 
@@ -1462,9 +1462,9 @@ class testUserRolesPermissions extends CWebTest {
 	 */
 	public function testUserRolesPermissions_Dashboard() {
 		$this->page->userLogin('user_for_role', 'zabbixzabbix');
-		$this->page->open('zabbix.php?action=dashboard.view')->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view')->waitUntilReady();
 		$this->changeRoleRule(['Dashboards' => false]);
-		$this->checkLinks(['zabbix.php?action=dashboard.view'], 'Problems');
+		$this->checkLinks(['sdnet.php?action=dashboard.view'], 'Problems');
 	}
 
 	public static function getRoleServiceData() {
@@ -1635,7 +1635,7 @@ class testUserRolesPermissions extends CWebTest {
 		}
 
 		// Configure the role according to the data provider.
-		$this->page->login()->open('zabbix.php?action=userrole.edit&roleid='.self::$super_roleid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=userrole.edit&roleid='.self::$super_roleid)->waitUntilReady();
 		$form = $this->query('id:userrole-form')->waitUntilPresent()->asForm()->one();
 		$form->fill($data['role_config']);
 
@@ -1648,7 +1648,7 @@ class testUserRolesPermissions extends CWebTest {
 
 		// Login as user that belongs to the updated row and check access to services based on applied configuration.
 		$this->page->userLogin('user_for_role', 'zabbixzabbix');
-		$this->page->open('zabbix.php?action=service.list')->waitUntilReady();
+		$this->page->open('sdnet.php?action=service.list')->waitUntilReady();
 		$this->assertEquals('user_for_role', $this->query('xpath://a[text()="User settings"]')->one()->getAttribute('title'));
 
 		$services_mode = $this->query('id:list_mode')->asSegmentedRadio()->one(false);
@@ -1778,7 +1778,7 @@ class testUserRolesPermissions extends CWebTest {
 	public function testUserRolesPermissions_ExecuteNowButton($data) {
 		// Login and select host group for testing.
 		$this->page->userLogin($data['user'], 'zabbixzabbix');
-		$this->page->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$table = $this->query('xpath://table['.CXPathHelper::fromClass('list-table fixed').']')->asTable()->one();
 		$filter_form = $this->query('name:zbx_filter')->asForm()->one();
 		$filter_form->fill(['Host groups' => 'HG-for-executenow']);
@@ -1886,7 +1886,7 @@ class testUserRolesPermissions extends CWebTest {
 	public function testUserRolesPermissions_ExecuteNowContextMenu($data) {
 		// Login and select host group for testing.
 		$this->page->userLogin($data['user'], 'zabbixzabbix');
-		$this->page->open('zabbix.php?action=latest.view')->waitUntilReady();
+		$this->page->open('sdnet.php?action=latest.view')->waitUntilReady();
 		$filter_form = $this->query('name:zbx_filter')->asForm()->one();
 		$filter_form->fill(['Host groups' => 'HG-for-executenow']);
 		$filter_form->submit();
@@ -1934,7 +1934,7 @@ class testUserRolesPermissions extends CWebTest {
 			$this->query('button:Go to "'.$page.'"')->one()->waitUntilClickable()->click();
 
 			if ($page === 'Dashboards') {
-				$this->assertStringContainsString('zabbix.php?action=dashboard', $this->page->getCurrentUrl());
+				$this->assertStringContainsString('sdnet.php?action=dashboard', $this->page->getCurrentUrl());
 			}
 		}
 	}
@@ -1950,7 +1950,7 @@ class testUserRolesPermissions extends CWebTest {
 			$roleid = self::$super_roleid;
 		}
 
-		$this->page->open('zabbix.php?action=userrole.edit&roleid='.$roleid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=userrole.edit&roleid='.$roleid)->waitUntilReady();
 		$this->query('id:userrole-form')->waitUntilPresent()->asForm()->one()->fill($action)->submit();
 		$this->page->waitUntilReady();
 		$this->assertMessage(TEST_GOOD, 'User role updated');

@@ -131,7 +131,7 @@ class testDashboardItemValueWidget extends testWidgets {
 	 * Test of the Item Value widget form fields layout.
 	 */
 	public function testDashboardItemValueWidget_FormLayout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD])->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->waitUntilReady()->one();
 		$dialog = $dashboard->edit()->addWidget();
 		$form = $dialog->asForm();
@@ -1785,7 +1785,7 @@ class testDashboardItemValueWidget extends testWidgets {
 			$old_hash = CDBHelper::getHash(self::SQL);
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD])->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -1964,7 +1964,7 @@ class testDashboardItemValueWidget extends testWidgets {
 	private function checkNoChanges($cancel = false, $create = false, $save_dashboard = true) {
 		$old_hash = CDBHelper::getHash(self::SQL);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD]);
 		$dashboard = CDashboardElement::find()->one()->waitUntilReady();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -2026,7 +2026,7 @@ class testDashboardItemValueWidget extends testWidgets {
 
 	public function testDashboardItemValueWidget_Delete() {
 		$name = 'Widget to delete';
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD]);
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
 		$this->assertEquals(true, $dashboard->getWidget($name)->isEditable());
@@ -2396,7 +2396,7 @@ class testDashboardItemValueWidget extends testWidgets {
 	 */
 	public function testDashboardItemValueWidget_WarningMessage($data) {
 		$info = 'class:zi-i-warning';
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD]);
 		$dashboard = CDashboardElement::find()->one();
 		$form = $dashboard->edit()->addWidget()->asForm();
 		$form->fill(['Type' => CFormElement::RELOADABLE_FILL('Item value')]);
@@ -3015,7 +3015,7 @@ class testDashboardItemValueWidget extends testWidgets {
 	 */
 	public function testDashboardItemValueWidget_ThresholdColor($data) {
 		$time = strtotime('now');
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_THRESHOLD]);
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_THRESHOLD]);
 		$dashboard = CDashboardElement::find()->one();
 		$form = $dashboard->edit()->addWidget()->asForm();
 		$form->fill(['Type' => CFormElement::RELOADABLE_FILL('Item value')]);
@@ -3172,7 +3172,7 @@ class testDashboardItemValueWidget extends testWidgets {
 	 * @dataProvider getWidgetTimePeriodData
 	 */
 	public function testDashboardItemValueWidget_TimePeriodFilter($data) {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_ZOOM])->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_ZOOM])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 
 		foreach ($data['widgets'] as $widget) {
@@ -3238,7 +3238,7 @@ class testDashboardItemValueWidget extends testWidgets {
 	}
 
 	public function testDashboardItemValueWidget_TimePeriodIcon() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_ZOOM])->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD_ZOOM])->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$form = $dashboard->edit()->addWidget()->asForm();
 		$form->fill(['Type' => CFormElement::RELOADABLE_FILL('Item value')]);
@@ -4255,7 +4255,7 @@ class testDashboardItemValueWidget extends testWidgets {
 			CDataHelper::addItemData(self::$itemids[$data['fields']['Item']], $params['value'], $params['time']);
 		}
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.
 				self::$dashboardids[self::DASHBOARD_AGGREGATION]
 		)->waitUntilReady();
 
@@ -4291,7 +4291,7 @@ class testDashboardItemValueWidget extends testWidgets {
 	 * Test function for assuring that binary items are not available in Item Value widget.
 	 */
 	public function testDashboardItemValueWidget_CheckAvailableItems() {
-		$this->checkAvailableItems('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD],
+		$this->checkAvailableItems('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardids[self::DASHBOARD],
 				'Item value'
 		);
 	}

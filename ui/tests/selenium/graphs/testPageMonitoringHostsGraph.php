@@ -183,7 +183,7 @@ class testPageMonitoringHostsGraph extends CWebTest {
 	 * Check graph page layout.
 	 */
 	public function testPageMonitoringHostsGraph_Layout() {
-		$this->page->login()->open('zabbix.php?view_as=showgraph&action=charts.view&filter_search_type=0&filter_set=1')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?view_as=showgraph&action=charts.view&filter_search_type=0&filter_set=1')->waitUntilReady();
 		$this->page->assertHeader('Graphs');
 		$this->page->assertTitle('Custom graphs');
 
@@ -842,7 +842,7 @@ class testPageMonitoringHostsGraph extends CWebTest {
 	 * @dataProvider getCheckFilterData
 	 */
 	public function testPageMonitoringHostsGraph_CheckFilter($data) {
-		$this->page->login()->open('zabbix.php?view_as=showgraph&action=charts.view&from=now-1h&to='.
+		$this->page->login()->open('sdnet.php?view_as=showgraph&action=charts.view&from=now-1h&to='.
 				'now&filter_search_type=0&filter_set=1')->waitUntilReady();
 
 		// If the filter is not visible - enable it.
@@ -915,7 +915,7 @@ class testPageMonitoringHostsGraph extends CWebTest {
 	 * Check graph page in kiosk mode.
 	 */
 	public function testPageMonitoringHostsGraph_KioskMode() {
-		$this->page->login()->open('zabbix.php?view_as=showgraph&action=charts.view&from=now-1h&to'.
+		$this->page->login()->open('sdnet.php?view_as=showgraph&action=charts.view&from=now-1h&to'.
 				'=now&filter_search_type=0&filter_set=1')->waitUntilReady();
 
 		// Check Kiosk mode.

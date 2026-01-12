@@ -675,7 +675,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 		}
 
 		// Go to host and change IPMI settings.
-		$this->page->open('zabbix.php?action=popup&popup=host.edit&hostid='.self::HOST_ID);
+		$this->page->open('sdnet.php?action=popup&popup=host.edit&hostid='.self::HOST_ID);
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		$form->selectTab('IPMI');
 
@@ -769,7 +769,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 		}
 
 		// Go to host and change Encryption settings.
-		$this->page->open('zabbix.php?action=popup&popup=host.edit&hostid='.self::HOST_ID);
+		$this->page->open('sdnet.php?action=popup&popup=host.edit&hostid='.self::HOST_ID);
 
 		$form = COverlayDialogElement::find()->asForm()->one()->waitUntilVisible();
 		$form->selectTab('Encryption');

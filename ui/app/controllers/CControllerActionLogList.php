@@ -162,7 +162,7 @@ class CControllerActionLogList extends CController {
 		$data['alerts'] = array_slice($data['alerts'], 0, CSettingsHelper::get(CSettingsHelper::SEARCH_LIMIT) + 1);
 
 		$data['paging'] = CPagerHelper::paginate($data['page'], $data['alerts'], ZBX_SORT_DOWN,
-			(new CUrl('zabbix.php'))->setArgument('action', $this->getAction())
+			(new CUrl('sdnet.php'))->setArgument('action', $this->getAction())
 		);
 
 		if (!$data['userids']) {

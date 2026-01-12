@@ -26,7 +26,7 @@ $form = (new CForm())
 	->addVar('parent_discoveryid', $data['parent_discoveryid'], 'form_parent_discoveryid')
 	->addVar('context', $data['context']);
 
-$list_url = (new CUrl('zabbix.php'))
+$list_url = (new CUrl('sdnet.php'))
 	->setArgument('action', $data['action'])
 	->setArgument('parent_discoveryid', $data['parent_discoveryid'])
 	->setArgument('context', $data['context'])
@@ -57,7 +57,7 @@ foreach ($data['items'] as $item) {
 
 	if ($item['flags'] & ZBX_FLAG_DISCOVERY_CREATED) {
 		$name[] = (new CLink($data['source_link_data']['name'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'item.prototype.edit')
 				->setArgument('parent_discoveryid', $data['source_link_data']['parent_itemid'])
@@ -77,7 +77,7 @@ foreach ($data['items'] as $item) {
 		}
 		else {
 			if ($item['master_item']['source'] === 'itemprototypes') {
-				$item_prototype_url = (new CUrl('zabbix.php'))
+				$item_prototype_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'item.prototype.edit')
 					->setArgument('itemid', $item['master_item']['itemid'])
@@ -90,7 +90,7 @@ foreach ($data['items'] as $item) {
 					->addClass(ZBX_STYLE_TEAL);
 			}
 			else {
-				$item_url = (new CUrl('zabbix.php'))
+				$item_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'item.edit')
 					->setArgument('itemid', $item['master_item']['itemid'])
@@ -106,7 +106,7 @@ foreach ($data['items'] as $item) {
 		$name[] = NAME_DELIMITER;
 	}
 
-	$item_prototype_url = (new CUrl('zabbix.php'))
+	$item_prototype_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'item.prototype.edit')
 		->setArgument('itemid', $item['itemid'])

@@ -773,7 +773,7 @@ return [
 				'null' => false,
 				'type' => DB::FIELD_TYPE_CHAR,
 				'length' => 255,
-				'default' => 'Zabbix'
+				'default' => 'SDNet'
 			],
 			'authentication' => [
 				'null' => false,

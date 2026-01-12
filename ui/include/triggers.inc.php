@@ -1805,14 +1805,14 @@ function makeTriggerTemplatePrefix($triggerid, array $parent_templates, $flag, b
 	foreach ($templates as $template) {
 		if ($provide_links && $template['permission'] == PERM_READ_WRITE) {
 			if ($flag & ZBX_FLAG_DISCOVERY_PROTOTYPE) {
-				$url = (new CUrl('zabbix.php'))
+				$url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'trigger.prototype.list')
 					->setArgument('parent_discoveryid', $parent_templates['links'][$triggerid]['lld_ruleid'])
 					->setArgument('context', 'template');
 			}
 			// ZBX_FLAG_DISCOVERY_NORMAL
 			else {
-				$url = (new CUrl('zabbix.php'))
+				$url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'trigger.list')
 					->setArgument('filter_hostids', [$template['hostid']])
 					->setArgument('filter_set', 1)
@@ -1878,7 +1878,7 @@ function makeTriggerTemplatesHtml($triggerid, array $parent_templates, $flag, bo
 					$prototype = '0';
 				}
 
-				$trigger_url = (new CUrl('zabbix.php'))
+				$trigger_url = (new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', $prototype === '1' ? 'trigger.prototype.edit' : 'trigger.edit')
 					->setArgument('triggerid', $parent_templates['links'][$triggerid]['triggerid'])

@@ -231,7 +231,7 @@ $timeouts_tab = (new CFormGrid())
 				->setEnabled(!$data['version_mismatch']),
 			$data['user']['can_edit_global_timeouts']
 				? (new CLink(_('Global timeouts'),
-					(new CUrl('zabbix.php'))->setArgument('action', 'timeouts.edit')
+					(new CUrl('sdnet.php'))->setArgument('action', 'timeouts.edit')
 				))
 					->addClass(ZBX_STYLE_LINK)
 					->setTarget('_blank')
@@ -239,7 +239,7 @@ $timeouts_tab = (new CFormGrid())
 		])
 	])
 	->addItem([
-		(new CLabel(_('Zabbix agent'), 'timeout_zabbix_agent'))->setAsteriskMark(),
+		(new CLabel(_('SDNet agent'), 'timeout_zabbix_agent'))->setAsteriskMark(),
 		new CFormField(
 			(new CTextBox('timeout_zabbix_agent', $data['form']['timeout_zabbix_agent'], false,
 				DB::getFieldLength('proxy', 'timeout_zabbix_agent')

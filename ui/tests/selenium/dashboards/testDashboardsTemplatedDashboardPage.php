@@ -60,7 +60,7 @@ class testDashboardsTemplatedDashboardPage extends CWebTest {
 	}
 
 	public function testDashboardsTemplatedDashboardPage_Layout() {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.list&templateid='.self::TEMPLATEID);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.list&templateid='.self::TEMPLATEID);
 		$this->page->assertHeader('Dashboards');
 		$this->page->assertTitle('Configuration of dashboards');
 
@@ -100,7 +100,7 @@ class testDashboardsTemplatedDashboardPage extends CWebTest {
 	 * @backup profiles
 	 */
 	public function testDashboardsTemplatedDashboardPage_Sort() {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.list&templateid='.self::TEMPLATEID);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.list&templateid='.self::TEMPLATEID);
 		$header = $this->query('link:Name')->one()->waitUntilClickable();
 
 		// Change sorting to descending and back and verify list of dashboard names each time.
@@ -120,7 +120,7 @@ class testDashboardsTemplatedDashboardPage extends CWebTest {
 	}
 
 	public function testDashboardsTemplatedDashboardPage_Delete() {
-		$this->page->login()->open('zabbix.php?action=template.dashboard.list&templateid='.self::TEMPLATEID);
+		$this->page->login()->open('sdnet.php?action=template.dashboard.list&templateid='.self::TEMPLATEID);
 		$table = $this->query('class:list-table')->asTable()->one()->waitUntilVisible();
 		$table->findRows('Name', self::DASHBOARDS_2_DELETE)->select();
 

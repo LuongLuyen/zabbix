@@ -168,11 +168,11 @@ $html_page = (new CHtmlPage())
 	)
 	->setNavigation((new CList())->addItem(new CBreadcrumbs([
 		(new CSpan())->addItem(new CLink(_('All dashboards'),
-			(new CUrl('zabbix.php'))->setArgument('action', 'dashboard.list')
+			(new CUrl('sdnet.php'))->setArgument('action', 'dashboard.list')
 		)),
 		(new CSpan())
 			->addItem((new CLink($data['dashboard']['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'dashboard.view')
 					->setArgument('dashboardid', $data['dashboard']['dashboardid'])))
 					->setId('dashboard-direct-link')

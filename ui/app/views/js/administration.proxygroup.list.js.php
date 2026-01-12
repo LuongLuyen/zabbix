@@ -58,7 +58,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'proxygroup.delete');
 
 			this.#post(target, proxy_groupids, curl);

@@ -52,7 +52,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'maintenance.delete');
 
 			this.#post(target, maintenanceids, curl.getUrl());

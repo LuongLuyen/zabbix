@@ -96,7 +96,7 @@ $form = (new CForm())
 	->addItem((new CVar(CSRF_TOKEN_NAME, CCsrfTokenHelper::get('macros')))->removeId())
 	->setName('macrosForm')
 	->disablePasswordAutofill()
-	->setAction((new CUrl('zabbix.php'))->setArgument('action', 'macros.update')->getUrl())
+	->setAction((new CUrl('sdnet.php'))->setArgument('action', 'macros.update')->getUrl())
 	->setAttribute('aria-labelledby', CHtmlPage::PAGE_TITLE_ID)
 	->addItem($tab_view);
 

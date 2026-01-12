@@ -24,13 +24,13 @@ $html_page = (new CHtmlPage())
 	->setTitleSubmenu([
 		'main_section' => [
 			'items' => [
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'queue.overview')
 					->getUrl() => _('Queue overview'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'queue.overview.proxy')
 					->getUrl() => _('Queue overview by proxy'),
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'queue.details')
 					->getUrl() => _('Queue details')
 			]

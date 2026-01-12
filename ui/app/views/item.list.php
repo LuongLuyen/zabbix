@@ -35,7 +35,7 @@ $form = (new CForm())
 	->addVar('context', $data['context'], uniqid('item_'))
 	->addVar('hostid', $data['hostid'] != 0 ? $data['hostid'] : null);
 
-$list_url = (new CUrl('zabbix.php'))
+$list_url = (new CUrl('sdnet.php'))
 	->setArgument('action', $data['action'])
 	->setArgument('context', $data['context'])
 	->getUrl();
@@ -74,7 +74,7 @@ foreach ($data['items'] as $item) {
 
 	if ($item['discoveryRule']) {
 		$name[] = (new CLink($item['discoveryRule']['name'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'item.prototype.list')
 				->setArgument('parent_discoveryid', $item['discoveryRule']['itemid'])
 				->setArgument('context', $data['context'])
@@ -90,7 +90,7 @@ foreach ($data['items'] as $item) {
 		}
 		else {
 			$name[] = (new CLink($item['master_item']['name'],
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'popup')
 					->setArgument('popup', 'item.edit')
 					->setArgument('context', $data['context'])
@@ -105,7 +105,7 @@ foreach ($data['items'] as $item) {
 	}
 
 	$name[] = new CLink($item['name'],
-		(new CUrl('zabbix.php'))
+		(new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'item.edit')
 			->setArgument('context', $data['context'])
@@ -119,7 +119,7 @@ foreach ($data['items'] as $item) {
 	foreach ($item['triggers'] as $trigger) {
 		$trigger = $data['triggers'][$trigger['triggerid']];
 
-		$trigger_url = (new CUrl('zabbix.php'))
+		$trigger_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'trigger.edit')
 			->setArgument('triggerid', $trigger['triggerid'])
@@ -199,7 +199,7 @@ foreach ($data['items'] as $item) {
 
 	$disabled_by_lld = $disable_source == ZBX_DISABLE_SOURCE_LLD;
 
-	$host_url = (new CUrl('zabbix.php'))
+	$host_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', $data['context'] === 'host' ? 'host.edit' : 'template.edit')
 		->setArgument($data['context'] === 'host' ? 'hostid' : 'templateid', $item['hosts'][0]['hostid'])

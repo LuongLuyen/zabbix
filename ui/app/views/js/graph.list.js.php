@@ -95,7 +95,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'graph.delete');
 
 			this.#post(target, graphids, curl);
@@ -154,7 +154,7 @@
 					uncheckTableRows('graphs_' + this.checkbox_hash, [], false);
 
 					if (data.submit.success?.action === 'delete') {
-						const url = new URL('zabbix.php', location.href);
+						const url = new URL('sdnet.php', location.href);
 
 						url.searchParams.set('action', 'graph.list');
 						url.searchParams.set('context', this.context);

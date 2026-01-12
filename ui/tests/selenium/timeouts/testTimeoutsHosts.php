@@ -129,7 +129,7 @@ class testTimeoutsHosts extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsHosts_CheckItemsMacros() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for timeouts check'];
 		$this->checkGlobal('global_macros', $link, 'Create item');
 	}
@@ -141,13 +141,13 @@ class testTimeoutsHosts extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsHosts_CheckPrototypeMacros() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.
 				self::$hostids_druleids['Host for timeouts check:zabbix_agent_drule'];
 		$this->checkGlobal('global_macros', $link, 'Create item prototype');
 	}
 
 	public function testTimeoutsHosts_CheckItemsCustom() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for timeouts check'];
 		$this->checkGlobal('global_custom', $link, 'Create item');
 	}
@@ -159,13 +159,13 @@ class testTimeoutsHosts extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsHosts_CheckPrototypeCustom() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.
 				self::$hostids_druleids['Host for timeouts check:zabbix_agent_drule'];
 		$this->checkGlobal('global_custom', $link, 'Create item prototype');
 	}
 
 	public function testTimeoutsHosts_CheckItemsDefault() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for timeouts check'];
 		$this->checkGlobal('global_default', $link, 'Create item');
 	}
@@ -177,13 +177,13 @@ class testTimeoutsHosts extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsHosts_CheckPrototypeDefault() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.
 				self::$hostids_druleids['Host for timeouts check:zabbix_agent_drule'];
 		$this->checkGlobal('global_default', $link, 'Create item prototype');
 	}
 
 	public function testTimeoutsHosts_CheckItemsProxyDefault() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for timeouts check with proxy'];
 		$this->checkGlobal('global_default', $link, 'Create item', true);
 	}
@@ -195,13 +195,13 @@ class testTimeoutsHosts extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsHosts_CheckPrototypeProxyDefault() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.
 				self::$hostids_druleids['Host for timeouts check with proxy:zabbix_agent_drule'];
 		$this->checkGlobal('global_default', $link, 'Create item prototype', true);
 	}
 
 	public function testTimeoutsHosts_CheckItemsProxyMacros() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for timeouts check with proxy'];
 		$this->checkGlobal('proxy_macros', $link, 'Create item', true);
 	}
@@ -213,13 +213,13 @@ class testTimeoutsHosts extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsHosts_CheckPrototypeProxyMacros() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.
 				self::$hostids_druleids['Host for timeouts check with proxy:zabbix_agent_drule'];
 		$this->checkGlobal('proxy_macros', $link, 'Create item prototype', true);
 	}
 
 	public function testTimeoutsHosts_CheckItemsProxyCustom() {
-		$link = 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
+		$link = 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D='.
 				self::$hostids['Host for timeouts check with proxy'];
 		$this->checkGlobal('proxy_custom', $link, 'Create item', true);
 	}
@@ -231,7 +231,7 @@ class testTimeoutsHosts extends testTimeoutsDisplay {
 	}
 
 	public function testTimeoutsHosts_CheckPrototypeProxyCustom() {
-		$link = 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid='.
+		$link = 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid='.
 				self::$hostids_druleids['Host for timeouts check with proxy:zabbix_agent_drule'];
 		$this->checkGlobal('proxy_custom', $link, 'Create item prototype', true);
 	}

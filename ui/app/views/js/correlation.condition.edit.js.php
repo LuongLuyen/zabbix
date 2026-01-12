@@ -59,7 +59,7 @@ window.correlation_condition_popup = new class {
 				break;
 		}
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'correlation.condition.check');
 

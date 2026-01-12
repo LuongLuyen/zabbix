@@ -19,7 +19,7 @@
  * @var array $data
  */
 
-$url = (new CUrl('zabbix.php'))
+$url = (new CUrl('sdnet.php'))
 	->setArgument('action', ($data['tokenid'] == 0) ? 'token.create' : 'token.update')
 	->getUrl();
 

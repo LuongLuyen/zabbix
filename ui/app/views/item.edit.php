@@ -190,7 +190,7 @@ $tabs = (new CTabView(['id' => $tabsid]))
 		TAB_INDICATOR_PREPROCESSING
 	);
 
-$return_url = (new CUrl('zabbix.php'))
+$return_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'item.list')
 	->setArgument('context', $item['context'])
 	->getUrl();

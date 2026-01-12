@@ -40,7 +40,7 @@ class CControllerUsergroupUpdate extends CController {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'usergroup.edit')
 							->setArgument('usrgrpid', $this->getInput('usrgrpid'))
 					);
@@ -133,7 +133,7 @@ class CControllerUsergroupUpdate extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'usergroup.list')
 					->setArgument('page', CPagerHelper::loadPage('usergroup.list', null))
 			);
@@ -155,7 +155,7 @@ class CControllerUsergroupUpdate extends CController {
 	 */
 	private function getErrorResponse(bool $add_message = false): void {
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'usergroup.edit')
 				->setArgument('usrgrpid', $this->getInput('usrgrpid'))
 		);

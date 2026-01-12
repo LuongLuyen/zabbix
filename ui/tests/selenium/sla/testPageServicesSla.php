@@ -237,7 +237,7 @@ class testPageServicesSla extends CWebTest {
 		$sla_count = count($sla_data);
 
 		// Open SLA page and check header and title.
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$this->page->assertHeader('SLA');
 		$this->page->assertTitle('SLA');
 
@@ -303,7 +303,7 @@ class testPageServicesSla extends CWebTest {
 		foreach ($sla_data as $sla) {
 			if ($sla['SLA report'] === 'SLA report') {
 				$name = ($sla['Name'] == 'Multiple spaces in SLA name') ? 'Multiple   spaces   in SLA name' : $sla['Name'];
-				$link = 'zabbix.php?action=slareport.list&filter_slaid='.CDataHelper::get('Sla.slaids')[$name].'&filter_set=1';
+				$link = 'sdnet.php?action=slareport.list&filter_slaid='.CDataHelper::get('Sla.slaids')[$name].'&filter_set=1';
 				$this->assertStringEndsWith($link, $table->findRow('Name', $name)->query('link:SLA report')->one()
 						->getAttribute('href')
 				);
@@ -341,7 +341,7 @@ class testPageServicesSla extends CWebTest {
 	}
 
 	public function testPageServicesSla_ChangeStatus() {
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 
 		// Disable SLA.
 		$row = $this->query('class:list-table')->asTable()->one()->findRow('Name', self::$update_sla);
@@ -751,7 +751,7 @@ class testPageServicesSla extends CWebTest {
 	 * @dataProvider getFilterData
 	 */
 	public function testPageServicesSla_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$form = $this->query('name:zbx_filter')->asForm()->one();
 
 		// Expand filter if it is collapsed.
@@ -862,7 +862,7 @@ class testPageServicesSla extends CWebTest {
 	 * @dataProvider getSortData
 	 */
 	public function testPageServicesSla_Sort($data) {
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 		$table = $this->query('class:list-table')->asTable()->one();
 		$header = $table->query('xpath:.//a[text()="'.$data['sort_field'].'"]')->one();
 
@@ -874,7 +874,7 @@ class testPageServicesSla extends CWebTest {
 	}
 
 	public function testPageServicesSla_Delete() {
-		$this->page->login()->open('zabbix.php?action=sla.list');
+		$this->page->login()->open('sdnet.php?action=sla.list');
 
 		// Delete SLA.
 		$this->selectTableRows(self::$delete_sla);

@@ -41,7 +41,7 @@ $html_page = (new CHtmlPage())
 	)
 	->addItem(
 		(new CFilter())
-			->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'module.list'))
+			->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'module.list'))
 			->addVar('action', 'module.list')
 			->setProfile($data['filter_profile'])
 			->setActiveTab($data['filter_active_tab'])
@@ -72,7 +72,7 @@ $table = (new CTableInfo())
 				->onClick("checkAll('".$form->getName()."', 'all_modules', 'moduleids');")
 		))->addClass(ZBX_STYLE_CELL_WIDTH),
 		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'],
-			(new CUrl('zabbix.php'))
+			(new CUrl('sdnet.php'))
 				->setArgument('action', 'module.list')
 				->getUrl()
 		),
@@ -84,7 +84,7 @@ $table = (new CTableInfo())
 	->setPageNavigation($data['paging']);
 
 foreach ($data['modules'] as $moduleid => $module) {
-	$module_url = (new CUrl('zabbix.php'))
+	$module_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'module.edit')
 		->setArgument('moduleid', $moduleid)

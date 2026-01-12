@@ -171,7 +171,7 @@ if (array_key_exists('problems', $data)) {
 			];
 		}
 
-		$problem_update_url = (new CUrl('zabbix.php'))
+		$problem_update_url = (new CUrl('sdnet.php'))
 			->setArgument('action', 'popup')
 			->setArgument('popup', 'acknowledge.edit')
 			->setArgument('eventids[]', $problem['eventid'])

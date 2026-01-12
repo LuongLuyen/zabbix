@@ -32,7 +32,7 @@ $html_page = (new CHtmlPage())
 		))->setAttribute('aria-label', _('Content controls'))
 	)
 	->addItem((new CFilter())
-		->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'discovery.list'))
+		->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'discovery.list'))
 		->setProfile($data['profileIdx'])
 		->setActiveTab($data['active_tab'])
 		->addFilterTab(_('Filter'), [
@@ -71,7 +71,7 @@ $discovery_table = (new CTableInfo())
 			(new CCheckBox('all_drules'))
 				->onClick("checkAll('".$discovery_form->getName()."', 'all_drules', 'druleids');")
 		))->addClass(ZBX_STYLE_CELL_WIDTH),
-		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'], (new CUrl('zabbix.php'))
+		make_sorting_header(_('Name'), 'name', $data['sort'], $data['sortorder'], (new CUrl('sdnet.php'))
 			->setArgument('action', 'discovery.list')
 			->getUrl()
 		),
@@ -102,7 +102,7 @@ foreach ($data['drules'] as $drule) {
 		$drule_icons[] = makeErrorIcon($drule['error']);
 	}
 
-	$drule_url = (new CUrl('zabbix.php'))
+	$drule_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'discovery.edit')
 		->setArgument('druleid', $drule['druleid'])

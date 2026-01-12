@@ -73,7 +73,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'proxy.config.refresh');
 
 			this.#post(target, proxyids, curl);
@@ -88,7 +88,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'proxy.host.enable');
 
 			this.#post(target, proxyids, curl);
@@ -103,7 +103,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'proxy.host.disable');
 
 			this.#post(target, proxyids, curl);
@@ -118,7 +118,7 @@
 				return;
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'proxy.delete');
 
 			this.#post(target, proxyids, curl);

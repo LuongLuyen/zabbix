@@ -105,7 +105,7 @@ class CControllerExport extends CController {
 		}
 		else {
 			$response = new CControllerResponseRedirect(
-				new CUrl($this->getInput('backurl', 'zabbix.php?action=dashboard.view'))
+				new CUrl($this->getInput('backurl', 'sdnet.php?action=dashboard.view'))
 			);
 			CMessageHelper::setErrorTitle(_('Export failed'));
 		}

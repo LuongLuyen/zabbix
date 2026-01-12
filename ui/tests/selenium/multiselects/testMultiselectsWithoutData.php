@@ -296,7 +296,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 	 * @dataProvider getActionOverlaysData
 	 */
 	public function testMultiselectsWithoutData_ActionOverlays($source, $tabs) {
-		$this->page->login()->open('zabbix.php?action=action.list&filter_rst=1&eventsource='.$source);
+		$this->page->login()->open('sdnet.php?action=action.list&filter_rst=1&eventsource='.$source);
 		$this->query('button:Create action')->one()->waitUntilClickable()->click();
 		$action_form = COverlayDialogElement::find()->all()->last()->waitUntilReady()->asForm();
 
@@ -331,7 +331,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					// Fill this filter to enable 'Proxy' multiselect.
 					'filter' => ['Monitored by' => 'Proxy'],
 					'checked_multiselects' => [
@@ -344,7 +344,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					// Fill this filter to enable 'Proxy groups' multiselect.
 					'filter' => ['Monitored by' => 'Proxy group'],
 					'checked_multiselects' => [
@@ -356,7 +356,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					'sub_object' => 'Items',
 					'checked_multiselects' => [
 						self::HOSTS_MULTISELECT,
@@ -368,7 +368,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					'sub_object' => 'Triggers',
 					'checked_multiselects' => [self::HOSTS_MULTISELECT]
 				]
@@ -377,7 +377,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					'sub_object' => 'Graphs',
 					'checked_multiselects' => [self::HOSTS_MULTISELECT]
 				]
@@ -386,7 +386,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					'sub_object' => 'Discovery',
 					'checked_multiselects' => [self::HOSTS_MULTISELECT]
 				]
@@ -395,7 +395,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					'sub_object' => 'Web',
 					'checked_multiselects' => [self::HOSTS_MULTISELECT]
 				]
@@ -404,7 +404,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Hosts',
-					'url' => 'zabbix.php?action=host.list&filter_rst=1',
+					'url' => 'sdnet.php?action=host.list&filter_rst=1',
 					'filter' => [
 						'Name' => 'zzz',
 						'Monitored by' => 'Proxy group'
@@ -419,7 +419,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'checked_multiselects' => [
 						['Linked templates' => ['title' => 'Templates', 'empty' => true, 'filter' => ['Template group' => '']]]
 					]
@@ -429,7 +429,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'filter' => ['Name' => 'zzz'],
 					'checked_multiselects' => [
 						['Linked templates' => ['title' => 'Templates', 'empty' => true, 'filter' => ['Template group' => '']]]
@@ -440,7 +440,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'sub_object' => 'Items',
 					'checked_multiselects' => [
 						self::TEMPLATES_MULTISELECT,
@@ -452,7 +452,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'sub_object' => 'Triggers',
 					'checked_multiselects' => [self::TEMPLATES_MULTISELECT]
 				]
@@ -461,7 +461,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'sub_object' => 'Graphs',
 					'checked_multiselects' => [self::TEMPLATES_MULTISELECT]
 				]
@@ -470,7 +470,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'sub_object' => 'Discovery',
 					'checked_multiselects' => [self::TEMPLATES_MULTISELECT]
 				]
@@ -479,7 +479,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Templates',
-					'url' => 'zabbix.php?action=template.list&filter_rst=1',
+					'url' => 'sdnet.php?action=template.list&filter_rst=1',
 					'sub_object' => 'Web',
 					'checked_multiselects' => [self::TEMPLATES_MULTISELECT]
 				]
@@ -488,7 +488,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Discovery',
-					'url' => 'zabbix.php?action=discovery.view&filter_rst=1',
+					'url' => 'sdnet.php?action=discovery.view&filter_rst=1',
 					'checked_multiselects' => [
 						['Discovery rule' => ['title' => 'Discovery rules', 'empty' => true, 'filter' => null]]
 					]
@@ -498,7 +498,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'host',
-					'url' => 'zabbix.php?action=host.list',
+					'url' => 'sdnet.php?action=host.list',
 					'checked_multiselects' => [self::TEMPLATES_MULTISELECT],
 					'overlay_form' => true
 				]
@@ -507,7 +507,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'template',
-					'url' => 'zabbix.php?action=template.list',
+					'url' => 'sdnet.php?action=template.list',
 					'checked_multiselects' => [self::TEMPLATES_MULTISELECT],
 					'overlay_form' => true
 				]
@@ -516,7 +516,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'SLA report',
-					'url' => 'zabbix.php?action=slareport.list&filter_rst=1',
+					'url' => 'sdnet.php?action=slareport.list&filter_rst=1',
 					'checked_multiselects' => [
 						['SLA' => ['title' => 'SLA', 'empty' => true, 'filter' => null]],
 						['Service' => ['title' => 'Service', 'empty' => true, 'filter' => ['Name' => '']]]
@@ -527,7 +527,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Availability report',
-					'url' => 'zabbix.php?action=availabilityreport.list&filter_rst=1',
+					'url' => 'sdnet.php?action=availabilityreport.list&filter_rst=1',
 					'checked_multiselects' => [self::HOSTS_MULTISELECT]
 				]
 			],
@@ -535,7 +535,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'Top 100 triggers',
-					'url' => 'zabbix.php?action=toptriggers.list&filter_rst=1',
+					'url' => 'sdnet.php?action=toptriggers.list&filter_rst=1',
 					'checked_multiselects' => [self::HOSTS_MULTISELECT]
 				]
 			],
@@ -543,7 +543,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'maintenance period',
-					'url' => 'zabbix.php?action=maintenance.list&filter_rst=1',
+					'url' => 'sdnet.php?action=maintenance.list&filter_rst=1',
 					'checked_multiselects' => [self::HOSTS_MULTISELECT],
 					'overlay_form' => true
 				]
@@ -599,7 +599,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'item',
-					'url' => 'zabbix.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D=',
+					'url' => 'sdnet.php?action=item.list&context=host&filter_set=1&filter_hostids%5B0%5D=',
 					'overlay_form' => true,
 					'form' => 'id:item-form',
 					'fields' => [
@@ -622,7 +622,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'trigger',
-					'url' => 'zabbix.php?action=trigger.list&filter_set=1&context=host&filter_hostids%5B0%5D=',
+					'url' => 'sdnet.php?action=trigger.list&filter_set=1&context=host&filter_hostids%5B0%5D=',
 					'overlay_form' => true,
 					'form' => 'id:trigger-form'
 				]
@@ -631,7 +631,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'graph',
-					'url' => 'zabbix.php?action=graph.list&context=host&filter_set=1&filter_hostids%5B0%5D=',
+					'url' => 'sdnet.php?action=graph.list&context=host&filter_set=1&filter_hostids%5B0%5D=',
 					'form' => 'id:graph-form',
 					'overlay_form' => true
 				]
@@ -640,7 +640,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'item prototype',
-					'url' => 'zabbix.php?action=item.prototype.list&context=host&parent_discoveryid=',
+					'url' => 'sdnet.php?action=item.prototype.list&context=host&parent_discoveryid=',
 					'form' => 'id:item-form',
 					'overlay_form' => true,
 					'fields' => [
@@ -652,7 +652,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'trigger prototype',
-					'url' => 'zabbix.php?action=trigger.prototype.list&context=host&parent_discoveryid=',
+					'url' => 'sdnet.php?action=trigger.prototype.list&context=host&parent_discoveryid=',
 					'form' => 'id:trigger-prototype-form',
 					'overlay_form' => true
 				]
@@ -661,7 +661,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'graph prototype',
-					'url' => 'zabbix.php?action=graph.prototype.list&context=host&parent_discoveryid=',
+					'url' => 'sdnet.php?action=graph.prototype.list&context=host&parent_discoveryid=',
 					'form' => 'id:graph-prototype-form',
 					'overlay_form' => true
 				]
@@ -679,7 +679,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'item',
-					'url' => 'zabbix.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D=',
+					'url' => 'sdnet.php?action=item.list&context=template&filter_set=1&filter_hostids%5B0%5D=',
 					'overlay_form' => true,
 					'form' => 'id:item-form',
 					'fields' => [
@@ -702,7 +702,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'trigger',
-					'url' => 'zabbix.php?action=trigger.list&filter_set=1&context=template&filter_hostids%5B0%5D=',
+					'url' => 'sdnet.php?action=trigger.list&filter_set=1&context=template&filter_hostids%5B0%5D=',
 					'overlay_form' => true,
 					'form' => 'id:trigger-form',
 					'filter_label' => 'Template'
@@ -712,7 +712,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'graph',
-					'url' => 'zabbix.php?action=graph.list&context=template&filter_set=1&filter_hostids%5B%5D=',
+					'url' => 'sdnet.php?action=graph.list&context=template&filter_set=1&filter_hostids%5B%5D=',
 					'form' => 'id:graph-form',
 					'overlay_form' => true
 				]
@@ -721,7 +721,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'item prototype',
-					'url' => 'zabbix.php?action=item.prototype.list&context=template&parent_discoveryid=',
+					'url' => 'sdnet.php?action=item.prototype.list&context=template&parent_discoveryid=',
 					'form' => 'id:item-form',
 					'overlay_form' => true,
 					'fields' => [
@@ -733,7 +733,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'trigger prototype',
-					'url' => 'zabbix.php?action=trigger.prototype.list&context=template&parent_discoveryid=',
+					'url' => 'sdnet.php?action=trigger.prototype.list&context=template&parent_discoveryid=',
 					'form' => 'id:trigger-prototype-form',
 					'overlay_form' => true,
 					'filter_label' => 'Template'
@@ -743,7 +743,7 @@ class testMultiselectsWithoutData extends testMultiselectDialogs {
 			[
 				[
 					'object' => 'graph prototype',
-					'url' => 'zabbix.php?action=graph.prototype.list&context=template&parent_discoveryid=',
+					'url' => 'sdnet.php?action=graph.prototype.list&context=template&parent_discoveryid=',
 					'form' => 'id:graph-prototype-form',
 					'overlay_form' => true
 				]

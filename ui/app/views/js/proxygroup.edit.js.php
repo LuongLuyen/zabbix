@@ -44,7 +44,7 @@ window.proxy_group_edit_popup = new class {
 		this.#proxy_groupid = proxy_groupid;
 		this.#initial_form_fields = getFormFields(this.#form);
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'proxygroup.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -100,7 +100,7 @@ window.proxy_group_edit_popup = new class {
 	}
 
 	delete() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'proxygroup.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('proxygroup')) ?>);
@@ -121,7 +121,7 @@ window.proxy_group_edit_popup = new class {
 			}
 		}
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', this.#proxy_groupid === null ? 'proxygroup.create' : 'proxygroup.update');
 

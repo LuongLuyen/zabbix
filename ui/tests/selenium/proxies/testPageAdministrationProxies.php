@@ -57,7 +57,7 @@ class testPageAdministrationProxies extends CWebTest {
 	}
 
 	public function testPageAdministrationProxies_Layout() {
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->page->assertTitle('Configuration of proxies');
 		$this->page->assertHeader('Proxies');
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
@@ -143,7 +143,7 @@ class testPageAdministrationProxies extends CWebTest {
 	}
 
 	public function testPageAdministrationProxies_CheckTableAndFilterReset() {
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 
 		// Reset filter in case if some filtering remained before ongoing test case.
@@ -313,7 +313,7 @@ class testPageAdministrationProxies extends CWebTest {
 	 * @dataProvider getFilterProxyData
 	 */
 	public function testPageAdministrationProxies_Filter($data) {
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$form = $this->query('name:zbx_filter')->waitUntilPresent()->asForm()->one();
 
 		// Reset filter in case if some filtering remained before ongoing test case.
@@ -589,7 +589,7 @@ class testPageAdministrationProxies extends CWebTest {
 			$old_hash = CDBHelper::getHash($this->sql);
 		}
 
-		$this->page->login()->open('zabbix.php?action=proxy.list')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list')->waitUntilReady();
 		$this->query('class:list-table')->asTable()->one()->findRows('Name', $data['proxies'])->select();
 		$this->query('button', $data['action'])->waitUntilClickable()->one()->click();
 
@@ -649,7 +649,7 @@ class testPageAdministrationProxies extends CWebTest {
 	 */
 	public function testPageAdministrationProxies_SortColumns() {
 		// Open Proxies page with proxies sorted descendingly by name.
-		$this->page->login()->open('zabbix.php?action=proxy.list&sort=name&sortorder=DESC')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=proxy.list&sort=name&sortorder=DESC')->waitUntilReady();
 		$table = $this->query('class:list-table')->asTable()->one()->waitUntilPresent();
 
 		foreach (['Name', 'Mode', 'Encryption', 'Version', 'Last seen (age)'] as $column) {

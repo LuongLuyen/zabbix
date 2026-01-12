@@ -40,7 +40,7 @@ else {
 		->setHeadingColumn(0);
 
 	$url = $data['allowed_ui_hosts']
-		? (new CUrl('zabbix.php'))
+		? (new CUrl('sdnet.php'))
 			->setArgument('action', 'web.view')
 			->setArgument('filter_set', '1')
 		: null;

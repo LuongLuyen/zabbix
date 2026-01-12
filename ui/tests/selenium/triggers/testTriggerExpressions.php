@@ -23,7 +23,7 @@ class testTriggerExpressions extends CWebTest {
 	public function testTriggerExpressions_SimpleTest() {
 		// Open advanced editor for testing trigger expression results.
 		$description = CDBHelper::getValue('SELECT description FROM triggers WHERE triggerid='.self::TRIGGER_ID);
-		$this->page->login()->open('zabbix.php?action=trigger.list&filter_set=1&context=template');
+		$this->page->login()->open('sdnet.php?action=trigger.list&filter_set=1&context=template');
 		$form = CFilterElement::find()->one()->getForm();
 		$form->fill(['Name' => $description])->submit();
 		$this->query('link', $description)->one()->click();

@@ -96,7 +96,7 @@ class testDashboardURLWidget extends testWidgets {
 									[
 										'type' => ZBX_WIDGET_FIELD_TYPE_STR,
 										'name' => 'url',
-										'value' => 'zabbix.php?action=dashboard.view'
+										'value' => 'sdnet.php?action=dashboard.view'
 									]
 								]
 							]
@@ -146,7 +146,7 @@ class testDashboardURLWidget extends testWidgets {
 									[
 										'type' => ZBX_WIDGET_FIELD_TYPE_STR,
 										'name' => 'url',
-										'value' => 'zabbix.php?action=popup&popup=host.edit&hostid=10084'
+										'value' => 'sdnet.php?action=popup&popup=host.edit&hostid=10084'
 									]
 								]
 							]
@@ -190,7 +190,7 @@ class testDashboardURLWidget extends testWidgets {
 	}
 
 	public function testDashboardURLWidget_Layout() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dialog = $dashboard->edit()->addWidget();
 		$this->assertEquals('Add widget', $dialog->getTitle());
@@ -295,7 +295,7 @@ class testDashboardURLWidget extends testWidgets {
 					'expected' => TEST_GOOD,
 					'fields' => [
 						'Name' => '',
-						'URL' => 'zabbix.php?action=dashboard.view'
+						'URL' => 'sdnet.php?action=dashboard.view'
 					]
 				]
 			],
@@ -394,7 +394,7 @@ class testDashboardURLWidget extends testWidgets {
 	public function testDashboardURLWidget_SimpleUpdate() {
 		$old_hash = CDBHelper::getHash($this->sql);
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$dashboard->getWidget(self::$update_widget)->edit()->submit();
 		$dashboard->save();
@@ -422,7 +422,7 @@ class testDashboardURLWidget extends testWidgets {
 		}
 
 		$data['fields']['Name'] = CTestArrayHelper::get($data, 'fields.Name', 'URL widget test '.microtime());
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_create)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -526,7 +526,7 @@ class testDashboardURLWidget extends testWidgets {
 		$old_hash = CDBHelper::getHash($this->sql);
 		$new_name = 'Widget to be cancelled';
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$old_widget_count = $dashboard->getWidgets()->count();
 
@@ -544,7 +544,7 @@ class testDashboardURLWidget extends testWidgets {
 		$form->fill([
 			'Name' => $new_name,
 			'Refresh interval' => '15 minutes',
-			'URL' => 'zabbix.php?action=dashboard.view'
+			'URL' => 'sdnet.php?action=dashboard.view'
 		]);
 
 		// Save or cancel widget.
@@ -580,7 +580,7 @@ class testDashboardURLWidget extends testWidgets {
 	}
 
 	public function testDashboardURLWidget_Delete() {
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one()->edit();
 		$widget = $dashboard->getWidget(self::$delete_widget);
 		$dashboard->deleteWidget(self::$delete_widget);
@@ -603,12 +603,12 @@ class testDashboardURLWidget extends testWidgets {
 					'fields' => [
 						'Name' => 'ЗАББИКС Сервер',
 						'Override host' => 'Dashboard',
-						'URL' => 'zabbix.php?action=popup&popup=host.edit&hostid={HOST.ID}'
+						'URL' => 'sdnet.php?action=popup&popup=host.edit&hostid={HOST.ID}'
 					],
 					'result' => [
 						'element' => 'id:visiblename',
 						'value' => 'ЗАББИКС Сервер',
-						'src' => 'zabbix.php?action=popup&popup=host.edit&hostid=10084'
+						'src' => 'sdnet.php?action=popup&popup=host.edit&hostid=10084'
 					]
 				]
 			],
@@ -617,14 +617,14 @@ class testDashboardURLWidget extends testWidgets {
 					'fields' => [
 						'Name' => 'Dynamic widgets H1',
 						'Override host' => 'Dashboard',
-						'URL' => 'zabbix.php?name={HOST.NAME}&ip=&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
+						'URL' => 'sdnet.php?name={HOST.NAME}&ip=&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
 							'tags[0][operator]=0&tags[0][value]=&maintenance_status=1&filter_name=&filter_show_counter=0&'.
 							'filter_custom_time=0&sort=name&sortorder=ASC&show_suppressed=0&action=host.view'
 					],
 					'result' => [
 						'element' => 'id:name_#{uniqid}',
 						'value' => 'Dynamic widgets H1',
-						'src' => 'zabbix.php?name=Dynamic widgets H1&ip=&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
+						'src' => 'sdnet.php?name=Dynamic widgets H1&ip=&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
 							'tags[0][operator]=0&tags[0][value]=&maintenance_status=1&filter_name=&filter_show_counter=0&'.
 							'filter_custom_time=0&sort=name&sortorder=ASC&show_suppressed=0&action=host.view'
 					]
@@ -635,14 +635,14 @@ class testDashboardURLWidget extends testWidgets {
 					'fields' => [
 						'Name' => 'Host-layout-test-001',
 						'Override host' => 'Dashboard',
-						'URL' => 'zabbix.php?name=&ip={HOST.IP}&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
+						'URL' => 'sdnet.php?name=&ip={HOST.IP}&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
 							'tags[0][operator]=0&tags[0][value]=&maintenance_status=1&filter_name=&filter_show_counter=0&'.
 							'filter_custom_time=0&sort=name&sortorder=ASC&show_suppressed=0&action=host.view'
 					],
 					'result' => [
 						'element' => 'id:ip_#{uniqid}',
 						'value' => '127.0.7.1',
-						'src' => 'zabbix.php?name=&ip=127.0.7.1&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
+						'src' => 'sdnet.php?name=&ip=127.0.7.1&dns=&port=&status=-1&evaltype=0&tags[0][tag]=&'.
 							'tags[0][operator]=0&tags[0][value]=&maintenance_status=1&filter_name=&filter_show_counter=0&'.
 							'filter_custom_time=0&sort=name&sortorder=ASC&show_suppressed=0&action=host.view'
 					]
@@ -653,14 +653,14 @@ class testDashboardURLWidget extends testWidgets {
 					'fields' => [
 						'Name' => 'Host for resolved DNS macro',
 						'Override host' => 'Dashboard',
-						'URL' => 'zabbix.php?name=&ip=&dns={HOST.DNS}&port=&status=-1&evaltype=0&tags[0][tag]=&'.
+						'URL' => 'sdnet.php?name=&ip=&dns={HOST.DNS}&port=&status=-1&evaltype=0&tags[0][tag]=&'.
 							'tags[0][operator]=0&tags[0][value]=&maintenance_status=1&filter_name=&filter_show_counter=0&'.
 							'filter_custom_time=0&sort=name&sortorder=ASC&show_suppressed=0&action=host.view'
 					],
 					'result' => [
 						'element' => 'id:dns_#{uniqid}',
 						'value' => 'dnsmacro.com',
-						'src' => 'zabbix.php?name=&ip=&dns=dnsmacro.com&port=&status=-1&evaltype=0&'.
+						'src' => 'sdnet.php?name=&ip=&dns=dnsmacro.com&port=&status=-1&evaltype=0&'.
 							'tags[0][tag]=&tags[0][operator]=0&tags[0][value]=&maintenance_status=1&filter_name=&'.
 							'filter_show_counter=0&filter_custom_time=0&sort=name&sortorder=ASC&show_suppressed=0&action=host.view'
 					]
@@ -675,7 +675,7 @@ class testDashboardURLWidget extends testWidgets {
 	public function testDashboardURLWidget_ResolvedMacro($data) {
 		// Use iframe sandboxing exceptions in case of popup form.
 		if (array_key_exists('popup', $data)) {
-			$this->page->login()->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+			$this->page->login()->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 			$other_form = $this->query('name:otherForm')->waitUntilVisible()->asForm()->one();
 			$other_form->fill([
 				'id:iframe_sandboxing_enabled' => true,
@@ -683,10 +683,10 @@ class testDashboardURLWidget extends testWidgets {
 			]);
 			$other_form->submit();
 			$this->assertMessage(TEST_GOOD, 'Configuration updated');
-			$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+			$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		}
 		else {
-			$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+			$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		}
 
 		$dashboard = CDashboardElement::find()->one();
@@ -712,7 +712,7 @@ class testDashboardURLWidget extends testWidgets {
 
 		// Revert changes made in 'Other configuration parameters'.
 		if (array_key_exists('popup', $data)) {
-			$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+			$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 			$other_form->fill(['id:iframe_sandboxing_exceptions' => ' ']);
 			$other_form->submit();
 			$this->assertMessage(TEST_GOOD, 'Configuration updated');
@@ -726,7 +726,7 @@ class testDashboardURLWidget extends testWidgets {
 	public function testDashboardURLWidget_IframeSandboxing() {
 		// TODO: test scenario should be changed regarding decision made in ZBX-25566.
 		// Check that host in widget can be updated via iframe if necessary sandboxing exceptions are set.
-		$this->page->login()->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$other_form = $this->query('name:otherForm')->waitUntilVisible()->asForm()->one();
 		$other_form->fill([
 			'id:iframe_sandboxing_enabled' => true,
@@ -736,7 +736,7 @@ class testDashboardURLWidget extends testWidgets {
 		$other_form->waitUntilReloaded();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_for_frame_widget)->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_for_frame_widget)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard->getWidget(self::$frame_widget)->getContent();
 
@@ -752,12 +752,12 @@ class testDashboardURLWidget extends testWidgets {
 
 			// Disable 'Use iframe sandboxing' option for false state scenario.
 			if ($state) {
-				$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+				$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 				$other_form = $this->query('name:otherForm')->waitUntilVisible()->asForm()->one();
 				$other_form->fill(['id:iframe_sandboxing_enabled' => !$state]);
 				$other_form->submit();
 				$this->assertMessage(TEST_GOOD, 'Configuration updated');
-				$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_for_frame_widget)->waitUntilReady();
+				$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_for_frame_widget)->waitUntilReady();
 			}
 		}
 	}
@@ -771,7 +771,7 @@ class testDashboardURLWidget extends testWidgets {
 			'mailto://zabbix.com', 'tel://zabbix.com', 'ssh://zabbix.com'
 		];
 
-		$this->page->login()->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 
 		// Check default URI scheme rules: http, https, ftp, file, mailto, tel, ssh.
@@ -779,14 +779,14 @@ class testDashboardURLWidget extends testWidgets {
 		$this->assertUriScheme($invalid_schemes, TEST_BAD);
 
 		// Change valid URI schemes on "Other configuration parameters" page.
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$config_form = $this->query('name:otherForm')->asForm()->waitUntilVisible()->one();
 		$config_form->fill(['id:uri_valid_schemes' => 'dns,message']);
 		$config_form->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
 		// Check that already created widget became invalid and returns error regarding invalid parameter.
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$widget = $dashboard->getWidget(self::$default_widget)->getContent();
 		$this->assertEquals("Widget is not fully configured\nPlease update configuration",
 				$widget->query('class:no-data-message')->one()->getText()
@@ -812,13 +812,13 @@ class testDashboardURLWidget extends testWidgets {
 		$this->assertUriScheme($invalid_schemes);
 
 		// Disable URI scheme validation.
-		$this->page->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$config_form->invalidate();
 		$config_form->fill(['id:validate_uri_schemes' => false]);
 		$config_form->submit();
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboardid)->waitUntilReady();
 		$this->assertUriScheme(array_merge($default_valid_schemes, $invalid_schemes));
 	}
 
@@ -904,7 +904,7 @@ class testDashboardURLWidget extends testWidgets {
 	 */
 	public function testDashboardURLWidget_XframeOptions($data) {
 		// Change Xframe options.
-		$this->page->login()->open('zabbix.php?action=miscconfig.edit')->waitUntilReady();
+		$this->page->login()->open('sdnet.php?action=miscconfig.edit')->waitUntilReady();
 		$other_form = $this->query('name:otherForm')->waitUntilVisible()->asForm()->one();
 
 		$other_form->fill([
@@ -921,7 +921,7 @@ class testDashboardURLWidget extends testWidgets {
 		$this->assertMessage(TEST_GOOD, 'Configuration updated');
 
 		// Check widget content with changed Xframe options.
-		$this->page->open('zabbix.php?action=dashboard.view&dashboardid='.self::$dashboard_for_frame_widget)->waitUntilReady();
+		$this->page->open('sdnet.php?action=dashboard.view&dashboardid='.self::$dashboard_for_frame_widget)->waitUntilReady();
 		$dashboard = CDashboardElement::find()->one();
 		$widget = $dashboard->getWidget(self::$frame_widget)->getContent();
 		$this->page->switchTo($widget->query('id:iframe')->one());

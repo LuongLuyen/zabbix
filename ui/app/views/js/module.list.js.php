@@ -52,7 +52,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'module.enable');
 
 			this.#post(target, moduleids, curl);
@@ -69,7 +69,7 @@
 				}
 			}
 
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'module.disable');
 
 			this.#post(target, moduleids, curl);

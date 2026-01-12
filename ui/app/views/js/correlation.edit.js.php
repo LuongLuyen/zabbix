@@ -28,7 +28,7 @@ window.correlation_edit_popup = new class {
 		this.correlation = correlation;
 		this.correlationid = correlation.correlationid;
 
-		const return_url = new URL('zabbix.php', location.href);
+		const return_url = new URL('sdnet.php', location.href);
 		return_url.searchParams.set('action', 'correlation.list');
 		ZABBIX.PopupManager.setReturnUrl(return_url.href);
 
@@ -330,7 +330,7 @@ window.correlation_edit_popup = new class {
 	}
 
 	delete() {
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', 'correlation.delete');
 		curl.setArgument(CSRF_TOKEN_NAME, <?= json_encode(CCsrfTokenHelper::get('correlation')) ?>);
@@ -347,7 +347,7 @@ window.correlation_edit_popup = new class {
 
 		['name', 'description'].forEach((field) => fields[field] = fields[field].trim());
 
-		const curl = new Curl('zabbix.php');
+		const curl = new Curl('sdnet.php');
 
 		curl.setArgument('action', this.correlationid === null ? 'correlation.create' : 'correlation.update');
 

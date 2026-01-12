@@ -39,7 +39,7 @@ class CControllerUsergroupCreate extends CController {
 			switch ($this->getValidationResult()) {
 				case self::VALIDATION_ERROR:
 					$response = new CControllerResponseRedirect(
-						(new CUrl('zabbix.php'))->setArgument('action', 'usergroup.edit')
+						(new CUrl('sdnet.php'))->setArgument('action', 'usergroup.edit')
 					);
 					$response->setFormData($this->getInputAll());
 					CMessageHelper::setErrorTitle(_('Cannot add user group'));
@@ -130,7 +130,7 @@ class CControllerUsergroupCreate extends CController {
 
 		if ($result) {
 			$response = new CControllerResponseRedirect(
-				(new CUrl('zabbix.php'))
+				(new CUrl('sdnet.php'))
 					->setArgument('action', 'usergroup.list')
 					->setArgument('page', CPagerHelper::loadPage('usergroup.list', null))
 			);
@@ -152,7 +152,7 @@ class CControllerUsergroupCreate extends CController {
 	 */
 	private function getErrorResponse(bool $add_message = false): void {
 		$response = new CControllerResponseRedirect(
-			(new CUrl('zabbix.php'))->setArgument('action', 'usergroup.edit')
+			(new CUrl('sdnet.php'))->setArgument('action', 'usergroup.edit')
 		);
 		CMessageHelper::setErrorTitle(_('Cannot add user group'));
 

@@ -23,7 +23,7 @@ $this->includeJsFile('connector.list.js.php');
 
 $filter = (new CFilter())
 	->addVar('action', 'connector.list')
-	->setResetUrl((new CUrl('zabbix.php'))->setArgument('action', 'connector.list'))
+	->setResetUrl((new CUrl('sdnet.php'))->setArgument('action', 'connector.list'))
 	->setProfile('web.connector.filter')
 	->setActiveTab($data['active_tab'])
 	->addFilterTab(_('Filter'), [
@@ -56,7 +56,7 @@ $form = (new CForm())
 	->setId('connector-list')
 	->setName('connector_list');
 
-$view_url = (new CUrl('zabbix.php'))
+$view_url = (new CUrl('sdnet.php'))
 	->setArgument('action', 'connector.list')
 	->getUrl();
 
@@ -84,7 +84,7 @@ foreach ($data['connectors'] as $connectorid => $connector) {
 			->addClass('js-enable-connector')
 			->setAttribute('data-connectorid', $connectorid);
 
-	$connector_url = (new CUrl('zabbix.php'))
+	$connector_url = (new CUrl('sdnet.php'))
 		->setArgument('action', 'popup')
 		->setArgument('popup', 'connector.edit')
 		->setArgument('connectorid', $connectorid)

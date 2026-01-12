@@ -24,7 +24,7 @@ require_once __DIR__.'/../../include/helpers/CDataHelper.php';
  */
 class testFormTagsConnectors extends testFormTags {
 
-	public $link = 'zabbix.php?action=connector.list';
+	public $link = 'sdnet.php?action=connector.list';
 	public $update_name = 'Connector with tags for updating';
 	public $clone_name = 'Connector with tags for cloning';
 	public $remove_name = 'Connector for removing tags';

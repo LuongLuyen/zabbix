@@ -45,7 +45,7 @@
 			this.filter_set = filter_set;
 			this.layout_mode = layout_mode;
 
-			const url = new Curl('zabbix.php');
+			const url = new Curl('sdnet.php');
 			url.setArgument('action', 'latest.view.refresh');
 			this.refresh_simple_url = url.getUrl();
 
@@ -398,7 +398,7 @@
 			}
 
 			let clear_checkboxes = false;
-			const curl = new Curl('zabbix.php');
+			const curl = new Curl('sdnet.php');
 			curl.setArgument('action', 'item.execute');
 			data[CSRF_TOKEN_NAME] = <?= json_encode(CCsrfTokenHelper::get('item')) ?>;
 

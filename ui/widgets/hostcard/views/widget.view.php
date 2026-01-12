@@ -110,7 +110,7 @@ function makeSectionsHeader(array $host): CDiv {
 		if ($problems) {
 			$problems_indicator = CWebUser::checkAccess(CRoleHelper::UI_MONITORING_PROBLEMS)
 				? new CLink(null,
-					(new CUrl('zabbix.php'))
+					(new CUrl('sdnet.php'))
 						->setArgument('action', 'problem.view')
 						->setArgument('hostids', [$host['hostid']])
 						->setArgument('filter_set', '1')
@@ -189,7 +189,7 @@ function makeSectionMonitoring(string $hostid, int $dashboard_count, int $item_c
 			(new CDiv([
 				$can_view_monitoring_hosts && $dashboard_count > 0
 					? (new CLink(_('Dashboards'),
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'host.dashboard.view')
 							->setArgument('hostid', $hostid)
 					))
@@ -205,7 +205,7 @@ function makeSectionMonitoring(string $hostid, int $dashboard_count, int $item_c
 			(new CDiv([
 				$can_view_monitoring_hosts && $graph_count > 0
 					? (new CLink(_('Graphs'),
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'charts.view')
 							->setArgument('filter_hostids', [$hostid])
 							->setArgument('filter_show', GRAPH_FILTER_HOST)
@@ -223,7 +223,7 @@ function makeSectionMonitoring(string $hostid, int $dashboard_count, int $item_c
 			(new CDiv([
 				CWebUser::checkAccess(CRoleHelper::UI_MONITORING_LATEST_DATA) && $item_count > 0
 					? (new CLink(_('Latest data'),
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'latest.view')
 							->setArgument('hostids', [$hostid])
 							->setArgument('filter_set', '1')
@@ -240,7 +240,7 @@ function makeSectionMonitoring(string $hostid, int $dashboard_count, int $item_c
 			(new CDiv([
 				$can_view_monitoring_hosts && $web_scenario_count > 0
 					? (new CLink(_('Web'),
-						(new CUrl('zabbix.php'))
+						(new CUrl('sdnet.php'))
 							->setArgument('action', 'web.view')
 							->setArgument('filter_hostids', [$hostid])
 							->setArgument('filter_set', '1')
@@ -275,13 +275,13 @@ function makeSectionMonitoredBy(array $host): CDiv {
 	switch ($host['monitored_by']) {
 		case ZBX_MONITORED_BY_SERVER:
 			$monitored_by = [
-				new CIcon(ZBX_ICON_SERVER, _('Zabbix server')),
-				_('Zabbix server')
+				new CIcon(ZBX_ICON_SERVER, _('SDNet server')),
+				_('SDNet server')
 			];
 			break;
 
 		case ZBX_MONITORED_BY_PROXY:
-			$proxy_url = (new CUrl('zabbix.php'))
+			$proxy_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'proxy.edit')
 				->setArgument('proxyid', $host['proxyid'])
@@ -300,7 +300,7 @@ function makeSectionMonitoredBy(array $host): CDiv {
 			break;
 
 		case ZBX_MONITORED_BY_PROXY_GROUP:
-			$proxy_group_url = (new CUrl('zabbix.php'))
+			$proxy_group_url = (new CUrl('sdnet.php'))
 				->setArgument('action', 'popup')
 				->setArgument('popup', 'proxygroup.edit')
 				->setArgument('proxy_groupid', $host['proxy_groupid'])

@@ -98,7 +98,7 @@ $navigation = (new CDiv())
 		(new CList())->addItem(
 			new CBreadcrumbs([
 				(new CSpan())->addItem(
-					new CLink(_('All hosts'), (new CUrl('zabbix.php'))->setArgument('action', 'host.view'))
+					new CLink(_('All hosts'), (new CUrl('sdnet.php'))->setArgument('action', 'host.view'))
 				),
 				(new CSpan())->addItem($data['dashboard_host']['name'])
 			])
