@@ -822,7 +822,7 @@ static int	DBpatch_2050092(void)
 
 		url_offset = 0;
 		zbx_strncpy_alloc(&url, &url_alloc, &url_offset, row[1], start - row[1]);
-		zbx_strcpy_alloc(&url, &url_alloc, &url_offset, "zabbix.php?action=");
+		zbx_strcpy_alloc(&url, &url_alloc, &url_offset, "sdnet.php?action=");
 		zbx_strcpy_alloc(&url, &url_alloc, &url_offset, url_map[i + 1]);
 
 		if ('\0' != *end)
