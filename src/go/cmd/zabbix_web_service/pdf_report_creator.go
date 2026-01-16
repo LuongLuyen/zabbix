@@ -219,11 +219,11 @@ func (h *handler) report(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if !strings.HasSuffix(u.Path, "/sdnet.php") {
-		logAndWriteError(w, fmt.Sprintf("Unexpected URL path: \"%s\"", u.Path), http.StatusBadRequest)
+	// if !strings.HasSuffix(u.Path, "/zabbix.php") {
+	// 	logAndWriteError(w, fmt.Sprintf("Unexpected URL path: \"%s\"", u.Path), http.StatusBadRequest)
 
-		return
-	}
+	// 	return
+	// }
 
 	queryParams := u.Query()
 
