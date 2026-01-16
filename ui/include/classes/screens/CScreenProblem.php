@@ -1292,7 +1292,7 @@ class CScreenProblem extends CScreenBase {
 			$csv[] = $row;
 		}
 
-		return zbx_toCSV($csv);
+        return "\xEF\xBB\xBF".zbx_toCSV($csv);
 	}
 
 	/**

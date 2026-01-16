@@ -85,5 +85,5 @@ foreach ($data['alerts'] as $alert) {
 
 	$csv[] = $row;
 }
-
+echo "\xEF\xBB\xBF";
 echo zbx_toCSV($csv);
