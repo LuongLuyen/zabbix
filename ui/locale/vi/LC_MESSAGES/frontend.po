@@ -6245,7 +6245,7 @@ msgstr ""
 #: include/classes/helpers/CMenuHelper.php:215
 #: include/classes/helpers/CRoleHelper.php:347
 msgid "Data collection"
-msgstr ""
+msgstr "Thu thập dữ liệu"
 
 #: include/classes/graphdraw/CLineGraphDraw.php:2241
 #: include/classes/graphdraw/CPieGraphDraw.php:793
@@ -17697,7 +17697,7 @@ msgstr ""
 
 #: include/classes/helpers/CMenuHelper.php:465
 msgid "Profile"
-msgstr ""
+msgstr "Hồ sơ"
 
 #: include/items.inc.php:1637 include/items.inc.php:1641
 msgid "Prometheus"
@@ -17881,7 +17881,7 @@ msgstr ""
 #: include/classes/helpers/CMenuHelper.php:378
 #: include/classes/helpers/CRoleHelper.php:512
 msgid "Proxy groups"
-msgstr ""
+msgstr "Nhóm proxy"
 
 #: app/partials/configuration.host.edit.html.php:334
 msgid "Proxy is not assigned yet."
@@ -19024,7 +19024,7 @@ msgstr ""
 #: include/classes/helpers/CMenuHelper.php:93
 #: include/classes/helpers/CRoleHelper.php:400 widgets/slareport/Widget.php:29
 msgid "SLA report"
-msgstr ""
+msgstr "Báo cáo SLA"
 
 #: app/controllers/CControllerSlaUpdate.php:130
 msgid "SLA updated"
@@ -19393,7 +19393,7 @@ msgstr ""
 #: include/classes/helpers/CMenuHelper.php:134
 #: include/classes/helpers/CRoleHelper.php:418
 msgid "Scheduled reports"
-msgstr ""
+msgstr "Báo cáo định kỳ"
 
 #: app/views/js/popup.massupdate.tmpl.js.php:84
 #: app/views/popup.lldoperation.php:115 app/views/popup.massupdate.item.php:233
@@ -21404,7 +21404,7 @@ msgstr ""
 #: include/views/configuration.host.discovery.list.php:69
 #: include/views/configuration.httpconf.list.php:31
 msgid "Template groups"
-msgstr ""
+msgstr "Nhóm template"
 
 #: app/views/popup.import.php:38
 msgid "Template linkage"
@@ -23814,7 +23814,7 @@ msgstr ""
 #: include/classes/helpers/CMenuHelper.php:306
 #: include/classes/helpers/CRoleHelper.php:493
 msgid "User roles"
-msgstr ""
+msgstr "Vai trò người dùng"
 
 #: app/views/administration.housekeeping.edit.php:109
 msgid "User sessions"
@@ -23823,7 +23823,7 @@ msgstr "Các phiên làm việc của người dùng"
 #: include/classes/helpers/CMenuHelper.php:461
 #: include/classes/helpers/CMenuHelper.php:474
 msgid "User settings"
-msgstr ""
+msgstr "Cài đặt người dùng"
 
 #: include/classes/api/services/CMap.php:709
 #: include/classes/api/services/CMap.php:1178
